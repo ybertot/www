@@ -1,0 +1,60 @@
+<H1 CLASS="chapter">Getting started</H1><!--SEC END -->
+<br/>
+<SPAN STYLE="font-variant:small-caps">Coq</SPAN> is a Proof Assistant for a Logical Framework known as the Calculus
+of Inductive Constructions. It allows the interactive construction of
+formal proofs, and also the manipulation of functional programs 
+consistently with their specifications. It runs as a computer program
+on many architectures.
+It is available with a variety of user interfaces. The present
+document does not attempt to present a comprehensive view of all the
+possibilities of <SPAN STYLE="font-variant:small-caps">Coq</SPAN>, but rather to present in the most elementary
+manner a tutorial on the basic specification language, called Gallina,
+in which formal axiomatisations may be developed, and on the main
+proof tools. For more advanced information, the reader could refer to
+the <SPAN STYLE="font-variant:small-caps">Coq</SPAN> Reference Manual or the <I>Coq'Art</I>, a new book by Y.
+Bertot and P. Castéran on practical uses of the <SPAN STYLE="font-variant:small-caps">Coq</SPAN> system.<BR>
+<BR>
+Coq can be used from a standard teletype-like shell window but
+preferably through the graphical user interface
+CoqIde<SUP><A NAME="text2" HREF="#note2">1</A></SUP>.<BR>
+<BR>
+Instructions on installation procedures, as well as more comprehensive
+documentation, may be found in the standard distribution of <SPAN STYLE="font-variant:small-caps">Coq</SPAN>,
+which may be obtained from <SPAN STYLE="font-variant:small-caps">Coq</SPAN> web site <TT>http://coq.inria.fr</TT>.<BR>
+<BR>
+In the following, we assume that <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; is called from a standard
+teletype-like shell window. All examples preceded by the prompting
+sequence <CODE>Coq &lt; </CODE> represent user input, terminated by a
+period. <BR>
+<BR>
+The following lines usually show <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s answer as it appears on the
+users screen. When used from a graphical user interface such as
+CoqIde, the prompt is not displayed: user input is given in one window
+and <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s answers are displayed in a different window.<BR>
+<BR>
+The sequence of such examples is a valid <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp;
+session, unless otherwise specified. This version of the tutorial has
+been prepared on a PC workstation running Linux. The standard
+invocation of <SPAN STYLE="font-variant:small-caps">Coq</SPAN> delivers a message such as:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<PRE CLASS="verbatim">
+unix:~&gt; coqtop
+Welcome to Coq 8.0 (Mar 2004)
+
+Coq &lt; 
+</PRE></DIV>
+<BR>
+<BR>
+The first line gives a banner stating the precise version of <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp;
+used. You should always return this banner when you report an
+anomaly to our hot-line <CODE>coq-bugs@pauillac.inria.fr</CODE> or on our
+bug-tracking system&nbsp;:<CODE>http</CODE>//coq.inria.fr/bin/coq-bugs:<BR>
+<BR>
+<!--BEGIN NOTES chapter-->
+<HR WIDTH="50%" SIZE=1><DL CLASS="list"><DT CLASS="dt-list"><A NAME="note2" HREF="#text2"><FONT SIZE=5>1</FONT></A><DD CLASS="dd-list">Alternative graphical interfaces exist: Proof General
+and Pcoq.
+</DL>
+<!--END NOTES-->
+<!--TOC chapter Basic Predicate Calculus-->
