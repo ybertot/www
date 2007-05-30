@@ -1,0 +1,723 @@
+<H1 CLASS="chapter">Induction</H1><!--SEC END -->
+
+<!--TOC section Data Types as Inductively Defined Mathematical Collections-->
+
+<br/>
+
+<H2 CLASS="section"><A NAME="htoc21">2.1</A>&nbsp;&nbsp;Data Types as Inductively Defined Mathematical Collections</H2><!--SEC END -->
+
+All the notions which were studied until now pertain to traditional
+mathematical logic. Specifications of objects were abstract properties
+used in reasoning more or less constructively; we are now entering
+the realm of inductive types, which specify the existence of concrete
+mathematical constructions.<BR>
+<BR>
+<!--TOC subsection Booleans-->
+
+<H3 CLASS="subsection"><A NAME="htoc22">2.1.1</A>&nbsp;&nbsp;Booleans</H3><!--SEC END -->
+
+Let us start with the collection of booleans, as they are specified
+in the <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s <CODE>Prelude</CODE> module: 
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;bool&nbsp;:&nbsp;&nbsp;Set&nbsp;:=&nbsp;true&nbsp;|&nbsp;false.</TT><BR>
+<TT><I>bool&nbsp;is&nbsp;defined</I></TT><BR>
+<TT><I>bool_rect&nbsp;is&nbsp;defined</I></TT><BR>
+<TT><I>bool_ind&nbsp;is&nbsp;defined</I></TT><BR>
+<TT><I>bool_rec&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Such a declaration defines several objects at once. First, a new
+<CODE>Set</CODE> is declared, with name <CODE>bool</CODE>. Then the <I><FONT COLOR=maroon>constructors</FONT></I>
+of this <CODE>Set</CODE> are declared, called <CODE>true</CODE> and <CODE>false</CODE>.
+Those are analogous to introduction rules of the new Set <CODE>bool</CODE>.
+Finally, a specific elimination rule for <CODE>bool</CODE> is now available, which
+permits to reason by cases on <CODE>bool</CODE> values. Three instances are
+indeed defined as new combinators in the global context: <CODE>bool_ind</CODE>,
+a proof combinator corresponding to reasoning by cases,
+<CODE>bool_rec</CODE>, an if-then-else programming construct,
+and <CODE>bool_rect</CODE>, a similar combinator at the level of types.
+Indeed:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_ind.</TT><BR>
+<TT><I>bool_ind</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Prop,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_rec.</TT><BR>
+<TT><I>bool_rec</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Set,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_rect.</TT><BR>
+<TT><I>bool_rect</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Type,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us for instance prove that every Boolean is true or false.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;duality&nbsp;:&nbsp;forall&nbsp;b:bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;b.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;b&nbsp;:&nbsp;bool</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We use the knowledge that <CODE>b</CODE> is a <CODE>bool</CODE> by calling tactic
+<CODE>elim</CODE>, which is this case will appeal to combinator <CODE>bool_ind</CODE>
+in order to split the proof according to the two cases:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;elim&nbsp;b.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;b&nbsp;:&nbsp;bool</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;true&nbsp;=&nbsp;true&nbsp;\/&nbsp;true&nbsp;=&nbsp;false</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;false&nbsp;=&nbsp;true&nbsp;\/&nbsp;false&nbsp;=&nbsp;false</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+It is easy to conclude in each case:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;left;&nbsp;trivial.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;b&nbsp;:&nbsp;bool</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;false&nbsp;=&nbsp;true&nbsp;\/&nbsp;false&nbsp;=&nbsp;false</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;right;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Indeed, the whole proof can be done with the combination of the
+<CODE>simple induction</CODE> tactic, which combines <CODE>intro</CODE> and <CODE>elim</CODE>,
+with good old <CODE>auto</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;b;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>simple&nbsp;induction&nbsp;b;&nbsp;auto.</I></TT><BR>
+<TT><I>duality&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC subsection Natural numbers-->
+
+<H3 CLASS="subsection"><A NAME="htoc23">2.1.2</A>&nbsp;&nbsp;Natural numbers</H3><!--SEC END -->
+
+Similarly to Booleans, natural numbers are defined in the <CODE>Prelude</CODE>
+module with constructors <CODE>S</CODE> and <CODE>O</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;nat&nbsp;:&nbsp;Set&nbsp;:=</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;:&nbsp;nat</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat.</TT><BR>
+<TT><I>nat&nbsp;is&nbsp;defined</I></TT><BR>
+<TT><I>nat_rect&nbsp;is&nbsp;defined</I></TT><BR>
+<TT><I>nat_ind&nbsp;is&nbsp;defined</I></TT><BR>
+<TT><I>nat_rec&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The elimination principles which are automatically generated are Peano's
+induction principle, and a recursion operator:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;nat_ind.</TT><BR>
+<TT><I>nat_ind</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop,</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;O&nbsp;-&gt;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;n))&nbsp;-&gt;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;nat_rec.</TT><BR>
+<TT><I>nat_rec</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Set,</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;O&nbsp;-&gt;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;n))&nbsp;-&gt;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us start by showing how to program the standard primitive recursion
+operator <CODE>prim_rec</CODE> from the more general <CODE>nat_rec</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;prim_rec&nbsp;:=&nbsp;nat_rec&nbsp;(fun&nbsp;i:nat&nbsp;=&gt;&nbsp;nat).</TT><BR>
+<TT><I>prim_rec&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+That is, instead of computing for natural <CODE>i</CODE> an element of the indexed
+<CODE>Set</CODE> <CODE>(P i)</CODE>, <CODE>prim_rec</CODE> computes uniformly an element of 
+<CODE>nat</CODE>. Let us check the type of <CODE>prim_rec</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;prim_rec.</TT><BR>
+<TT><I>prim_rec</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;O&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;n&nbsp;-&gt;&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;n))&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;n</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Oops! Instead of the expected type <CODE>nat-&gt;(nat-&gt;nat-&gt;nat)-&gt;nat-&gt;nat</CODE> we
+get an apparently more complicated expression. Indeed the type of
+<CODE>prim_rec</CODE> is equivalent by rule &beta; to its expected type; this may
+be checked in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; by command <CODE>Eval Cbv Beta</CODE>, which &beta;-reduces
+an expression to its <I><FONT COLOR=maroon>normal form</FONT></I>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Eval&nbsp;cbv&nbsp;beta&nbsp;in</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;((fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;O&nbsp;-&gt;</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;y:nat,&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;y&nbsp;-&gt;&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;y))&nbsp;-&gt;</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n:nat,&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;n).</TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;nat&nbsp;-&gt;&nbsp;(nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;nat)&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Set</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us now show how to program addition with primitive recursion:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;addition&nbsp;(n&nbsp;m:nat)&nbsp;:=&nbsp;prim_rec&nbsp;m&nbsp;(fun&nbsp;p&nbsp;rec:nat&nbsp;=&gt;&nbsp;S&nbsp;rec)&nbsp;n.</TT><BR>
+<TT><I>addition&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+That is, we specify that <CODE>(addition n m)</CODE> computes by cases on <CODE>n</CODE>
+according to its main constructor; when <CODE>n = O</CODE>, we get <CODE>m</CODE>;
+ when <CODE>n = S p</CODE>, we get <CODE>(S rec)</CODE>, where <CODE>rec</CODE> is the result
+of the recursive computation <CODE>(addition p m)</CODE>. Let us verify it by
+asking <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp;to compute for us say 2+3:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Eval&nbsp;compute&nbsp;in&nbsp;(addition&nbsp;(S&nbsp;(S&nbsp;O))&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;O)))).</TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;S&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;O))))</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;(S&nbsp;O))</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Actually, we do not have to do all explicitly. <SPAN STYLE="font-variant:small-caps">Coq</SPAN> provides a
+special syntax <TT>Fixpoint/match</TT> for generic primitive recursion,
+and we could thus have defined directly addition as:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Fixpoint&nbsp;plus&nbsp;(n&nbsp;m:nat)&nbsp;{struct&nbsp;n}&nbsp;:&nbsp;nat&nbsp;:=</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;match&nbsp;n&nbsp;with</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;=&gt;&nbsp;m</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;p&nbsp;=&gt;&nbsp;S&nbsp;(plus&nbsp;p&nbsp;m)</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;end.</TT><BR>
+<TT><I>plus&nbsp;is&nbsp;recursively&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+For the rest of the session, we shall clean up what we did so far with 
+types <CODE>bool</CODE> and <CODE>nat</CODE>, in order to use the initial definitions
+given in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s <CODE>Prelude</CODE> module, and not to get confusing error
+messages due to our redefinitions. We thus revert to the state before
+our definition of <CODE>bool</CODE> with the <CODE>Reset</CODE> command:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Reset&nbsp;bool.</TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC subsection Simple proofs by induction-->
+
+<H3 CLASS="subsection"><A NAME="htoc24">2.1.3</A>&nbsp;&nbsp;Simple proofs by induction</H3><!--SEC END -->
+
+Let us now show how to do proofs by structural induction. We start with easy
+properties of the <CODE>plus</CODE> function we just defined. Let us first
+show that <I>n</I>=<I>n</I>+0.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_n_O&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;n&nbsp;=&nbsp;n&nbsp;+&nbsp;0.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;n&nbsp;=&nbsp;n&nbsp;+&nbsp;0</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;n;&nbsp;elim&nbsp;n.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0&nbsp;+&nbsp;0</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+What happened was that <CODE>elim n</CODE>, in order to construct a <CODE>Prop</CODE>
+(the initial goal) from a <CODE>nat</CODE> (i.e. <CODE>n</CODE>), appealed to the
+corresponding induction principle <CODE>nat_ind</CODE> which we saw was indeed
+exactly Peano's induction scheme. Pattern-matching instantiated the 
+corresponding predicate <CODE>P</CODE> to <CODE>fun n:nat =&gt; n = n </CODE> 0+, and we get
+as subgoals the corresponding instantiations of the base case <CODE>(P O)</CODE> ,
+and of the inductive step <CODE>forall y:nat, P y -&gt; P (S y)</CODE>.
+In each case we get an instance of function <CODE>plus</CODE> in which its second
+argument starts with a constructor, and is thus amenable to simplification
+by primitive recursion. The <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp;tactic <CODE>simpl</CODE> can be used for
+this purpose:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;simpl.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;auto.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We proceed in the same way for the base step:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>intro&nbsp;n;&nbsp;elim&nbsp;n.</I></TT><BR>
+<TT><I>&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*.</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;auto.</I></TT><BR>
+<TT><I>simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</I></TT><BR>
+<TT><I>plus_n_O&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Here <CODE>auto</CODE> succeeded, because it used as a hint lemma <CODE>eq_S</CODE>,
+which say that successor preserves equality:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;eq_S.</TT><BR>
+<TT><I>eq_S</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;nat,&nbsp;x&nbsp;=&nbsp;y&nbsp;-&gt;&nbsp;S&nbsp;x&nbsp;=&nbsp;S&nbsp;y</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Actually, let us see how to declare our lemma <CODE>plus_n_O</CODE> as a hint
+to be used by <CODE>auto</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;plus_n_O&nbsp;.</TT><BR>
+</DIV>
+<BR>
+<BR>
+We now proceed to the similar property concerning the other constructor
+<CODE>S</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_n_S&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;S&nbsp;(n&nbsp;+&nbsp;m)&nbsp;=&nbsp;n&nbsp;+&nbsp;S&nbsp;m.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;S&nbsp;(n&nbsp;+&nbsp;m)&nbsp;=&nbsp;n&nbsp;+&nbsp;S&nbsp;m</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We now go faster, remembering that tactic <CODE>simple induction</CODE> does the
+necessary <CODE>intros</CODE> before applying <CODE>elim</CODE>. Factoring simplification
+and automation in both cases thanks to tactic composition, we prove this
+lemma in one line:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;n;&nbsp;simpl;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>simple&nbsp;induction&nbsp;n;&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</I></TT><BR>
+<TT><I>plus_n_S&nbsp;is&nbsp;defined</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;plus_n_S&nbsp;.</TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us end this exercise with the commutativity of <CODE>plus</CODE>:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_com&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Here we have a choice on doing an induction on <CODE>n</CODE> or on <CODE>m</CODE>, the
+situation being symmetric. For instance:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;m;&nbsp;simpl;&nbsp;auto.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;m&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;n&nbsp;-&gt;&nbsp;n&nbsp;+&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;(n0&nbsp;+&nbsp;n)</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Here <CODE>auto</CODE> succeeded on the base case, thanks to our hint
+<CODE>plus_n_O</CODE>, but the induction step requires rewriting, which
+<CODE>auto</CODE> does not handle:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;m'&nbsp;E;&nbsp;rewrite&nbsp;&lt;-&nbsp;E;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>simple&nbsp;induction&nbsp;m;&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</I></TT><BR>
+<TT><I>intros&nbsp;m'&nbsp;E;&nbsp;rewrite&nbsp;&lt;-&nbsp;E&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</I></TT><BR>
+<TT><I>plus_com&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC subsection Discriminate-->
+
+<H3 CLASS="subsection"><A NAME="htoc25">2.1.4</A>&nbsp;&nbsp;Discriminate</H3><!--SEC END -->
+
+It is also possible to define new propositions by primitive recursion.
+Let us for instance define the predicate which discriminates between
+the constructors <CODE>O</CODE> and <CODE>S</CODE>: it computes to <CODE>False</CODE> 
+when its argument is <CODE>O</CODE>, and to <CODE>True</CODE> when its argument is 
+of the form <CODE>(S n)</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;Is_S&nbsp;(n:nat)&nbsp;:=&nbsp;match&nbsp;n&nbsp;with</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;=&gt;&nbsp;False</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;p&nbsp;=&gt;&nbsp;True</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end.</TT><BR>
+<TT><I>Is_S&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now we may use the computational power of <CODE>Is_S</CODE> in order to prove
+trivially that <CODE>(Is_S (S n))</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;S_Is_S&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;Is_S&nbsp;(S&nbsp;n).</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;Is_S&nbsp;(S&nbsp;n)</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;trivial.</I></TT><BR>
+<TT><I>S_Is_S&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+But we may also use it to transform a <CODE>False</CODE> goal into 
+<CODE>(Is_S O)</CODE>. Let us show a particularly important use of this feature;
+we want to prove that <CODE>O</CODE> and <CODE>S</CODE> construct different values, one
+of Peano's axioms:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;no_confusion&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+First of all, we replace negation by its definition, by reducing the
+goal with tactic <CODE>red</CODE>; then we get contradiction by successive
+<CODE>intros</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;red;&nbsp;intros&nbsp;n&nbsp;H.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;False</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now we use our trick:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;change&nbsp;(Is_S&nbsp;0).</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;Is_S&nbsp;0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now we use equality in order to get a subgoal which computes out to 
+<CODE>True</CODE>, which finishes the proof:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;rewrite&nbsp;H;&nbsp;trivial.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;Is_S&nbsp;(S&nbsp;n)</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Actually, a specific tactic <CODE>discriminate</CODE> is provided
+to produce mechanically such proofs, without the need for the user to define
+explicitly the relevant discrimination predicates:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;n;&nbsp;discriminate.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>intro&nbsp;n;&nbsp;&nbsp;discriminate.</I></TT><BR>
+<TT><I>no_confusion&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC section Logic programming-->
+
+<H2 CLASS="section"><A NAME="htoc26">2.2</A>&nbsp;&nbsp;Logic programming</H2><!--SEC END -->
+
+In the same way as we defined standard data-types above, we
+may define inductive families, and for instance inductive predicates.
+Here is the definition of predicate &#8804; over type <CODE>nat</CODE>, as
+given in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s <CODE>Prelude</CODE> module:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;le&nbsp;(n:nat)&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop&nbsp;:=</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;le_n&nbsp;:&nbsp;le&nbsp;n&nbsp;n</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;le_S&nbsp;:&nbsp;forall&nbsp;m:nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;n&nbsp;(S&nbsp;m).</TT><BR>
+</DIV>
+<BR>
+<BR>
+This definition introduces a new predicate <CODE>le:nat-&gt;nat-&gt;Prop</CODE>,
+and the two constructors <CODE>le_n</CODE> and <CODE>le_S</CODE>, which are the
+defining clauses of <CODE>le</CODE>. That is, we get not only the &#8220;axioms&#8221;
+<CODE>le_n</CODE> and <CODE>le_S</CODE>, but also the converse property, that 
+<CODE>(le n m)</CODE> if and only if this statement can be obtained as a
+consequence of these defining clauses; that is, <CODE>le</CODE> is the
+minimal predicate verifying clauses <CODE>le_n</CODE> and <CODE>le_S</CODE>. This is
+insured, as in the case of inductive data types, by an elimination principle,
+which here amounts to an induction principle <CODE>le_ind</CODE>, stating this 
+minimality property:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;le.</TT><BR>
+<TT><I>le</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;le_ind.</TT><BR>
+<TT><I>le_ind</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop),</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;n&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;m))&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n0&nbsp;-&gt;&nbsp;P&nbsp;n0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us show how proofs may be conducted with this principle.
+First we show that <I>n</I>&#8804; <I>m</I> &rArr; <I>n</I>+1&#8804; <I>m</I>+1:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;le_n_S&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m).</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;n&nbsp;m&nbsp;n_le_m.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;m&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;elim&nbsp;n_le_m.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;m&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;n)</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;forall&nbsp;m0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m0&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m0)&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;(S&nbsp;m0))</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+What happens here is similar to the behaviour of <CODE>elim</CODE> on natural
+numbers: it appeals to the relevant induction principle, here <CODE>le_ind</CODE>,
+which generates the two subgoals, which may then be solved easily
+with the help of the defining clauses of <CODE>le</CODE>.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;le_n;&nbsp;trivial.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;m&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;m0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m0&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m0)&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;(S&nbsp;m0))</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intros;&nbsp;apply&nbsp;le_S;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now we know that it is a good idea to give the defining clauses as hints,
+so that the proof may proceed with a simple combination of 
+<CODE>induction</CODE> and <CODE>auto</CODE>.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;le_n&nbsp;le_S&nbsp;.</TT><BR>
+</DIV>
+<BR>
+<BR>
+We have a slight problem however. We want to say &#8220;Do an induction on
+hypothesis <CODE>(le n m)</CODE>&#8221;, but we have no explicit name for it. What we
+do in this case is to say &#8220;Do an induction on the first unnamed hypothesis&#8221;,
+as follows.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;1;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>simple&nbsp;induction&nbsp;1;&nbsp;auto.</I></TT><BR>
+<TT><I>le_n_S&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Here is a more tricky problem. Assume we want to show that
+<I>n</I>&#8804; 0 &rArr; <I>n</I>=0. This reasoning ought to follow simply from the
+fact that only the first defining clause of <CODE>le</CODE> applies.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;tricky&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;le&nbsp;n&nbsp;0&nbsp;-&gt;&nbsp;n&nbsp;=&nbsp;0.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;0&nbsp;-&gt;&nbsp;n&nbsp;=&nbsp;0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+However, here trying something like <CODE>induction 1</CODE> would lead
+nowhere (try it and see what happens). 
+An induction on <CODE>n</CODE> would not be convenient either.
+What we must do here is analyse the definition of <CODE>le</CODE> in order
+to match hypothesis <CODE>(le n O)</CODE> with the defining clauses, to find
+that only <CODE>le_n</CODE> applies, whence the result. 
+This analysis may be performed by the &#8220;inversion&#8221; tactic
+<CODE>inversion_clear</CODE> as follows:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;n&nbsp;H;&nbsp;inversion_clear&nbsp;H.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>intros&nbsp;n&nbsp;H;&nbsp;inversion_clear&nbsp;H.</I></TT><BR>
+<TT><I>trivial.</I></TT><BR>
+<TT><I>tricky&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC chapter Modules-->
