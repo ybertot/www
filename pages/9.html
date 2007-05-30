@@ -1,0 +1,2108 @@
+<H1 CLASS="chapter">Basic Predicate Calculus</H1><!--SEC END -->
+
+<!--TOC section An overview of the specification language Gallina-->
+ 
+<br/>
+
+<H2 CLASS="section"><A NAME="htoc2">1.1</A>&nbsp;&nbsp;An overview of the specification language Gallina</H2><!--SEC END -->
+
+A formal development in Gallina consists in a sequence of <I><FONT COLOR=maroon>declarations</FONT></I>
+and <I><FONT COLOR=maroon>definitions</FONT></I>. You may also send <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; <I><FONT COLOR=maroon>commands</FONT></I> which are
+not really part of the formal development, but correspond to information
+requests, or service routine invocations. For instance, the command:
+<PRE CLASS="verbatim">
+Coq &lt; Quit.
+</PRE>terminates the current session.<BR>
+<BR>
+<!--TOC subsection Declarations-->
+
+<H3 CLASS="subsection"><A NAME="htoc3">1.1.1</A>&nbsp;&nbsp;Declarations</H3><!--SEC END -->
+
+A declaration associates a <I><FONT COLOR=maroon>name</FONT></I> with 
+a <I><FONT COLOR=maroon>specification</FONT></I>. 
+A name corresponds roughly to an identifier in a programming
+language, i.e. to a string of letters, digits, and a few ASCII symbols like
+underscore (<CODE>_</CODE>) and prime (<CODE>'</CODE>), starting with a letter. 
+We use case distinction, so that the names <CODE>A</CODE> and <CODE>a</CODE> are distinct.
+Certain strings are reserved as key-words of <SPAN STYLE="font-variant:small-caps">Coq</SPAN>, and thus are forbidden 
+as user identifiers.<BR>
+<BR>
+A specification is a formal expression which classifies the notion which is
+being declared. There are basically three kinds of specifications: 
+<I><FONT COLOR=maroon>logical propositions</FONT></I>, <I><FONT COLOR=maroon>mathematical collections</FONT></I>, and
+<I><FONT COLOR=maroon>abstract types</FONT></I>. They are classified by the three basic sorts
+of the system, called respectively <CODE>Prop</CODE>, <CODE>Set</CODE>, and
+<CODE>Type</CODE>, which are themselves atomic abstract types.<BR>
+<BR>
+Every valid expression <I>e</I> in Gallina is associated with a specification,
+itself a valid expression, called its <I><FONT COLOR=maroon>type</FONT></I> &tau;(<I>E</I>). We write
+<I>e</I>:&tau;(<I>E</I>) for the judgment that <I>e</I> is of type <I>E</I>. 
+You may request <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; to return to you the type of a valid expression by using
+the command <CODE>Check</CODE>:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;O.</TT><BR>
+<TT><I>0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;nat</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Thus we know that the identifier <CODE>O</CODE> (the name `O', not to be
+confused with the numeral `0' which is not a proper identifier!) is
+known in the current context, and that its type is the specification 
+<CODE>nat</CODE>. This specification is itself classified as a mathematical
+collection, as we may readily check:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;nat.</TT><BR>
+<TT><I>nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Set</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The specification <CODE>Set</CODE> is an abstract type, one of the basic
+sorts of the Gallina language, whereas the notions <I>nat</I> and <I>O</I> are
+notions which are defined in the arithmetic prelude,
+automatically loaded when running the <SPAN STYLE="font-variant:small-caps">Coq</SPAN> system.<BR>
+<BR>
+We start by introducing a so-called section name. The role of sections
+is to structure the modelisation by limiting the scope of parameters,
+hypotheses and definitions. It will also give a convenient way to
+reset part of the development.<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Section&nbsp;Declaration.</TT><BR>
+</DIV>
+
+With what we already know, we may now enter in the system a declaration,
+corresponding to the informal mathematics <I><FONT COLOR=maroon>let n be a natural
+ number</FONT></I>. <BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Variable&nbsp;n&nbsp;:&nbsp;nat.</TT><BR>
+<TT><I>n&nbsp;is&nbsp;assumed</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+If we want to translate a more precise statement, such as
+<I><FONT COLOR=maroon>let n be a positive natural number</FONT></I>,
+we have to add another declaration, which will declare explicitly the
+hypothesis <CODE>Pos_n</CODE>, with specification the proper logical
+proposition:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;Pos_n&nbsp;:&nbsp;(gt&nbsp;n&nbsp;0).</TT><BR>
+<TT><I>Pos_n&nbsp;is&nbsp;assumed</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Indeed we may check that the relation <CODE>gt</CODE> is known with the right type
+in the current context:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;gt.</TT><BR>
+<TT><I>gt</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+which tells us that <CODE>gt</CODE> is a function expecting two arguments of
+type <CODE>nat</CODE> in order to build a logical proposition.
+What happens here is similar to what we are used to in a functional
+programming language: we may compose the (specification) type <CODE>nat</CODE>
+with the (abstract) type <CODE>Prop</CODE> of logical propositions through the
+arrow function constructor, in order to get a functional type
+<CODE>nat-&gt;Prop</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;(nat&nbsp;-&gt;&nbsp;Prop).</TT><BR>
+<TT><I>nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Type</I></TT><BR>
+</DIV>
+
+which may be composed again with <CODE>nat</CODE> in order to obtain the
+type <CODE>nat-&gt;nat-&gt;Prop</CODE> of binary relations over natural numbers.
+Actually <CODE>nat-&gt;nat-&gt;Prop</CODE> is an abbreviation for 
+<CODE>nat-&gt;(nat-&gt;Prop)</CODE>. <BR>
+<BR>
+Functional notions may be composed in the usual way. An expression <I>f</I>
+of type <I>A</I>&rarr; <I>B</I> may be applied to an expression <I>e</I> of type <I>A</I> in order
+to form the expression (<I>f</I>&nbsp;<I>e</I>) of type <I>B</I>. Here we get that
+the expression <CODE>(gt n)</CODE> is well-formed of type <CODE>nat-&gt;Prop</CODE>,
+and thus that the expression <CODE>(gt n O)</CODE>, which abbreviates
+<CODE>((gt n) O)</CODE>, is a well-formed proposition.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;gt&nbsp;n&nbsp;O.</TT><BR>
+<TT><I>n&nbsp;&gt;&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Prop</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC subsection Definitions-->
+
+<H3 CLASS="subsection"><A NAME="htoc4">1.1.2</A>&nbsp;&nbsp;Definitions</H3><!--SEC END -->
+
+The initial prelude contains a few arithmetic definitions:
+<CODE>nat</CODE> is defined as a mathematical collection (type <CODE>Set</CODE>), constants
+<CODE>O</CODE>, <CODE>S</CODE>, <CODE>plus</CODE>, are defined as objects of types
+respectively <CODE>nat</CODE>, <CODE>nat-&gt;nat</CODE>, and <CODE>nat-&gt;nat-&gt;nat</CODE>.
+You may introduce new definitions, which link a name to a well-typed value.
+For instance, we may introduce the constant <CODE>one</CODE> as being defined
+to be equal to the successor of zero:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;one&nbsp;:=&nbsp;(S&nbsp;O).</TT><BR>
+<TT><I>one&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+
+We may optionally indicate the required type:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;two&nbsp;:&nbsp;nat&nbsp;:=&nbsp;S&nbsp;one.</TT><BR>
+<TT><I>two&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Actually <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; allows several possible syntaxes:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;three&nbsp;:&nbsp;nat&nbsp;:=&nbsp;S&nbsp;two.</TT><BR>
+<TT><I>three&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Here is a way to define the doubling function, which expects an
+argument <CODE>m</CODE> of type <CODE>nat</CODE> in order to build its result as
+<CODE>(plus m m)</CODE>:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;double&nbsp;(m:nat)&nbsp;:=&nbsp;plus&nbsp;m&nbsp;m.</TT><BR>
+<TT><I>double&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+
+This definition introduces the constant <TT>double</TT> defined as the
+expression <TT>fun m:nat =&gt; plus m m</TT>.
+The abstraction introduced by <TT>fun</TT> is explained as follows. The expression
+<CODE>fun x:A =&gt; e</CODE> is well formed of type <CODE>A-&gt;B</CODE> in a context
+whenever the expression <CODE>e</CODE> is well-formed of type <CODE>B</CODE> in 
+the given context to which we add the declaration that <CODE>x</CODE>
+is of type <CODE>A</CODE>. Here <CODE>x</CODE> is a bound, or dummy variable in
+the expression <CODE>fun x:A =&gt; e</CODE>. For instance we could as well have
+defined <CODE>double</CODE> as <CODE>fun n:nat =&gt; (plus n n)</CODE>.<BR>
+<BR>
+Bound (local) variables and free (global) variables may be mixed.
+For instance, we may define the function which adds the constant <CODE>n</CODE>
+to its argument as
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;add_n&nbsp;(m:nat)&nbsp;:=&nbsp;plus&nbsp;m&nbsp;n.</TT><BR>
+<TT><I>add_n&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+
+However, note that here we may not rename the formal argument <I>m</I> into <I>n</I>
+without capturing the free occurrence of <I>n</I>, and thus changing the meaning
+of the defined notion.<BR>
+<BR>
+Binding operations are well known for instance in logic, where they
+are called quantifiers. Thus we may universally quantify a
+proposition such as <I>m</I>&gt;0 in order to get a universal proposition
+&forall; <I>m</I>&sdot; <I>m</I>&gt;0. Indeed this operator is available in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>, with
+the following syntax: <CODE>forall m:nat, gt m O</CODE>. Similarly to the
+case of the functional abstraction binding, we are obliged to declare
+explicitly the type of the quantified variable. We check:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;(forall&nbsp;m:nat,&nbsp;gt&nbsp;m&nbsp;0).</TT><BR>
+<TT><I>forall&nbsp;m&nbsp;:&nbsp;nat,&nbsp;m&nbsp;&gt;&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Prop</I></TT><BR>
+</DIV>
+
+We may clean-up the development by removing the contents of the
+current section:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Reset&nbsp;Declaration.</TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC section Introduction to the proof engine: Minimal Logic-->
+
+<H2 CLASS="section"><A NAME="htoc5">1.2</A>&nbsp;&nbsp;Introduction to the proof engine: Minimal Logic</H2><!--SEC END -->
+
+In the following, we are going to consider various propositions, built
+from atomic propositions <I>A</I>, <I>B</I>, <I>C</I>. This may be done easily, by
+introducing these atoms as global variables declared of type <CODE>Prop</CODE>.
+It is easy to declare several names with the same specification:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Section&nbsp;Minimal_Logic.</TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Variables&nbsp;A&nbsp;B&nbsp;C&nbsp;:&nbsp;Prop.</TT><BR>
+<TT><I>A&nbsp;is&nbsp;assumed</I></TT><BR>
+<TT><I>B&nbsp;is&nbsp;assumed</I></TT><BR>
+<TT><I>C&nbsp;is&nbsp;assumed</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We shall consider simple implications, such as <I>A</I>&rarr; <I>B</I>, read as 
+&#8220;<I>A</I> implies <I>B</I>&#8221;. Remark that we overload the arrow symbol, which
+has been used above as the functionality type constructor, and which
+may be used as well as propositional connective:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;(A&nbsp;-&gt;&nbsp;B).</TT><BR>
+<TT><I>A&nbsp;-&gt;&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Prop</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us now embark on a simple proof. We want to prove the easy tautology
+((<I>A</I>&rarr; (<I>B</I>&rarr; <I>C</I>))&rarr; (<I>A</I>&rarr; <I>B</I>)&rarr; (<I>A</I>&rarr; <I>C</I>). 
+We enter the proof engine by the command
+<CODE>Goal</CODE>, followed by the conjecture we want to verify:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Goal&nbsp;(A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C)&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C)&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The system displays the current goal below a double line, local hypotheses
+(there are none initially) being displayed above the line. We call 
+the combination of local hypotheses with a goal a <I><FONT COLOR=maroon>judgment</FONT></I>.
+We are now in an inner 
+loop of the system, in proof mode. 
+New commands are available in this
+mode, such as <I><FONT COLOR=maroon>tactics</FONT></I>, which are proof combining primitives.
+A tactic operates on the current goal by attempting to construct a proof
+of the corresponding judgment, possibly from proofs of some
+hypothetical judgments, which are then added to the current
+list of conjectured judgments.
+For instance, the <CODE>intro</CODE> tactic is applicable to any judgment
+whose goal is an implication, by moving the proposition to the left
+of the application to the list of local hypotheses:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;H.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Several introductions may be done in one step:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;H'&nbsp;HA.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H'&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;HA&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;C</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We notice that <I>C</I>, the current goal, may be obtained from hypothesis
+<CODE>H</CODE>, provided the truth of <I>A</I> and <I>B</I> are established.
+The tactic <CODE>apply</CODE> implements this piece of reasoning:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;H.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H'&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;HA&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;B</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We are now in the situation where we have two judgments as conjectures
+that remain to be proved. Only the first is listed in full, for the
+others the system displays only the corresponding subgoal, without its
+local hypotheses list. Remark that <CODE>apply</CODE> has kept the local
+hypotheses of its father judgment, which are still available for
+the judgments it generated.<BR>
+<BR>
+In order to solve the current goal, we just have to notice that it is
+exactly available as hypothesis <I>HA</I>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;exact&nbsp;HA.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H'&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;HA&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;B</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now <I>H</I>' applies:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;H'.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H'&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;HA&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+And we may now conclude the proof as before, with <CODE>exact HA.</CODE>
+Actually, we may not bother with the name <CODE>HA</CODE>, and just state that
+the current goal is solvable from the current local assumptions:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;assumption.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The proof is now finished. We may either discard it, by using the
+command <CODE>Abort</CODE> which returns to the standard <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; toplevel loop
+without further ado, or else save it as a lemma in the current context,
+under name say <CODE>trivial_lemma</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Save&nbsp;trivial_lemma.</TT><BR>
+<TT><I>intro&nbsp;H.</I></TT><BR>
+<TT><I>intros&nbsp;H'&nbsp;HA.</I></TT><BR>
+<TT><I>apply&nbsp;H.</I></TT><BR>
+<TT><I>&nbsp;exact&nbsp;HA.</I></TT><BR>
+<TT><I>apply&nbsp;H'.</I></TT><BR>
+<TT><I>&nbsp;&nbsp;assumption.</I></TT><BR>
+<TT><I>trivial_lemma&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+As a comment, the system shows the proof script listing all tactic
+commands used in the proof. <BR>
+<BR>
+Let us redo the same proof with a few variations. First of all we may name
+the initial goal as a conjectured lemma:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;distr_impl&nbsp;:&nbsp;(A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C)&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C)&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Next, we may omit the names of local assumptions created by the introduction
+tactics, they can be automatically created by the proof engine as new
+non-clashing names.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intros.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H0&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H1&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;C</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The <CODE>intros</CODE> tactic, with no arguments, effects as many individual
+applications of <CODE>intro</CODE> as is legal.<BR>
+<BR>
+Then, we may compose several tactics together in sequence, or in parallel,
+through <I><FONT COLOR=maroon>tacticals</FONT></I>, that is tactic combinators. The main constructions
+are the following:
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+<I>T</I><SUB>1</SUB> ; <I>T</I><SUB>2</SUB> (read <I>T</I><SUB>1</SUB> then <I>T</I><SUB>2</SUB>) applies tactic <I>T</I><SUB>1</SUB> to the current
+goal, and then tactic <I>T</I><SUB>2</SUB> to all the subgoals generated by <I>T</I><SUB>1</SUB>.
+<LI CLASS="li-itemize"><I>T</I>; [<I>T</I><SUB>1</SUB> | <I>T</I><SUB>2</SUB> | ... | <I>T</I><SUB><I>n</I></SUB>] applies tactic <I>T</I> to the current
+goal, and then tactic <I>T</I><SUB>1</SUB> to the first newly generated subgoal, 
+..., <I>T</I><SUB><I>n</I></SUB> to the nth.
+</UL>
+We may thus complete the proof of <CODE>distr_impl</CODE> with one composite tactic:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;H;&nbsp;[&nbsp;assumption&nbsp;|&nbsp;apply&nbsp;H0;&nbsp;assumption&nbsp;].</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us now save lemma <CODE>distr_impl</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Save.</TT><BR>
+<TT><I>intros.</I></TT><BR>
+<TT><I>apply&nbsp;H;&nbsp;[&nbsp;assumption&nbsp;|&nbsp;apply&nbsp;H0;&nbsp;assumption&nbsp;].</I></TT><BR>
+<TT><I>distr_impl&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Here <CODE>Save</CODE> needs no argument, since we gave the name <CODE>distr_impl</CODE> 
+in advance;
+it is however possible to override the given name by giving a different 
+argument to command <CODE>Save</CODE>.<BR>
+<BR>
+Actually, such an easy combination of tactics <CODE>intro</CODE>, <CODE>apply</CODE>
+and <CODE>assumption</CODE> may be found completely automatically by an automatic
+tactic, called <CODE>auto</CODE>, without user guidance:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;distr_imp&nbsp;:&nbsp;(A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C)&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C)&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+This time, we do not save the proof, we just discard it with the <CODE>Abort</CODE> 
+command:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Abort.</TT><BR>
+<TT><I>Current&nbsp;goal&nbsp;aborted</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+At any point during a proof, we may use <CODE>Abort</CODE> to exit the proof mode
+and go back to Coq's main loop. We may also use <CODE>Restart</CODE> to restart
+from scratch the proof of the same lemma. We may also use <CODE>Undo</CODE> to
+backtrack one step, and more generally <CODE>Undo n</CODE> to
+backtrack n steps.<BR>
+<BR>
+We end this section by showing a useful command, <CODE>Inspect n.</CODE>,
+which inspects the global <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; environment, showing the last <CODE>n</CODE> declared
+notions: 
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Inspect&nbsp;3.</TT><BR>
+<TT><I>***&nbsp;[C&nbsp;:&nbsp;Prop]</I></TT><BR>
+<TT><I>trivial_lemma&nbsp;:&nbsp;(A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C)&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C</I></TT><BR>
+<TT><I>distr_impl&nbsp;:&nbsp;(A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;C)&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A&nbsp;-&gt;&nbsp;C</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The declarations, whether global parameters or axioms, are shown preceded by 
+<CODE>***</CODE>; definitions and lemmas are stated with their specification, but
+their value (or proof-term) is omitted.<BR>
+<BR>
+<!--TOC section Propositional Calculus-->
+
+<H2 CLASS="section"><A NAME="htoc6">1.3</A>&nbsp;&nbsp;Propositional Calculus</H2><!--SEC END -->
+
+<!--TOC subsection Conjunction-->
+
+<H3 CLASS="subsection"><A NAME="htoc7">1.3.1</A>&nbsp;&nbsp;Conjunction</H3><!--SEC END -->
+
+We have seen how <CODE>intro</CODE> and <CODE>apply</CODE> tactics could be combined
+in order to prove implicational statements. More generally, <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; favors a style
+of reasoning, called <I><FONT COLOR=maroon>Natural Deduction</FONT></I>, which decomposes reasoning into 
+so called <I><FONT COLOR=maroon>introduction rules</FONT></I>, which tell how to prove a goal whose main 
+operator is a given propositional connective, and <I><FONT COLOR=maroon>elimination rules</FONT></I>,
+which tell how to use an hypothesis whose main operator is the propositional 
+connective. Let us show how to use these ideas for the propositional connectives
+<CODE>/\</CODE> and <CODE>\/</CODE>.<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;and_commutative&nbsp;:&nbsp;A&nbsp;/\&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;/\&nbsp;A.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A&nbsp;/\&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;/\&nbsp;A</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intro.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;/\&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;B&nbsp;/\&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We make use of the conjunctive hypothesis <CODE>H</CODE> with the <CODE>elim</CODE> tactic,
+which breaks it into its components:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;elim&nbsp;H.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;/\&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;/\&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We now use the conjunction introduction tactic <CODE>split</CODE>, which splits the 
+conjunctive goal into the two subgoals:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;split.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;/\&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H0&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H1&nbsp;:&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;B</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+and the proof is now trivial. Indeed, the whole proof is obtainable as follows:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A&nbsp;/\&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;/\&nbsp;A</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;H;&nbsp;elim&nbsp;H;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>intro&nbsp;H;&nbsp;elim&nbsp;H;&nbsp;auto.</I></TT><BR>
+<TT><I>and_commutative&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The tactic <CODE>auto</CODE> succeeded here because it knows as a hint the 
+conjunction introduction operator <CODE>conj</CODE>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;conj.</TT><BR>
+<TT><I>conj</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;A&nbsp;B&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;-&gt;&nbsp;A&nbsp;/\&nbsp;B</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Actually, the tactic <CODE>Split</CODE> is just an abbreviation for <CODE>apply conj.</CODE><BR>
+<BR>
+What we have just seen is that the <CODE>auto</CODE> tactic is more powerful than
+just a simple application of local hypotheses; it tries to apply as well 
+lemmas which have been specified as hints. A 
+<CODE>Hint Resolve</CODE> command registers a
+lemma as a hint to be used from now on by the <CODE>auto</CODE> tactic, whose power 
+may thus be incrementally augmented.<BR>
+<BR>
+<!--TOC subsection Disjunction-->
+
+<H3 CLASS="subsection"><A NAME="htoc8">1.3.2</A>&nbsp;&nbsp;Disjunction</H3><!--SEC END -->
+
+In a similar fashion, let us consider disjunction:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;or_commutative&nbsp;:&nbsp;A&nbsp;\/&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A&nbsp;\/&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;H;&nbsp;elim&nbsp;H.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;\/&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us prove the first subgoal in detail. We use <CODE>intro</CODE> in order to
+be left to prove <CODE>B\/A</CODE> from <CODE>A</CODE>:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;HA.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;\/&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;HA&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Here the hypothesis <CODE>H</CODE> is not needed anymore. We could choose to
+actually erase it with the tactic <CODE>clear</CODE>; in this simple proof it
+does not really matter, but in bigger proof developments it is useful to
+clear away unnecessary hypotheses which may clutter your screen.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;clear&nbsp;H.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;HA&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The disjunction connective has two introduction rules, since <CODE>P\/Q</CODE>
+may be obtained from <CODE>P</CODE> or from <CODE>Q</CODE>; the two corresponding
+proof constructors are called respectively <CODE>or_introl</CODE> and
+<CODE>or_intror</CODE>; they are applied to the current goal by tactics
+<CODE>left</CODE> and <CODE>right</CODE> respectively. For instance:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;right.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;HA&nbsp;:&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;trivial.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;A&nbsp;\/&nbsp;B</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+</DIV>
+
+The tactic <CODE>trivial</CODE> works like <CODE>auto</CODE> with the hints
+database, but it only tries those tactics that can solve the goal in one
+step. <BR>
+<BR>
+As before, all these tedious elementary steps may be performed automatically,
+as shown for the second symmetric case:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+However, <CODE>auto</CODE> alone does not succeed in proving the full lemma, because
+it does not try any elimination step.
+It is a bit disappointing that <CODE>auto</CODE> is not able to prove automatically 
+such a simple tautology. The reason is that we want to keep
+<CODE>auto</CODE> efficient, so that it is always effective to use. <BR>
+<BR>
+<!--TOC subsection Tauto-->
+
+<H3 CLASS="subsection"><A NAME="htoc9">1.3.3</A>&nbsp;&nbsp;Tauto</H3><!--SEC END -->
+
+A complete tactic for propositional
+tautologies is indeed available in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; as the <CODE>tauto</CODE> tactic. 
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A&nbsp;\/&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;tauto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>&nbsp;tauto.</I></TT><BR>
+<TT><I>or_commutative&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+It is possible to inspect the actual proof tree constructed by <CODE>tauto</CODE>,
+using a standard command of the system, which prints the value of any notion 
+currently defined in the context:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Print&nbsp;or_commutative.</TT><BR>
+<TT><I>or_commutative&nbsp;=&nbsp;</I></TT><BR>
+<TT><I>fun&nbsp;H&nbsp;:&nbsp;A&nbsp;\/&nbsp;B&nbsp;=&gt;</I></TT><BR>
+<TT><I>or_ind&nbsp;(fun&nbsp;H0&nbsp;:&nbsp;A&nbsp;=&gt;&nbsp;or_intror&nbsp;B&nbsp;H0)&nbsp;(fun&nbsp;H0&nbsp;:&nbsp;B&nbsp;=&gt;&nbsp;or_introl&nbsp;A&nbsp;H0)&nbsp;H</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;A&nbsp;\/&nbsp;B&nbsp;-&gt;&nbsp;B&nbsp;\/&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+It is not easy to understand the notation for proof terms without a few
+explanations. The <TT>fun</TT> prefix, such as <CODE>fun H:A\/B =&gt;</CODE>, 
+corresponds
+to <CODE>intro H</CODE>, whereas a subterm such as 
+<CODE>(or_intror</CODE> <CODE>B H0)</CODE>
+corresponds to the sequence <CODE>apply or_intror; exact H0</CODE>. 
+The generic combinator <CODE>or_intror</CODE> needs to be instantiated by
+the two properties <CODE>B</CODE> and <CODE>A</CODE>. Because <CODE>A</CODE> can be
+deduced from the type of <CODE>H0</CODE>, only <CODE>B</CODE> is printed.
+The two instantiations are effected automatically by the tactic
+<CODE>apply</CODE> when pattern-matching a goal. The specialist will of course
+recognize our proof term as a &lambda;-term, used as notation for the
+natural deduction proof term through the Curry-Howard isomorphism. The
+naive user of <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; may safely ignore these formal details.<BR>
+<BR>
+Let us exercise the <CODE>tauto</CODE> tactic on a more complex example:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;distr_and&nbsp;:&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;/\&nbsp;C&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;/\&nbsp;(A&nbsp;-&gt;&nbsp;C).</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;A&nbsp;-&gt;&nbsp;B&nbsp;/\&nbsp;C&nbsp;-&gt;&nbsp;(A&nbsp;-&gt;&nbsp;B)&nbsp;/\&nbsp;(A&nbsp;-&gt;&nbsp;C)</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;tauto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>&nbsp;tauto.</I></TT><BR>
+<TT><I>distr_and&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC subsection Classical reasoning-->
+
+<H3 CLASS="subsection"><A NAME="htoc10">1.3.4</A>&nbsp;&nbsp;Classical reasoning</H3><!--SEC END -->
+<BR>
+<BR>
+<CODE>tauto</CODE> always comes back with an answer. Here is an example where it 
+fails:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;Peirce&nbsp;:&nbsp;((A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A)&nbsp;-&gt;&nbsp;A.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;((A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A)&nbsp;-&gt;&nbsp;A</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;try&nbsp;tauto.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;((A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A)&nbsp;-&gt;&nbsp;A</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Note the use of the <CODE>Try</CODE> tactical, which does nothing if its tactic
+argument fails.<BR>
+<BR>
+This may come as a surprise to someone familiar with classical reasoning. 
+Peirce's lemma is true in Boolean logic, i.e. it evaluates to <CODE>true</CODE> for 
+every truth-assignment to <CODE>A</CODE> and <CODE>B</CODE>. Indeed the double negation
+of Peirce's law may be proved in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; using <CODE>tauto</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Abort.</TT><BR>
+<TT><I>Current&nbsp;goal&nbsp;aborted</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;NNPeirce&nbsp;:&nbsp;~&nbsp;~&nbsp;(((A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A)&nbsp;-&gt;&nbsp;A).</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;~&nbsp;~&nbsp;(((A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A)&nbsp;-&gt;&nbsp;A)</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;tauto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>&nbsp;tauto.</I></TT><BR>
+<TT><I>NNPeirce&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+In classical logic, the double negation of a proposition is equivalent to this 
+proposition, but in the constructive logic of <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; this is not so. If you 
+want to use classical logic in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>, you have to import explicitly the
+<CODE>Classical</CODE> module, which will declare the axiom <CODE>classic</CODE>
+of excluded middle, and classical tautologies such as de Morgan's laws.
+The <CODE>Require</CODE> command is used to import a module from <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s library:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Require&nbsp;Import&nbsp;Classical.</TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;NNPP.</TT><BR>
+<TT><I>NNPP</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;p&nbsp;:&nbsp;Prop,&nbsp;~&nbsp;~&nbsp;p&nbsp;-&gt;&nbsp;p</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+and it is now easy (although admittedly not the most direct way) to prove
+a classical law such as Peirce's:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;Peirce&nbsp;:&nbsp;((A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A)&nbsp;-&gt;&nbsp;A.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;((A&nbsp;-&gt;&nbsp;B)&nbsp;-&gt;&nbsp;A)&nbsp;-&gt;&nbsp;A</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;NNPP;&nbsp;tauto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>apply&nbsp;NNPP;&nbsp;&nbsp;tauto.</I></TT><BR>
+<TT><I>Peirce&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Here is one more example of propositional reasoning, in the shape of
+a Scottish puzzle. A private club has the following rules:
+<OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">
+Every non-scottish member wears red socks
+<LI CLASS="li-enumerate">Every member wears a kilt or doesn't wear red socks
+<LI CLASS="li-enumerate">The married members don't go out on Sunday
+<LI CLASS="li-enumerate">A member goes out on Sunday if and only if he is Scottish
+<LI CLASS="li-enumerate">Every member who wears a kilt is Scottish and married
+<LI CLASS="li-enumerate">Every scottish member wears a kilt
+</OL>
+Now, we show that these rules are so strict that no one can be accepted.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Section&nbsp;club.</TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Variables&nbsp;Scottish&nbsp;RedSocks&nbsp;WearKilt&nbsp;Married&nbsp;GoOutSunday&nbsp;:&nbsp;Prop.</TT><BR>
+<TT><I>Scottish&nbsp;is&nbsp;assumed</I></TT><BR>
+<TT><I>RedSocks&nbsp;is&nbsp;assumed</I></TT><BR>
+<TT><I>WearKilt&nbsp;is&nbsp;assumed</I></TT><BR>
+<TT><I>Married&nbsp;is&nbsp;assumed</I></TT><BR>
+<TT><I>GoOutSunday&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;rule1&nbsp;:&nbsp;~&nbsp;Scottish&nbsp;-&gt;&nbsp;RedSocks.</TT><BR>
+<TT><I>rule1&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;rule2&nbsp;:&nbsp;WearKilt&nbsp;\/&nbsp;~&nbsp;RedSocks.</TT><BR>
+<TT><I>rule2&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;rule3&nbsp;:&nbsp;Married&nbsp;-&gt;&nbsp;~&nbsp;GoOutSunday.</TT><BR>
+<TT><I>rule3&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;rule4&nbsp;:&nbsp;GoOutSunday&nbsp;&lt;-&gt;&nbsp;Scottish.</TT><BR>
+<TT><I>rule4&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;rule5&nbsp;:&nbsp;WearKilt&nbsp;-&gt;&nbsp;Scottish&nbsp;/\&nbsp;Married.</TT><BR>
+<TT><I>rule5&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;rule6&nbsp;:&nbsp;Scottish&nbsp;-&gt;&nbsp;WearKilt.</TT><BR>
+<TT><I>rule6&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;NoMember&nbsp;:&nbsp;False.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;A&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;B&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;C&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Scottish&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;RedSocks&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;WearKilt&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Married&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;GoOutSunday&nbsp;:&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;rule1&nbsp;:&nbsp;~&nbsp;Scottish&nbsp;-&gt;&nbsp;RedSocks</I></TT><BR>
+<TT><I>&nbsp;&nbsp;rule2&nbsp;:&nbsp;WearKilt&nbsp;\/&nbsp;~&nbsp;RedSocks</I></TT><BR>
+<TT><I>&nbsp;&nbsp;rule3&nbsp;:&nbsp;Married&nbsp;-&gt;&nbsp;~&nbsp;GoOutSunday</I></TT><BR>
+<TT><I>&nbsp;&nbsp;rule4&nbsp;:&nbsp;GoOutSunday&nbsp;&lt;-&gt;&nbsp;Scottish</I></TT><BR>
+<TT><I>&nbsp;&nbsp;rule5&nbsp;:&nbsp;WearKilt&nbsp;-&gt;&nbsp;Scottish&nbsp;/\&nbsp;Married</I></TT><BR>
+<TT><I>&nbsp;&nbsp;rule6&nbsp;:&nbsp;Scottish&nbsp;-&gt;&nbsp;WearKilt</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;False</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;tauto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>&nbsp;tauto.</I></TT><BR>
+<TT><I>NoMember&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+
+At that point <CODE>NoMember</CODE> is a proof of the absurdity depending on
+hypotheses.
+We may end the section, in that case, the variables and hypotheses
+will be discharged, and the type of <CODE>NoMember</CODE> will be
+generalised.<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;End&nbsp;club.</TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;NoMember.</TT><BR>
+<TT><I>NoMember</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;Scottish&nbsp;RedSocks&nbsp;WearKilt&nbsp;Married&nbsp;GoOutSunday&nbsp;:&nbsp;Prop,</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(~&nbsp;Scottish&nbsp;-&gt;&nbsp;RedSocks)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WearKilt&nbsp;\/&nbsp;~&nbsp;RedSocks&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Married&nbsp;-&gt;&nbsp;~&nbsp;GoOutSunday)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(GoOutSunday&nbsp;&lt;-&gt;&nbsp;Scottish)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(WearKilt&nbsp;-&gt;&nbsp;Scottish&nbsp;/\&nbsp;Married)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Scottish&nbsp;-&gt;&nbsp;WearKilt)&nbsp;-&gt;&nbsp;False</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC section Predicate Calculus-->
+
+<H2 CLASS="section"><A NAME="htoc11">1.4</A>&nbsp;&nbsp;Predicate Calculus</H2><!--SEC END -->
+
+Let us now move into predicate logic, and first of all into first-order
+predicate calculus. The essence of predicate calculus is that to try to prove 
+theorems in the most abstract possible way, without using the definitions of 
+the mathematical notions, but by formal manipulations of uninterpreted 
+function and predicate symbols. <BR>
+<BR>
+<!--TOC subsection Sections and signatures-->
+
+<H3 CLASS="subsection"><A NAME="htoc12">1.4.1</A>&nbsp;&nbsp;Sections and signatures</H3><!--SEC END -->
+
+Usually one works in some domain of discourse, over which range the individual 
+variables and function symbols. In <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; we speak in a language with a rich 
+variety of types, so me may mix several domains of discourse, in our 
+multi-sorted language. For the moment, we just do a few exercises, over a 
+domain of discourse <CODE>D</CODE> axiomatised as a <CODE>Set</CODE>, and we consider two 
+predicate symbols <CODE>P</CODE> and <CODE>R</CODE> over <CODE>D</CODE>, of arities 
+respectively 1 and 2. Such abstract entities may be entered in the context
+as global variables. But we must be careful about the pollution of our
+global environment by such declarations. For instance, we have already 
+polluted our <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; session by declaring the variables
+<CODE>n</CODE>, <CODE>Pos_n</CODE>, <CODE>A</CODE>, <CODE>B</CODE>, and <CODE>C</CODE>. If we want to revert to the clean state of
+our initial session, we may use the <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; <CODE>Reset</CODE> command, which returns
+to the state just prior the given global notion as we did before to
+remove a section, or we may return to the initial state using&nbsp;:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Reset&nbsp;Initial.</TT><BR>
+</DIV>
+<BR>
+<BR>
+We shall now declare a new <CODE>Section</CODE>, which will allow us to define
+notions local to a well-delimited scope. We start by assuming a domain of
+discourse <CODE>D</CODE>, and a binary relation <CODE>R</CODE> over <CODE>D</CODE>: 
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Section&nbsp;Predicate_calculus.</TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Variable&nbsp;D&nbsp;:&nbsp;Set.</TT><BR>
+<TT><I>D&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Variable&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop.</TT><BR>
+<TT><I>R&nbsp;is&nbsp;assumed</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+As a simple example of predicate calculus reasoning, let us assume
+that relation <CODE>R</CODE> is symmetric and transitive, and let us show that
+<CODE>R</CODE> is reflexive in any point <CODE>x</CODE> which has an <CODE>R</CODE> successor.
+Since we do not want to make the assumptions about <CODE>R</CODE> global axioms of 
+a theory, but rather local hypotheses to a theorem, we open a specific
+section to this effect.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Section&nbsp;R_sym_trans.</TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;R_symmetric&nbsp;:&nbsp;forall&nbsp;x&nbsp;y:D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x.</TT><BR>
+<TT><I>R_symmetric&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;R_transitive&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;z:D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z.</TT><BR>
+<TT><I>R_transitive&nbsp;is&nbsp;assumed</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Remark the syntax <CODE>forall x:D,</CODE> which stands for universal quantification
+&forall; <I>x</I> : <I>D</I>.<BR>
+<BR>
+<!--TOC subsection Existential quantification-->
+
+<H3 CLASS="subsection"><A NAME="htoc13">1.4.2</A>&nbsp;&nbsp;Existential quantification</H3><!--SEC END -->
+
+We now state our lemma, and enter proof mode.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;refl_if&nbsp;:&nbsp;forall&nbsp;x:D,&nbsp;(exists&nbsp;y,&nbsp;R&nbsp;x&nbsp;y)&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;x.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_symmetric&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_transitive&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;:&nbsp;D,&nbsp;(exists&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y)&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;x</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Remark that the hypotheses which are local to the currently opened sections
+are listed as local hypotheses to the current goals.
+The rationale is that these hypotheses are going to be discharged, as we
+shall see, when we shall close the corresponding sections.<BR>
+<BR>
+Note the functional syntax for existential quantification. The existential
+quantifier is built from the operator <CODE>ex</CODE>, which expects a 
+predicate as argument:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;ex.</TT><BR>
+<TT><I>ex</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Type,&nbsp;(A&nbsp;-&gt;&nbsp;Prop)&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+</DIV>
+
+and the notation <CODE>(exists x:D, P x)</CODE> is just concrete syntax for 
+<CODE>(ex D (fun x:D =&gt; P x))</CODE>. 
+Existential quantification is handled in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; in a similar
+fashion to the connectives <CODE>/\</CODE> and <CODE>\/</CODE> : it is introduced by
+the proof combinator <CODE>ex_intro</CODE>, which is invoked by the specific 
+tactic <CODE>Exists</CODE>, and its elimination provides a witness <CODE>a:D</CODE> to
+<CODE>P</CODE>, together with an assumption <CODE>h:(P a)</CODE> that indeed <CODE>a</CODE>
+verifies <CODE>P</CODE>. Let us see how this works on this simple example.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;x&nbsp;x_Rlinked.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_symmetric&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_transitive&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x_Rlinked&nbsp;:&nbsp;exists&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;R&nbsp;x&nbsp;x</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Remark that <CODE>intros</CODE> treats universal quantification in the same way
+as the premises of implications. Renaming of bound variables occurs
+when it is needed; for instance, had we started with <CODE>intro y</CODE>,
+we would have obtained the goal:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;y.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_symmetric&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_transitive&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(exists&nbsp;y0&nbsp;:&nbsp;D,&nbsp;R&nbsp;y&nbsp;y0)&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;y</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us now use the existential hypothesis <CODE>x_Rlinked</CODE> to 
+exhibit an R-successor y of x. This is done in two steps, first with
+<CODE>elim</CODE>, then with <CODE>intros</CODE><BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;elim&nbsp;x_Rlinked.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_symmetric&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_transitive&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x_Rlinked&nbsp;:&nbsp;exists&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;x0&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;x</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;y&nbsp;Rxy.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_symmetric&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_transitive&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x_Rlinked&nbsp;:&nbsp;exists&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Rxy&nbsp;:&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;R&nbsp;x&nbsp;x</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now we want to use <CODE>R_transitive</CODE>. The <CODE>apply</CODE> tactic will know
+how to match <CODE>x</CODE> with <CODE>x</CODE>, and <CODE>z</CODE> with <CODE>x</CODE>, but needs
+help on how to instantiate <CODE>y</CODE>, which appear in the hypotheses of
+<CODE>R_transitive</CODE>, but not in its conclusion. We give the proper hint
+to <CODE>apply</CODE> in a <CODE>with</CODE> clause, as follows:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;R_transitive&nbsp;with&nbsp;y.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_symmetric&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_transitive&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x_Rlinked&nbsp;:&nbsp;exists&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Rxy&nbsp;:&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The rest of the proof is routine:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;assumption.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_symmetric&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R_transitive&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x_Rlinked&nbsp;:&nbsp;exists&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Rxy&nbsp;:&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;R&nbsp;y&nbsp;x</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;R_symmetric;&nbsp;assumption.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us now close the current section.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;End&nbsp;R_sym_trans.</TT><BR>
+</DIV>
+<BR>
+<BR>
+Here <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s printout is a warning that all local hypotheses have been 
+discharged in the statement of <CODE>refl_if</CODE>, which now becomes a general
+theorem in the first-order language declared in section 
+<CODE>Predicate_calculus</CODE>. In this particular example, the use of section
+<CODE>R_sym_trans</CODE> has not been really significant, since we could have
+instead stated theorem <CODE>refl_if</CODE> in its general form, and done 
+basically the same proof, obtaining <CODE>R_symmetric</CODE> and
+<CODE>R_transitive</CODE> as local hypotheses by initial <CODE>intros</CODE> rather
+than as global hypotheses in the context. But if we had pursued the
+theory by proving more theorems about relation <CODE>R</CODE>,
+we would have obtained all general statements at the closing of the section,
+with minimal dependencies on the hypotheses of symmetry and transitivity.<BR>
+<BR>
+<!--TOC subsection Paradoxes of classical predicate calculus-->
+
+<H3 CLASS="subsection"><A NAME="htoc14">1.4.3</A>&nbsp;&nbsp;Paradoxes of classical predicate calculus</H3><!--SEC END -->
+
+Let us illustrate this feature by pursuing our <CODE>Predicate_calculus</CODE>
+section with an enrichment of our language: we declare a unary predicate
+<CODE>P</CODE> and a constant <CODE>d</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Variable&nbsp;P&nbsp;:&nbsp;&nbsp;D&nbsp;-&gt;&nbsp;Prop.</TT><BR>
+<TT><I>P&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Variable&nbsp;d&nbsp;:&nbsp;D.</TT><BR>
+<TT><I>d&nbsp;is&nbsp;assumed</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We shall now prove a well-known fact from first-order logic: a universal 
+predicate is non-empty, or in other terms existential quantification 
+follows from universal quantification.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;weird&nbsp;:&nbsp;(forall&nbsp;x:D,&nbsp;P&nbsp;x)&nbsp;-&gt;&nbsp;&nbsp;exists&nbsp;a,&nbsp;P&nbsp;a.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x)&nbsp;-&gt;&nbsp;exists&nbsp;a&nbsp;:&nbsp;D,&nbsp;P&nbsp;a</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;intro&nbsp;UnivP.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;UnivP&nbsp;:&nbsp;forall&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;exists&nbsp;a&nbsp;:&nbsp;D,&nbsp;P&nbsp;a</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+First of all, notice the pair of parentheses around
+<CODE>forall x:D, P x</CODE> in
+the statement of lemma <CODE>weird</CODE>.
+If we had omitted them, <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s parser would have interpreted the
+statement as a truly trivial fact, since we would 
+postulate an <CODE>x</CODE> verifying <CODE>(P x)</CODE>. Here the situation is indeed
+more problematic. If we have some element in <CODE>Set</CODE> <CODE>D</CODE>, we may
+apply <CODE>UnivP</CODE> to it and conclude, otherwise we are stuck. Indeed
+such an element <CODE>d</CODE> exists, but this is just by virtue of our
+new signature. This points out a subtle difference between standard
+predicate calculus and <SPAN STYLE="font-variant:small-caps">Coq</SPAN>. In standard first-order logic,
+the equivalent of lemma <CODE>weird</CODE> always holds, 
+because such a rule is wired in the inference rules for quantifiers, the
+semantic justification being that the interpretation domain is assumed to
+be non-empty. Whereas in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>, where types are not assumed to be 
+systematically inhabited, lemma <CODE>weird</CODE> only holds in signatures
+which allow the explicit construction of an element in the domain of
+the predicate. <BR>
+<BR>
+Let us conclude the proof, in order to show the use of the <CODE>Exists</CODE>
+tactic:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;exists&nbsp;d;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>intro&nbsp;UnivP.</I></TT><BR>
+<TT><I>exists&nbsp;d;&nbsp;trivial.</I></TT><BR>
+<TT><I>weird&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Another fact which illustrates the sometimes disconcerting rules of
+classical 
+predicate calculus is Smullyan's drinkers' paradox: &#8220;In any non-empty
+bar, there is a person such that if she drinks, then everyone drinks&#8221;.
+We modelize the bar by Set <CODE>D</CODE>, drinking by predicate <CODE>P</CODE>.
+We shall need classical reasoning. Instead of loading the <CODE>Classical</CODE>
+module as we did above, we just state the law of excluded middle as a
+local hypothesis schema at this point:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A:Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A.</TT><BR>
+<TT><I>EM&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;drinker&nbsp;:&nbsp;&nbsp;exists&nbsp;x:D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x:D,&nbsp;P&nbsp;x.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;P&nbsp;x0</I></TT><BR>
+</DIV>
+
+The proof goes by cases on whether or not
+there is someone who does not drink. Such reasoning by cases proceeds
+by invoking the excluded middle principle, via <CODE>elim</CODE> of the
+proper instance of <CODE>EM</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;elim&nbsp;(EM&nbsp;(exists&nbsp;x,&nbsp;~&nbsp;P&nbsp;x)).</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x)&nbsp;-&gt;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;P&nbsp;x0</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;~&nbsp;(exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x)&nbsp;-&gt;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;P&nbsp;x0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We first look at the first case. Let Tom be the non-drinker:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;Non_drinker;&nbsp;elim&nbsp;Non_drinker;&nbsp;intros&nbsp;Tom&nbsp;Tom_does_not_drink.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Non_drinker&nbsp;:&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Tom&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Tom_does_not_drink&nbsp;:&nbsp;~&nbsp;P&nbsp;Tom</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;P&nbsp;x0</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;~&nbsp;(exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x)&nbsp;-&gt;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;P&nbsp;x0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We conclude in that case by considering Tom, since his drinking leads to
+a contradiction:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;exists&nbsp;Tom;&nbsp;intro&nbsp;Tom_drinks.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Non_drinker&nbsp;:&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Tom&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Tom_does_not_drink&nbsp;:&nbsp;~&nbsp;P&nbsp;Tom</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Tom_drinks&nbsp;:&nbsp;P&nbsp;Tom</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;~&nbsp;(exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x)&nbsp;-&gt;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;P&nbsp;x0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+There are several ways in which we may eliminate a contradictory case;
+a simple one is to use the <CODE>absurd</CODE> tactic as follows:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;absurd&nbsp;(P&nbsp;Tom);&nbsp;trivial.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;~&nbsp;(exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x)&nbsp;-&gt;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;P&nbsp;x0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We now proceed with the second case, in which actually any person will do;
+such a John Doe is given by the non-emptiness witness <CODE>d</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;No_nondrinker;&nbsp;exists&nbsp;d;&nbsp;intro&nbsp;d_drinks.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;No_nondrinker&nbsp;:&nbsp;~&nbsp;(exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x)</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d_drinks&nbsp;:&nbsp;P&nbsp;d</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now we consider any Dick in the bar, and reason by cases according to its
+drinking or not:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;Dick;&nbsp;elim&nbsp;(EM&nbsp;(P&nbsp;Dick));&nbsp;trivial.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;No_nondrinker&nbsp;:&nbsp;~&nbsp;(exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x)</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d_drinks&nbsp;:&nbsp;P&nbsp;d</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Dick&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;~&nbsp;P&nbsp;Dick&nbsp;-&gt;&nbsp;P&nbsp;Dick</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+The only non-trivial case is again treated by contradiction:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;Dick_does_not_drink;&nbsp;absurd&nbsp;(exists&nbsp;x,&nbsp;~&nbsp;P&nbsp;x);&nbsp;trivial.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;D&nbsp;:&nbsp;Set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;EM&nbsp;:&nbsp;forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A</I></TT><BR>
+<TT><I>&nbsp;&nbsp;No_nondrinker&nbsp;:&nbsp;~&nbsp;(exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x)</I></TT><BR>
+<TT><I>&nbsp;&nbsp;d_drinks&nbsp;:&nbsp;P&nbsp;d</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Dick&nbsp;:&nbsp;D</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Dick_does_not_drink&nbsp;:&nbsp;~&nbsp;P&nbsp;Dick</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;~&nbsp;P&nbsp;x</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;exists&nbsp;Dick;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>elim&nbsp;(EM&nbsp;(exists&nbsp;x&nbsp;:&nbsp;_,&nbsp;~&nbsp;P&nbsp;x)).</I></TT><BR>
+<TT><I>&nbsp;intro&nbsp;Non_drinker;&nbsp;elim&nbsp;Non_drinker;&nbsp;intros&nbsp;Tom&nbsp;Tom_does_not_drink.</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;exists&nbsp;Tom;&nbsp;intro&nbsp;Tom_drinks.</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;absurd&nbsp;(P&nbsp;Tom);&nbsp;trivial.</I></TT><BR>
+<TT><I>intro&nbsp;No_nondrinker;&nbsp;exists&nbsp;d;&nbsp;intro&nbsp;d_drinks.</I></TT><BR>
+<TT><I>&nbsp;&nbsp;intro&nbsp;Dick;&nbsp;elim&nbsp;(EM&nbsp;(P&nbsp;Dick));&nbsp;trivial.</I></TT><BR>
+<TT><I>&nbsp;&nbsp;intro&nbsp;Dick_does_not_drink;&nbsp;&nbsp;absurd&nbsp;(exists&nbsp;x&nbsp;:&nbsp;_,&nbsp;~&nbsp;P&nbsp;x);&nbsp;trivial.</I></TT><BR>
+<TT><I>&nbsp;&nbsp;exists&nbsp;Dick;&nbsp;trivial.</I></TT><BR>
+<TT><I>drinker&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now, let us close the main section and look at the complete statements
+we proved:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;End&nbsp;Predicate_calculus.</TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;refl_if.</TT><BR>
+<TT><I>refl_if</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;(D&nbsp;:&nbsp;Set)&nbsp;(R&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;D&nbsp;-&gt;&nbsp;Prop),</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;x)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;:&nbsp;D,&nbsp;(exists&nbsp;y&nbsp;:&nbsp;D,&nbsp;R&nbsp;x&nbsp;y)&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;x</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;weird.</TT><BR>
+<TT><I>weird</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;(D&nbsp;:&nbsp;Set)&nbsp;(P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop),</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;-&gt;&nbsp;(forall&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x)&nbsp;-&gt;&nbsp;exists&nbsp;a&nbsp;:&nbsp;D,&nbsp;P&nbsp;a</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;drinker.</TT><BR>
+<TT><I>drinker</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;(D&nbsp;:&nbsp;Set)&nbsp;(P&nbsp;:&nbsp;D&nbsp;-&gt;&nbsp;Prop),</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;A&nbsp;:&nbsp;Prop,&nbsp;A&nbsp;\/&nbsp;~&nbsp;A)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exists&nbsp;x&nbsp;:&nbsp;D,&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;D,&nbsp;P&nbsp;x0</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Remark how the three theorems are completely generic in the most general 
+fashion;
+the domain <CODE>D</CODE> is discharged in all of them, <CODE>R</CODE> is discharged in
+<CODE>refl_if</CODE> only, <CODE>P</CODE> is discharged only in <CODE>weird</CODE> and
+<CODE>drinker</CODE>, along with the hypothesis that <CODE>D</CODE> is inhabited. 
+Finally, the excluded middle hypothesis is discharged only in 
+<CODE>drinker</CODE>.<BR>
+<BR>
+Note that the name <CODE>d</CODE> has vanished as well from
+the statements of <CODE>weird</CODE> and <CODE>drinker</CODE>, 
+since <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s pretty-printer replaces
+systematically a quantification such as <CODE>forall d:D, E</CODE>, where <CODE>d</CODE>
+does not occur in <CODE>E</CODE>, by the functional notation <CODE>D-&gt;E</CODE>. 
+Similarly the name <CODE>EM</CODE> does not appear in <CODE>drinker</CODE>. <BR>
+<BR>
+Actually, universal quantification, implication, 
+as well as function formation, are
+all special cases of one general construct of type theory called
+<I><FONT COLOR=maroon>dependent product</FONT></I>. This is the mathematical construction 
+corresponding to an indexed family of functions. A function 
+<I>f</I>&isin; &Pi; <I>x</I>:<I>D</I>&sdot; <I>Cx</I> maps an element <I>x</I> of its domain <I>D</I> to its
+(indexed) codomain <I>Cx</I>. Thus a proof of &forall; <I>x</I>:<I>D</I>&sdot; <I>Px</I> is
+a function mapping an element <I>x</I> of <I>D</I> to a proof of proposition <I>Px</I>.<BR>
+<BR>
+<!--TOC subsection Flexible use of local assumptions-->
+
+<H3 CLASS="subsection"><A NAME="htoc15">1.4.4</A>&nbsp;&nbsp;Flexible use of local assumptions</H3><!--SEC END -->
+
+Very often during the course of a proof we want to retrieve a local
+assumption and reintroduce it explicitly in the goal, for instance
+in order to get a more general induction hypothesis. The tactic
+<CODE>generalize</CODE> is what is needed here:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Section&nbsp;Predicate_Calculus.</TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Variables&nbsp;P&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop.</TT><BR>
+<TT><I>P&nbsp;is&nbsp;assumed</I></TT><BR>
+<TT><I>Q&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Variable&nbsp;R&nbsp;:&nbsp;&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop.</TT><BR>
+<TT><I>R&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;PQR&nbsp;:</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;forall&nbsp;x&nbsp;y:nat,&nbsp;(R&nbsp;x&nbsp;x&nbsp;-&gt;&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;Q&nbsp;x)&nbsp;-&gt;&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;Q&nbsp;x.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;nat,&nbsp;(R&nbsp;x&nbsp;x&nbsp;-&gt;&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;Q&nbsp;x)&nbsp;-&gt;&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;Q&nbsp;x</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;intros.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;R&nbsp;x&nbsp;x&nbsp;-&gt;&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;Q&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H0&nbsp;:&nbsp;P&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H1&nbsp;:&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;Q&nbsp;x</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;generalize&nbsp;H0.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;R&nbsp;x&nbsp;x&nbsp;-&gt;&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;Q&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H0&nbsp;:&nbsp;P&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H1&nbsp;:&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;Q&nbsp;x</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Sometimes it may be convenient to use a lemma, although we do not have
+a direct way to appeal to such an already proven fact. The tactic <CODE>cut</CODE>
+permits to use the lemma at this point, keeping the corresponding proof
+obligation as a new subgoal:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;cut&nbsp;(R&nbsp;x&nbsp;x);&nbsp;trivial.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;R&nbsp;x&nbsp;x&nbsp;-&gt;&nbsp;P&nbsp;x&nbsp;-&gt;&nbsp;Q&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H0&nbsp;:&nbsp;P&nbsp;x</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H1&nbsp;:&nbsp;R&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;R&nbsp;x&nbsp;x</I></TT><BR>
+</DIV>
+
+We clean the goal by doing an <CODE>Abort</CODE> command.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Abort.</TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC subsection Equality-->
+
+<H3 CLASS="subsection"><A NAME="htoc16">1.4.5</A>&nbsp;&nbsp;Equality</H3><!--SEC END -->
+
+The basic equality provided in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; is Leibniz equality, noted infix like
+<CODE>x=y</CODE>, when <CODE>x</CODE> and <CODE>y</CODE> are two expressions of
+type the same Set. The replacement of <CODE>x</CODE> by <CODE>y</CODE> in any
+term is effected by a variety of tactics, such as <CODE>rewrite</CODE>
+and <CODE>replace</CODE>. <BR>
+<BR>
+Let us give a few examples of equality replacement. Let us assume that
+some arithmetic function <CODE>f</CODE> is null in zero:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Variable&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat.</TT><BR>
+<TT><I>f&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0.</TT><BR>
+<TT><I>foo&nbsp;is&nbsp;assumed</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+We want to prove the following conditional equality:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;L1&nbsp;:&nbsp;forall&nbsp;k:nat,&nbsp;k&nbsp;=&nbsp;0&nbsp;-&gt;&nbsp;f&nbsp;k&nbsp;=&nbsp;k.</TT><BR>
+</DIV>
+<BR>
+<BR>
+As usual, we first get rid of local assumptions with <CODE>intro</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;k&nbsp;E.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;k&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;E&nbsp;:&nbsp;k&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;f&nbsp;k&nbsp;=&nbsp;k</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Let us now use equation <CODE>E</CODE> as a left-to-right rewriting:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;rewrite&nbsp;E.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;k&nbsp;:&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;E&nbsp;:&nbsp;k&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+</DIV>
+
+This replaced both occurrences of <CODE>k</CODE> by <CODE>O</CODE>. <BR>
+<BR>
+Now <CODE>apply foo</CODE> will finish the proof:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;foo.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>intros&nbsp;k&nbsp;E.</I></TT><BR>
+<TT><I>rewrite&nbsp;E&nbsp;in&nbsp;|-&nbsp;*.</I></TT><BR>
+<TT><I>apply&nbsp;foo.</I></TT><BR>
+<TT><I>L1&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+When one wants to rewrite an equality in a right to left fashion, we should
+use <CODE>rewrite &lt;- E</CODE> rather than <CODE>rewrite E</CODE> or the equivalent
+<CODE>rewrite -&gt; E</CODE>. 
+Let us now illustrate the tactic <CODE>replace</CODE>.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Hypothesis&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0.</TT><BR>
+<TT><I>f10&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;L2&nbsp;:&nbsp;f&nbsp;(f&nbsp;1)&nbsp;=&nbsp;0.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;f&nbsp;(f&nbsp;1)&nbsp;=&nbsp;0</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;replace&nbsp;(f&nbsp;1)&nbsp;with&nbsp;0.</TT><BR>
+<TT><I>2&nbsp;subgoals</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
+<TT><I>&nbsp;0&nbsp;=&nbsp;f&nbsp;1</I></TT><BR>
+</DIV>
+
+What happened here is that the replacement left the first subgoal to be
+proved, but another proof obligation was generated by the <CODE>replace</CODE>
+tactic, as the second subgoal. The first subgoal is solved immediately
+by applying lemma <CODE>foo</CODE>; the second one transitivity and then 
+symmetry of equality, for instance with tactics <CODE>transitivity</CODE> and 
+<CODE>symmetry</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;foo.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;f&nbsp;1</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;transitivity&nbsp;(f&nbsp;0);&nbsp;symmetry;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+
+In case the equality <I>t</I>=<I>u</I> generated by <CODE>replace</CODE> <I>u</I> <CODE>with</CODE>
+<I>t</I> is an assumption
+(possibly modulo symmetry), it will be automatically proved and the
+corresponding goal will not appear. For instance:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;f&nbsp;(f&nbsp;1)&nbsp;=&nbsp;0</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;replace&nbsp;(f&nbsp;0)&nbsp;with&nbsp;0.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;f&nbsp;(f&nbsp;1)&nbsp;=&nbsp;0</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;rewrite&nbsp;f10;&nbsp;rewrite&nbsp;foo;&nbsp;trivial.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>&nbsp;replace&nbsp;(f&nbsp;0)&nbsp;with&nbsp;0.</I></TT><BR>
+<TT><I>rewrite&nbsp;f10&nbsp;in&nbsp;|-&nbsp;*;&nbsp;rewrite&nbsp;foo&nbsp;in&nbsp;|-&nbsp;*;&nbsp;trivial.</I></TT><BR>
+<TT><I>L2&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC section Using definitions-->
+
+<H2 CLASS="section"><A NAME="htoc17">1.5</A>&nbsp;&nbsp;Using definitions</H2><!--SEC END -->
+
+The development of mathematics does not simply proceed by logical 
+argumentation from first principles: definitions are used in an essential way.
+A formal development proceeds by a dual process of abstraction, where one
+proves abstract statements in predicate calculus, and use of definitions, 
+which in the contrary one instantiates general statements with particular 
+notions in order to use the structure of mathematical values for the proof of
+more specialised properties.<BR>
+<BR>
+<!--TOC subsection Unfolding definitions-->
+
+<H3 CLASS="subsection"><A NAME="htoc18">1.5.1</A>&nbsp;&nbsp;Unfolding definitions</H3><!--SEC END -->
+
+Assume that we want to develop the theory of sets represented as characteristic
+predicates over some universe <CODE>U</CODE>. For instance:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Variable&nbsp;U&nbsp;:&nbsp;Type.</TT><BR>
+<TT><I>U&nbsp;is&nbsp;assumed</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;set&nbsp;:=&nbsp;U&nbsp;-&gt;&nbsp;Prop.</TT><BR>
+<TT><I>set&nbsp;is&nbsp;defined</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;element&nbsp;(x:U)&nbsp;(S:set)&nbsp;:=&nbsp;S&nbsp;x.</TT><BR>
+<TT><I>element&nbsp;is&nbsp;defined</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;subset&nbsp;(A&nbsp;B:set)&nbsp;:=&nbsp;forall&nbsp;x:U,&nbsp;element&nbsp;x&nbsp;A&nbsp;-&gt;&nbsp;element&nbsp;x&nbsp;B.</TT><BR>
+<TT><I>subset&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now, assume that we have loaded a module of general properties about
+relations over some abstract type <CODE>T</CODE>, such as transitivity:<BR>
+<BR>
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;transitive&nbsp;(T:Type)&nbsp;(R:T&nbsp;-&gt;&nbsp;T&nbsp;-&gt;&nbsp;Prop)&nbsp;:=</TT><BR>
+<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;y&nbsp;z:T,&nbsp;R&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;R&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;R&nbsp;x&nbsp;z.</TT><BR>
+<TT><I>transitive&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now, assume that we want to prove that <CODE>subset</CODE> is a <CODE>transitive</CODE>
+relation. 
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;subset_transitive&nbsp;:&nbsp;transitive&nbsp;set&nbsp;subset.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;transitive&nbsp;set&nbsp;subset</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+In order to make any progress, one needs to use the definition of
+<CODE>transitive</CODE>. The <CODE>unfold</CODE> tactic, which replaces all
+occurrences of a defined notion by its definition in the current goal,
+may be used here.
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;unfold&nbsp;transitive.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;set,&nbsp;subset&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;subset&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;subset&nbsp;x&nbsp;z</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Now, we must unfold <CODE>subset</CODE>:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;unfold&nbsp;subset.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;set,</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(forall&nbsp;x0&nbsp;:&nbsp;U,&nbsp;element&nbsp;x0&nbsp;x&nbsp;-&gt;&nbsp;element&nbsp;x0&nbsp;y)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;(forall&nbsp;x0&nbsp;:&nbsp;U,&nbsp;element&nbsp;x0&nbsp;y&nbsp;-&gt;&nbsp;element&nbsp;x0&nbsp;z)&nbsp;-&gt;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;U,&nbsp;element&nbsp;x0&nbsp;x&nbsp;-&gt;&nbsp;element&nbsp;x0&nbsp;z</I></TT><BR>
+</DIV>
+
+Now, unfolding <CODE>element</CODE> would be a mistake, because indeed a simple proof
+can be found by <CODE>auto</CODE>, keeping <CODE>element</CODE> an abstract predicate:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Many variations on <CODE>unfold</CODE> are provided in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>. For instance,
+we may selectively unfold one designated occurrence:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;Undo&nbsp;2.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;set,&nbsp;subset&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;subset&nbsp;y&nbsp;z&nbsp;-&gt;&nbsp;subset&nbsp;x&nbsp;z</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;unfold&nbsp;subset&nbsp;at&nbsp;2.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x&nbsp;y&nbsp;z&nbsp;:&nbsp;set,</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;subset&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;(forall&nbsp;x0&nbsp;:&nbsp;U,&nbsp;element&nbsp;x0&nbsp;y&nbsp;-&gt;&nbsp;element&nbsp;x0&nbsp;z)&nbsp;-&gt;&nbsp;subset&nbsp;x&nbsp;z</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+One may also unfold a definition in a given local hypothesis, using the
+<CODE>in</CODE> notation:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;intros.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;z&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;subset&nbsp;x&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H0&nbsp;:&nbsp;forall&nbsp;x&nbsp;:&nbsp;U,&nbsp;element&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;element&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;subset&nbsp;x&nbsp;z</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;unfold&nbsp;subset&nbsp;in&nbsp;H.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;z&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;forall&nbsp;x0&nbsp;:&nbsp;U,&nbsp;element&nbsp;x0&nbsp;x&nbsp;-&gt;&nbsp;element&nbsp;x0&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H0&nbsp;:&nbsp;forall&nbsp;x&nbsp;:&nbsp;U,&nbsp;element&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;element&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;subset&nbsp;x&nbsp;z</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+Finally, the tactic <CODE>red</CODE> does only unfolding of the head occurrence
+of the current goal:
+
+<DIV CLASS="flushleft">
+<TT>Coq&nbsp;&lt;&nbsp;red.</TT><BR>
+<TT><I>1&nbsp;subgoal</I></TT><BR>
+<TT><I>&nbsp;&nbsp;</I></TT><BR>
+<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
+<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
+<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
+<TT><I>&nbsp;&nbsp;x&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;y&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;z&nbsp;:&nbsp;set</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;forall&nbsp;x0&nbsp;:&nbsp;U,&nbsp;element&nbsp;x0&nbsp;x&nbsp;-&gt;&nbsp;element&nbsp;x0&nbsp;y</I></TT><BR>
+<TT><I>&nbsp;&nbsp;H0&nbsp;:&nbsp;forall&nbsp;x&nbsp;:&nbsp;U,&nbsp;element&nbsp;x&nbsp;y&nbsp;-&gt;&nbsp;element&nbsp;x&nbsp;z</I></TT><BR>
+<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
+<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;x0&nbsp;:&nbsp;U,&nbsp;element&nbsp;x0&nbsp;x&nbsp;-&gt;&nbsp;element&nbsp;x0&nbsp;z</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;auto.</TT><BR>
+<TT><I>Proof&nbsp;completed.</I></TT><BR>
+<BR>
+<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
+<TT><I>unfold&nbsp;transitive&nbsp;in&nbsp;|-&nbsp;*.</I></TT><BR>
+<TT><I>unfold&nbsp;subset&nbsp;at&nbsp;2&nbsp;in&nbsp;|-&nbsp;*.</I></TT><BR>
+<TT><I>intros.</I></TT><BR>
+<TT><I>unfold&nbsp;subset&nbsp;in&nbsp;H.</I></TT><BR>
+<TT><I>red&nbsp;in&nbsp;|-&nbsp;*.</I></TT><BR>
+<TT><I>auto.</I></TT><BR>
+<TT><I>subset_transitive&nbsp;is&nbsp;defined</I></TT><BR>
+</DIV>
+<BR>
+<BR>
+<!--TOC subsection Principle of proof irrelevance-->
+
+<H3 CLASS="subsection"><A NAME="htoc19">1.5.2</A>&nbsp;&nbsp;Principle of proof irrelevance</H3><!--SEC END -->
+
+Even though in principle the proof term associated with a verified lemma
+corresponds to a defined value of the corresponding specification, such
+definitions cannot be unfolded in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>: a lemma is considered an <I><FONT COLOR=maroon>opaque</FONT></I>
+definition. This conforms to the mathematical tradition of <I><FONT COLOR=maroon>proof
+irrelevance</FONT></I>: the proof of a logical proposition does not matter, and the
+mathematical justification of a logical development relies only on
+<I><FONT COLOR=maroon>provability</FONT></I> of the lemmas used in the formal proof. <BR>
+<BR>
+Conversely, ordinary mathematical definitions can be unfolded at will, they
+are <I><FONT COLOR=maroon>transparent</FONT></I>. 
+<!--TOC chapter Induction-->
