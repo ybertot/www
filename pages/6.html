@@ -1,0 +1,134 @@
+<p>Coq is a proof assistant. It means that it is designed to develop
+mathematical proofs, and especially to write formal specifications,
+programs and proofs that programs complies to their specifications. An
+interesting feature of Coq is that it can automaticaly extract
+executable programs from specifications, as either OCaml or Haskel
+source code.</p>
+
+<p>Properties, programs and proofs are formalized in the
+same langage called the Calculus of Inductive Constructions (CIC). The
+CIC is a lambda-calculus with a rich type system. Then, all logical
+judgements in Coq are typing judgements: the very heart of Coq is in
+fact a type-checking algorithm.</p>
+
+<p>One on the main feature of the type system of Coq is the dependent
+product. It allows to write types like:</p>
+
+<pre>
+	forall n : nat, n > 0 -> nat
+</pre>
+
+<p>which is the type of functions that take a parameter n of type nat, 
+a proof that n is greater than 0, and returns a element of type nat.</p>
+
+
+<p>Another interesting feature of the langage of Coq is the ability to
+define inductive types. For example, the type of natural numbers can
+be defined by:</p>
+
+<pre>
+	Inductive nat : Set :=
+	  | 0 : nat
+	  | S : nat -> nat.
+</pre>
+
+Along with the type, Coq generates elimination principles named
+nat_ind, nat_rec and nat_rect, depending on which sort the principles
+are expressed in. For example, nat_ind is:
+
+<pre>
+	forall P : nat -> Prop,
+	  P 0 -> (forall n : nat, P n -> P (S n)) -> forall n : nat, P n
+</pre>
+
+Inductive types can be used to define logical properties. For example,
+we can define the predicate «less or equal» the folllowing way:
+
+<pre>
+	Inductive le (n:nat) : nat -> Prop :=
+	  | le_n : le n n
+	  | le_S : forall m:nat, le n m -> le n (S m)
+</pre>
+
+<p>Then, functions over inductive types are expressed using a case
+analysis construction:</p>
+
+<pre>
+	Fixpoint plus (n m:nat) {struct n} : nat :=
+	  match n with
+	    | O => m
+	    | S p => S (p + m)
+	  end
+</pre>
+
+<p>Proof development in Coq is done through a langage of tactics. Tactics
+allow to build a lambda-term step by step. For example the tactic
+intro n, where n is of type nat, builds the term (with a hole):</p>
+
+<pre>
+	fun (n:nat) => _ 
+</pre>
+
+<p>where _ represents a term that will be constructed after, using other
+tactics.</p>
+
+<p>Here is a example of a proof in the Coq system:</p>
+
+<pre>
+	Inductive sequ : nat -> Set :=
+	  void : sequ 0
+	| cons : forall n : nat, nat -> sequ n -> sequ (S n).
+
+	Fixpoint length (n : nat) (s : sequ n) {struct s} : nat := 
+	  match s with
+	    | void => 0
+	    | cons i _ s' => S (length i s')
+	  end.
+
+	Theorem length_corr : forall (n : nat) (s : sequ n), length s = n.
+	Proof.
+	  intros n s.
+
+	  (* elim uses the induction principle nat_ind on the current
+             goal. Then, we have two new goal corresponding on the
+ 	     case analysis about n (either it is void or some cons *)
+	  elim s.
+
+	    (* We are in the case where s is void. We can reduce the
+	       term: length n void *)
+	    simpl. 
+
+	    (* We obtain the goal 0 = 0. *)
+	    trivial.
+
+	    (* now, we treat the case s = cons n' e s' *)	    
+	    intros n' e s' IH.
+	    simpl. 
+
+	    (* IH is the induction hypothesis; its type is:
+	       length n' s' = n'. So we can use it to perform some
+	       rewriting in the goal: *)
+	    rewrite IH. 
+
+	    (* Now the goal is the trivial equality: S n' = S n' *)
+	    trivial.
+
+	  (* Now all sub cases are closed, we perform the ultimate
+	     step: typing the term built using tactics and save it as
+	     a witness of the theorem. *)
+        Qed.	  
+</pre>
+
+<p>Using the Print command, the user can check the term generated using the tactics:</p>
+
+<pre>
+	length_corr = 
+	  fun (n : nat) (s : sequ n) =>
+		sequ_ind (fun (n0 : nat) (s0 : sequ n0) => length n0 s0 = n0) 
+		  (refl_equal 0)
+		  (fun (n' _ : nat) (s' : sequ n') (IH : length n' s' = n') =>
+		     eq_ind_r 
+			(fun n0 : nat => S n0 = S n') 
+			(refl_equal (S n')) IH) n s
+	     : forall (n : nat) (s : sequ n), length n s = n
+</pre>
