@@ -18,8 +18,8 @@ product. It allows to write types like:</p>
 	forall n : nat, n > 0 -> nat
 </pre>
 
-<p>which is the type of functions that take a parameter n of type nat, 
-a proof that n is greater than 0, and returns a element of type nat.</p>
+<p>which is the type of functions that take a parameter n of type <tt>nat</tt>, 
+a proof that n is greater than 0, and returns a element of type <tt>nat</tt>.</p>
 
 
 <p>Another interesting feature of the langage of Coq is the ability to
@@ -33,8 +33,8 @@ be defined by:</p>
 </pre>
 
 Along with the type, Coq generates elimination principles named
-nat_ind, nat_rec and nat_rect, depending on which sort the principles
-are expressed in. For example, nat_ind is:
+<tt>nat_ind</tt>, <tt>nat_rec</tt> and <tt>nat_rect</tt>, depending on which sort the principles
+are expressed in. For example, <tt>nat_ind</tt> is:
 
 <pre>
 	forall P : nat -> Prop,
@@ -42,7 +42,7 @@ are expressed in. For example, nat_ind is:
 </pre>
 
 Inductive types can be used to define logical properties. For example,
-we can define the predicate «less or equal» the folllowing way:
+we can define the predicate «less or equal» the following way:
 
 <pre>
 	Inductive le (n:nat) : nat -> Prop :=
@@ -51,7 +51,7 @@ we can define the predicate «less or equal» the folllowing way:
 </pre>
 
 <p>Then, functions over inductive types are expressed using a case
-analysis construction:</p>
+analysis:</p>
 
 <pre>
 	Fixpoint plus (n m:nat) {struct n} : nat :=
@@ -61,9 +61,9 @@ analysis construction:</p>
 	  end
 </pre>
 
-<p>Proof development in Coq is done through a langage of tactics. Tactics
+<p>Proof development in Coq is done through a language of tactics. Tactics
 allow to build a lambda-term step by step. For example the tactic
-intro n, where n is of type nat, builds the term (with a hole):</p>
+<tt>intro n</tt>, where n is of type <tt>nat</tt>, builds the term (with a hole):</p>
 
 <pre>
 	fun (n:nat) => _ 
