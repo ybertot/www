@@ -1,74 +1,96 @@
-<style type="text/css">
-.decale {margin-left:1cm;
-       }
-.huge {font-size:125%;
-           font-weight:bold
-      }
-</style>
-
-<p class="barre"><br/> </p>
-  <h2>The current version : Coq 8.1</h2>
-      <p>This is a major evolution of the Coq system
-      (see <a href="files/distribution/V8.1/ANNONCE">ANNONCE</a> and <a href="files/distribution/V8.1/files/doc/Changes.html">What's new</a>).</p>
+<div id="list">
+  
+  <h1>The current version : Coq 8.1   &nbsp;(<A href="V8.1/files/doc/Changes.html">What's new</a>)</h1>
+  <dl>
+    
+    <!--dt class="im"><img src="images/coq.gif" alt="Coq image"></dt-->
+    
+      This is a major evolution of the Coq system
+      (see <A href="V8.1/ANNONCE">
+      ANNONCE</a>).
       
-  	  
-  	  <a name="src"></a> 
-  	  <h3> <img src="files/caml_logo.gif" align="middle" hspace="-.5cm"  alt="Objective Caml"> &nbsp;  Portable Sources </h3>
-       	       <p>To be compiled with <a  href="http://caml.inria.fr/ocaml/index.html">Objective Caml</a> (version &ge;3.06 but 3.08.0 and 3.10.0). </p>
-	      
- 		<div class="decale"> <p>
- 			 <ul><li> <a href="files/distribution/V8.1/files/coq-8.1.tar.gz"> Source tarball</a>
- 		 </li>
- 			</ul>
-                </p> </div>
- 		<p class="barre"> <br/></p> 		    
-	      	     
-	      	     
-       <a name="bin"> </a> <a name="linux"> </a>
-	   
-    <table cellpadding="0" border="none">
-<tr> 
-<td> <img src="files/linux_logo.gif" width="55" height="65" align="middle" hspace="-.5cm"  alt="Linux"> 
-<br/>  Binaries for Linux </td>
-<td> 			<ul> <li> <a href="files/distribution/V8.1/files/coq-8.1-Linux-i386.tar.gz">Binary tarball for i386</a> </li>
-                           <li> <a href="files/distribution/V8.1/files/coq-8.1-Linux-x86_64.tar.gz">Binary tarball for x86 64 bits</a> </li>
-	                       <li> <a href="files/distribution/V8.1/files/coq-8.1-1.i386.rpm">RPM package (i386) for Coq </a> </li>
-	                       <li> <a href="files/distribution/V8.1/files/coqide-8.1-1.i386.rpm">RPM package (i386) for CoqIDE</a> </li>
-	        </ul>
-	      </td></tr>
-</table>
-	     	      <p class="barre"> <br/> </p> 	
-	     
-	    
-	    <a name="freebsd"> </a>
-	   <h3> <img src="files/freebsd_logo.png" width="55" height="55" align="middle" hspace="-.5cm" alt="FreeBSD"> &nbsp; Binaries for FreeBSD </h3>
-	    
-	      <p class="barre">| <a href="files/distribution/V8.1/files/coq-8.1-FreeBSD-i386.tar.gz">Binary tarball for i386</a>
-                            | </p>
-	
-		
-		<a name="macos"> </a>
-		<h3> <img src="files/macos_logo.jpg" width="55" height="55" align="middle" hspace="-.5cm" alt="MacOS"> &nbsp;  Binaries for Mac OS X </h3>
-	    <p> For an installation via <a href=""> fink </a>, you have to move package description files to /sw/fink/10.*/local/main/finkinfo/, and binary packages (optional) to /sw/fink/10.*/local/main/binary-darwin-i386/. Then type <i>fink install coq</i> or <i>fink install coqide</i>.</p>
-	    
-	     <p class="barre">
-	     <!--| <a href="files/distribution/V8.1/files/coq-8.1-macosx-i386.dmg"> Coq package (i386)</a> -->
-						   | <a href="files/distribution/V8.1/files/coq-8.1-macosx-ppc.dmg"> Coq package (PPC)</a>
-	                       | Via Fink (i386 et PPC) : Package description files for <a href="files/distribution/V8.1/files/fink/coq.info">Coq</a> and for <a href="files/distribution/V8.1/files/fink/coqide.info">CoqIDE</a> - 
-		    Binary packages for <a href="files/distribution/V8.1/files/fink/coq_8.1-1_darwin-i386.deb">Coq</a> and for <a href="files/distribution/V8.1/files/fink/coqide_8.1-1_darwin-i386.deb">CoqIDE</a>
-		| </p>
+     <!-- Distribution :-->
+	<ul id="ftr">
+	  <li> <a name="src"> </a>
+	  Portable sources
+             <ul id="ftr">
+               <li>
+      	      <a href="V8.1/files/coq-8.1-Linux-i386.tar.gz">
+	      Source tarball</a> to be compiled with <A  HREF="http://caml.inria.fr/ocaml/index.html" TARGET=_top>Objective
+	  Caml</a> (version &ge;3.06 but 3.08.0 and 3.10.0)
+	      </li>
+           </ul>
+          </li> 
+	  <li>
+        
+			<a name="bin"> </a>
+	    <li> <img src="files/linux_logo.gif" width="50" height="55" align="middle" hspace="-.5cm"  alt="Mon ordinateur"> &nbsp;  Binaries for Linux  <a name="linux"> </a>
+	    <ul id="ftr">
+	      <li>
+	      <a href="V8.1/files/coq-8.1-Linux-i386.tar.gz">
+	      Binary tarball for i386</a>
+             </li>
+             <li>
+              <a href="V8.1/files/coq-8.1-Linux-x86_64.tar.gz">
+	      Binary tarball for x86 64 bits</a>
+	      </li>
+	      <li>
+              RPM packages (i386) for
+	      <a href="V8.1/files/coq-8.1-1.i386.rpm"
+	      TARGET=_top> Coq </a>  (main package)
+	      and for
+	       <a href="V8.1/files/coqide-8.1-1.i386.rpm"
+	      TARGET=_top> CoqIDE</a>
+	      </li>
+	    </ul>
+	    </li>
 
-	      
-		  <a name="win"> </a>
-	      <h3> <img src="files/windows_logo.jpg" width="60" height="55" align="middle"  alt="Windows"> &nbsp; Binaries for Windows </h3>
+	    <li><img src="files/freebsd_logo.png" width="50" height="55" align="middle"  alt="Mon ordinateur"> &nbsp; Binaries for FreeBSD <a name="freebsd"> </a>
+	    <ul id="ftr">
+	      <li><a href="V8.1/files/coq-8.1-FreeBSD-i386.tar.gz">
+	      Binary tarball for i386</a>
+	      </li>
+	    </ul>
+	    </li>
 	    
-	      <p class="barre">| <a href="files/distribution/V8.1/files/coq-8.1-win.exe"> Self installer </a> 
-	      					| </p>
+	    <li><img src="files/macos_logo.jpg" width="50" height="55" align="middle"  alt="Mon ordinateur"> &nbsp;  Binaries for Mac OS X <a name="macos"> </a>
+	    <ul id="ftr">
+              <li> Main Coq package (without CoqIDE, to be typically used with Proof General)
+	      <ul id="ftr">
+	        <li><a href="V8.1/files/coq-8.1-macosx-i386.dmg"
+                TARGET=_top> Self installer for Intel Mac</a>
+		</li>
+	        <li><a href="V8.1/files/coq-8.1-macosx-ppc.dmg"
+                TARGET=_top> Self installer for PowerPC Mac</a>
+	        </li>
+              </ul></li>
+	      <li> Via Fink:
+	      <ul id="ftr">
+		<li>Package description files for <a href="V8.1/files/fink/coq.info" TARGET=_top>Coq</a> and for
+		    <a href="V8.1/files/fink/coqide.info" TARGET=_top>CoqIDE</a></li>
+		
+		<li>Binary packages  for <a href="V8.1/files/fink/coq_8.1-1_darwin-i386.deb" TARGET=_top>Coq</a> and for  <a href="V8.1/files/fink/coqide_8.1-1_darwin-i386.deb" TARGET=_top>CoqIDE</a></li>
+		
+		Package description files go to /sw/fink/10.*/local/main/finkinfo/, binary packages (optional) to /sw/fink/10.*/local/main/binary-darwin-i386/. Then type <i>fink install coq</i> or <i>fink install coqide</i>.
+	      </ul>
+	      </li>  
+	    </ul>
+	    </li>
+
+	    <li> <img src="files/windows_logo.jpg" width="50" height="55" align="middle"  alt="Mon ordinateur"> &nbsp; Binary distribution for Windows <a name="win"> </a>
+	    <ul id="ftr">
+	      <li> 
+	      <a href="V8.1/files/coq-8.1-win.exe"
+	      TARGET=_top> Self installer </a> for Coq and CoqIDE
+	      </li>
+	    </ul>
+	    </li>
+	    
 	    <!-- <li> Solaris
 	    <ul id="ftr">
 	      <li> 
-	      <a href="files/distribution/V8.1/files/coq-8.1-SunOS-sun4u.tar.gz"
-	     > coq-8.0-SunOS-sun4u.tar.gz</a>	(main Coq package only)
+	      <a href="V8.1/files/coq-8.1-SunOS-sun4u.tar.gz"
+	      TARGET=_top> coq-8.0-SunOS-sun4u.tar.gz</a>	(main Coq package only)
 	      </li>
 	    </ul>
 	    </li> -->
@@ -85,14 +107,54 @@ ftp en commentaire peut etre rajouter les packages deb et pour gentoo + les vers
   </dd>
 </dl>
       -->
-      <a name="prev"> </a> <a name="dev">
-      <h2>Previous and Development versions of Coq</h2> 
-      
-	  <p>Most of the previous version of Coq are available online, via the <a href="ftp://ftp.inria.fr/INRIA/coq">ftp server</a>. <br/></p>
+      <a name="prev"> </a>
+      <h1>The previous versions of Coq</h1> 
+      <dl>
+	<dt class="im"></dt>
+	<dd>
+	  Most of the previous version of Coq are available online, via the  
+	  <a href="ftp://ftp.inria.fr/INRIA/coq" TARGET=_top>ftp server</a>.
+	  Whether you are looking for the V5.10 or the bleeding edge distribution V8.1, you will find it there.  
+	  <!--<div style="clear: both"></div>-->
+	</dd>
+      </dl>
+
+		<a name="dev"> </a>
+      <h1>Development version of Coq</h1>
+      <dl>
+	<dt class="im"></dt>
+	<dd>
 	  <p>For the impatient, the development version of Coq is available
 	  from our Subversion repository:
 	  <pre>svn checkout svn://scm.gforge.inria.fr/svn/coq/trunk</pre></p>
 	  
-	  <p class="barre">| <a href="ftp://ftp.inria.fr/INRIA/coq">ftp server</a>
-	      					| </p>
-	      					
+	  <P><b> Warning: </b> the working sources you can access
+	  through this server have not been tested as thoroughly as official
+	  releases. The programs obtained by compiling these sources may not
+	  work properly. The sources may even fail to compile at all. New
+	  features appearing in these working sources are generally undocumented
+	  yet, and may be removed or changed in incompatible ways at any
+	  time. So, you are most welcome to test those working sources, but
+	  please do not depend too much on them.</P>
+
+	  <!--<div style="clear: both"></div>-->
+	</dd>
+      </dl>	
+
+      
+   <!--
+on vire ocaml car on a deja mis le lien en haut   
+      <h1>Objective Caml</h1>
+      <dl>
+	<dt class="im"><img src="images/JoeCaml.gif"></dt>
+	<dd>
+	  Objective Caml is available through the 
+	  <A HREF="http://caml.inria.fr/ocaml/index.html" TARGET=_top>Objective Caml</a> web page.
+	  <div style="clear: both"></div>
+	</dd>
+      </dl>
+    </div>
+
+    <BR>
+    <BR>
+    <BR>-->
