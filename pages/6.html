@@ -1,17 +1,17 @@
 <p>Coq is a proof assistant. It means that it is designed to develop
 mathematical proofs, and especially to write formal specifications,
 programs and proofs that programs complies to their specifications. An
-interesting feature of Coq is that it can automaticaly extract
+interesting feature of Coq is that it can automatically extract
 executable programs from specifications, as either OCaml or Haskel
 source code.</p>
 
 <p>Properties, programs and proofs are formalized in the
-same langage called the Calculus of Inductive Constructions (CIC). The
+same language called the Calculus of Inductive Constructions (CIC). The
 CIC is a lambda-calculus with a rich type system. Then, all logical
-judgements in Coq are typing judgements: the very heart of Coq is in
+judgments in Coq are typing judgments: the very heart of Coq is in
 fact a type-checking algorithm.</p>
 
-<p>One on the main feature of the type system of Coq is the dependent
+<p>One of the main features of the type system of Coq is the dependent
 product. It allows to write types like:</p>
 
 <pre>
@@ -22,7 +22,7 @@ product. It allows to write types like:</p>
 a proof that n is greater than 0, and returns a element of type <tt>nat</tt>.</p>
 
 
-<p>Another interesting feature of the langage of Coq is the ability to
+<p>Another interesting feature of the language of Coq is the ability to
 define inductive types. For example, the type of natural numbers can
 be defined by:</p>
 
@@ -72,7 +72,7 @@ allow to build a lambda-term step by step. For example the tactic
 <p>where _ represents a term that will be constructed after, using other
 tactics.</p>
 
-<p>Here is a example of a proof in the Coq system:</p>
+<p>Here is an example of a proof in the Coq system:</p>
 
 <pre>
 	Inductive sequ : nat -> Set :=
