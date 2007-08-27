@@ -11,16 +11,23 @@ CIC is a lambda-calculus with a rich type system. Then, all logical
 judgments in Coq are typing judgments: the very heart of Coq is in
 fact a type-checking algorithm.</p>
 
-<p>One of the main features of the type system of Coq is the dependent
-product. It allows to write types like:</p>
 
-<pre>
-	forall n : nat, n > 0 -> nat
-</pre>
+<h3>A rich type system</h3>
 
-<p>which is the type of functions that take a parameter n of type <tt>nat</tt>, 
-a proof that n is greater than 0, and returns a element of type <tt>nat</tt>.</p>
+The type of a sorting function over lists of natural numbers in a "poor" type system would be:
 
+<pre>sort : list nat -> list nat</pre>
+
+The rich type system of Coq allows to be more specific:
+
+<pre>sort : (l : list nat) -> {l' : list nat | sorted l' /\ same_elements l l'}</pre>
+
+<p>where <tt>sorted</tt> is a predicate that states whether a list is sorted 
+or not; and <tt>all_elements</tt> states whether two lists contains the same elements.</p>
+
+<p>Such a type (specification) enforces the user to write the proofs of predicates <tt>sorted l'</tt> and <tt>same_elements l l'</tt> when writing a implementation for the function <tt>sort</tt>.</p>
+
+<h3>Inductive types</h3>
 
 <p>Another interesting feature of the language of Coq is the ability to
 define inductive types. For example, the type of natural numbers can
@@ -33,8 +40,7 @@ be defined by:</p>
 </pre>
 
 Along with the type, Coq generates elimination principles named
-<tt>nat_ind</tt>, <tt>nat_rec</tt> and <tt>nat_rect</tt>, depending on which sort the principles
-are expressed in. For example, <tt>nat_ind</tt> is:
+<tt>nat_ind</tt>, <tt>nat_rec</tt> and <tt>nat_rect</tt>, depending on which sort the principles are expressed in. For example, <tt>nat_ind</tt> is:
 
 <pre>
 	forall P : nat -> Prop,
@@ -42,7 +48,7 @@ are expressed in. For example, <tt>nat_ind</tt> is:
 </pre>
 
 Inductive types can be used to define logical properties. For example,
-we can define the predicate «less or equal» the following way:
+we can define the predicate "less or equal" the following way:
 
 <pre>
 	Inductive le (n:nat) : nat -> Prop :=
@@ -61,9 +67,12 @@ analysis:</p>
 	  end
 </pre>
 
+
+<h3>Proving in coq</h3>
+
 <p>Proof development in Coq is done through a language of tactics. Tactics
 allow to build a lambda-term step by step. For example the tactic
-<tt>intro n</tt>, where n is of type <tt>nat</tt>, builds the term (with a hole):</p>
+<tt>intro n</tt>, where <tt>n</tt> is of type <tt>nat</tt>, builds the term (with a hole):</p>
 
 <pre>
 	fun (n:nat) => _ 
@@ -89,7 +98,7 @@ tactics.</p>
 	Proof.
 	  intros n s.
 
-	  (* elim uses the induction principle nat_ind on the current
+	  (* elim uses the induction principle sequ_ind on the current
              goal. Then, we have two new goal corresponding on the
  	     case analysis about n (either it is void or some cons *)
 	  elim s.
