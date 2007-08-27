@@ -23,7 +23,7 @@ The rich type system of Coq allows to be more specific:
 <pre>sort : (l : list nat) -> {l' : list nat | sorted l' /\ same_elements l l'}</pre>
 
 <p>where <tt>sorted</tt> is a predicate that states whether a list is sorted 
-or not; and <tt>all_elements</tt> states whether two lists contains the same elements.</p>
+or not; and <tt>all_elements</tt> states whether two lists contain the same elements.</p>
 
 <p>Such a type (specification) enforces the user to write the proofs of predicates <tt>sorted l'</tt> and <tt>same_elements l l'</tt> when writing a implementation for the function <tt>sort</tt>.</p>
 
