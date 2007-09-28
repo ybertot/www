@@ -1,142 +1,144 @@
+<style>
+.caps {font-variant:small-caps}
+.italic {font-style:italic}
+.verbatim {font-style:verbatim}
+.medium {width:70%}
+.sup {position:relative; bottom:5px; font-size:65%; font-weight:700}
+.maroon {color:maroon}
+</style>
+ 
+<h2 class="section"><a name="htoc28">3.1</a>&nbsp;&nbsp;Opening library modules</h2><!--SEC END -->    <br/>
 
-<H1 CLASS="chapter">Modules</H1><!--SEC END -->
-
-<!--TOC section Opening library modules-->
-
-<br/>
-
-<H2 CLASS="section"><A NAME="htoc28">3.1</A>&nbsp;&nbsp;Opening library modules</H2><!--SEC END -->
-
-When you start <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; without further requirements in the command line,
+When you start <span class="caps">Coq</span>&nbsp; without further requirements in the command line,
 you get a bare system with few libraries loaded. As we saw, a standard
 prelude module provides the standard logic connectives, and a few
 arithmetic notions. If you want to load and open other modules from
-the library, you have to use the <CODE>Require</CODE> command, as we saw for
+the library, you have to use the <code>Require</code> command, as we saw for
 classical logic above. For instance, if you want more arithmetic
 constructions, you should request:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Require&nbsp;Import&nbsp;Arith.</TT><BR>
-</DIV>
-<BR>
-<BR>
-Such a command looks for a (compiled) module file <CODE>Arith.vo</CODE> in
-the libraries registered by <SPAN STYLE="font-variant:small-caps">Coq</SPAN>. Libraries inherit the structure of
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Require&nbsp;Import&nbsp;Arith.</tt><br/>
+</div>
+<br/>
+<br/>
+Such a command looks for a (compiled) module file <code>Arith.vo</code> in
+the libraries registered by <span class="caps">Coq</span>. Libraries inherit the structure of
 the file system of the operating system and are registered with the
-command <CODE>Add LoadPath</CODE>. Physical directories are mapped to
-logical directories. Especially the standard library of <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; is
-pre-registered as a library of name <CODE>Coq</CODE>. Modules have absolute
-unique names denoting their place in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; libraries. An absolute
+command <code>Add LoadPath</code>. Physical directories are mapped to
+logical directories. Especially the standard library of <span class="caps">Coq</span>&nbsp; is
+pre-registered as a library of name <code>Coq</code>. Modules have absolute
+unique names denoting their place in <span class="caps">Coq</span>&nbsp; libraries. An absolute
 name is a sequence of single identifiers separated by dots. E.g. the
-module <CODE>Arith</CODE> has full name <CODE>Coq.Arith.Arith</CODE> and because
-it resides in eponym subdirectory <CODE>Arith</CODE> of the standard
-library, it can be as well required by the command<BR>
-<BR>
+module <code>Arith</code> has full name <code>Coq.Arith.Arith</code> and because
+it resides in eponym subdirectory <code>Arith</code> of the standard
+library, it can be as well required by the command<br/>
+<br/>
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Require&nbsp;Import&nbsp;Coq.Arith.Arith.</TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Require&nbsp;Import&nbsp;Coq.Arith.Arith.</tt><br/>
+</div>
+<br/>
+<br/>
 This may be useful to avoid ambiguities if somewhere, in another branch
 of the libraries known by Coq, another module is also called
-<CODE>Arith</CODE>. Notice that by default, when a library is registered,
+<code>Arith</code>. Notice that by default, when a library is registered,
 all its contents, and all the contents of its subdirectories recursively are
-visible and accessible by a short (relative) name as <CODE>Arith</CODE>.
+visible and accessible by a short (relative) name as <code>Arith</code>.
 Notice also that modules or definitions not explicitly registered in
-a library are put in a default library called <CODE>Top</CODE>.<BR>
-<BR>
+a library are put in a default library called <code>Top</code>.<br/>
+<br/>
 The loading of a compiled file is quick, because the corresponding
-development is not type-checked again. <BR>
-<BR>
+development is not type-checked again. <br/>
+<br/>
 <!--TOC section Creating your own modules-->
 
-<H2 CLASS="section"><A NAME="htoc29">3.2</A>&nbsp;&nbsp;Creating your own modules</H2><!--SEC END -->
+<h2 class="section"><a name="htoc29">3.2</a>&nbsp;&nbsp;Creating your own modules</h2><!--SEC END -->    <br/>
 
-You may create your own modules, by writing <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; commands in a file,
-say <CODE>my_module.v</CODE>. Such a module may be simply loaded in the current
-context, with command <CODE>Load my_module</CODE>. It may also be compiled,
+You may create your own modules, by writing <span class="caps">Coq</span>&nbsp; commands in a file,
+say <code>my_module.v</code>. Such a module may be simply loaded in the current
+context, with command <code>Load my_module</code>. It may also be compiled,
 in &#8220;batch&#8221; mode, using the UNIX command
-<CODE>coqc</CODE>. Compiling the module <CODE>my_module.v</CODE> creates a 
-file <CODE>my_module.vo</CODE> that can be reloaded with command
-<CODE>Require Import my_module</CODE>. <BR>
-<BR>
+<code>coqc</code>. Compiling the module <code>my_module.v</code> creates a 
+file <code>my_module.vo</code> that can be reloaded with command
+<code>Require Import my_module</code>. <br/>
+<br/>
 If a required module depends on other modules then the latters are
 automatically required beforehand. However their contents is not
-automatically visible. If you want a module <CODE>M</CODE> required in a
-module <CODE>N</CODE> to be automatically visible when <CODE>N</CODE> is required,
-you should use <CODE>Require Export M</CODE> in your module <CODE>N</CODE>.<BR>
-<BR>
+automatically visible. If you want a module <code>M</code> required in a
+module <code>N</code> to be automatically visible when <code>N</code> is required,
+you should use <code>Require Export M</code> in your module <code>N</code>.<br/>
+<br/>
 <!--TOC section Managing the context-->
 
-<H2 CLASS="section"><A NAME="htoc30">3.3</A>&nbsp;&nbsp;Managing the context</H2><!--SEC END -->
+<h2 class="section"><a name="htoc30">3.3</a>&nbsp;&nbsp;Managing the context</h2><!--SEC END -->    <br/>
 
 It is often difficult to remember the names of all lemmas and
 definitions available in the current context, especially if large
-libraries have been loaded. A convenient <CODE>SearchAbout</CODE> command
+libraries have been loaded. A convenient <code>SearchAbout</code> command
 is available to lookup all known facts 
 concerning a given predicate. For instance, if you want to know all the
 known lemmas about the less or equal relation, just ask:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;SearchAbout&nbsp;le.</TT><BR>
-<TT><I>tricky:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;0&nbsp;-&gt;&nbsp;n&nbsp;=&nbsp;0</I></TT><BR>
-<TT><I>Top.le_n_S:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</I></TT><BR>
-<TT><I>le_ind:</I></TT><BR>
-<TT><I>&nbsp;&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop),</I></TT><BR>
-<TT><I>&nbsp;&nbsp;P&nbsp;n&nbsp;-&gt;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;(forall&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;m))&nbsp;-&gt;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n0&nbsp;-&gt;&nbsp;P&nbsp;n0</I></TT><BR>
-<TT><I>le_n:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n</I></TT><BR>
-<TT><I>le_S:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;n&nbsp;(S&nbsp;m)</I></TT><BR>
-</DIV>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;SearchAbout&nbsp;le.</tt><br/>
+<tt><span class="italic">tricky:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;0&nbsp;-&gt;&nbsp;n&nbsp;=&nbsp;0</span></tt><br/>
+<tt><span class="italic">Top.le_n_S:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</span></tt><br/>
+<tt><span class="italic">le_ind:</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop),</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;P&nbsp;n&nbsp;-&gt;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;(forall&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;m))&nbsp;-&gt;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n0&nbsp;-&gt;&nbsp;P&nbsp;n0</span></tt><br/>
+<tt><span class="italic">le_n:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n</span></tt><br/>
+<tt><span class="italic">le_S:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;n&nbsp;(S&nbsp;m)</span></tt><br/>
+</div>
 
-Another command <CODE>Search</CODE> displays only lemmas where the searched
+Another command <code>Search</code> displays only lemmas where the searched
 predicate appears at the head position in the conclusion.
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Search&nbsp;le.</TT><BR>
-<TT><I>Top.le_n_S:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</I></TT><BR>
-<TT><I>le_n:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n</I></TT><BR>
-<TT><I>le_S:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;n&nbsp;(S&nbsp;m)</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Search&nbsp;le.</tt><br/>
+<tt><span class="italic">Top.le_n_S:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</span></tt><br/>
+<tt><span class="italic">le_n:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n</span></tt><br/>
+<tt><span class="italic">le_S:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;n&nbsp;(S&nbsp;m)</span></tt><br/>
+</div>
+<br/>
+<br/>
 A new and more convenient search tool is <FONT COLOR=purple>SearchPattern</FONT>
 developed by Yves Bertot. It allows to find the theorems with a
-conclusion matching a given pattern, where <CODE>\_</CODE> can be used in
-place of an arbitrary term. We remark in this example, that <SPAN STYLE="font-variant:small-caps">Coq</SPAN>
-provides usual infix notations for arithmetic operators.<BR>
-<BR>
+conclusion matching a given pattern, where <code>\_</code> can be used in
+place of an arbitrary term. We remark in this example, that <span class="caps">Coq</span>
+provides usual infix notations for arithmetic operators.<br/>
+<br/>
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;SearchPattern&nbsp;(_&nbsp;+&nbsp;_&nbsp;=&nbsp;_).</TT><BR>
-<TT><I>le_plus_minus_r:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;&lt;=&nbsp;m&nbsp;-&gt;&nbsp;n&nbsp;+&nbsp;(m&nbsp;-&nbsp;n)&nbsp;=&nbsp;m</I></TT><BR>
-<TT><I>mult_acc_aux:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;:&nbsp;nat,&nbsp;m&nbsp;+&nbsp;n&nbsp;*&nbsp;p&nbsp;=&nbsp;mult_acc&nbsp;m&nbsp;p&nbsp;n</I></TT><BR>
-<TT><I>plus_O_n:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;+&nbsp;n&nbsp;=&nbsp;n</I></TT><BR>
-<TT><I>plus_Sn_m:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;S&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;S&nbsp;(n&nbsp;+&nbsp;m)</I></TT><BR>
-<TT><I>mult_n_Sm:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;*&nbsp;m&nbsp;+&nbsp;n&nbsp;=&nbsp;n&nbsp;*&nbsp;S&nbsp;m</I></TT><BR>
-<TT><I>plus_0_l:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;+&nbsp;n&nbsp;=&nbsp;n</I></TT><BR>
-<TT><I>plus_0_r:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;0&nbsp;=&nbsp;n</I></TT><BR>
-<TT><I>plus_comm:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n</I></TT><BR>
-<TT><I>plus_Snm_nSm:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;S&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;n&nbsp;+&nbsp;S&nbsp;m</I></TT><BR>
-<TT><I>plus_assoc:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;(m&nbsp;+&nbsp;p)&nbsp;=&nbsp;n&nbsp;+&nbsp;m&nbsp;+&nbsp;p</I></TT><BR>
-<TT><I>plus_permute:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;(m&nbsp;+&nbsp;p)&nbsp;=&nbsp;m&nbsp;+&nbsp;(n&nbsp;+&nbsp;p)</I></TT><BR>
-<TT><I>plus_assoc_reverse:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;+&nbsp;p&nbsp;=&nbsp;n&nbsp;+&nbsp;(m&nbsp;+&nbsp;p)</I></TT><BR>
-<TT><I>plus_permute_2_in_4:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;q&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;+&nbsp;(p&nbsp;+&nbsp;q)&nbsp;=&nbsp;n&nbsp;+&nbsp;p&nbsp;+&nbsp;(m&nbsp;+&nbsp;q)</I></TT><BR>
-<TT><I>plus_tail_plus:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;tail_plus&nbsp;n&nbsp;m</I></TT><BR>
-<TT><I>plus_com:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;SearchPattern&nbsp;(_&nbsp;+&nbsp;_&nbsp;=&nbsp;_).</tt><br/>
+<tt><span class="italic">le_plus_minus_r:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;&lt;=&nbsp;m&nbsp;-&gt;&nbsp;n&nbsp;+&nbsp;(m&nbsp;-&nbsp;n)&nbsp;=&nbsp;m</span></tt><br/>
+<tt><span class="italic">mult_acc_aux:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;:&nbsp;nat,&nbsp;m&nbsp;+&nbsp;n&nbsp;*&nbsp;p&nbsp;=&nbsp;mult_acc&nbsp;m&nbsp;p&nbsp;n</span></tt><br/>
+<tt><span class="italic">plus_O_n:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;+&nbsp;n&nbsp;=&nbsp;n</span></tt><br/>
+<tt><span class="italic">plus_Sn_m:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;S&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;S&nbsp;(n&nbsp;+&nbsp;m)</span></tt><br/>
+<tt><span class="italic">mult_n_Sm:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;*&nbsp;m&nbsp;+&nbsp;n&nbsp;=&nbsp;n&nbsp;*&nbsp;S&nbsp;m</span></tt><br/>
+<tt><span class="italic">plus_0_l:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;+&nbsp;n&nbsp;=&nbsp;n</span></tt><br/>
+<tt><span class="italic">plus_0_r:&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;0&nbsp;=&nbsp;n</span></tt><br/>
+<tt><span class="italic">plus_comm:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n</span></tt><br/>
+<tt><span class="italic">plus_Snm_nSm:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;S&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;n&nbsp;+&nbsp;S&nbsp;m</span></tt><br/>
+<tt><span class="italic">plus_assoc:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;(m&nbsp;+&nbsp;p)&nbsp;=&nbsp;n&nbsp;+&nbsp;m&nbsp;+&nbsp;p</span></tt><br/>
+<tt><span class="italic">plus_permute:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;(m&nbsp;+&nbsp;p)&nbsp;=&nbsp;m&nbsp;+&nbsp;(n&nbsp;+&nbsp;p)</span></tt><br/>
+<tt><span class="italic">plus_assoc_reverse:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;+&nbsp;p&nbsp;=&nbsp;n&nbsp;+&nbsp;(m&nbsp;+&nbsp;p)</span></tt><br/>
+<tt><span class="italic">plus_permute_2_in_4:&nbsp;forall&nbsp;n&nbsp;m&nbsp;p&nbsp;q&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;+&nbsp;(p&nbsp;+&nbsp;q)&nbsp;=&nbsp;n&nbsp;+&nbsp;p&nbsp;+&nbsp;(m&nbsp;+&nbsp;q)</span></tt><br/>
+<tt><span class="italic">plus_tail_plus:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;tail_plus&nbsp;n&nbsp;m</span></tt><br/>
+<tt><span class="italic">plus_com:&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n</span></tt><br/>
+</div>
+<br/>
+<br/>
 <!--TOC section Now you are on your own-->
 
-<H2 CLASS="section"><A NAME="htoc31">3.4</A>&nbsp;&nbsp;Now you are on your own</H2><!--SEC END -->
+<h2 class="section"><a name="htoc31">3.4</a>&nbsp;&nbsp;Now you are on your own</h2><!--SEC END -->    <br/>
 
 This tutorial is necessarily incomplete. If you wish to pursue serious
-proving in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>, you should now get your hands on <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s Reference Manual,
+proving in <span class="caps">Coq</span>, you should now get your hands on <span class="caps">Coq</span>'s Reference Manual,
 which contains a complete description of all the tactics we saw, 
 plus many more.
 You also should look in the library of developed theories which is distributed
-with <SPAN STYLE="font-variant:small-caps">Coq</SPAN>, in order to acquaint yourself with various proof techniques.<BR>
-<BR>
+with <span class="caps">Coq</span>, in order to acquaint yourself with various proof techniques.<br/>
+<br/>
