@@ -1,723 +1,725 @@
-<H1 CLASS="chapter">Induction</H1><!--SEC END -->
-
-<!--TOC section Data Types as Inductively Defined Mathematical Collections-->
-
+<style>
+.caps {font-variant:small-caps}
+.italic {font-style:italic}
+.verbatim {font-style:verbatim}
+.medium {width:70%}
+.sup {position:relative; bottom:5px; font-size:65%; font-weight:700}
+.maroon {color:maroon}
+</style>
+ 
+<h2 class="section"><a NAME="htoc21">2.1</a>&nbsp;&nbsp;Data Types as Inductively Defined Mathematical Collections</h2><!--SEC END -->
 <br/>
-
-<H2 CLASS="section"><A NAME="htoc21">2.1</A>&nbsp;&nbsp;Data Types as Inductively Defined Mathematical Collections</H2><!--SEC END -->
-
 All the notions which were studied until now pertain to traditional
 mathematical logic. Specifications of objects were abstract properties
 used in reasoning more or less constructively; we are now entering
 the realm of inductive types, which specify the existence of concrete
-mathematical constructions.<BR>
-<BR>
+mathematical constructions.<br/>
+<br/>
 <!--TOC subsection Booleans-->
 
-<H3 CLASS="subsection"><A NAME="htoc22">2.1.1</A>&nbsp;&nbsp;Booleans</H3><!--SEC END -->
+<h3 class="subsection"><a NAME="htoc22">2.1.1</a>&nbsp;&nbsp;Booleans</h3><!--SEC END -->
 
 Let us start with the collection of booleans, as they are specified
-in the <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s <CODE>Prelude</CODE> module: 
+in the <span class="caps">Coq</span>'s <code>Prelude</code> module: 
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;bool&nbsp;:&nbsp;&nbsp;Set&nbsp;:=&nbsp;true&nbsp;|&nbsp;false.</TT><BR>
-<TT><I>bool&nbsp;is&nbsp;defined</I></TT><BR>
-<TT><I>bool_rect&nbsp;is&nbsp;defined</I></TT><BR>
-<TT><I>bool_ind&nbsp;is&nbsp;defined</I></TT><BR>
-<TT><I>bool_rec&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;bool&nbsp;:&nbsp;&nbsp;Set&nbsp;:=&nbsp;true&nbsp;|&nbsp;false.</tt><br/>
+<tt><span class="italic">bool&nbsp;is&nbsp;defined</span></tt><br/>
+<tt><span class="italic">bool_rect&nbsp;is&nbsp;defined</span></tt><br/>
+<tt><span class="italic">bool_ind&nbsp;is&nbsp;defined</span></tt><br/>
+<tt><span class="italic">bool_rec&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
 Such a declaration defines several objects at once. First, a new
-<CODE>Set</CODE> is declared, with name <CODE>bool</CODE>. Then the <I><FONT COLOR=maroon>constructors</FONT></I>
-of this <CODE>Set</CODE> are declared, called <CODE>true</CODE> and <CODE>false</CODE>.
-Those are analogous to introduction rules of the new Set <CODE>bool</CODE>.
-Finally, a specific elimination rule for <CODE>bool</CODE> is now available, which
-permits to reason by cases on <CODE>bool</CODE> values. Three instances are
-indeed defined as new combinators in the global context: <CODE>bool_ind</CODE>,
+<code>Set</code> is declared, with name <code>bool</code>. Then the <span class="italic"><span class="maroon">constructors</span></span>
+of this <code>Set</code> are declared, called <code>true</code> and <code>false</code>.
+Those are analogous to introduction rules of the new Set <code>bool</code>.
+Finally, a specific elimination rule for <code>bool</code> is now available, which
+permits to reason by cases on <code>bool</code> values. Three instances are
+indeed defined as new combinators in the global context: <code>bool_ind</code>,
 a proof combinator corresponding to reasoning by cases,
-<CODE>bool_rec</CODE>, an if-then-else programming construct,
-and <CODE>bool_rect</CODE>, a similar combinator at the level of types.
+<code>bool_rec</code>, an if-then-else programming construct,
+and <code>bool_rect</code>, a similar combinator at the level of types.
 Indeed:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_ind.</TT><BR>
-<TT><I>bool_ind</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Prop,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_rec.</TT><BR>
-<TT><I>bool_rec</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Set,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_rect.</TT><BR>
-<TT><I>bool_rect</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Type,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_ind.</tt><br/>
+<tt><span class="italic">bool_ind</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Prop,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_rec.</tt><br/>
+<tt><span class="italic">bool_rec</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Set,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;bool_rect.</tt><br/>
+<tt><span class="italic">bool_rect</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;bool&nbsp;-&gt;&nbsp;Type,&nbsp;P&nbsp;true&nbsp;-&gt;&nbsp;P&nbsp;false&nbsp;-&gt;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;P&nbsp;b</span></tt><br/>
+</div>
+<br/>
+<br/>
 Let us for instance prove that every Boolean is true or false.
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;duality&nbsp;:&nbsp;forall&nbsp;b:bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;b.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
-<TT><I>&nbsp;&nbsp;b&nbsp;:&nbsp;bool</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-We use the knowledge that <CODE>b</CODE> is a <CODE>bool</CODE> by calling tactic
-<CODE>elim</CODE>, which is this case will appeal to combinator <CODE>bool_ind</CODE>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;duality&nbsp;:&nbsp;forall&nbsp;b:bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;U&nbsp;:&nbsp;Type</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;intro&nbsp;b.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;U&nbsp;:&nbsp;Type</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;b&nbsp;:&nbsp;bool</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</span></tt><br/>
+</div>
+<br/>
+<br/>
+We use the knowledge that <code>b</code> is a <code>bool</code> by calling tactic
+<code>elim</code>, which is this case will appeal to combinator <code>bool_ind</code>
 in order to split the proof according to the two cases:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;elim&nbsp;b.</TT><BR>
-<TT><I>2&nbsp;subgoals</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
-<TT><I>&nbsp;&nbsp;b&nbsp;:&nbsp;bool</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;true&nbsp;=&nbsp;true&nbsp;\/&nbsp;true&nbsp;=&nbsp;false</I></TT><BR>
-<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
-<TT><I>&nbsp;false&nbsp;=&nbsp;true&nbsp;\/&nbsp;false&nbsp;=&nbsp;false</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;elim&nbsp;b.</tt><br/>
+<tt><span class="italic">2&nbsp;subgoals</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;U&nbsp;:&nbsp;Type</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;b&nbsp;:&nbsp;bool</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;true&nbsp;=&nbsp;true&nbsp;\/&nbsp;true&nbsp;=&nbsp;false</span></tt><br/>
+<tt><span class="italic">subgoal&nbsp;2&nbsp;is:</span></tt><br/>
+<tt><span class="italic">&nbsp;false&nbsp;=&nbsp;true&nbsp;\/&nbsp;false&nbsp;=&nbsp;false</span></tt><br/>
+</div>
+<br/>
+<br/>
 It is easy to conclude in each case:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;left;&nbsp;trivial.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
-<TT><I>&nbsp;&nbsp;b&nbsp;:&nbsp;bool</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;false&nbsp;=&nbsp;true&nbsp;\/&nbsp;false&nbsp;=&nbsp;false</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;right;&nbsp;trivial.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;left;&nbsp;trivial.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;U&nbsp;:&nbsp;Type</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;b&nbsp;:&nbsp;bool</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;false&nbsp;=&nbsp;true&nbsp;\/&nbsp;false&nbsp;=&nbsp;false</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;right;&nbsp;trivial.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+</div>
+<br/>
+<br/>
 Indeed, the whole proof can be done with the combination of the
-<CODE>simple induction</CODE> tactic, which combines <CODE>intro</CODE> and <CODE>elim</CODE>,
-with good old <CODE>auto</CODE>:
+<code>simple induction</code> tactic, which combines <code>intro</code> and <code>elim</code>,
+with good old <code>auto</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</I></TT><BR>
-<TT><I>&nbsp;&nbsp;U&nbsp;:&nbsp;Type</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;b;&nbsp;auto.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
-<TT><I>simple&nbsp;induction&nbsp;b;&nbsp;auto.</I></TT><BR>
-<TT><I>duality&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Restart.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;Q&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;R&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;foo&nbsp;:&nbsp;f&nbsp;0&nbsp;=&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;f10&nbsp;:&nbsp;f&nbsp;1&nbsp;=&nbsp;f&nbsp;0</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;U&nbsp;:&nbsp;Type</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;b&nbsp;:&nbsp;bool,&nbsp;b&nbsp;=&nbsp;true&nbsp;\/&nbsp;b&nbsp;=&nbsp;false</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;b;&nbsp;auto.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Qed.</tt><br/>
+<tt><span class="italic">simple&nbsp;induction&nbsp;b;&nbsp;auto.</span></tt><br/>
+<tt><span class="italic">duality&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
 <!--TOC subsection Natural numbers-->
 
-<H3 CLASS="subsection"><A NAME="htoc23">2.1.2</A>&nbsp;&nbsp;Natural numbers</H3><!--SEC END -->
+<h3 class="subsection"><a NAME="htoc23">2.1.2</a>&nbsp;&nbsp;Natural numbers</h3><!--SEC END -->
 
-Similarly to Booleans, natural numbers are defined in the <CODE>Prelude</CODE>
-module with constructors <CODE>S</CODE> and <CODE>O</CODE>:
+Similarly to Booleans, natural numbers are defined in the <code>Prelude</code>
+module with constructors <code>S</code> and <code>O</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;nat&nbsp;:&nbsp;Set&nbsp;:=</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;:&nbsp;nat</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat.</TT><BR>
-<TT><I>nat&nbsp;is&nbsp;defined</I></TT><BR>
-<TT><I>nat_rect&nbsp;is&nbsp;defined</I></TT><BR>
-<TT><I>nat_ind&nbsp;is&nbsp;defined</I></TT><BR>
-<TT><I>nat_rec&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;nat&nbsp;:&nbsp;Set&nbsp;:=</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;:&nbsp;nat</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat.</tt><br/>
+<tt><span class="italic">nat&nbsp;is&nbsp;defined</span></tt><br/>
+<tt><span class="italic">nat_rect&nbsp;is&nbsp;defined</span></tt><br/>
+<tt><span class="italic">nat_ind&nbsp;is&nbsp;defined</span></tt><br/>
+<tt><span class="italic">nat_rec&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
 The elimination principles which are automatically generated are Peano's
 induction principle, and a recursion operator:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;nat_ind.</TT><BR>
-<TT><I>nat_ind</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop,</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;O&nbsp;-&gt;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;n))&nbsp;-&gt;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;nat_rec.</TT><BR>
-<TT><I>nat_rec</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Set,</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;O&nbsp;-&gt;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;n))&nbsp;-&gt;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;nat_ind.</tt><br/>
+<tt><span class="italic">nat_ind</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop,</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;O&nbsp;-&gt;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;n))&nbsp;-&gt;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;nat_rec.</tt><br/>
+<tt><span class="italic">nat_rec</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Set,</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;O&nbsp;-&gt;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;n))&nbsp;-&gt;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;P&nbsp;n</span></tt><br/>
+</div>
+<br/>
+<br/>
 Let us start by showing how to program the standard primitive recursion
-operator <CODE>prim_rec</CODE> from the more general <CODE>nat_rec</CODE>:
+operator <code>prim_rec</code> from the more general <code>nat_rec</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;prim_rec&nbsp;:=&nbsp;nat_rec&nbsp;(fun&nbsp;i:nat&nbsp;=&gt;&nbsp;nat).</TT><BR>
-<TT><I>prim_rec&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-That is, instead of computing for natural <CODE>i</CODE> an element of the indexed
-<CODE>Set</CODE> <CODE>(P i)</CODE>, <CODE>prim_rec</CODE> computes uniformly an element of 
-<CODE>nat</CODE>. Let us check the type of <CODE>prim_rec</CODE>:
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Definition&nbsp;prim_rec&nbsp;:=&nbsp;nat_rec&nbsp;(fun&nbsp;i:nat&nbsp;=&gt;&nbsp;nat).</tt><br/>
+<tt><span class="italic">prim_rec&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
+That is, instead of computing for natural <code>i</code> an element of the indexed
+<code>Set</code> <code>(P i)</code>, <code>prim_rec</code> computes uniformly an element of 
+<code>nat</code>. Let us check the type of <code>prim_rec</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;prim_rec.</TT><BR>
-<TT><I>prim_rec</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;O&nbsp;-&gt;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;n&nbsp;-&gt;&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;n))&nbsp;-&gt;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;n</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-Oops! Instead of the expected type <CODE>nat-&gt;(nat-&gt;nat-&gt;nat)-&gt;nat-&gt;nat</CODE> we
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;prim_rec.</tt><br/>
+<tt><span class="italic">prim_rec</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;O&nbsp;-&gt;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;n&nbsp;-&gt;&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;n))&nbsp;-&gt;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;n</span></tt><br/>
+</div>
+<br/>
+<br/>
+Oops! Instead of the expected type <code>nat-&gt;(nat-&gt;nat-&gt;nat)-&gt;nat-&gt;nat</code> we
 get an apparently more complicated expression. Indeed the type of
-<CODE>prim_rec</CODE> is equivalent by rule &beta; to its expected type; this may
-be checked in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp; by command <CODE>Eval Cbv Beta</CODE>, which &beta;-reduces
-an expression to its <I><FONT COLOR=maroon>normal form</FONT></I>:
+<code>prim_rec</code> is equivalent by rule &beta; to its expected type; this may
+be checked in <span class="caps">Coq</span>&nbsp; by command <code>Eval Cbv Beta</code>, which &beta;-reduces
+an expression to its <span class="italic"><span class="maroon">normal form</span></span>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Eval&nbsp;cbv&nbsp;beta&nbsp;in</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;((fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;O&nbsp;-&gt;</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;y:nat,&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;y&nbsp;-&gt;&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;y))&nbsp;-&gt;</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n:nat,&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;n).</TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;nat&nbsp;-&gt;&nbsp;(nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;nat)&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Set</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Eval&nbsp;cbv&nbsp;beta&nbsp;in</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;((fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;O&nbsp;-&gt;</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;y:nat,&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;y&nbsp;-&gt;&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;y))&nbsp;-&gt;</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n:nat,&nbsp;(fun&nbsp;_:nat&nbsp;=&gt;&nbsp;nat)&nbsp;n).</tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;nat&nbsp;-&gt;&nbsp;(nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;nat)&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Set</span></tt><br/>
+</div>
+<br/>
+<br/>
 Let us now show how to program addition with primitive recursion:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;addition&nbsp;(n&nbsp;m:nat)&nbsp;:=&nbsp;prim_rec&nbsp;m&nbsp;(fun&nbsp;p&nbsp;rec:nat&nbsp;=&gt;&nbsp;S&nbsp;rec)&nbsp;n.</TT><BR>
-<TT><I>addition&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-That is, we specify that <CODE>(addition n m)</CODE> computes by cases on <CODE>n</CODE>
-according to its main constructor; when <CODE>n = O</CODE>, we get <CODE>m</CODE>;
- when <CODE>n = S p</CODE>, we get <CODE>(S rec)</CODE>, where <CODE>rec</CODE> is the result
-of the recursive computation <CODE>(addition p m)</CODE>. Let us verify it by
-asking <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp;to compute for us say 2+3:
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Definition&nbsp;addition&nbsp;(n&nbsp;m:nat)&nbsp;:=&nbsp;prim_rec&nbsp;m&nbsp;(fun&nbsp;p&nbsp;rec:nat&nbsp;=&gt;&nbsp;S&nbsp;rec)&nbsp;n.</tt><br/>
+<tt><span class="italic">addition&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
+That is, we specify that <code>(addition n m)</code> computes by cases on <code>n</code>
+according to its main constructor; when <code>n = O</code>, we get <code>m</code>;
+ when <code>n = S p</code>, we get <code>(S rec)</code>, where <code>rec</code> is the result
+of the recursive computation <code>(addition p m)</code>. Let us verify it by
+asking <span class="caps">Coq</span>&nbsp;to compute for us say 2+3:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Eval&nbsp;compute&nbsp;in&nbsp;(addition&nbsp;(S&nbsp;(S&nbsp;O))&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;O)))).</TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;S&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;O))))</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;(S&nbsp;O))</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-Actually, we do not have to do all explicitly. <SPAN STYLE="font-variant:small-caps">Coq</SPAN> provides a
-special syntax <TT>Fixpoint/match</TT> for generic primitive recursion,
-and we could thus have defined directly addition as:<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Eval&nbsp;compute&nbsp;in&nbsp;(addition&nbsp;(S&nbsp;(S&nbsp;O))&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;O)))).</tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;S&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;(S&nbsp;O))))</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;(fun&nbsp;_&nbsp;:&nbsp;nat&nbsp;=&gt;&nbsp;nat)&nbsp;(S&nbsp;(S&nbsp;O))</span></tt><br/>
+</div>
+<br/>
+<br/>
+Actually, we do not have to do all explicitly. <span class="caps">Coq</span> provides a
+special syntax <tt>Fixpoint/match</tt> for generic primitive recursion,
+and we could thus have defined directly addition as:<br/>
+<br/>
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Fixpoint&nbsp;plus&nbsp;(n&nbsp;m:nat)&nbsp;{struct&nbsp;n}&nbsp;:&nbsp;nat&nbsp;:=</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;match&nbsp;n&nbsp;with</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;=&gt;&nbsp;m</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;p&nbsp;=&gt;&nbsp;S&nbsp;(plus&nbsp;p&nbsp;m)</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;end.</TT><BR>
-<TT><I>plus&nbsp;is&nbsp;recursively&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Fixpoint&nbsp;plus&nbsp;(n&nbsp;m:nat)&nbsp;{struct&nbsp;n}&nbsp;:&nbsp;nat&nbsp;:=</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;match&nbsp;n&nbsp;with</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;=&gt;&nbsp;m</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;p&nbsp;=&gt;&nbsp;S&nbsp;(plus&nbsp;p&nbsp;m)</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;end.</tt><br/>
+<tt><span class="italic">plus&nbsp;is&nbsp;recursively&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
 For the rest of the session, we shall clean up what we did so far with 
-types <CODE>bool</CODE> and <CODE>nat</CODE>, in order to use the initial definitions
-given in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s <CODE>Prelude</CODE> module, and not to get confusing error
+types <code>bool</code> and <code>nat</code>, in order to use the initial definitions
+given in <span class="caps">Coq</span>'s <code>Prelude</code> module, and not to get confusing error
 messages due to our redefinitions. We thus revert to the state before
-our definition of <CODE>bool</CODE> with the <CODE>Reset</CODE> command:
+our definition of <code>bool</code> with the <code>Reset</code> command:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Reset&nbsp;bool.</TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Reset&nbsp;bool.</tt><br/>
+</div>
+<br/>
+<br/>
 <!--TOC subsection Simple proofs by induction-->
 
-<H3 CLASS="subsection"><A NAME="htoc24">2.1.3</A>&nbsp;&nbsp;Simple proofs by induction</H3><!--SEC END -->
+<h3 class="subsection"><a NAME="htoc24">2.1.3</a>&nbsp;&nbsp;Simple proofs by induction</h3><!--SEC END -->
 
 Let us now show how to do proofs by structural induction. We start with easy
-properties of the <CODE>plus</CODE> function we just defined. Let us first
-show that <I>n</I>=<I>n</I>+0.
+properties of the <code>plus</code> function we just defined. Let us first
+show that <span class="italic">n</span>=<span class="italic">n</span>+0.
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_n_O&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;n&nbsp;=&nbsp;n&nbsp;+&nbsp;0.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;n&nbsp;=&nbsp;n&nbsp;+&nbsp;0</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;n;&nbsp;elim&nbsp;n.</TT><BR>
-<TT><I>2&nbsp;subgoals</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0&nbsp;+&nbsp;0</I></TT><BR>
-<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
-<TT><I>&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-What happened was that <CODE>elim n</CODE>, in order to construct a <CODE>Prop</CODE>
-(the initial goal) from a <CODE>nat</CODE> (i.e. <CODE>n</CODE>), appealed to the
-corresponding induction principle <CODE>nat_ind</CODE> which we saw was indeed
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_n_O&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;n&nbsp;=&nbsp;n&nbsp;+&nbsp;0.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;n&nbsp;=&nbsp;n&nbsp;+&nbsp;0</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;intro&nbsp;n;&nbsp;elim&nbsp;n.</tt><br/>
+<tt><span class="italic">2&nbsp;subgoals</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0&nbsp;+&nbsp;0</span></tt><br/>
+<tt><span class="italic">subgoal&nbsp;2&nbsp;is:</span></tt><br/>
+<tt><span class="italic">&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</span></tt><br/>
+</div>
+<br/>
+<br/>
+What happened was that <code>elim n</code>, in order to construct a <code>Prop</code>
+(the initial goal) from a <code>nat</code> (i.e. <code>n</code>), appealed to the
+corresponding induction principle <code>nat_ind</code> which we saw was indeed
 exactly Peano's induction scheme. Pattern-matching instantiated the 
-corresponding predicate <CODE>P</CODE> to <CODE>fun n:nat =&gt; n = n </CODE> 0+, and we get
-as subgoals the corresponding instantiations of the base case <CODE>(P O)</CODE> ,
-and of the inductive step <CODE>forall y:nat, P y -&gt; P (S y)</CODE>.
-In each case we get an instance of function <CODE>plus</CODE> in which its second
+corresponding predicate <code>P</code> to <code>fun n:nat =&gt; n = n </code> 0+, and we get
+as subgoals the corresponding instantiations of the base case <code>(P O)</code> ,
+and of the inductive step <code>forall y:nat, P y -&gt; P (S y)</code>.
+In each case we get an instance of function <code>plus</code> in which its second
 argument starts with a constructor, and is thus amenable to simplification
-by primitive recursion. The <SPAN STYLE="font-variant:small-caps">Coq</SPAN>&nbsp;tactic <CODE>simpl</CODE> can be used for
+by primitive recursion. The <span class="caps">Coq</span>&nbsp;tactic <code>simpl</code> can be used for
 this purpose:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;simpl.</TT><BR>
-<TT><I>2&nbsp;subgoals</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
-<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
-<TT><I>&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;auto.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;simpl.</tt><br/>
+<tt><span class="italic">2&nbsp;subgoals</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0</span></tt><br/>
+<tt><span class="italic">subgoal&nbsp;2&nbsp;is:</span></tt><br/>
+<tt><span class="italic">&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;auto.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;0&nbsp;-&gt;&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;n0&nbsp;+&nbsp;0</span></tt><br/>
+</div>
+<br/>
+<br/>
 We proceed in the same way for the base step:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;auto.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
-<TT><I>intro&nbsp;n;&nbsp;elim&nbsp;n.</I></TT><BR>
-<TT><I>&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*.</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;auto.</I></TT><BR>
-<TT><I>simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</I></TT><BR>
-<TT><I>plus_n_O&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-Here <CODE>auto</CODE> succeeded, because it used as a hint lemma <CODE>eq_S</CODE>,
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;auto.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Qed.</tt><br/>
+<tt><span class="italic">intro&nbsp;n;&nbsp;elim&nbsp;n.</span></tt><br/>
+<tt><span class="italic">&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*.</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;auto.</span></tt><br/>
+<tt><span class="italic">simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</span></tt><br/>
+<tt><span class="italic">plus_n_O&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
+Here <code>auto</code> succeeded, because it used as a hint lemma <code>eq_S</code>,
 which say that successor preserves equality:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;eq_S.</TT><BR>
-<TT><I>eq_S</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;nat,&nbsp;x&nbsp;=&nbsp;y&nbsp;-&gt;&nbsp;S&nbsp;x&nbsp;=&nbsp;S&nbsp;y</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-Actually, let us see how to declare our lemma <CODE>plus_n_O</CODE> as a hint
-to be used by <CODE>auto</CODE>:
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;eq_S.</tt><br/>
+<tt><span class="italic">eq_S</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;x&nbsp;y&nbsp;:&nbsp;nat,&nbsp;x&nbsp;=&nbsp;y&nbsp;-&gt;&nbsp;S&nbsp;x&nbsp;=&nbsp;S&nbsp;y</span></tt><br/>
+</div>
+<br/>
+<br/>
+Actually, let us see how to declare our lemma <code>plus_n_O</code> as a hint
+to be used by <code>auto</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;plus_n_O&nbsp;.</TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;plus_n_O&nbsp;.</tt><br/>
+</div>
+<br/>
+<br/>
 We now proceed to the similar property concerning the other constructor
-<CODE>S</CODE>:
+<code>S</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_n_S&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;S&nbsp;(n&nbsp;+&nbsp;m)&nbsp;=&nbsp;n&nbsp;+&nbsp;S&nbsp;m.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;S&nbsp;(n&nbsp;+&nbsp;m)&nbsp;=&nbsp;n&nbsp;+&nbsp;S&nbsp;m</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-We now go faster, remembering that tactic <CODE>simple induction</CODE> does the
-necessary <CODE>intros</CODE> before applying <CODE>elim</CODE>. Factoring simplification
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_n_S&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;S&nbsp;(n&nbsp;+&nbsp;m)&nbsp;=&nbsp;n&nbsp;+&nbsp;S&nbsp;m.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;S&nbsp;(n&nbsp;+&nbsp;m)&nbsp;=&nbsp;n&nbsp;+&nbsp;S&nbsp;m</span></tt><br/>
+</div>
+<br/>
+<br/>
+We now go faster, remembering that tactic <code>simple induction</code> does the
+necessary <code>intros</code> before applying <code>elim</code>. Factoring simplification
 and automation in both cases thanks to tactic composition, we prove this
 lemma in one line:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;n;&nbsp;simpl;&nbsp;auto.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
-<TT><I>simple&nbsp;induction&nbsp;n;&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</I></TT><BR>
-<TT><I>plus_n_S&nbsp;is&nbsp;defined</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;plus_n_S&nbsp;.</TT><BR>
-</DIV>
-<BR>
-<BR>
-Let us end this exercise with the commutativity of <CODE>plus</CODE>:<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;n;&nbsp;simpl;&nbsp;auto.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Qed.</tt><br/>
+<tt><span class="italic">simple&nbsp;induction&nbsp;n;&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</span></tt><br/>
+<tt><span class="italic">plus_n_S&nbsp;is&nbsp;defined</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;plus_n_S&nbsp;.</tt><br/>
+</div>
+<br/>
+<br/>
+Let us end this exercise with the commutativity of <code>plus</code>:<br/>
+<br/>
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_com&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-Here we have a choice on doing an induction on <CODE>n</CODE> or on <CODE>m</CODE>, the
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;plus_com&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;m&nbsp;=&nbsp;m&nbsp;+&nbsp;n</span></tt><br/>
+</div>
+<br/>
+<br/>
+Here we have a choice on doing an induction on <code>n</code> or on <code>m</code>, the
 situation being symmetric. For instance:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;m;&nbsp;simpl;&nbsp;auto.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;m&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;n&nbsp;-&gt;&nbsp;n&nbsp;+&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;(n0&nbsp;+&nbsp;n)</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-Here <CODE>auto</CODE> succeeded on the base case, thanks to our hint
-<CODE>plus_n_O</CODE>, but the induction step requires rewriting, which
-<CODE>auto</CODE> does not handle:<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;m;&nbsp;simpl;&nbsp;auto.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;m&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;n&nbsp;+&nbsp;n0&nbsp;=&nbsp;n0&nbsp;+&nbsp;n&nbsp;-&gt;&nbsp;n&nbsp;+&nbsp;S&nbsp;n0&nbsp;=&nbsp;S&nbsp;(n0&nbsp;+&nbsp;n)</span></tt><br/>
+</div>
+<br/>
+<br/>
+Here <code>auto</code> succeeded on the base case, thanks to our hint
+<code>plus_n_O</code>, but the induction step requires rewriting, which
+<code>auto</code> does not handle:<br/>
+<br/>
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;m'&nbsp;E;&nbsp;rewrite&nbsp;&lt;-&nbsp;E;&nbsp;auto.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
-<TT><I>simple&nbsp;induction&nbsp;m;&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</I></TT><BR>
-<TT><I>intros&nbsp;m'&nbsp;E;&nbsp;rewrite&nbsp;&lt;-&nbsp;E&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</I></TT><BR>
-<TT><I>plus_com&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;intros&nbsp;m'&nbsp;E;&nbsp;rewrite&nbsp;&lt;-&nbsp;E;&nbsp;auto.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Qed.</tt><br/>
+<tt><span class="italic">simple&nbsp;induction&nbsp;m;&nbsp;simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</span></tt><br/>
+<tt><span class="italic">intros&nbsp;m'&nbsp;E;&nbsp;rewrite&nbsp;&lt;-&nbsp;E&nbsp;in&nbsp;|-&nbsp;*;&nbsp;auto.</span></tt><br/>
+<tt><span class="italic">plus_com&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
 <!--TOC subsection Discriminate-->
 
-<H3 CLASS="subsection"><A NAME="htoc25">2.1.4</A>&nbsp;&nbsp;Discriminate</H3><!--SEC END -->
+<h3 class="subsection"><a NAME="htoc25">2.1.4</a>&nbsp;&nbsp;Discriminate</h3><!--SEC END -->
 
 It is also possible to define new propositions by primitive recursion.
 Let us for instance define the predicate which discriminates between
-the constructors <CODE>O</CODE> and <CODE>S</CODE>: it computes to <CODE>False</CODE> 
-when its argument is <CODE>O</CODE>, and to <CODE>True</CODE> when its argument is 
-of the form <CODE>(S n)</CODE>:
+the constructors <code>O</code> and <code>S</code>: it computes to <code>False</code> 
+when its argument is <code>O</code>, and to <code>True</code> when its argument is 
+of the form <code>(S n)</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Definition&nbsp;Is_S&nbsp;(n:nat)&nbsp;:=&nbsp;match&nbsp;n&nbsp;with</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;=&gt;&nbsp;False</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;p&nbsp;=&gt;&nbsp;True</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end.</TT><BR>
-<TT><I>Is_S&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-Now we may use the computational power of <CODE>Is_S</CODE> in order to prove
-trivially that <CODE>(Is_S (S n))</CODE>:
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Definition&nbsp;Is_S&nbsp;(n:nat)&nbsp;:=&nbsp;match&nbsp;n&nbsp;with</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;O&nbsp;=&gt;&nbsp;False</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;S&nbsp;p&nbsp;=&gt;&nbsp;True</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end.</tt><br/>
+<tt><span class="italic">Is_S&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
+Now we may use the computational power of <code>Is_S</code> in order to prove
+trivially that <code>(Is_S (S n))</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;S_Is_S&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;Is_S&nbsp;(S&nbsp;n).</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;Is_S&nbsp;(S&nbsp;n)</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;trivial.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
-<TT><I>simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;trivial.</I></TT><BR>
-<TT><I>S_Is_S&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-But we may also use it to transform a <CODE>False</CODE> goal into 
-<CODE>(Is_S O)</CODE>. Let us show a particularly important use of this feature;
-we want to prove that <CODE>O</CODE> and <CODE>S</CODE> construct different values, one
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;S_Is_S&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;Is_S&nbsp;(S&nbsp;n).</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;Is_S&nbsp;(S&nbsp;n)</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;trivial.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Qed.</tt><br/>
+<tt><span class="italic">simpl&nbsp;in&nbsp;|-&nbsp;*;&nbsp;trivial.</span></tt><br/>
+<tt><span class="italic">S_Is_S&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
+But we may also use it to transform a <code>False</code> goal into 
+<code>(Is_S O)</code>. Let us show a particularly important use of this feature;
+we want to prove that <code>O</code> and <code>S</code> construct different values, one
 of Peano's axioms:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;no_confusion&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;no_confusion&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n</span></tt><br/>
+</div>
+<br/>
+<br/>
 First of all, we replace negation by its definition, by reducing the
-goal with tactic <CODE>red</CODE>; then we get contradiction by successive
-<CODE>intros</CODE>:
+goal with tactic <code>red</code>; then we get contradiction by successive
+<code>intros</code>:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;red;&nbsp;intros&nbsp;n&nbsp;H.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;False</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;red;&nbsp;intros&nbsp;n&nbsp;H.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;False</span></tt><br/>
+</div>
+<br/>
+<br/>
 Now we use our trick:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;change&nbsp;(Is_S&nbsp;0).</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;Is_S&nbsp;0</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;change&nbsp;(Is_S&nbsp;0).</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;Is_S&nbsp;0</span></tt><br/>
+</div>
+<br/>
+<br/>
 Now we use equality in order to get a subgoal which computes out to 
-<CODE>True</CODE>, which finishes the proof:
+<code>True</code>, which finishes the proof:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;rewrite&nbsp;H;&nbsp;trivial.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;Is_S&nbsp;(S&nbsp;n)</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;trivial.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-Actually, a specific tactic <CODE>discriminate</CODE> is provided
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;rewrite&nbsp;H;&nbsp;trivial.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;H&nbsp;:&nbsp;0&nbsp;=&nbsp;S&nbsp;n</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;Is_S&nbsp;(S&nbsp;n)</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;simpl;&nbsp;trivial.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+</div>
+<br/>
+<br/>
+Actually, a specific tactic <code>discriminate</code> is provided
 to produce mechanically such proofs, without the need for the user to define
-explicitly the relevant discrimination predicates:<BR>
-<BR>
+explicitly the relevant discrimination predicates:<br/>
+<br/>
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;intro&nbsp;n;&nbsp;discriminate.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
-<TT><I>intro&nbsp;n;&nbsp;&nbsp;discriminate.</I></TT><BR>
-<TT><I>no_confusion&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Restart.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;0&nbsp;&lt;&gt;&nbsp;S&nbsp;n</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;intro&nbsp;n;&nbsp;discriminate.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Qed.</tt><br/>
+<tt><span class="italic">intro&nbsp;n;&nbsp;&nbsp;discriminate.</span></tt><br/>
+<tt><span class="italic">no_confusion&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
 <!--TOC section Logic programming-->
 
-<H2 CLASS="section"><A NAME="htoc26">2.2</A>&nbsp;&nbsp;Logic programming</H2><!--SEC END -->
-
+<h2 class="section"><a NAME="htoc26">2.2</a>&nbsp;&nbsp;Logic programming</h2><!--SEC END -->
+<br/>
 In the same way as we defined standard data-types above, we
 may define inductive families, and for instance inductive predicates.
-Here is the definition of predicate &#8804; over type <CODE>nat</CODE>, as
-given in <SPAN STYLE="font-variant:small-caps">Coq</SPAN>'s <CODE>Prelude</CODE> module:
+Here is the definition of predicate &#8804; over type <code>nat</code>, as
+given in <span class="caps">Coq</span>'s <code>Prelude</code> module:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;le&nbsp;(n:nat)&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop&nbsp;:=</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;le_n&nbsp;:&nbsp;le&nbsp;n&nbsp;n</TT><BR>
-<TT>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;le_S&nbsp;:&nbsp;forall&nbsp;m:nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;n&nbsp;(S&nbsp;m).</TT><BR>
-</DIV>
-<BR>
-<BR>
-This definition introduces a new predicate <CODE>le:nat-&gt;nat-&gt;Prop</CODE>,
-and the two constructors <CODE>le_n</CODE> and <CODE>le_S</CODE>, which are the
-defining clauses of <CODE>le</CODE>. That is, we get not only the &#8220;axioms&#8221;
-<CODE>le_n</CODE> and <CODE>le_S</CODE>, but also the converse property, that 
-<CODE>(le n m)</CODE> if and only if this statement can be obtained as a
-consequence of these defining clauses; that is, <CODE>le</CODE> is the
-minimal predicate verifying clauses <CODE>le_n</CODE> and <CODE>le_S</CODE>. This is
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Inductive&nbsp;le&nbsp;(n:nat)&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop&nbsp;:=</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;le_n&nbsp;:&nbsp;le&nbsp;n&nbsp;n</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;|&nbsp;le_S&nbsp;:&nbsp;forall&nbsp;m:nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;n&nbsp;(S&nbsp;m).</tt><br/>
+</div>
+<br/>
+<br/>
+This definition introduces a new predicate <code>le:nat-&gt;nat-&gt;Prop</code>,
+and the two constructors <code>le_n</code> and <code>le_S</code>, which are the
+defining clauses of <code>le</code>. That is, we get not only the &#8220;axioms&#8221;
+<code>le_n</code> and <code>le_S</code>, but also the converse property, that 
+<code>(le n m)</code> if and only if this statement can be obtained as a
+consequence of these defining clauses; that is, <code>le</code> is the
+minimal predicate verifying clauses <code>le_n</code> and <code>le_S</code>. This is
 insured, as in the case of inductive data types, by an elimination principle,
-which here amounts to an induction principle <CODE>le_ind</CODE>, stating this 
+which here amounts to an induction principle <code>le_ind</code>, stating this 
 minimality property:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;le.</TT><BR>
-<TT><I>le</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Check&nbsp;le_ind.</TT><BR>
-<TT><I>le_ind</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop),</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;n&nbsp;-&gt;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;m))&nbsp;-&gt;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n0&nbsp;-&gt;&nbsp;P&nbsp;n0</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;le.</tt><br/>
+<tt><span class="italic">le</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;nat&nbsp;-&gt;&nbsp;Prop</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;le_ind.</tt><br/>
+<tt><span class="italic">le_ind</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;forall&nbsp;(n&nbsp;:&nbsp;nat)&nbsp;(P&nbsp;:&nbsp;nat&nbsp;-&gt;&nbsp;Prop),</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;n&nbsp;-&gt;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(forall&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;m&nbsp;-&gt;&nbsp;P&nbsp;(S&nbsp;m))&nbsp;-&gt;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forall&nbsp;n0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;n0&nbsp;-&gt;&nbsp;P&nbsp;n0</span></tt><br/>
+</div>
+<br/>
+<br/>
 Let us show how proofs may be conducted with this principle.
-First we show that <I>n</I>&#8804; <I>m</I> &rArr; <I>n</I>+1&#8804; <I>m</I>+1:
+First we show that <span class="italic">n</span>&#8804; <span class="italic">m</span> &rArr; <span class="italic">n</span>+1&#8804; <span class="italic">m</span>+1:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;le_n_S&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m).</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;n&nbsp;m&nbsp;n_le_m.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;m&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;elim&nbsp;n_le_m.</TT><BR>
-<TT><I>2&nbsp;subgoals</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;m&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;n)</I></TT><BR>
-<TT><I>subgoal&nbsp;2&nbsp;is:</I></TT><BR>
-<TT><I>&nbsp;forall&nbsp;m0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m0&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m0)&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;(S&nbsp;m0))</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-What happens here is similar to the behaviour of <CODE>elim</CODE> on natural
-numbers: it appeals to the relevant induction principle, here <CODE>le_ind</CODE>,
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;le_n_S&nbsp;:&nbsp;forall&nbsp;n&nbsp;m:nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m).</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;intros&nbsp;n&nbsp;m&nbsp;n_le_m.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;m&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;elim&nbsp;n_le_m.</tt><br/>
+<tt><span class="italic">2&nbsp;subgoals</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;m&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;n)</span></tt><br/>
+<tt><span class="italic">subgoal&nbsp;2&nbsp;is:</span></tt><br/>
+<tt><span class="italic">&nbsp;forall&nbsp;m0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m0&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m0)&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;(S&nbsp;m0))</span></tt><br/>
+</div>
+<br/>
+<br/>
+What happens here is similar to the behaviour of <code>elim</code> on natural
+numbers: it appeals to the relevant induction principle, here <code>le_ind</code>,
 which generates the two subgoals, which may then be solved easily
-with the help of the defining clauses of <CODE>le</CODE>.
+with the help of the defining clauses of <code>le</code>.
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;apply&nbsp;le_n;&nbsp;trivial.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;m&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;m0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m0&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m0)&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;(S&nbsp;m0))</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;intros;&nbsp;apply&nbsp;le_S;&nbsp;trivial.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;apply&nbsp;le_n;&nbsp;trivial.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;m&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n_le_m&nbsp;:&nbsp;le&nbsp;n&nbsp;m</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;m0&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m0&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m0)&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;(S&nbsp;m0))</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;intros;&nbsp;apply&nbsp;le_S;&nbsp;trivial.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+</div>
+<br/>
+<br/>
 Now we know that it is a good idea to give the defining clauses as hints,
 so that the proof may proceed with a simple combination of 
-<CODE>induction</CODE> and <CODE>auto</CODE>.
+<code>induction</code> and <code>auto</code>.
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Restart.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;le_n&nbsp;le_S&nbsp;.</TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Restart.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;m&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;m&nbsp;-&gt;&nbsp;le&nbsp;(S&nbsp;n)&nbsp;(S&nbsp;m)</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Hint&nbsp;Resolve&nbsp;le_n&nbsp;le_S&nbsp;.</tt><br/>
+</div>
+<br/>
+<br/>
 We have a slight problem however. We want to say &#8220;Do an induction on
-hypothesis <CODE>(le n m)</CODE>&#8221;, but we have no explicit name for it. What we
+hypothesis <code>(le n m)</code>&#8221;, but we have no explicit name for it. What we
 do in this case is to say &#8220;Do an induction on the first unnamed hypothesis&#8221;,
 as follows.
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;1;&nbsp;auto.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
-<TT><I>simple&nbsp;induction&nbsp;1;&nbsp;auto.</I></TT><BR>
-<TT><I>le_n_S&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;simple&nbsp;induction&nbsp;1;&nbsp;auto.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Qed.</tt><br/>
+<tt><span class="italic">simple&nbsp;induction&nbsp;1;&nbsp;auto.</span></tt><br/>
+<tt><span class="italic">le_n_S&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
 Here is a more tricky problem. Assume we want to show that
-<I>n</I>&#8804; 0 &rArr; <I>n</I>=0. This reasoning ought to follow simply from the
-fact that only the first defining clause of <CODE>le</CODE> applies.
+<span class="italic">n</span>&#8804; 0 &rArr; <span class="italic">n</span>=0. This reasoning ought to follow simply from the
+fact that only the first defining clause of <code>le</code> applies.
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;tricky&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;le&nbsp;n&nbsp;0&nbsp;-&gt;&nbsp;n&nbsp;=&nbsp;0.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;0&nbsp;-&gt;&nbsp;n&nbsp;=&nbsp;0</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-However, here trying something like <CODE>induction 1</CODE> would lead
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;Lemma&nbsp;tricky&nbsp;:&nbsp;forall&nbsp;n:nat,&nbsp;le&nbsp;n&nbsp;0&nbsp;-&gt;&nbsp;n&nbsp;=&nbsp;0.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;forall&nbsp;n&nbsp;:&nbsp;nat,&nbsp;le&nbsp;n&nbsp;0&nbsp;-&gt;&nbsp;n&nbsp;=&nbsp;0</span></tt><br/>
+</div>
+<br/>
+<br/>
+However, here trying something like <code>induction 1</code> would lead
 nowhere (try it and see what happens). 
-An induction on <CODE>n</CODE> would not be convenient either.
-What we must do here is analyse the definition of <CODE>le</CODE> in order
-to match hypothesis <CODE>(le n O)</CODE> with the defining clauses, to find
-that only <CODE>le_n</CODE> applies, whence the result. 
+An induction on <code>n</code> would not be convenient either.
+What we must do here is analyse the definition of <code>le</code> in order
+to match hypothesis <code>(le n O)</code> with the defining clauses, to find
+that only <code>le_n</code> applies, whence the result. 
 This analysis may be performed by the &#8220;inversion&#8221; tactic
-<CODE>inversion_clear</CODE> as follows:
+<code>inversion_clear</code> as follows:
 
-<DIV CLASS="flushleft">
-<TT>Coq&nbsp;&lt;&nbsp;intros&nbsp;n&nbsp;H;&nbsp;inversion_clear&nbsp;H.</TT><BR>
-<TT><I>1&nbsp;subgoal</I></TT><BR>
-<TT><I>&nbsp;&nbsp;</I></TT><BR>
-<TT><I>&nbsp;&nbsp;n&nbsp;:&nbsp;nat</I></TT><BR>
-<TT><I>&nbsp;&nbsp;============================</I></TT><BR>
-<TT><I>&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;trivial.</TT><BR>
-<TT><I>Proof&nbsp;completed.</I></TT><BR>
-<BR>
-<TT>Coq&nbsp;&lt;&nbsp;Qed.</TT><BR>
-<TT><I>intros&nbsp;n&nbsp;H;&nbsp;inversion_clear&nbsp;H.</I></TT><BR>
-<TT><I>trivial.</I></TT><BR>
-<TT><I>tricky&nbsp;is&nbsp;defined</I></TT><BR>
-</DIV>
-<BR>
-<BR>
-<!--TOC chapter Modules-->
+<div class="flushleft">
+<tt>Coq&nbsp;&lt;&nbsp;intros&nbsp;n&nbsp;H;&nbsp;inversion_clear&nbsp;H.</tt><br/>
+<tt><span class="italic">1&nbsp;subgoal</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;n&nbsp;:&nbsp;nat</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;============================</span></tt><br/>
+<tt><span class="italic">&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;0</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;trivial.</tt><br/>
+<tt><span class="italic">Proof&nbsp;completed.</span></tt><br/>
+<br/>
+<tt>Coq&nbsp;&lt;&nbsp;Qed.</tt><br/>
+<tt><span class="italic">intros&nbsp;n&nbsp;H;&nbsp;inversion_clear&nbsp;H.</span></tt><br/>
+<tt><span class="italic">trivial.</span></tt><br/>
+<tt><span class="italic">tricky&nbsp;is&nbsp;defined</span></tt><br/>
+</div>
+<br/>
+<br/>
