@@ -13,6 +13,7 @@ fieldset {
  }
  
 legend {
+     font-size:110%;
      font-weight:700;
      padding: 4px;
      }
@@ -27,12 +28,12 @@ ul.toc {margin-left:15px}
 	
 	<table cellpadding="20px">
 	<tr>
-		<th colspan="2">
+		<th colspan="3">
 		Sections
 		</th>
 	</tr>
 	<tr>
-		<td class="top">
+		<td class="top"> <br/>
 			<ul class="big">
 				<li> <a href="?q=node/16&som=1">1. Introduction </a> </li>
 				<li> <a href="?q=node/16&som=2">2. Presentation </a> </li>
@@ -40,35 +41,39 @@ ul.toc {margin-left:15px}
 				<li> <a href="?q=node/16&som=4">4. Installation </a> </li>
 				<li> <a href="?q=node/16&som=5">5. The Logic of Coq </a> </li>
 				<li> <a href="?q=node/16&som=6">6. Talking with the rooster </a> </li>
-				<li> <a href="?q=node/16&som=7">7. Inductive and Co-inductive types </a> </li>
+			</ul> <br/>
+		</td>
+	    <td class="top"> <br/>
+		    <ul class="big">
+			<li> <a href="?q=node/16&som=7">7. Inductive and Co-inductive types </a> </li>
 		        <li> <a href="?q=node/16&som=8">8. Syntax and notations </a> </li>
 		        <li> <a href="?q=node/16&som=9">9. Modules </a> </li>
-		    </ul>
-		</td>
-	    <td class="top">
-		    <ul class="big">
-				<li> <a href="?q=node/16&som=10">10. Ltac </a> </li>
+		        <li> <a href="?q=node/16&som=10">10. Ltac </a> </li>
 		        <li> <a href="?q=node/16&som=11">11. Tactics written in Ocaml </a> </li>
 		        <li> <a href="?q=node/16&som=12">12. Case studies </a> </li>
+	          </ul>  <br/>
+		</td>
+	    <td class="top">
+		    <ul class="big">  <br/>
 		        <li> <a href="?q=node/16&som=13">13. Publishing Tools </a> </li>
 		        <li> <a href="?q=node/16&som=14">14. CoqIDE </a> </li>
 		        <li> <a href="?q=node/16&som=15">15. Extraction </a> </li>
 		        <li> <a href="?q=node/16&som=16">16. Glossary </a> </li>
 		        <li> <a href="?q=node/16&som=17">17. Troubleshooting </a> </li>
 		        <li> <a href="?q=node/16&som=18">18. Conclusion and farewell </a> </li>
-		   </ul>
+		   </ul>  <br/>
 		</td>
 	</tr>
 	<tr>
-		<th colspan="2">
-		Questions
+		<th colspan="3">
+		 Questions of section <?php echo $som; ?>
 		</th>
 	</tr>
 	<tr>
-		<td class="top" colspan="2"> 
+		<td class="top" colspan="3">  <br/>
 			<ul class="small">
 				<?php  switch($som) {
-									case 1 : echo "No questions for section ".$som."..."; break;
+									case 1 : echo "None"; break;
 									case 2 : echo "
 <LI CLASS='li-toc'><A HREF='#htoc3'>1&nbsp;&nbsp;What is <SPAN STYLE='font-variant:small-caps'>Coq</SPAN>?</A> </LI>
 <LI CLASS='li-toc'><A HREF='#htoc4'>2&nbsp;&nbsp;Did you really need to name it like that?</A> </LI>
@@ -255,7 +260,7 @@ recursive calls?</A> </LI>
 
 
  "; break;
-									case 9 : echo "No questions for section ".$som."..."; break;
+									case 9 : echo "None"; break;
 									case 10 : echo "
 								
 <LI CLASS='li-toc'>
