@@ -12,6 +12,355 @@ ul.toc {margin-left:15px}
 
 <a name="sum"></a>
 
+<div class="framework"> 
+	<div class="frameworklabel"> Summary </div>
+	<div class="frameworkcontent">
+	<table cellpadding="20px">
+	<tr>
+		<th colspan="3">
+		Sections
+		</th>
+	</tr>
+	<tr>
+		<td class="top"> <br/>
+			<ul class="big">
+				<li> <a href="?q=node/16&som=1">1. Introduction </a> </li>
+				<li> <a href="?q=node/16&som=2">2. Presentation </a> </li>
+				<li> <a href="?q=node/16&som=3">3. Documentation </a> </li>
+				<li> <a href="?q=node/16&som=4">4. Installation </a> </li>
+				<li> <a href="?q=node/16&som=5">5. The Logic of Coq </a> </li>
+				<li> <a href="?q=node/16&som=6">6. Talking with the rooster </a> </li>
+			</ul> <br/>
+		</td>
+	    <td class="top"> <br/>
+		    <ul class="big">
+			<li> <a href="?q=node/16&som=7">7. Inductive and Co-inductive types </a> </li>
+		        <li> <a href="?q=node/16&som=8">8. Syntax and notations </a> </li>
+		        <li> <a href="?q=node/16&som=9">9. Modules </a> </li>
+		        <li> <a href="?q=node/16&som=10">10. Ltac </a> </li>
+		        <li> <a href="?q=node/16&som=11">11. Tactics written in Ocaml </a> </li>
+		        <li> <a href="?q=node/16&som=12">12. Case studies </a> </li>
+	          </ul>  <br/>
+		</td>
+	    <td class="top">
+		    <ul class="big">  <br/>
+		        <li> <a href="?q=node/16&som=13">13. Publishing Tools </a> </li>
+		        <li> <a href="?q=node/16&som=14">14. CoqIDE </a> </li>
+		        <li> <a href="?q=node/16&som=15">15. Extraction </a> </li>
+		        <li> <a href="?q=node/16&som=16">16. Glossary </a> </li>
+		        <li> <a href="?q=node/16&som=17">17. Troubleshooting </a> </li>
+		        <li> <a href="?q=node/16&som=18">18. Conclusion and farewell </a> </li>
+		   </ul>  <br/>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="3">
+		 Questions of section <?php echo $som; ?>
+		</th>
+	</tr>
+	<tr>
+		<td class="top" colspan="3">  <br/>
+			<ul class="small">
+				<?php  switch($som) {
+									case 1 : echo "None"; break;
+									case 2 : echo "
+<li><a href='#htoc3'>1&nbsp;&nbsp;What is <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc4'>2&nbsp;&nbsp;Did you really need to name it like that?</a> </li>
+<li><a href='#htoc5'>3&nbsp;&nbsp;Is <span class='caps'>Coq</span> a theorem prover?</a> </li>
+<li><a href='#htoc6'>4&nbsp;&nbsp;What are the other theorem provers?</a> </li>
+<li><a href='#htoc7'>5&nbsp;&nbsp;What do I have to trust when I see a proof checked by Coq?</a> </li>
+<li><a href='#htoc8'>6&nbsp;&nbsp;Where can I find information about the theory behind <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc9'>7&nbsp;&nbsp;How can I use <span class='caps'>Coq</span> to prove programs?</a> </li>
+<li><a href='#htoc10'>8&nbsp;&nbsp;How old is <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc11'>9&nbsp;&nbsp;What are the <span class='caps'>Coq</span>-related tools?</a> </li>
+<li><a href='#htoc12'>10&nbsp;&nbsp;What are the high-level tactics of <span class='caps'>Coq</span></a> </li>
+<li><a href='#htoc13'>11&nbsp;&nbsp;What are the main libraries available for <span class='caps'>Coq</span></a> </li>
+<li><a href='#htoc14'>12&nbsp;&nbsp;What are the mathematical applications for <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc15'>13&nbsp;&nbsp;What are the industrial applications for <span class='caps'>Coq</span>?</a> </li> "; break;
+
+									case 3 : echo "
+
+<li><a href='#htoc17'>14&nbsp;&nbsp;Where can I find documentation about <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc18'>15&nbsp;&nbsp;Where can I find this FAQ on the web?</a> </li>
+<li><a href='#htoc19'>16&nbsp;&nbsp;How can I submit suggestions / improvements / additions for this FAQ?</a> </li>
+<li><a href='#htoc20'>17&nbsp;&nbsp;Is there any mailing list about <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc21'>18&nbsp;&nbsp;Where can I find an archive of the list?</a> </li>
+<li><a href='#htoc22'>19&nbsp;&nbsp;How can I be kept informed of new releases of <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc23'>20&nbsp;&nbsp;Is there any book about <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc24'>21&nbsp;&nbsp;Where can I find some <span class='caps'>Coq</span> examples?</a> </li>
+<li><a href='#htoc25'>22&nbsp;&nbsp;How can I report a bug?</a> </li>
+ "; break;
+ 
+									case 4 : echo "
+
+<li> <a href='#htoc27'>23&nbsp;&nbsp;What is the license of <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc28'>24&nbsp;&nbsp;Where can I find the sources of <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc29'>25&nbsp;&nbsp;On which platform is <span class='caps'>Coq</span> available?</a> </li>
+ "; break;
+ 
+									case 5 : echo "
+
+<li><a href='#htoc31'>5.1&nbsp;&nbsp;General</a> </li>
+<ul class='toc'><li>
+<a href='#htoc32'>26&nbsp;&nbsp;What is the logic of <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc33'>27&nbsp;&nbsp;Is <span class='caps'>Coq</span>'s logic intuitionistic or classical?</a> </li>
+<li><a href='#htoc34'>28&nbsp;&nbsp;Can I define non-terminating programs in <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc35'>29&nbsp;&nbsp;How is equational reasoning working in <span class='caps'>Coq</span>?</a> </li>
+</ul>
+<li><a href='#htoc36'>5.2&nbsp;&nbsp;Axioms</a> </li>
+<ul class='toc'><li>
+<a href='#htoc37'>30&nbsp;&nbsp;What axioms can be safely added to <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc38'>31&nbsp;&nbsp;What standard axioms are inconsistent with <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc39'>32&nbsp;&nbsp;What is Streicher's axiom <span class='italic'>K</span></a> </li>
+<li><a href='#htoc40'>33&nbsp;&nbsp;What is proof-irrelevance</a> </li>
+<li><a href='#htoc41'>34&nbsp;&nbsp;What about functional extensionality?</a> </li>
+<li><a href='#htoc42'>35&nbsp;&nbsp;Is <tt> Prop</tt>  impredicative?</a> </li>
+<li><a href='#htoc43'>36&nbsp;&nbsp;Is <tt> Set</tt>  impredicative?</a> </li>
+<li><a href='#htoc44'>37&nbsp;&nbsp;Is <tt> Type</tt>  impredicative?</a> </li>
+<li><a href='#htoc45'>38&nbsp;&nbsp;I have two proofs of the same proposition. Can I prove they are equal?</a> </li>
+<li><a href='#htoc46'>39&nbsp;&nbsp;I have two proofs of an equality statement. Can I prove they are 
+equal?</a> </li>
+<li><a href='#htoc47'>40&nbsp;&nbsp;Can I prove that the second components of equal dependent
+pairs are equal?</a> </li>
+</ul>
+<li><a href='#htoc48'>5.3&nbsp;&nbsp;Impredicativity</a> </li>
+<ul class='toc'><li>
+<a href='#htoc49'>41&nbsp;&nbsp;Why <tt> injection</tt>  does not work on impredicative <tt> Set</tt> ?</a> </li>
+<li><a href='#htoc50'>42&nbsp;&nbsp;What is a &#8220;large inductive definition&#8221;?</a> </li>
+
+ "; break;
+ 
+									case 6 : echo "
+
+<li>
+<a href='#htoc52'>6.1&nbsp;&nbsp;My goal is ..., how can I prove it?</a> </li>
+<ul class='toc'><li>
+<a href='#htoc53'>43&nbsp;&nbsp;My goal is a conjunction, how can I prove it?</a> </li>
+<li><a href='#htoc54'>44&nbsp;&nbsp;My goal contains a conjunction as an hypothesis, how can I use it?</a> </li>
+<li><a href='#htoc55'>45&nbsp;&nbsp;My goal is a disjunction, how can I prove it?</a> </li>
+<li><a href='#htoc56'>46&nbsp;&nbsp;My goal is an universally quantified statement, how can I prove it?</a> </li>
+<li><a href='#htoc57'>47&nbsp;&nbsp;My goal is an existential, how can I prove it?</a> </li>
+<li><a href='#htoc58'>48&nbsp;&nbsp;My goal is solvable by some lemma, how can I prove it?</a> </li>
+<li><a href='#htoc59'>49&nbsp;&nbsp;My goal contains False as an hypothesis, how can I prove it?</a> </li>
+<li><a href='#htoc60'>50&nbsp;&nbsp;My goal is an equality of two convertible terms, how can I prove it?</a> </li>
+<li><a href='#htoc61'>51&nbsp;&nbsp;My goal is a <tt> let x := a in ...</tt> , how can I prove it?</a> </li>
+<li><a href='#htoc62'>52&nbsp;&nbsp;My goal is a <tt> let (a, ..., b) := c in</tt> , how can I prove it?</a> </li>
+<li><a href='#htoc63'>53&nbsp;&nbsp;My goal contains some existential hypotheses, how can I use it?</a> </li>
+<li><a href='#htoc64'>54&nbsp;&nbsp;My goal contains some existential hypotheses, how can I use it and decompose my knowledge about this new thing into different hypotheses?</a> </li>
+<li><a href='#htoc65'>55&nbsp;&nbsp;My goal is an equality, how can I swap the left and right hand terms?</a> </li>
+<li><a href='#htoc66'>56&nbsp;&nbsp;My hypothesis is an equality, how can I swap the left and right hand terms?</a> </li>
+<li><a href='#htoc67'>57&nbsp;&nbsp;My goal is an equality, how can I prove it by transitivity?</a> </li>
+<li><a href='#htoc68'>58&nbsp;&nbsp;My goal would be solvable using <tt> apply;assumption</tt>  if it would not create meta-variables, how can I prove it?</a> </li>
+<li><a href='#htoc69'>59&nbsp;&nbsp;My goal is solvable by some lemma within a set of lemmas and I don't want to remember which one, how can I prove it?</a> </li>
+<li><a href='#htoc70'>60&nbsp;&nbsp;My goal is one of the hypotheses, how can I prove it?</a> </li>
+<li><a href='#htoc71'>61&nbsp;&nbsp;My goal appears twice in the hypotheses and I want to choose which one is used, how can I do it?</a> </li>
+<li><a href='#htoc72'>62&nbsp;&nbsp;What can be the difference between applying one hypothesis or another in the context of the last question?</a> </li>
+<li><a href='#htoc73'>63&nbsp;&nbsp;My goal is a propositional tautology, how can I prove it?</a> </li>
+<li><a href='#htoc74'>64&nbsp;&nbsp;My goal is a first order formula, how can I prove it?</a> </li>
+<li><a href='#htoc75'>65&nbsp;&nbsp;My goal is solvable by a sequence of rewrites, how can I prove it?</a> </li>
+<li><a href='#htoc76'>66&nbsp;&nbsp;My goal is a disequality solvable by a sequence of rewrites, how can I prove it?</a> </li>
+<li><a href='#htoc77'>67&nbsp;&nbsp;My goal is an equality on some ring (e.g. natural numbers), how can I prove it?</a> </li>
+<li><a href='#htoc78'>68&nbsp;&nbsp;My goal is an equality on some field (e.g. real numbers), how can I prove it?</a> </li>
+<li><a href='#htoc79'>69&nbsp;&nbsp;My goal is an inequality on integers in Presburger's arithmetic (an expression build from +,-,constants and variables), how can I prove it?</a> </li>
+<li><a href='#htoc80'>70&nbsp;&nbsp;My goal is an equation solvable using equational hypothesis on some ring (e.g. natural numbers), how can I prove it?</a> </li>
+</ul>
+<li><a href='#htoc81'>6.2&nbsp;&nbsp;Tactics usage</a> </li>
+<ul class='toc'><li>
+<a href='#htoc82'>71&nbsp;&nbsp;I want to state a fact that I will use later as an hypothesis, how can I do it?</a> </li>
+<li><a href='#htoc83'>72&nbsp;&nbsp;I want to state a fact that I will use later as an hypothesis and prove it later, how can I do it?</a> </li>
+<li><a href='#htoc84'>73&nbsp;&nbsp;What is the difference between <tt> Qed</tt>  and <tt> Defined</tt> ?</a> </li>
+<li><a href='#htoc85'>74&nbsp;&nbsp;How can I know what a tactic does?</a> </li>
+<li><a href='#htoc86'>75&nbsp;&nbsp;Why <tt> auto</tt>  does not work? How can I fix it?</a> </li>
+<li><a href='#htoc87'>76&nbsp;&nbsp;What is <tt> eauto</tt> ?</a> </li>
+<li><a href='#htoc88'>77&nbsp;&nbsp;How can I speed up <tt> auto</tt> ?</a> </li>
+<li><a href='#htoc89'>78&nbsp;&nbsp;What is the equivalent of <tt> tauto</tt>  for classical logic?</a> </li>
+<li><a href='#htoc90'>79&nbsp;&nbsp;I want to replace some term with another in the goal, how can I do it?</a> </li>
+<li><a href='#htoc91'>80&nbsp;&nbsp;I want to replace some term with another in an hypothesis, how can I do it?</a> </li>
+<li><a href='#htoc92'>81&nbsp;&nbsp;I want to replace some symbol with its definition, how can I do it?</a> </li>
+<li><a href='#htoc93'>82&nbsp;&nbsp;How can I reduce some term?</a> </li>
+<li><a href='#htoc94'>83&nbsp;&nbsp;How can I declare a shortcut for some term?</a> </li>
+<li><a href='#htoc95'>84&nbsp;&nbsp;How can I perform case analysis?</a> </li>
+<li><a href='#htoc96'>85&nbsp;&nbsp;Why should I name my intros?</a> </li>
+<li><a href='#htoc97'>86&nbsp;&nbsp;How can I automatize the naming?</a> </li>
+<li><a href='#htoc98'>87&nbsp;&nbsp;I want to automatize the use of some tactic, how can I do it?</a> </li>
+<li><a href='#htoc99'>88&nbsp;&nbsp;I want to execute the <tt> p</tt> roof with tactic only if it solves the goal, how can I do it?</a> </li>
+<li><a href='#htoc100'>89&nbsp;&nbsp;How can I do the opposite of the <tt> intro</tt>  tactic?</a> </li>
+<li><a href='#htoc101'>90&nbsp;&nbsp;One of the hypothesis is an equality between a variable and some term, I want to get rid of this variable, how can I do it?</a> </li>
+<li><a href='#htoc102'>91&nbsp;&nbsp;What can I do if I get &#8220;<tt> generated subgoal term has metavariables in it </tt> &#8221;?</a> </li>
+<li><a href='#htoc103'>92&nbsp;&nbsp;How can I instantiate some metavariable?</a> </li>
+<li><a href='#htoc104'>93&nbsp;&nbsp;What is the use of the <tt> pattern</tt>  tactic?</a> </li>
+<li><a href='#htoc105'>94&nbsp;&nbsp;What is the difference between assert, cut and generalize?</a> </li>
+<li><a href='#htoc106'>95&nbsp;&nbsp;What can I do if <span class='caps'>Coq</span>can not infer some implicit argument ?</a> </li>
+<li><a href='#htoc107'>96&nbsp;&nbsp;How can I explicit some implicit argument ?</a> </li>
+</ul>
+<li><a href='#htoc108'>6.3&nbsp;&nbsp;Proof management</a> </li>
+<ul class='toc'><li>
+<a href='#htoc109'>97&nbsp;&nbsp;How can I change the order of the subgoals?</a> </li>
+<li><a href='#htoc110'>98&nbsp;&nbsp;How can I change the order of the hypothesis?</a> </li>
+<li><a href='#htoc111'>99&nbsp;&nbsp;How can I change the name of an hypothesis?</a> </li>
+<li><a href='#htoc112'>100&nbsp;&nbsp;How can I delete some hypothesis?</a> </li>
+<li><a href='#htoc113'>101&nbsp;&nbsp;How can use a proof which is not finished?</a> </li>
+<li><a href='#htoc114'>102&nbsp;&nbsp;How can I state a conjecture?</a> </li>
+<li><a href='#htoc115'>103&nbsp;&nbsp;What is the difference between a lemma, a fact and a theorem?</a> </li>
+<li><a href='#htoc116'>104&nbsp;&nbsp;How can I organize my proofs?</a> </li>
+
+ "; break;
+									case 7 : echo "
+
+<li>
+<a href='#htoc118'>7.1&nbsp;&nbsp;General</a> </li>
+<ul class='toc'><li>
+<a href='#htoc119'>105&nbsp;&nbsp;How can I prove that two constructors are different?</a> </li>
+<li><a href='#htoc120'>106&nbsp;&nbsp;During an inductive proof, how to get rid of impossible cases of an inductive definition?</a> </li>
+<li><a href='#htoc121'>107&nbsp;&nbsp;How can I prove that 2 terms in an inductive set are equal? Or different?</a> </li>
+<li><a href='#htoc122'>108&nbsp;&nbsp;Why is the proof of <tt> 0+n=n</tt>  on natural numbers
+trivial but the proof of <tt> n+0=n</tt>  is not?</a> </li>
+<li><a href='#htoc123'>109&nbsp;&nbsp;Why is dependent elimination in Prop not
+available by default?</a> </li>
+<li><a href='#htoc124'>110&nbsp;&nbsp;Argh! I cannot write expressions like &#8220;&nbsp;<tt> if n &lt;= p then p else n</tt> &nbsp;&#8221;, as in any programming language</a> </li>
+<li><a href='#htoc125'>111&nbsp;&nbsp;I wrote my own decision procedure for &#8804;, which
+is much faster than yours, but proving such theorems as
+ <tt> max_equiv</tt>  seems to be quite difficult</a> </li>
+</ul>
+<li><a href='#htoc126'>7.2&nbsp;&nbsp;Recursion</a> </li>
+<ul class='toc'><li>
+<a href='#htoc127'>112&nbsp;&nbsp;Why can't I define a non terminating program?</a> </li>
+<li><a href='#htoc128'>113&nbsp;&nbsp;Why only structurally well-founded loops are allowed?</a> </li>
+<li><a href='#htoc129'>114&nbsp;&nbsp;How to define loops based on non structurally smaller
+recursive calls?</a> </li>
+<li><a href='#htoc130'>115&nbsp;&nbsp;What is behind the accessibility and well-foundedness proofs?</a> </li>
+<li><a href='#htoc131'>116&nbsp;&nbsp;How to perform simultaneous double induction?</a> </li>
+<li><a href='#htoc132'>117&nbsp;&nbsp;How to define a function by simultaneous double recursion?</a> </li>
+<li><a href='#htoc133'>118&nbsp;&nbsp;How to perform nested and double induction?</a> </li>
+<li><a href='#htoc134'>119&nbsp;&nbsp;How to define a function by nested recursion?</a> </li>
+</ul>
+<li><a href='#htoc135'>7.3&nbsp;&nbsp;Co-inductive types</a> </li>
+<ul class='toc'><li>
+<a href='#htoc136'>120&nbsp;&nbsp;I have a cofixpoint <span class='italic'>t</span>:=<span class='italic'>F</span>(<span class='italic'>t</span>) and I want to prove <span class='italic'>t</span>=<span class='italic'>F</span>(<span class='italic'>t</span>). How to do it?</a> </li>
+
+ "; break;
+									case 8 : echo "
+
+<li>
+<a href='#htoc138'>121&nbsp;&nbsp;I do not want to type &#8220;forall&#8221; because it is too long, what can I do?</a> </li>
+<li><a href='#htoc139'>122&nbsp;&nbsp;How can I define a notation for square?</a> </li>
+<li><a href='#htoc140'>123&nbsp;&nbsp;Why &#8220;no associativity&#8221; and &#8220;left associativity&#8221; at the same level does not work?</a> </li>
+<li><a href='#htoc141'>124&nbsp;&nbsp;How can I know the associativity associated with a level?</a> </li>
+
+
+ "; break;
+									case 9 : echo "None"; break;
+									case 10 : echo "
+								
+<li>
+<a href='#htoc144'>125&nbsp;&nbsp;What is <span class='caps'>Ltac</span>?</a> </li>
+<li><a href='#htoc145'>126&nbsp;&nbsp;Why do I always get the same error message?</a> </li>
+<li><a href='#htoc146'>127&nbsp;&nbsp;Is there any printing command in <span class='caps'>Ltac</span>?</a> </li>
+<li><a href='#htoc147'>128&nbsp;&nbsp;What is the syntax for let in <span class='caps'>Ltac</span>?</a> </li>
+<li><a href='#htoc148'>129&nbsp;&nbsp;What is the syntax for pattern matching in <span class='caps'>Ltac</span>?</a> </li>
+<li><a href='#htoc149'>130&nbsp;&nbsp;What is the semantics for &#8220;match goal&#8221;?</a> </li>
+<li><a href='#htoc150'>131&nbsp;&nbsp;Why can't I use a &#8220;match goal&#8221; returning a tactic in a non
+tail-recursive position?</a> </li>
+<li><a href='#htoc151'>132&nbsp;&nbsp;How can I generate a new name?</a> </li>
+<li><a href='#htoc152'>133&nbsp;&nbsp;How can I define static and dynamic code?</a> </li>
+
+ "; break;
+									case 11 : echo "
+								
+<li>
+<a href='#htoc154'>134&nbsp;&nbsp;Can you show me an example of a tactic written in OCaml?</a> </li>
+
+ "; break;
+									case 12 : echo "
+								
+
+<li>
+<a href='#htoc156'>135&nbsp;&nbsp;How can I define vectors or lists of size n?</a> </li>
+<li><a href='#htoc157'>136&nbsp;&nbsp;How to prove that 2 sets are different?</a> </li>
+<li><a href='#htoc158'>137&nbsp;&nbsp;Is there an axiom-free proof of Streicher's axiom <span class='italic'>K</span> for
+the equality on <tt> nat</tt> ?</a> </li>
+<li><a href='#htoc159'>138&nbsp;&nbsp;How to prove that two proofs of <tt> n&lt;=m</tt>  on <tt> nat</tt>  are equal?</a> </li>
+<li><a href='#htoc160'>139&nbsp;&nbsp;How to exploit equalities on sets</a> </li>
+<li><a href='#htoc161'>140&nbsp;&nbsp;I have a problem of dependent elimination on
+proofs, how to solve it?</a> </li>
+<li><a href='#htoc162'>141&nbsp;&nbsp;And what if I want to prove the following?</a> </li>
+
+ "; break;
+									case 13 : echo "
+								
+<li>
+<a href='#htoc164'>142&nbsp;&nbsp;How can I generate some latex from my development?</a> </li>
+<li><a href='#htoc165'>143&nbsp;&nbsp;How can I generate some HTML from my development?</a> </li>
+<li><a href='#htoc166'>144&nbsp;&nbsp;How can I generate some dependency graph from my development?</a> </li>
+<li><a href='#htoc167'>145&nbsp;&nbsp;How can I cite some <span class='caps'>Coq</span> in my latex document?</a> </li>
+<li><a href='#htoc168'>146&nbsp;&nbsp;How can I cite the <span class='caps'>Coq</span> reference manual?</a> </li>
+<li><a href='#htoc169'>147&nbsp;&nbsp;Where can I publish my developments in <span class='caps'>Coq</span>?</a> </li>
+<li><a href='#htoc170'>148&nbsp;&nbsp;How can I read my proof in natural language?</a> </li>
+
+ "; break;
+									case 14 : echo "
+
+<li>
+<a href='#htoc172'>149&nbsp;&nbsp;What is <span class='caps'>CoqIde</span>?</a> </li>
+<li><a href='#htoc173'>150&nbsp;&nbsp;How to enable Emacs keybindings?</a> </li>
+<li><a href='#htoc174'>151&nbsp;&nbsp;How to enable antialiased fonts?</a> </li>
+<li><a href='#htoc175'>152&nbsp;&nbsp;How to use those Forall and Exists pretty symbols?</a> </li>
+<li><a href='#htoc176'>153&nbsp;&nbsp;How to define an input method for non ASCII symbols?</a> </li>
+<li><a href='#htoc177'>154&nbsp;&nbsp;How to build a custom <span class='caps'>CoqIde</span> with user ml code?</a> </li>
+<li><a href='#htoc178'>155&nbsp;&nbsp;How to customize the shortcuts for menus?</a> </li>
+<li><a href='#htoc179'>156&nbsp;&nbsp;What encoding should I use? What is this \x{iiii} in my file?</a> </li>
+
+ "; break;
+									case 15 : echo "
+
+<li>
+<a href='#htoc181'>157&nbsp;&nbsp;What is program extraction?</a> </li>
+<li><a href='#htoc182'>158&nbsp;&nbsp;Which language can I extract to?</a> </li>
+<li><a href='#htoc183'>159&nbsp;&nbsp;How can I extract an incomplete proof?</a> </li>
+
+ "; break;
+									case 16 : echo "
+
+<li>
+<a href='#htoc185'>160&nbsp;&nbsp;Can you explain me what an evaluable constant is?</a> </li>
+<li><a href='#htoc186'>161&nbsp;&nbsp;What is a goal?</a> </li>
+<li><a href='#htoc187'>162&nbsp;&nbsp;What is a meta variable?</a> </li>
+<li><a href='#htoc188'>163&nbsp;&nbsp;What is Gallina?</a> </li>
+<li><a href='#htoc189'>164&nbsp;&nbsp;What is The Vernacular?</a> </li>
+<li><a href='#htoc190'>165&nbsp;&nbsp;What is a dependent type?</a> </li>
+<li><a href='#htoc191'>166&nbsp;&nbsp;What is a proof by reflection?</a> </li>
+<li><a href='#htoc192'>167&nbsp;&nbsp;What is intuitionistic logic?</a> </li>
+<li><a href='#htoc193'>168&nbsp;&nbsp;What is proof-irrelevance?</a> </li>
+<li><a href='#htoc194'>169&nbsp;&nbsp;What is the difference between opaque and transparent?</a> </li>
+
+ "; break;
+									case 17 : echo "
+
+<li>
+<a href='#htoc196'>170&nbsp;&nbsp;What can I do when <tt> Qed.</tt>  is slow?</a> </li>
+<li><a href='#htoc197'>171&nbsp;&nbsp;Why <tt> Reset Initial.</tt>  does not work when using <tt> coqc</tt> ?</a> </li>
+<li><a href='#htoc198'>172&nbsp;&nbsp;What can I do if I get &#8220;No more subgoals but non-instantiated existential variables&#8221;?</a> </li>
+<li><a href='#htoc199'>173&nbsp;&nbsp;What can I do if I get &#8220;Cannot solve a second-order unification problem&#8221;?</a> </li>
+<li><a href='#htoc200'>174&nbsp;&nbsp;Why does <span class='caps'>Coq</span> tell me that <tt> {x:A|(P x)}</tt>  is not convertible with <tt> (sig A P)</tt> ?</a> </li>
+<li><a href='#htoc201'>175&nbsp;&nbsp;I copy-paste a term and <span class='caps'>Coq</span> says it is not convertible
+ to the original term. Sometimes it even says the copied term is not
+well-typed.</a> </li>
+
+ "; break;
+									case 18 : echo "
+
+<li>
+<a href='#htoc203'>176&nbsp;&nbsp;What if my question isn't answered here?</a> </li>
+
+";  break;} ?>
+			</ul>
+  		</td>
+  	</tr>      
+</table>
+
+</div>
+</div>
+
 
 
 <br/>
@@ -26,7 +375,7 @@ ul.toc {margin-left:15px}
 
 
 
-<div class="abstract"><span class="bold">Abstract: </span>
+<div> <span class="bold">Abstract: </span>
 This note intends to provide an easy way to get acquainted with the
 <span> <class="caps">Coq</span> theorem prover. It tries to formulate appropriate answers
 to some of the questions any newcomers will face, and to give
