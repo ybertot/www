@@ -451,42 +451,60 @@ You have to trust:
 generally admitted to be consistent wrt Zermelo-Fraenkel set theory +
 inaccessible cardinals. Proofs of consistency of subsystems of the
 theory of Coq can be found in the literature.</dd>
-<dt><span class="bold">The Coq kernel implementation</span><dd> You have to trust that the
+<dt><span class="bold">The Coq kernel implementation</span>
+</dt>
+<dd> You have to trust that the
 implementation of the <span class="caps">Coq</span> kernel mirrors the theory behind <span class="caps">Coq</span>. The
 kernel is intentionally small to limit the risk of conceptual or
-accidental implementation bugs.</dd></dt>
-<dt><span class="bold">The Objective Caml compiler</span><dd> The <span class="caps">Coq</span> kernel is written using the
+accidental implementation bugs.</dd>
+<dt><span class="bold">The Objective Caml compiler</span>
+</dt>
+<dd> The <span class="caps">Coq</span> kernel is written using the
 Objective Caml language but it uses only the most standard features
 (no object, no label ...), so that it is highly unprobable that an
 Objective Caml bug breaks the consistency of <span class="caps">Coq</span> without breaking all
 other kinds of features of <span class="caps">Coq</span> or of other software compiled with
-Objective Caml.</dd></dt>
-<dt><span class="bold">Your hardware</span><dd> In theory, if your hardware does not work
+Objective Caml.</dd>
+<dt><span class="bold">Your hardware</span>
+</dt>
+<dd> In theory, if your hardware does not work
 properly, it can accidentally be the case that False becomes
 provable. But it is more likely the case that the whole <span class="caps">Coq</span> system
 will be unusable. You can check your proof using different computers
-if you feel the need to.</dd></dt>
-<dt><span class="bold">Your axioms</span><dd> Your axioms must be consistent with the theory
-behind <span class="caps">Coq</span>.</dd></dt>
+if you feel the need to.</dd>
+<dt><span class="bold">Your axioms</span>
+</dt>
+<dd> Your axioms must be consistent with the theory
+behind <span class="caps">Coq</span>.</dd>
 </dl>
 <!--TOC subsubsection Where can I find information about the theory behind <span class="caps">Coq</span>?-->
 
 <h4 class="subsubsection"><a name="htoc8">6</a>&nbsp;&nbsp;Where can I find information about the theory behind <span class="caps">Coq</span>?</h4><!--SEC END -->
 
 <dl><dt>
-<span class="bold">The Calculus of Inductive Constructions</span><dd> The
+<span class="bold">The Calculus of Inductive Constructions</span>
+</dt>
+<dd> The
 <a href="http://coq.inria.fr/doc/Reference-Manual006.html">corresponding</a>
 chapter and the chapter on
 <a href="http://coq.inria.fr/doc/Reference-Manual007.html">modules</a> in
-the <span class="caps">Coq</span> Reference Manual.</dd></dt>
-<dt><span class="bold">Type theory</span><dd> A book&nbsp;[<a href="#ProofsTypes"><cite>11</cite></a>] or some lecture
-notes&nbsp;[<a href="#Types:Dowek"><cite>8</cite></a>].</dd></dt>
-<dt><span class="bold">Inductive types</span><dd>
-Christine Paulin-Mohring's habilitation thesis&nbsp;[<a href="#Pau96b"><cite>19</cite></a>].</dd></dt>
-<dt><span class="bold">Co-Inductive types</span><dd>
-Eduardo Giménez' thesis&nbsp;[<a href="#EGThese"><cite>9</cite></a>].</dd></dt>
-<dt><span class="bold">Miscellaneous</span><dd> A
-<a href="http://coq.inria.fr/doc/biblio.html">bibliography</a> about Coq</dd></dt>
+the <span class="caps">Coq</span> Reference Manual.</dd>
+<dt><span class="bold">Type theory</span>
+</dt>
+<dd> A book&nbsp;[<a href="#ProofsTypes"><cite>11</cite></a>] or some lecture
+notes&nbsp;[<a href="#Types:Dowek"><cite>8</cite></a>].</dd>
+<dt><span class="bold">Inductive types</span>
+</dt>
+<dd>
+Christine Paulin-Mohring's habilitation thesis&nbsp;[<a href="#Pau96b"><cite>19</cite></a>].</dd>
+<dt><span class="bold">Co-Inductive types</span>
+</dt>
+<dd>
+Eduardo Giménez' thesis&nbsp;[<a href="#EGThese"><cite>9</cite></a>].</dd>
+<dt><span class="bold">Miscellaneous</span>
+</dt>
+<dd> A
+<a href="http://coq.inria.fr/doc/biblio.html">bibliography</a> about Coq</dd>
 </dl>
 <!--TOC subsubsection How can I use <span class="caps">Coq</span> to prove programs?-->
 
@@ -503,7 +521,7 @@ annotated programs written in other languages.<br/>
 
 <h4 class="subsubsection"><a name="htoc10">8</a>&nbsp;&nbsp;How old is <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-The first implementation is from 1985 (it was named <FONT COLOR=purple>CoC</FONT> which is
+The first implementation is from 1985 (it was named <span class="maroon">CoC</span> which is
 the acronym of the name of the logic it implemented: the Calculus of
 Constructions). The first official release of <span class="caps">Coq</span> (version 4.10)
 was distributed in 1989.<br/>
@@ -4238,59 +4256,64 @@ theorem proving in <span class="caps">Coq</span>.<br/>
 <!--TOC section References-->
 
 <h2 class="section">References</h2><!--SEC END -->
-<DL class="list" COMPACT="compact"><DT class="dt-list"><a name="coqart"><FONT COLOR=purple>[1]</FONT></a><DD class="dd-list">
+<dl><dt><a name="coqart"><span class="maroon">[1]</span></a>
+</dt>
+<dd>
 Yves bertot and Pierre Castéran.
 <span class='italic'>Coq'Art</span>.
 Springer-Verlag, 2004.
-To appear.<br/>
+To appear.</dd><br/>
 <br/>
-<DT class="dt-list"><a name="Coq:coqart"><FONT COLOR=purple>[2]</FONT></a><DD class="dd-list">
+<dt><a name="Coq:coqart"><span class="maroon">[2]</span></a></dt>
+<dd>
 Yves Bertot and Pierre Castéran.
 <span class='italic'>Interactive Theorem Proving and Program Development, Coq'Art:
  The Calculus of Inductive Constructions</span>.
 Texts in Theoretical Computer Science. An EATCS series. Springer
- Verlag, 2004.<br/>
+ Verlag, 2004.</dd>
+ 
+ <br/>
 <br/>
-<DT class="dt-list"><a name="boutin"><FONT COLOR=purple>[3]</FONT></a><DD class="dd-list">
+<dt><a name="boutin"><span class="maroon">[3]</span></a></dt><dd>
 Samuel Boutin.
 Using reflection to build efficient and certified decision pro
  cedures.
 In M.&nbsp;Abadi and T.&nbsp;Ito, editors, <span class='italic'>Proceedings of TACS'97</span>, volume
  1281 of <span class='italic'>LNCS</span>. Springer-Verlag, 1997.<br/>
 <br/>
-<DT class="dt-list"><a name="LaTeX:symb"><FONT COLOR=purple>[4]</FONT></a><DD class="dd-list">
+</dd><dt><a name="LaTeX:symb"><span class="maroon">[4]</span></a></dt><dd>
 David Carlisle, Scott Pakin, and Alexander Holt.
 <span class='italic'>The Great, Big List of L<span class="sup">A</span>T<sub>E</sub>X Symbols</span>, February 2001.<br/>
 <br/>
-<DT class="dt-list"><a name="Coq85"><FONT COLOR=purple>[5]</FONT></a><DD class="dd-list">
+</dd><dt><a name="Coq85"><span class="maroon">[5]</span></a></dt><dd>
 Thierry Coquand.
 <span class='italic'>Une Théorie des Constructions</span>.
 PhD thesis, Université Paris&nbsp;7, January 1985.<br/>
 <br/>
-<DT class="dt-list"><a name="CoHu86"><FONT COLOR=purple>[6]</FONT></a><DD class="dd-list">
+</dd><dt><a name="CoHu86"><span class="maroon">[6]</span></a></dt><dd>
 Thierry Coquand and Gérard Huet.
 The Calculus of Constructions.
 <span class='italic'>Information and Computation</span>, 76(2/3), 1988.<br/>
 <br/>
-<DT class="dt-list"><a name="CoPa89"><FONT COLOR=purple>[7]</FONT></a><DD class="dd-list">
+</dd><dt><a name="CoPa89"><span class="maroon">[7]</span></a></dt><dd>
 Thierry Coquand and Christine Paulin-Mohring.
 Inductively defined types.
 In P.&nbsp;Martin-Löf and G.&nbsp;Mints, editors, <span class='italic'>Proceedings of
  Colog'88</span>, volume 417 of <span class='italic'>Lecture Notes in Computer Science</span>.
  Springer-Verlag, 1990.<br/>
 <br/>
-<DT class="dt-list"><a name="Types:Dowek"><FONT COLOR=purple>[8]</FONT></a><DD class="dd-list">
+</dd><dt><a name="Types:Dowek"><span class="maroon">[8]</span></a></dt><dd>
 Gilles Dowek.
 Théorie des types.
 Lecture notes, 2002.<br/>
 <br/>
-<DT class="dt-list"><a name="EGThese"><FONT COLOR=purple>[9]</FONT></a><DD class="dd-list">
+</dd><dt><a name="EGThese"><span class="maroon">[9]</span></a></dt><dd>
 Eduardo Giménez.
 <span class='italic'>Un Calcul de Constructions Infinies et son application a la
  vérification de systèmes communicants</span>.
 thèse d'université, Ecole Normale Supérieure de Lyon, December 1996.<br/>
 <br/>
-<DT class="dt-list"><a name="Gir70"><FONT COLOR=purple>[10]</FONT></a><DD class="dd-list">
+</dd><dt><a name="Gir70"><span class="maroon">[10]</span></a></dt><dd>
 Jean-Yves Girard.
 Une extension de l'interprétation de Gödel à l'analyse, et
  son application à l'élimination des coupures dans l'analyse et la
@@ -4298,51 +4321,51 @@ Une extension de l'interprétation de Gödel à l'analyse, et
 In <span class='italic'>Proceedings of the 2nd Scandinavian Logic Symposium</span>.
  North-Holland, 1970.<br/>
 <br/>
-<DT class="dt-list"><a name="ProofsTypes"><FONT COLOR=purple>[11]</FONT></a><DD class="dd-list">
+</dd><dt><a name="ProofsTypes"><span class="maroon">[11]</span></a></dt><dd>
 Jean-Yves Girard, Yves Lafont, and Paul Taylor.
 <span class='italic'>Proofs and Types</span>.
 Cambrige Tracts in Theoretical Computer Science, Cambridge University
  Press, 1989.<br/>
 <br/>
-<DT class="dt-list"><a name="harrison"><FONT COLOR=purple>[12]</FONT></a><DD class="dd-list">
+</dd><dt><a name="harrison"><span class="maroon">[12]</span></a></dt><dd>
 John Harrison.
 Meta theory and reflection in theorem proving:a survey and cri tique.
 Technical Report CRC-053, SRI International Cambridge Computer
  Science Research Center, 1995.<br/>
 <br/>
-<DT class="dt-list"><a name="HofStr98"><FONT COLOR=purple>[13]</FONT></a><DD class="dd-list">
+</dd><dt><a name="HofStr98"><span class="maroon">[13]</span></a></dt><dd>
 Martin Hofmann and Thomas Streicher.
 The groupoid interpretation of type theory.
 In <span class='italic'>Proceedings of the meeting Twenty-five years of constructive
  type theory</span>. Oxford University Press, 1998.<br/>
 <br/>
-<DT class="dt-list"><a name="howe"><FONT COLOR=purple>[14]</FONT></a><DD class="dd-list">
+</dd><dt><a name="howe"><span class="maroon">[14]</span></a></dt><dd>
 Doug Howe.
 Computation meta theory in nuprl.
 In E.&nbsp;Lusk and R.&nbsp;Overbeek, editors, <span class='italic'>The Proceedings of the
  Ninth International Conference of Autom ated Deduction</span>, volume 310, pages
  238&ndash;257. Springer-Verlag, 1988.<br/>
 <br/>
-<DT class="dt-list"><a name="Coq:Tutorial"><FONT COLOR=purple>[15]</FONT></a><DD class="dd-list">
+</dd><dt><a name="Coq:Tutorial"><span class="maroon">[15]</span></a></dt><dd>
 Gérard Huet, Gilles Kahn, and Christine Paulin-Mohring.
 <span class='italic'>The Coq Proof Assistant A Tutorial</span>, 2004.<br/>
 <br/>
-<DT class="dt-list"><a name="Luo90"><FONT COLOR=purple>[16]</FONT></a><DD class="dd-list">
+</dd><dt><a name="Luo90"><span class="maroon">[16]</span></a></dt><dd>
 Z.&nbsp;Luo.
 <span class='italic'>An Extended Calculus of Constructions</span>.
 PhD thesis, University of Edinburgh, 1990.<br/>
 <br/>
-<DT class="dt-list"><a name="Coq:manual"><FONT COLOR=purple>[17]</FONT></a><DD class="dd-list">
+</dd><dt><a name="Coq:manual"><span class="maroon">[17]</span></a></dt><dd>
 The Coq development team.
 <span class='italic'>The Coq proof assistant reference manual</span>.
 LogiCal Project, 2004.
 Version 8.0.<br/>
 <br/>
-<DT class="dt-list"><a name="LaTeX:intro"><FONT COLOR=purple>[18]</FONT></a><DD class="dd-list">
+</dd><dt><a name="LaTeX:intro"><span class="maroon">[18]</span></a></dt><dd>
 Tobias Oetiker.
 <span class='italic'>The Not So Short Introduction to L<span class="sup">A</span>T<sub>E</sub>X2e</span>, January 1999.<br/>
 <br/>
-<DT class="dt-list"><a name="Pau96b"><FONT COLOR=purple>[19]</FONT></a><DD class="dd-list">
+</dd><dt><a name="Pau96b"><span class="maroon">[19]</span></a></dt><dd>
 Christine Paulin-Mohring.
 <span class='italic'>Définitions Inductives en Théorie des Types d'Ordre Supérieur</span>.
 Habilitation à diriger les recherches, Université Claude Bernard Lyon
@@ -4355,6 +4378,4 @@ Habilitation à diriger les recherches, Université Claude Bernard Lyon
 <!--HTMLFOOT-->
 <!--ENDHTML-->
 <!--FOOTER-->
-<hR SIZE=2><BLOCKQUOTE class="quote"><span class='italic'>This document was translated from L<span class="sup">A</span>T<sub>E</sub>X by
-</span><a href="http://pauillac.inria.fr/~maranget/hevea/index.html"><span class='italic'>H<FONT SIZE=2><span class="sup">E</span></FONT>V<FONT SIZE=2><span class="sup">E</span></FONT>A</span></a><span class='italic'>.</span></BLOCKQUOTE>
-</BODY>
+
