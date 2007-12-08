@@ -103,7 +103,7 @@
 <a href='#htoc37'>30&nbsp;&nbsp;What axioms can be safely added to <span class='caps'>Coq</span>?</a> </li>
 <li><a href='#htoc38'>31&nbsp;&nbsp;What standard axioms are inconsistent with <span class='caps'>Coq</span>?</a> </li>
 <li><a href='#htoc39'>32&nbsp;&nbsp;What is Streicher's axiom <span class='italic'>K</span></a> </li>
-<li><a href='#htoc40'>33&nbsp;&nbsp;What is proof-irrelevance</a> </li>
+<li><a href='#htoc40'>33&nbsp;&nbsp;What is proof-irrelevance?</a> </li>
 <li><a href='#htoc41'>34&nbsp;&nbsp;What about functional extensionality?</a> </li>
 <li><a href='#htoc42'>35&nbsp;&nbsp;Is <tt> Prop</tt>  impredicative?</a> </li>
 <li><a href='#htoc43'>36&nbsp;&nbsp;Is <tt> Set</tt>  impredicative?</a> </li>
@@ -768,14 +768,14 @@ Calculus of Inductive Constructions and that can be safely added to
 <span class="caps">Coq</span>. These axioms are stated in the directory <tt> Logic</tt>  of the
 standard library of <span class="caps">Coq</span>. The most interesting ones are
 <ul class="itemize"><li>
-Excluded-middle: &forall; <span class='italic'>A</span>:<span class='italic'>Prop</span>, <span class='italic'>A</span> &or; &not; <span class='italic'>A</span>
+Excluded-middle: &forall; <span class='italic'>A</span>:<span class='italic'>Prop</span>, <span class='italic'>A</span> &or; &not; <span class='italic'>A</span></li>
 <li>Proof-irrelevance: &forall; <span class='italic'>A</span>:<span class='italic'>Prop</span> &forall; <span class='italic'>p</span><span class="sub">1</span> <span class='italic'>p</span><span class="sub">2</span>:<span class='italic'>A</span>, <span class='italic'>p</span><span class="sub">1</span>=<span class='italic'>p</span><span class="sub">2</span>
-<li>Unicity of equality proofs (or equivalently Streicher's axiom <span class='italic'>K</span>):
+</li><li>Unicity of equality proofs (or equivalently Streicher's axiom <span class='italic'>K</span>):
 &forall; <span class='italic'>A</span> &forall; <span class='italic'>x</span> <span class='italic'>y</span>:<span class='italic'>A</span> &forall; <span class='italic'>p</span><span class="sub">1</span> <span class='italic'>p</span><span class="sub">2</span>:<span class='italic'>x</span>=<span class='italic'>y</span>, <span class='italic'>p</span><span class="sub">1</span>=<span class='italic'>p</span><span class="sub">2</span>
-<li>The axiom of unique choice: &forall; <span class='italic'>x</span> &exist;! <span class='italic'>y</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>y</span>) &rarr; &exist; <span class='italic'>f</span> &forall; <span class='italic'>x</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>f</span>(<span class='italic'>x</span>))
-<li>The functional axiom of choice: &forall; <span class='italic'>x</span> &exist; <span class='italic'>y</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>y</span>) &rarr; &exist; <span class='italic'>f</span> &forall; <span class='italic'>x</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>f</span>(<span class='italic'>x</span>))
-<li>Extensionality of predicates: &forall; <span class='italic'>P</span> <span class='italic'>Q</span>:<span class='italic'>A</span>&rarr; <span class='italic'>Prop</span>, (&forall; <span class='italic'>x</span>, <span class='italic'>P</span>(<span class='italic'>x</span>) &#8596; <span class='italic'>Q</span>(<span class='italic'>x</span>)) &rarr; <span class='italic'>P</span>=<span class='italic'>Q</span>
-<li>Extensionality of functions: &forall; <span class='italic'>f</span> <span class='italic'>g</span>:<span class='italic'>A</span>&rarr; <span class='italic'>B</span>, (&forall; <span class='italic'>x</span>, <span class='italic'>f</span>(<span class='italic'>x</span>)=<span class='italic'>g</span>(<span class='italic'>x</span>)) &rarr; <span class='italic'>f</span>=<span class='italic'>g</span>
+</li><li>The axiom of unique choice: &forall; <span class='italic'>x</span> &exist;! <span class='italic'>y</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>y</span>) &rarr; &exist; <span class='italic'>f</span> &forall; <span class='italic'>x</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>f</span>(<span class='italic'>x</span>))
+</li><li>The functional axiom of choice: &forall; <span class='italic'>x</span> &exist; <span class='italic'>y</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>y</span>) &rarr; &exist; <span class='italic'>f</span> &forall; <span class='italic'>x</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>f</span>(<span class='italic'>x</span>))
+</li><li>Extensionality of predicates: &forall; <span class='italic'>P</span> <span class='italic'>Q</span>:<span class='italic'>A</span>&rarr; <span class='italic'>Prop</span>, (&forall; <span class='italic'>x</span>, <span class='italic'>P</span>(<span class='italic'>x</span>) &#8596; <span class='italic'>Q</span>(<span class='italic'>x</span>)) &rarr; <span class='italic'>P</span>=<span class='italic'>Q</span>
+</li><li>Extensionality of functions: &forall; <span class='italic'>f</span> <span class='italic'>g</span>:<span class='italic'>A</span>&rarr; <span class='italic'>B</span>, (&forall; <span class='italic'>x</span>, <span class='italic'>f</span>(<span class='italic'>x</span>)=<span class='italic'>g</span>(<span class='italic'>x</span>)) &rarr; <span class='italic'>f</span>=<span class='italic'>g</span>
 </ul>
 Here is a summary of the relative strength of these axioms, most
 proofs can be found in directory <tt> Logic</tt>  of the standard library.
@@ -4373,9 +4373,4 @@ Habilitation à diriger les recherches, Université Claude Bernard Lyon
 
 
 
-
-
-<!--HTMLFOOT-->
-<!--ENDHTML-->
-<!--FOOTER-->
 
