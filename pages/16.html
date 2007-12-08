@@ -53,7 +53,7 @@
 		<td class="top" colspan="3">  <br/>
 			<ul class="small">
 				<?php  switch($som) {
-									case 1 : echo "None"; break;
+									case 1 : echo "<li>None</li>"; break;
 									case 2 : echo "
 <li><a href='#htoc3'>1&nbsp;&nbsp;What is <span class='caps'>Coq</span>?</a> </li>
 <li><a href='#htoc4'>2&nbsp;&nbsp;Did you really need to name it like that?</a> </li>
@@ -368,7 +368,7 @@ well-typed.</a> </li>
 
 <div> <span class="bold">Abstract: </span>
 This note intends to provide an easy way to get acquainted with the
-<span> <class="caps">Coq</span> theorem prover. It tries to formulate appropriate answers
+<span class="caps">Coq</span> theorem prover. It tries to formulate appropriate answers
 to some of the questions any newcomers will face, and to give
 pointers to other references when possible.
 </div>
@@ -382,7 +382,7 @@ pointers to other references when possible.
 <br/>
 
 This FAQ is the sum of the questions that came to mind as we developed
-proofs in <span> <class="caps">Coq</span>. Since we are singularly short-minded, we wrote the
+proofs in <span class="caps">Coq</span>. Since we are singularly short-minded, we wrote the
 answers we found on bits of papers to have them at hand whenever the
 situation occurs again. This is pretty much the result of that: a
 collection of tips one can refer to when proofs become intricate. Yes,
@@ -394,19 +394,19 @@ answers, feel free to write to us...<br/>
 
 <h2 class="section"><a name="htoc2">2</a>&nbsp;&nbsp;Presentation</h2><!--SEC END -->
 
-<!--TOC subsubsection What is <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection What is <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc3">1</a>&nbsp;&nbsp;What is <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc3">1</a>&nbsp;&nbsp;What is <span class="caps">Coq</span>?</h4><!--SEC END -->
 <a name="whatiscoq"></a> 
-The <span> <class="caps">Coq</span> tool is a formal proof management system: a proof done with <span> <class="caps">Coq</span> is mechanically checked by the machine. 
-In particular, <span> <class="caps">Coq</span> allows:
+The <span class="caps">Coq</span> tool is a formal proof management system: a proof done with <span class="caps">Coq</span> is mechanically checked by the machine. 
+In particular, <span class="caps">Coq</span> allows:
 <ul class="itemize"><li>
  the definition of mathematical objects and programming objects,
  <li>to state mathematical theorems and software specifications,</li>
  <li>to interactively develop formal proofs of these theorems,</li>
  <li>to check these proofs by a small certification &#8220;kernel&#8221;.</li>
 </ul>
-<span> <class="caps">Coq</span> is based on a logical framework called &#8220;Calculus of Inductive
+<span class="caps">Coq</span> is based on a logical framework called &#8220;Calculus of Inductive
 Constructions&#8221; extended by a modular development system for theories.<br/>
 <br/>
 <!--TOC subsubsection Did you really need to name it like that?-->
@@ -419,11 +419,11 @@ of this tacit convention. In French, &#8220;coq&#8221; means rooster, and it
 sounds like the initials of the Calculus of Constructions CoC on which
 it is based.<br/>
 <br/>
-<!--TOC subsubsection Is <span> <class="caps">Coq</span> a theorem prover?-->
+<!--TOC subsubsection Is <span class="caps">Coq</span> a theorem prover?-->
 
-<h4 class="subsubsection"><a name="htoc5">3</a>&nbsp;&nbsp;Is <span> <class="caps">Coq</span> a theorem prover?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc5">3</a>&nbsp;&nbsp;Is <span class="caps">Coq</span> a theorem prover?</h4><!--SEC END -->
 
-<span> <class="caps">Coq</span> comes with decision and semi-decision procedures (
+<span class="caps">Coq</span> comes with decision and semi-decision procedures (
 propositional calculus, Presburger's arithmetic, ring and field
 simplification, resolution, ...) but the main style for proving
 theorems is interactively by using LCF-style tactics.<br/>
@@ -434,8 +434,8 @@ theorems is interactively by using LCF-style tactics.<br/>
  
 Many other theorem provers are available for use nowadays. 
 Isabelle, HOL, HOL Light, Lego, Nuprl, PVS are examples of provers that are fairly similar
-to <span> <class="caps">Coq</span> by the way they interact with the user. Other relatives of
-<span> <class="caps">Coq</span> are ACL2, Agda/Alfa, Twelf, Kiv, Mizar, NqThm, 
+to <span class="caps">Coq</span> by the way they interact with the user. Other relatives of
+<span class="caps">Coq</span> are ACL2, Agda/Alfa, Twelf, Kiv, Mizar, NqThm, 
 Omega...
 <br/>
 <br/>
@@ -445,38 +445,38 @@ Omega...
 
 You have to trust:
 <dl><dt>
-<span class="bold">The theory behind Coq</span><dd> The theory of <span> <class="caps">Coq</span> version 8.0 is
+<span class="bold">The theory behind Coq</span><dd> The theory of <span class="caps">Coq</span> version 8.0 is
 generally admitted to be consistent wrt Zermelo-Fraenkel set theory +
 inaccessible cardinals. Proofs of consistency of subsystems of the
 theory of Coq can be found in the literature.</dd></dt>
 <dt><span class="bold">The Coq kernel implementation</span><dd> You have to trust that the
-implementation of the <span> <class="caps">Coq</span> kernel mirrors the theory behind <span> <class="caps">Coq</span>. The
+implementation of the <span class="caps">Coq</span> kernel mirrors the theory behind <span class="caps">Coq</span>. The
 kernel is intentionally small to limit the risk of conceptual or
 accidental implementation bugs.</dd></dt>
-<dt><span class="bold">The Objective Caml compiler</span><dd> The <span> <class="caps">Coq</span> kernel is written using the
+<dt><span class="bold">The Objective Caml compiler</span><dd> The <span class="caps">Coq</span> kernel is written using the
 Objective Caml language but it uses only the most standard features
 (no object, no label ...), so that it is highly unprobable that an
-Objective Caml bug breaks the consistency of <span> <class="caps">Coq</span> without breaking all
-other kinds of features of <span> <class="caps">Coq</span> or of other software compiled with
+Objective Caml bug breaks the consistency of <span class="caps">Coq</span> without breaking all
+other kinds of features of <span class="caps">Coq</span> or of other software compiled with
 Objective Caml.</dd></dt>
 <dt><span class="bold">Your hardware</span><dd> In theory, if your hardware does not work
 properly, it can accidentally be the case that False becomes
-provable. But it is more likely the case that the whole <span> <class="caps">Coq</span> system
+provable. But it is more likely the case that the whole <span class="caps">Coq</span> system
 will be unusable. You can check your proof using different computers
 if you feel the need to.</dd></dt>
 <dt><span class="bold">Your axioms</span><dd> Your axioms must be consistent with the theory
-behind <span> <class="caps">Coq</span>.</dd></dt>
+behind <span class="caps">Coq</span>.</dd></dt>
 </dl>
-<!--TOC subsubsection Where can I find information about the theory behind <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection Where can I find information about the theory behind <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc8">6</a>&nbsp;&nbsp;Where can I find information about the theory behind <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc8">6</a>&nbsp;&nbsp;Where can I find information about the theory behind <span class="caps">Coq</span>?</h4><!--SEC END -->
 
 <dl><dt>
 <span class="bold">The Calculus of Inductive Constructions</span><dd> The
 <a href="http://coq.inria.fr/doc/Reference-Manual006.html">corresponding</a>
 chapter and the chapter on
 <a href="http://coq.inria.fr/doc/Reference-Manual007.html">modules</a> in
-the <span> <class="caps">Coq</span> Reference Manual.</dd></dt>
+the <span class="caps">Coq</span> Reference Manual.</dd></dt>
 <dt><span class="bold">Type theory</span><dd> A book&nbsp;[<a href="#ProofsTypes"><cite>11</cite></a>] or some lecture
 notes&nbsp;[<a href="#Types:Dowek"><cite>8</cite></a>].</dd></dt>
 <dt><span class="bold">Inductive types</span><dd>
@@ -486,54 +486,54 @@ Eduardo Giménez' thesis&nbsp;[<a href="#EGThese"><cite>9</cite></a>].</dd></dt>
 <dt><span class="bold">Miscellaneous</span><dd> A
 <a href="http://coq.inria.fr/doc/biblio.html">bibliography</a> about Coq</dd></dt>
 </dl>
-<!--TOC subsubsection How can I use <span> <class="caps">Coq</span> to prove programs?-->
+<!--TOC subsubsection How can I use <span class="caps">Coq</span> to prove programs?-->
 
-<h4 class="subsubsection"><a name="htoc9">7</a>&nbsp;&nbsp;How can I use <span> <class="caps">Coq</span> to prove programs?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc9">7</a>&nbsp;&nbsp;How can I use <span class="caps">Coq</span> to prove programs?</h4><!--SEC END -->
 
 You can either extract a program from a proof by using the extraction
 mechanism or use dedicated tools, such as
-<a href="http://why.lri.fr"><span> <class="caps">Why</span></a>,
-<a href="http://krakatoa.lri.fr"><span> <class="caps">Krakatoa</span></a>,
-<a href="http://why.lri.fr/caduceus/index.en.html"><span> <class="caps">Caduceus</span></a>, to prove
+<a href="http://why.lri.fr"><span class="caps">Why</span></a>,
+<a href="http://krakatoa.lri.fr"><span class="caps">Krakatoa</span></a>,
+<a href="http://why.lri.fr/caduceus/index.en.html"><span class="caps">Caduceus</span></a>, to prove
 annotated programs written in other languages.<br/>
 <br/>
-<!--TOC subsubsection How old is <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection How old is <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc10">8</a>&nbsp;&nbsp;How old is <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc10">8</a>&nbsp;&nbsp;How old is <span class="caps">Coq</span>?</h4><!--SEC END -->
 
 The first implementation is from 1985 (it was named <FONT COLOR=purple>CoC</FONT> which is
 the acronym of the name of the logic it implemented: the Calculus of
-Constructions). The first official release of <span> <class="caps">Coq</span> (version 4.10)
+Constructions). The first official release of <span class="caps">Coq</span> (version 4.10)
 was distributed in 1989.<br/>
 <br/>
-<!--TOC subsubsection What are the <span> <class="caps">Coq</span>-related tools?-->
+<!--TOC subsubsection What are the <span class="caps">Coq</span>-related tools?-->
 
-<h4 class="subsubsection"><a name="htoc11">9</a>&nbsp;&nbsp;What are the <span> <class="caps">Coq</span>-related tools?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc11">9</a>&nbsp;&nbsp;What are the <span class="caps">Coq</span>-related tools?</h4><!--SEC END -->
 
 There are graphical user interfaces:
 <dl><dt>
-<span class="bold">Coqide</span><dd> A GTK based GUI for <span> <class="caps">Coq</span>.</dd>
-<dt><span class="bold">Pcoq</span><dd> A GUI for <span> <class="caps">Coq</span> with proof by pointing and pretty printing.</dd></dt>
-<dt><span class="bold">coqwc</span><dd> A tool similar to <tt> wc</tt>  to count lines in <span> <class="caps">Coq</span> files.</dd></dt>
-<dt><span class="bold">Proof General</span><dd> A emacs mode for <span> <class="caps">Coq</span> and many other proof assistants.</dd></dt>
+<span class="bold">Coqide</span><dd> A GTK based GUI for <span class="caps">Coq</span>.</dd>
+<dt><span class="bold">Pcoq</span><dd> A GUI for <span class="caps">Coq</span> with proof by pointing and pretty printing.</dd></dt>
+<dt><span class="bold">coqwc</span><dd> A tool similar to <tt> wc</tt>  to count lines in <span class="caps">Coq</span> files.</dd></dt>
+<dt><span class="bold">Proof General</span><dd> A emacs mode for <span class="caps">Coq</span> and many other proof assistants.</dd></dt>
 </dl>
 There are documentation and browsing tools:
 <dl><dt>
 <span class="bold">Helm/Mowgli</span><dd> A rendering, searching and publishing tool.</dd>
-<dt><span class="bold">coq-tex</span><dd> A tool to insert <span> <class="caps">Coq</span> examples within .tex files.</dd> </dt>
-<dt><span class="bold">coqdoc</span><dd> A documentation tool for <span> <class="caps">Coq</span>.</dd></dt>
+<dt><span class="bold">coq-tex</span><dd> A tool to insert <span class="caps">Coq</span> examples within .tex files.</dd> </dt>
+<dt><span class="bold">coqdoc</span><dd> A documentation tool for <span class="caps">Coq</span>.</dd></dt>
 </dl>
 There are front-ends for specific languages:
 <dl><dt>
 <span class="bold">Why</span><dd> A back-end generator of verification conditions.</dd></dt>
-<dt><span class="bold">Krakatoa</span><dd> A Java code certification tool that uses both <span> <class="caps">Coq</span> and <span> <class="caps">Why</span> to verify the soundness of implementations with regards to the specifications.</dd></dt>
-<dt><span class="bold">Caduceus</span><dd> A C code certification tool that uses both <span> <class="caps">Coq</span> and <span> <class="caps">Why</span>.</dd></dt>
+<dt><span class="bold">Krakatoa</span><dd> A Java code certification tool that uses both <span class="caps">Coq</span> and <span class="caps">Why</span> to verify the soundness of implementations with regards to the specifications.</dd></dt>
+<dt><span class="bold">Caduceus</span><dd> A C code certification tool that uses both <span class="caps">Coq</span> and <span class="caps">Why</span>.</dd></dt>
 <dt><span class="bold">Zenon</span><dd> A first-order theorem prover.</dd></dt>
 <dt><span class="bold">Focal</span><dd> The <a href="http://focal.inria.fr">Focal</a> project aims at building an environment to develop certified computer algebra libraries. </dd></dt>
 </dl>
-<!--TOC subsubsection What are the high-level tactics of <span> <class="caps">Coq</span>-->
+<!--TOC subsubsection What are the high-level tactics of <span class="caps">Coq</span>-->
 
-<h4 class="subsubsection"><a name="htoc12">10</a>&nbsp;&nbsp;What are the high-level tactics of <span> <class="caps">Coq</span></h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc12">10</a>&nbsp;&nbsp;What are the high-level tactics of <span class="caps">Coq</span></h4><!--SEC END -->
 
 <ul class="itemize"><li>
 Decision of quantifier-free Presburger's Arithmetic
@@ -542,9 +542,9 @@ Decision of quantifier-free Presburger's Arithmetic
 <li>Semi-decision of first-order logic
 <li>Prolog-style proof search, possibly involving equalities
 </ul>
-<!--TOC subsubsection What are the main libraries available for <span> <class="caps">Coq</span>-->
+<!--TOC subsubsection What are the main libraries available for <span class="caps">Coq</span>-->
 
-<h4 class="subsubsection"><a name="htoc13">11</a>&nbsp;&nbsp;What are the main libraries available for <span> <class="caps">Coq</span></h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc13">11</a>&nbsp;&nbsp;What are the main libraries available for <span class="caps">Coq</span></h4><!--SEC END -->
 
 <ul class="itemize"><li>
 Basic Peano's arithmetic, binary integer numbers, rational numbers,
@@ -553,11 +553,11 @@ Basic Peano's arithmetic, binary integer numbers, rational numbers,
 <li>Libraries for relations, sets and constructive algebra,
 <li>Geometry
 </ul>
-<!--TOC subsubsection What are the mathematical applications for <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection What are the mathematical applications for <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc14">12</a>&nbsp;&nbsp;What are the mathematical applications for <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc14">12</a>&nbsp;&nbsp;What are the mathematical applications for <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-<span> <class="caps">Coq</span> is used for formalizing mathematical theories, for teaching,
+<span class="caps">Coq</span> is used for formalizing mathematical theories, for teaching,
 and for proving properties of algorithms or programs libraries.<br/>
 <br/>
 The largest mathematical formalization has been done at the University
@@ -568,11 +568,11 @@ Repository at Nijmegen</a>).<br/>
 A symbolic step has also been obtained by formalizing in full a proof
 of the Four Color Theorem.<br/>
 <br/>
-<!--TOC subsubsection What are the industrial applications for <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection What are the industrial applications for <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc15">13</a>&nbsp;&nbsp;What are the industrial applications for <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc15">13</a>&nbsp;&nbsp;What are the industrial applications for <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-<span> <class="caps">Coq</span> is used e.g. to prove properties of the JavaCard system
+<span class="caps">Coq</span> is used e.g. to prove properties of the JavaCard system
 (especially by Schlumberger and Trusted Logic). It has
 also been used to formalize the semantics of the Lucid-Synchrone
 data-flow synchronous calculus used by Esterel-Technologies.<br/>
@@ -581,11 +581,11 @@ data-flow synchronous calculus used by Esterel-Technologies.<br/>
 
 <h2 class="section"><a name="htoc16">3</a>&nbsp;&nbsp;Documentation</h2><!--SEC END -->
 
-<!--TOC subsubsection Where can I find documentation about <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection Where can I find documentation about <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc17">14</a>&nbsp;&nbsp;Where can I find documentation about <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc17">14</a>&nbsp;&nbsp;Where can I find documentation about <span class="caps">Coq</span>?</h4><!--SEC END -->
  
-All the documentation about <span> <class="caps">Coq</span>, from the reference manual&nbsp;[<a href="#Coq:manual"><cite>17</cite></a>] to
+All the documentation about <span class="caps">Coq</span>, from the reference manual&nbsp;[<a href="#Coq:manual"><cite>17</cite></a>] to
 friendly tutorials&nbsp;[<a href="#Coq:Tutorial"><cite>15</cite></a>] and documentation of the standard library, is available 
 <a href="http://coq.inria.fr/doc-eng.html">online</a>.
 All these documents are viewable either in browsable HTML, or as
@@ -604,11 +604,11 @@ This FAQ is available online at <a href="http://coq.inria.fr/doc/faq.html"><tt> 
 This FAQ is unfinished (in the sense that there are some obvious
 sections that are missing). Please send contributions to <tt> Florent.Kirchner at lix.polytechnique.fr</tt>  and <tt> Julien.Narboux at inria.fr</tt> .<br/>
 <br/>
-<!--TOC subsubsection Is there any mailing list about <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection Is there any mailing list about <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc20">17</a>&nbsp;&nbsp;Is there any mailing list about <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc20">17</a>&nbsp;&nbsp;Is there any mailing list about <span class="caps">Coq</span>?</h4><!--SEC END -->
  
-The main <span> <class="caps">Coq</span> mailing list is <tt> coq-club@pauillac.inria.fr</tt> , which
+The main <span class="caps">Coq</span> mailing list is <tt> coq-club@pauillac.inria.fr</tt> , which
 broadcasts questions and suggestions about the implementation, the
 logical formalism or proof developments. See
 <a href="http://coq.inria.fr/mailman/listinfo/coq-club"><tt> http://pauillac.inria.fr/mailman/listinfo/coq-club</tt> </a> for
@@ -618,35 +618,35 @@ subscription. For bugs reports see question <a href="#coqbug">22</a>.<br/>
 
 <h4 class="subsubsection"><a name="htoc21">18</a>&nbsp;&nbsp;Where can I find an archive of the list?</h4><!--SEC END -->
 
-The archives of the <span> <class="caps">Coq</span> mailing list are available at
+The archives of the <span class="caps">Coq</span> mailing list are available at
 <a href="http://pauillac.inria.fr/pipermail/coq-club"><tt> http://coq.inria.fr/pipermail/coq-club</tt> </a>.<br/>
 <br/>
-<!--TOC subsubsection How can I be kept informed of new releases of <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection How can I be kept informed of new releases of <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc22">19</a>&nbsp;&nbsp;How can I be kept informed of new releases of <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc22">19</a>&nbsp;&nbsp;How can I be kept informed of new releases of <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-New versions of <span> <class="caps">Coq</span> are announced on the coq-club mailing list. If you only want to receive information about new releases, you can subscribe to <span> <class="caps">Coq</span> on <a href="http://freshmeat.net/projects/coq/"><tt> http://freshmeat.net/projects/coq/</tt> </a>.<br/>
+New versions of <span class="caps">Coq</span> are announced on the coq-club mailing list. If you only want to receive information about new releases, you can subscribe to <span class="caps">Coq</span> on <a href="http://freshmeat.net/projects/coq/"><tt> http://freshmeat.net/projects/coq/</tt> </a>.<br/>
 <br/>
-<!--TOC subsubsection Is there any book about <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection Is there any book about <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc23">20</a>&nbsp;&nbsp;Is there any book about <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc23">20</a>&nbsp;&nbsp;Is there any book about <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-The first book on <span> <class="caps">Coq</span>, Yves Bertot and Pierre Castéran's Coq'Art has been published by Springer-Verlag in 2004:
+The first book on <span class="caps">Coq</span>, Yves Bertot and Pierre Castéran's Coq'Art has been published by Springer-Verlag in 2004:
 <BLOCKQUOTE class="quote">
 &#8220;This book provides a pragmatic introduction to the development of
-proofs and certified programs using <span> <class="caps">Coq</span>. With its large collection of
+proofs and certified programs using <span class="caps">Coq</span>. With its large collection of
 examples and exercises it is an invaluable tool for researchers,
 students, and engineers interested in formal methods and the
 development of zero-default software.&#8221;
 </BLOCKQUOTE>
-<!--TOC subsubsection Where can I find some <span> <class="caps">Coq</span> examples?-->
+<!--TOC subsubsection Where can I find some <span class="caps">Coq</span> examples?-->
 
-<h4 class="subsubsection"><a name="htoc24">21</a>&nbsp;&nbsp;Where can I find some <span> <class="caps">Coq</span> examples?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc24">21</a>&nbsp;&nbsp;Where can I find some <span class="caps">Coq</span> examples?</h4><!--SEC END -->
  
 There are examples in the manual&nbsp;[<a href="#Coq:manual"><cite>17</cite></a>] and in the
 Coq'Art&nbsp;[<a href="#Coq:coqart"><cite>2</cite></a>] exercises <a href="http://www.labri.fr/Perso/~casteran/CoqArt/index.html"><tt> http://www.labri.fr/Perso/~casteran/CoqArt/index.html</tt> </a>.
 You can also find large developments using
-<span> <class="caps">Coq</span> in the <span> <class="caps">Coq</span> user contributions:
+<span class="caps">Coq</span> in the <span class="caps">Coq</span> user contributions:
 <a href="http://coq.inria.fr/contrib-eng.html"><tt> http://coq.inria.fr/contrib-eng.html</tt> </a>.<br/>
 <br/>
 <!--TOC subsubsection How can I report a bug?-->
@@ -659,78 +659,78 @@ You can use the web interface accessible at <a href="http://coq.inria.fr"><tt> h
 
 <h2 class="section"><a name="htoc26">4</a>&nbsp;&nbsp;Installation</h2><!--SEC END -->
 
-<!--TOC subsubsection What is the license of <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection What is the license of <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc27">23</a>&nbsp;&nbsp;What is the license of <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc27">23</a>&nbsp;&nbsp;What is the license of <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-<span> <class="caps">Coq</span> is distributed under the GNU Lesser General License
+<span class="caps">Coq</span> is distributed under the GNU Lesser General License
 (LGPL).<br/>
 <br/>
-<!--TOC subsubsection Where can I find the sources of <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection Where can I find the sources of <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc28">24</a>&nbsp;&nbsp;Where can I find the sources of <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc28">24</a>&nbsp;&nbsp;Where can I find the sources of <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-The sources of <span> <class="caps">Coq</span> can be found online in the tar.gz'ed packages
+The sources of <span class="caps">Coq</span> can be found online in the tar.gz'ed packages
 (<a href="http://coq.inria.fr"><tt> http://coq.inria.fr</tt> </a>, link
 &#8220;download&#8221;). Development sources can be accessed at
 <a href="http://coq.gforge.inria.fr/"><tt> http://coq.gforge.inria.fr/</tt> </a><br/>
 <br/>
-<!--TOC subsubsection On which platform is <span> <class="caps">Coq</span> available?-->
+<!--TOC subsubsection On which platform is <span class="caps">Coq</span> available?-->
 
-<h4 class="subsubsection"><a name="htoc29">25</a>&nbsp;&nbsp;On which platform is <span> <class="caps">Coq</span> available?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc29">25</a>&nbsp;&nbsp;On which platform is <span class="caps">Coq</span> available?</h4><!--SEC END -->
 
 Compiled binaries are available for Linux, MacOS X, and Windows. The
 sources can be easily compiled on all platforms supporting Objective
 Caml.<br/>
 <br/>
-<!--TOC section The logic of <span> <class="caps">Coq</span>-->
+<!--TOC section The logic of <span class="caps">Coq</span>-->
 
-<h2 class="section"><a name="htoc30">5</a>&nbsp;&nbsp;The logic of <span> <class="caps">Coq</span></h2><!--SEC END -->
+<h2 class="section"><a name="htoc30">5</a>&nbsp;&nbsp;The logic of <span class="caps">Coq</span></h2><!--SEC END -->
 
 <!--TOC subsection General-->
 
 <h3 class="subsection"><a name="htoc31">5.1</a>&nbsp;&nbsp;General</h3><!--SEC END -->
 
-<!--TOC subsubsection What is the logic of <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection What is the logic of <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc32">26</a>&nbsp;&nbsp;What is the logic of <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc32">26</a>&nbsp;&nbsp;What is the logic of <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-<span> <class="caps">Coq</span> is based on an axiom-free type theory called
+<span class="caps">Coq</span> is based on an axiom-free type theory called
 the Calculus of Inductive Constructions (see Coquand [<a href="#CoHu86"><cite>6</cite></a>],
 Luo&nbsp;[<a href="#Luo90"><cite>16</cite></a>]
 and Coquand&ndash;Paulin-Mohring [<a href="#CoPa89"><cite>7</cite></a>]). It includes higher-order
 functions and predicates, inductive and co-inductive datatypes and
 predicates, and a stratified hierarchy of sets.<br/>
 <br/>
-<!--TOC subsubsection Is <span> <class="caps">Coq</span>'s logic intuitionistic or classical?-->
+<!--TOC subsubsection Is <span class="caps">Coq</span>'s logic intuitionistic or classical?-->
 
-<h4 class="subsubsection"><a name="htoc33">27</a>&nbsp;&nbsp;Is <span> <class="caps">Coq</span>'s logic intuitionistic or classical?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc33">27</a>&nbsp;&nbsp;Is <span class="caps">Coq</span>'s logic intuitionistic or classical?</h4><!--SEC END -->
 
-<span> <class="caps">Coq</span>'s logic is modular. The core logic is intuitionistic
+<span class="caps">Coq</span>'s logic is modular. The core logic is intuitionistic
 (i.e. excluded-middle <span class='italic'>A</span>&or;&not; <span class='italic'>A</span> is not granted by default). It can
 be extended to classical logic on demand by requiring an
 optional module stating <span class='italic'>A</span>&or;&not; <span class='italic'>A</span>.<br/>
 <br/>
-<!--TOC subsubsection Can I define non-terminating programs in <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection Can I define non-terminating programs in <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc34">28</a>&nbsp;&nbsp;Can I define non-terminating programs in <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc34">28</a>&nbsp;&nbsp;Can I define non-terminating programs in <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-All programs in <span> <class="caps">Coq</span> are terminating. Especially, loops
+All programs in <span class="caps">Coq</span> are terminating. Especially, loops
 must come with an evidence of their termination. <br/>
 <br/>
 Non-terminating programs can be simulated by passing around a
 bound on how long the program is allowed to run before dying.<br/>
 <br/>
-<!--TOC subsubsection How is equational reasoning working in <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection How is equational reasoning working in <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc35">29</a>&nbsp;&nbsp;How is equational reasoning working in <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc35">29</a>&nbsp;&nbsp;How is equational reasoning working in <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-<span> <class="caps">Coq</span> comes with an internal notion of computation called
+<span class="caps">Coq</span> comes with an internal notion of computation called
 <span class='italic'>conversion</span> (e.g. (<span class='italic'>x</span>+1)+<span class='italic'>y</span> is internally equivalent to
 (<span class='italic'>x</span>+<span class='italic'>y</span>)+1; similarly applying argument <span class='italic'>a</span> to a function mapping <span class='italic'>x</span>
 to some expression <span class='italic'>t</span> converts to the expression <span class='italic'>t</span> where <span class='italic'>x</span> is
 replaced by <span class='italic'>a</span>). This notion of conversion (which is decidable
-because <span> <class="caps">Coq</span> programs are terminating) covers a certain part of
+because <span class="caps">Coq</span> programs are terminating) covers a certain part of
 equational reasoning but is limited to sequential evaluation of
 expressions of (not necessarily closed) programs. Besides conversion,
 equations have to be treated by hand or using specialised tactics.<br/>
@@ -739,14 +739,14 @@ equations have to be treated by hand or using specialised tactics.<br/>
 
 <h3 class="subsection"><a name="htoc36">5.2</a>&nbsp;&nbsp;Axioms</h3><!--SEC END -->
 
-<!--TOC subsubsection What axioms can be safely added to <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection What axioms can be safely added to <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc37">30</a>&nbsp;&nbsp;What axioms can be safely added to <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc37">30</a>&nbsp;&nbsp;What axioms can be safely added to <span class="caps">Coq</span>?</h4><!--SEC END -->
 
 There are a few typical useful axioms that are independent from the
 Calculus of Inductive Constructions and that can be safely added to
-<span> <class="caps">Coq</span>. These axioms are stated in the directory <tt> Logic</tt>  of the
-standard library of <span> <class="caps">Coq</span>. The most interesting ones are
+<span class="caps">Coq</span>. These axioms are stated in the directory <tt> Logic</tt>  of the
+standard library of <span class="caps">Coq</span>. The most interesting ones are
 <ul class="itemize"><li>
 Excluded-middle: &forall; <span class='italic'>A</span>:<span class='italic'>Prop</span>, <span class='italic'>A</span> &or; &not; <span class='italic'>A</span>
 <li>Proof-irrelevance: &forall; <span class='italic'>A</span>:<span class='italic'>Prop</span> &forall; <span class='italic'>p</span><SUB>1</SUB> <span class='italic'>p</span><SUB>2</SUB>:<span class='italic'>A</span>, <span class='italic'>p</span><SUB>1</SUB>=<span class='italic'>p</span><SUB>2</SUB>
@@ -764,9 +764,9 @@ set theory.<br/>
 <br/>
 
 
-<!--TOC subsubsection What standard axioms are inconsistent with <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection What standard axioms are inconsistent with <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc38">31</a>&nbsp;&nbsp;What standard axioms are inconsistent with <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc38">31</a>&nbsp;&nbsp;What standard axioms are inconsistent with <span class="caps">Coq</span>?</h4><!--SEC END -->
 
 The axiom of unique choice together with classical logic
 (e.g. excluded-middle) are inconsistent in the variant of the Calculus
@@ -863,7 +863,7 @@ proposition is called <span class='italic'>proof-irrelevance</span>:
 </div> <br/>
 <br/>
 Proof-irrelevance (in <tt> Prop</tt> ) can be assumed without contradiction in
-<span> <class="caps">Coq</span>. It expresses that only provability matters, whatever the exact
+<span class="caps">Coq</span>. It expresses that only provability matters, whatever the exact
 form of the proof is. This is in harmony with the common purely
 logical interpretation of <tt> Prop</tt> . Contrastingly, proof-irrelevance is
 inconsistent in <tt> Set</tt>  since there are types in <tt> Set</tt> , such as the
@@ -915,17 +915,17 @@ is provable, then <span class='italic'>P</span>(&forall; <span class='italic'>A<
 <h4 class="subsubsection"><a name="htoc43">36</a>&nbsp;&nbsp;Is <tt> Set</tt>  impredicative?</h4><!--SEC END -->
 
 No, the sort <tt> Set</tt>  lying at the bottom of the hierarchy of
-computational types is <span class='italic'>predicative</span> in the basic <span> <class="caps">Coq</span> system.
+computational types is <span class='italic'>predicative</span> in the basic <span class="caps">Coq</span> system.
 This means that a family of types in <tt> Set</tt> , e.g. &forall; <span class='italic'>A</span>:<tt> <span class='italic'>Set</span></tt> , <span class='italic'>A</span>
 &rarr; <span class='italic'>A</span>, is not a type in <tt> Set</tt>  and it cannot be applied on
 itself.<br/>
 <br/>
 However, the sort <tt> Set</tt>  was impredicative in the original versions of
-<span> <class="caps">Coq</span>. For backward compatibility, or for experiments by
-knowledgeable users, the logic of <span> <class="caps">Coq</span> can be set impredicative for
-<tt> Set</tt>  by calling <span> <class="caps">Coq</span> with the option <tt> -impredicative-set</tt> .<br/>
+<span class="caps">Coq</span>. For backward compatibility, or for experiments by
+knowledgeable users, the logic of <span class="caps">Coq</span> can be set impredicative for
+<tt> Set</tt>  by calling <span class="caps">Coq</span> with the option <tt> -impredicative-set</tt> .<br/>
 <br/>
-<tt> Set</tt>  has been made predicative from version 8.0 of <span> <class="caps">Coq</span>. The main
+<tt> Set</tt>  has been made predicative from version 8.0 of <span class="caps">Coq</span>. The main
 reason is to interact smoothly with a classical mathematical world
 where both excluded-middle and the axiom of description are valid (see
 file <a href="http://coq.inria.fr/library/Coq.Logic.ClassicalDescription.html
@@ -941,14 +941,14 @@ excluded-middle in <tt> Set</tt> ).<br/>
 <h4 class="subsubsection"><a name="htoc44">37</a>&nbsp;&nbsp;Is <tt> Type</tt>  impredicative?</h4><!--SEC END -->
 
 No, <tt> Type</tt>  is stratified. This is hidden for the
-user, but <span> <class="caps">Coq</span> internally maintains a set of constraints ensuring
+user, but <span class="caps">Coq</span> internally maintains a set of constraints ensuring
 stratification.<br/>
 <br/>
 If <tt> Type</tt>  were impredicative then it would be possible to encode
-Girard's systems <span class='italic'>U</span>&minus; and <span class='italic'>U</span> in <span> <class="caps">Coq</span> and it is known from Girard,
+Girard's systems <span class='italic'>U</span>&minus; and <span class='italic'>U</span> in <span class="caps">Coq</span> and it is known from Girard,
 Coquand, Hurkens and Miquel that systems <span class='italic'>U</span>&minus; and <span class='italic'>U</span> are inconsistent
 [Girard 1972, Coquand 1991, Hurkens 1993, Miquel 2001]. This encoding
-can be found in file <tt> Logic/Hurkens.v</tt>  of <span> <class="caps">Coq</span> standard library.<br/>
+can be found in file <tt> Logic/Hurkens.v</tt>  of <span class="caps">Coq</span> standard library.<br/>
 <br/>
 For instance, when the user see <tt> &forall; X:Type, X-&gt;X : Type</tt> , each
 occurrence of <tt> Type</tt>  is implicitly bound to a different level, say
@@ -963,7 +963,7 @@ inconsistency</tt>  appears. Example: <tt> fun (x:Type) (y:&forall; X:Type, X
 
 <h4 class="subsubsection"><a name="htoc45">38</a>&nbsp;&nbsp;I have two proofs of the same proposition. Can I prove they are equal?</h4><!--SEC END -->
 
-In the base <span> <class="caps">Coq</span> system, the answer is generally no. However, if
+In the base <span class="caps">Coq</span> system, the answer is generally no. However, if
 classical logic is set, the answer is yes for propositions in <tt> Prop</tt> .
 The answer is also yes if proof irrelevance holds (see question
 <a href="#proof-irrelevance">33</a>).<br/>
@@ -982,7 +982,7 @@ equal?-->
 equal?</h4><!--SEC END -->
 
 Yes, if equality is decidable on the domain considered (which
-is the case for <tt> nat</tt> , <tt> bool</tt> , etc): see <span> <class="caps">Coq</span> file
+is the case for <tt> nat</tt> , <tt> bool</tt> , etc): see <span class="caps">Coq</span> file
 <code>Eqdep_dec.v</code>). No otherwise, unless
 assuming Streicher's axiom <span class='italic'>K</span> (see [<a href="#HofStr98"><cite>13</cite></a>]) or a more general
 assumption such as proof-irrelevance (see <a href="#proof-irrelevance">33</a>) or
@@ -1018,7 +1018,7 @@ the result (look at <code>inj_pair2</code> in <a href="http://coq.inria.fr/libra
 <h4 class="subsubsection"><a name="htoc49">41</a>&nbsp;&nbsp;Why <tt> injection</tt>  does not work on impredicative <tt> Set</tt> ?</h4><!--SEC END -->
 
 E.g. in this case (this occurs only in the <tt> Set</tt> -impredicative
- variant of <span> <class="caps">Coq</span>):<br/>
+ variant of <span class="caps">Coq</span>):<br/>
 <br/>
 
 <div class="flushleft">
@@ -1056,7 +1056,7 @@ a large inductive type:<br/>
 </div>
 <br/>
 <br/>
-In the <tt> Set</tt>  impredicative variant of <span> <class="caps">Coq</span>, large inductive
+In the <tt> Set</tt>  impredicative variant of <span class="caps">Coq</span>, large inductive
 definitions in <tt> Set</tt>  have restricted elimination schemes to
 prevent inconsistencies. Especially, projecting the set or the
 proposition content of a large inductive definition is forbidden. If
@@ -1284,7 +1284,7 @@ An example using classical reasoning:<br/>
 Use some theorem or assumption or introduce the quantified variable in
 the context using the <tt> intro</tt>  tactic. If there are several
 variables you can use the <tt> intros</tt>  tactic. A good habit is to
-provide names for these variables: <span> <class="caps">Coq</span> will do it anyway, but such
+provide names for these variables: <span class="caps">Coq</span> will do it anyway, but such
 automatic naming decreases legibility and robustness.<br/>
 <br/>
 <!--TOC subsubsection My goal is an existential, how can I prove it?-->
@@ -2373,7 +2373,7 @@ proving the assumption) use the <tt> cut</tt>  tactic.<br/>
 
 <h4 class="subsubsection"><a name="htoc83">72</a>&nbsp;&nbsp;I want to state a fact that I will use later as an hypothesis and prove it later, how can I do it?</h4><!--SEC END -->
 
-You can use <tt> cut</tt>  followed by <tt> intro</tt>  or you can use the following <span> <class="caps">Ltac</span> command:
+You can use <tt> cut</tt>  followed by <tt> intro</tt>  or you can use the following <span class="caps">Ltac</span> command:
 <pre class="verbatim">
 Ltac assert_later t := cut t;[intro|idtac]. 
 </pre>
@@ -2456,7 +2456,7 @@ You can use the <tt> case</tt>  or <tt> destruct</tt>  tactics.<br/>
 <h4 class="subsubsection"><a name="htoc96">85</a>&nbsp;&nbsp;Why should I name my intros?</h4><!--SEC END -->
 
 When you use the <tt> intro</tt>  tactic you don't have to give a name to your
-hypothesis. If you do so the name will be generated by <span> <class="caps">Coq</span> but your
+hypothesis. If you do so the name will be generated by <span class="caps">Coq</span> but your
 scripts may be less robust. If you add some hypothesis to your theorem
 (or change their order), you will have to change your proof to adapt
 to the new names.<br/>
@@ -2696,9 +2696,9 @@ is rendered into something like
 </pre>Otherwise said, <tt> generalize</tt>  is not rendered in a forward-reasoning way,
 while <tt> assert</tt>  is.<br/>
 <br/>
-<!--TOC subsubsection What can I do if <span> <class="caps">Coq</span>can not infer some implicit argument ?-->
+<!--TOC subsubsection What can I do if <span class="caps">Coq</span>can not infer some implicit argument ?-->
 
-<h4 class="subsubsection"><a name="htoc106">95</a>&nbsp;&nbsp;What can I do if <span> <class="caps">Coq</span>can not infer some implicit argument ?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc106">95</a>&nbsp;&nbsp;What can I do if <span class="caps">Coq</span>can not infer some implicit argument ?</h4><!--SEC END -->
 
 You can state explicitely what this implicit argument is. See <a href="#implicit">96</a>.<br/>
 <br/>
@@ -2756,7 +2756,7 @@ You can use the <tt> Admitted</tt>  command to state your current proof as an ax
 
 <h4 class="subsubsection"><a name="htoc115">103</a>&nbsp;&nbsp;What is the difference between a lemma, a fact and a theorem?</h4><!--SEC END -->
 
-From <span> <class="caps">Coq</span> point of view there are no difference. But some tools can
+From <span class="caps">Coq</span> point of view there are no difference. But some tools can
 have a different behavior when you use a lemma rather than a
 theorem. For instance <tt> coqdoc</tt>  will not generate documentation for
 the lemmas within your development.<br/>
@@ -2765,7 +2765,7 @@ the lemmas within your development.<br/>
 
 <h4 class="subsubsection"><a name="htoc116">104</a>&nbsp;&nbsp;How can I organize my proofs?</h4><!--SEC END -->
 
-You can organize your proofs using the section mechanism of <span> <class="caps">Coq</span>. Have
+You can organize your proofs using the section mechanism of <span class="caps">Coq</span>. Have
 a look at the manual for further information.<br/>
 <br/>
 <!--TOC section Inductive and Co-inductive types-->
@@ -2839,7 +2839,7 @@ Since <tt> +</tt>  (<tt> plus</tt> ) on natural numbers is defined by analysis o
 </div>
 <br/>
 <br/>
- The expression <tt> 0+n</tt>  evaluates to <tt> n</tt> . As <span> <class="caps">Coq</span> reasons
+ The expression <tt> 0+n</tt>  evaluates to <tt> n</tt> . As <span class="caps">Coq</span> reasons
 modulo evaluation of expressions, <tt> 0+n</tt>  and <tt> n</tt>  are
 considered equal and the theorem <tt> 0+n=n</tt>  is an instance of the
 reflexivity of equality. On the other side, <tt> n+0</tt>  does not
@@ -2875,7 +2875,7 @@ If you type for instance the following &#8220;definition&#8221;:
 </div>
 <br/>
 <br/>
-As <span> <class="caps">Coq</span>&nbsp; says, the term &#8220;&nbsp;<tt> n &lt;= p</tt> &nbsp;&#8221; is a proposition, i.e. a
+As <span class="caps">Coq</span>&nbsp; says, the term &#8220;&nbsp;<tt> n &lt;= p</tt> &nbsp;&#8221; is a proposition, i.e. a
 statement that belongs to the mathematical world. There are many ways to
 prove such a proposition, either by some computation, or using some already
 proven theoremas. For instance, proving 3&minus;2 &#8804; 2<span class="sup">45503</span> is very easy,
@@ -3119,7 +3119,7 @@ as the termination of the evaluation of CIC programs themselves!).<br/>
 In spite of this, all non-pathological termination orders can be mapped
 to a structural order. Tools to do this are provided in the file 
 <a href="http://coq.inria.fr/library/Coq.Init.Wf.html
-"><tt> Wf.v</tt> </a> of the standard library of <span> <class="caps">Coq</span>.<br/>
+"><tt> Wf.v</tt> </a> of the standard library of <span class="caps">Coq</span>.<br/>
 <br/>
 <!--TOC subsubsection How to define loops based on non structurally smaller
 recursive calls?-->
@@ -3457,7 +3457,7 @@ Here is what it gives on e.g. the type of streams on naturals<br/>
 You can define your own notation for forall:
 <pre class="verbatim">
 Notation "fa x : t, P" := (forall x:t, P) (at level 200, x ident).
-</pre>or if your are using <span> <class="caps">CoqIde</span> you can define a pretty symbol for for all and an input method (see <a href="#forallcoqide">152</a>).<br/>
+</pre>or if your are using <span class="caps">CoqIde</span> you can define a pretty symbol for for all and an input method (see <a href="#forallcoqide">152</a>).<br/>
 <br/>
 <!--TOC subsubsection How can I define a notation for square?-->
 
@@ -3487,31 +3487,31 @@ You can do &#8220;Print Grammar constr&#8221;, and decode the output from camlp4
 
 <h2 class="section"><a name="htoc142">9</a>&nbsp;&nbsp;Modules</h2><!--SEC END -->
 
-<!--TOC section <span> <class="caps">Ltac</span>-->
+<!--TOC section <span class="caps">Ltac</span>-->
 
-<h2 class="section"><a name="htoc143">10</a>&nbsp;&nbsp;<span> <class="caps">Ltac</span></h2><!--SEC END -->
+<h2 class="section"><a name="htoc143">10</a>&nbsp;&nbsp;<span class="caps">Ltac</span></h2><!--SEC END -->
 
-<!--TOC subsubsection What is <span> <class="caps">Ltac</span>?-->
+<!--TOC subsubsection What is <span class="caps">Ltac</span>?-->
 
-<h4 class="subsubsection"><a name="htoc144">125</a>&nbsp;&nbsp;What is <span> <class="caps">Ltac</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc144">125</a>&nbsp;&nbsp;What is <span class="caps">Ltac</span>?</h4><!--SEC END -->
 
-<span> <class="caps">Ltac</span> is the tactic language for <span> <class="caps">Coq</span>. It provides the user with a
+<span class="caps">Ltac</span> is the tactic language for <span class="caps">Coq</span>. It provides the user with a
 high-level &#8220;toolbox&#8221; for tactic creation.<br/>
 <br/>
 <!--TOC subsubsection Why do I always get the same error message?-->
 
 <h4 class="subsubsection"><a name="htoc145">126</a>&nbsp;&nbsp;Why do I always get the same error message?</h4><!--SEC END -->
 
-<!--TOC subsubsection Is there any printing command in <span> <class="caps">Ltac</span>?-->
+<!--TOC subsubsection Is there any printing command in <span class="caps">Ltac</span>?-->
 
-<h4 class="subsubsection"><a name="htoc146">127</a>&nbsp;&nbsp;Is there any printing command in <span> <class="caps">Ltac</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc146">127</a>&nbsp;&nbsp;Is there any printing command in <span class="caps">Ltac</span>?</h4><!--SEC END -->
 
 You can use the <tt> idtac</tt>  tactic with a string argument. This string
 will be printed out. The same applies to the <tt> fail</tt>  tactic<br/>
 <br/>
-<!--TOC subsubsection What is the syntax for let in <span> <class="caps">Ltac</span>?-->
+<!--TOC subsubsection What is the syntax for let in <span class="caps">Ltac</span>?-->
 
-<h4 class="subsubsection"><a name="htoc147">128</a>&nbsp;&nbsp;What is the syntax for let in <span> <class="caps">Ltac</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc147">128</a>&nbsp;&nbsp;What is the syntax for let in <span class="caps">Ltac</span>?</h4><!--SEC END -->
 
 If <span class='italic'>x</span><SUB><span class='italic'>i</span></SUB> are identifiers and <span class='italic'>e</span><SUB><span class='italic'>i</span></SUB> and <span class='italic'>expr</span> are tactic expressions, then let reads:
 <div class="center">
@@ -3527,9 +3527,9 @@ should be added around it. For example:
 </div>
 <br/>
 <br/>
-<!--TOC subsubsection What is the syntax for pattern matching in <span> <class="caps">Ltac</span>?-->
+<!--TOC subsubsection What is the syntax for pattern matching in <span class="caps">Ltac</span>?-->
 
-<h4 class="subsubsection"><a name="htoc148">129</a>&nbsp;&nbsp;What is the syntax for pattern matching in <span> <class="caps">Ltac</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc148">129</a>&nbsp;&nbsp;What is the syntax for pattern matching in <span class="caps">Ltac</span>?</h4><!--SEC END -->
 
 Pattern matching on a term <span class='italic'>expr</span> (non-linear first order unification)
 with patterns <span class='italic'>p</span><SUB><span class='italic'>i</span></SUB> and tactic expressions <span class='italic'>e</span><SUB><span class='italic'>i</span></SUB> reads:
@@ -3600,7 +3600,7 @@ For example:
 
 <h4 class="subsubsection"><a name="htoc154">134</a>&nbsp;&nbsp;Can you show me an example of a tactic written in OCaml?</h4><!--SEC END -->
 
-You have some examples of tactics written in Ocaml in the &#8220;contrib&#8221; directory of <span> <class="caps">Coq</span> sources. <br/>
+You have some examples of tactics written in Ocaml in the &#8220;contrib&#8221; directory of <span class="caps">Coq</span> sources. <br/>
 <br/>
 <!--TOC section Case studies-->
 
@@ -3898,15 +3898,15 @@ You can use <tt> coqdoc</tt> .<br/>
 
 <h4 class="subsubsection"><a name="htoc166">144</a>&nbsp;&nbsp;How can I generate some dependency graph from my development?</h4><!--SEC END -->
 
-<!--TOC subsubsection How can I cite some <span> <class="caps">Coq</span> in my latex document?-->
+<!--TOC subsubsection How can I cite some <span class="caps">Coq</span> in my latex document?-->
 
-<h4 class="subsubsection"><a name="htoc167">145</a>&nbsp;&nbsp;How can I cite some <span> <class="caps">Coq</span> in my latex document?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc167">145</a>&nbsp;&nbsp;How can I cite some <span class="caps">Coq</span> in my latex document?</h4><!--SEC END -->
 
 You can use <tt> coq_tex</tt> .<br/>
 <br/>
-<!--TOC subsubsection How can I cite the <span> <class="caps">Coq</span> reference manual?-->
+<!--TOC subsubsection How can I cite the <span class="caps">Coq</span> reference manual?-->
 
-<h4 class="subsubsection"><a name="htoc168">146</a>&nbsp;&nbsp;How can I cite the <span> <class="caps">Coq</span> reference manual?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc168">146</a>&nbsp;&nbsp;How can I cite the <span class="caps">Coq</span> reference manual?</h4><!--SEC END -->
 
 You can use this bibtex entry:
 <pre class="verbatim">
@@ -3919,13 +3919,13 @@ You can use this bibtex entry:
   url =          "http://coq.inria.fr"
 }
 </pre>
-<!--TOC subsubsection Where can I publish my developments in <span> <class="caps">Coq</span>?-->
+<!--TOC subsubsection Where can I publish my developments in <span class="caps">Coq</span>?-->
 
-<h4 class="subsubsection"><a name="htoc169">147</a>&nbsp;&nbsp;Where can I publish my developments in <span> <class="caps">Coq</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc169">147</a>&nbsp;&nbsp;Where can I publish my developments in <span class="caps">Coq</span>?</h4><!--SEC END -->
 
-You can submit your developments as a user contribution to the <span> <class="caps">Coq</span>
+You can submit your developments as a user contribution to the <span class="caps">Coq</span>
 development team. This ensures its liveness along the evolution and
-possible changes of <span> <class="caps">Coq</span>.<br/>
+possible changes of <span class="caps">Coq</span>.<br/>
 <br/>
 You can also submit your developments to the HELM/MoWGLI repository at
 the University of Bologna (see
@@ -3942,15 +3942,15 @@ You can submit your proof to the HELM/MoWGLI repository and use the
 rendering tool provided by the server (see
 <a href="http://mowgli.cs.unibo.it"><tt> http://mowgli.cs.unibo.it</tt> </a>).<br/>
 <br/>
-<!--TOC section <span> <class="caps">CoqIde</span>-->
+<!--TOC section <span class="caps">CoqIde</span>-->
 
-<h2 class="section"><a name="htoc171">14</a>&nbsp;&nbsp;<span> <class="caps">CoqIde</span></h2><!--SEC END -->
+<h2 class="section"><a name="htoc171">14</a>&nbsp;&nbsp;<span class="caps">CoqIde</span></h2><!--SEC END -->
 
-<!--TOC subsubsection What is <span> <class="caps">CoqIde</span>?-->
+<!--TOC subsubsection What is <span class="caps">CoqIde</span>?-->
 
-<h4 class="subsubsection"><a name="htoc172">149</a>&nbsp;&nbsp;What is <span> <class="caps">CoqIde</span>?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc172">149</a>&nbsp;&nbsp;What is <span class="caps">CoqIde</span>?</h4><!--SEC END -->
 
-<span> <class="caps">CoqIde</span> is a gtk based GUI for <span> <class="caps">Coq</span>.<br/>
+<span class="caps">CoqIde</span> is a gtk based GUI for <span class="caps">Coq</span>.<br/>
 <br/>
 <!--TOC subsubsection How to enable Emacs keybindings?-->
 
@@ -3971,21 +3971,21 @@ Set the <code>GDK_USE_XFT</code> variable to <code>1</code>. This is by default 
 
 <h4 class="subsubsection"><a name="htoc175">152</a>&nbsp;&nbsp;How to use those Forall and Exists pretty symbols?</h4><!--SEC END -->
 <a name="forallcoqide"></a>
- Thanks to the notation features in <span> <class="caps">Coq</span>, you just need to insert these
-lines in your <span> <class="caps">Coq</span> buffer:<br/>
+ Thanks to the notation features in <span class="caps">Coq</span>, you just need to insert these
+lines in your <span class="caps">Coq</span> buffer:<br/>
 <tt> N</tt> otation "&forall; x : t, P" := (forall x:t, P) (at level 200, x ident).
 <br/>
 <tt> N</tt> otation "&exist; x : t, P" := (exists x:t, P) (at level 200, x ident).
 <br/>
 <br/>
-Copy/Paste of these lines from this file will not work outside of <span> <class="caps">CoqIde</span>.
+Copy/Paste of these lines from this file will not work outside of <span class="caps">CoqIde</span>.
 You need to load a file containing these lines or to enter the &forall;
 using an input method (see <a href="#inputmeth">153</a>). To try it just use <code>Require Import utf8</code> from inside
-<span> <class="caps">CoqIde</span>. 
+<span class="caps">CoqIde</span>. 
 To enable these notations automatically start coqide with
 <pre class="verbatim">
  coqide -l utf8
-</pre>In the ide subdir of <span> <class="caps">Coq</span> library, you will find a sample utf8.v with some 
+</pre>In the ide subdir of <span class="caps">Coq</span> library, you will find a sample utf8.v with some 
 pretty simple notations.<br/>
 <br/>
 <!--TOC subsubsection How to define an input method for non ASCII symbols?-->
@@ -4015,9 +4015,9 @@ Glib.Utf8.from_unichar 0x2200;;
 </pre>	Further symbols can be bound on higher Fxx keys or on even on other keys you
 	do not need .</li>
 </ul>
-<!--TOC subsubsection How to build a custom <span> <class="caps">CoqIde</span> with user ml code?-->
+<!--TOC subsubsection How to build a custom <span class="caps">CoqIde</span> with user ml code?-->
 
-<h4 class="subsubsection"><a name="htoc177">154</a>&nbsp;&nbsp;How to build a custom <span> <class="caps">CoqIde</span> with user ml code?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc177">154</a>&nbsp;&nbsp;How to build a custom <span class="caps">CoqIde</span> with user ml code?</h4><!--SEC END -->
 
  Use 
 	coqmktop -ide -byte m1.cmo...mi.cmo
@@ -4032,7 +4032,7 @@ Glib.Utf8.from_unichar 0x2200;;
 <ul class="itemize"><li>
 Edit $HOME/.coqide.keys by hand or</li>
 <li>Add "gtk-can-change-accels = 1" in your .coqide-gtk2rc file. Then
- from <span> <class="caps">CoqIde</span>, you may select a menu entry and press the desired 
+ from <span class="caps">CoqIde</span>, you may select a menu entry and press the desired 
  shortcut. </li>
 </ul>
 <!--TOC subsubsection What encoding should I use? What is this \x{iiii} in my file?-->
@@ -4090,14 +4090,14 @@ The goal is the statement to be proved.<br/>
 
 <h4 class="subsubsection"><a name="htoc187">162</a>&nbsp;&nbsp;What is a meta variable?</h4><!--SEC END -->
 
-A meta variable in <span> <class="caps">Coq</span> represents a &#8220;hole&#8221;, i.e. a part of a proof
+A meta variable in <span class="caps">Coq</span> represents a &#8220;hole&#8221;, i.e. a part of a proof
 that is still unknown. <br/>
 <br/>
 <!--TOC subsubsection What is Gallina?-->
 
 <h4 class="subsubsection"><a name="htoc188">163</a>&nbsp;&nbsp;What is Gallina?</h4><!--SEC END -->
  
-Gallina is the specification language of <span> <class="caps">Coq</span>. Complete documentation
+Gallina is the specification language of <span class="caps">Coq</span>. Complete documentation
 of this language can be found in the Reference Manual.<br/>
 <br/>
 <!--TOC subsubsection What is The Vernacular?-->
@@ -4119,11 +4119,11 @@ of size <span class='italic'>n</span>. Its type depends on <span class='italic'>
 <h4 class="subsubsection"><a name="htoc191">166</a>&nbsp;&nbsp;What is a proof by reflection?</h4><!--SEC END -->
 
 This is a proof generated by some computation which is done using the
-internal reduction of <span> <class="caps">Coq</span> (not using the tactic language of <span> <class="caps">Coq</span>
-(<span> <class="caps">Ltac</span>) nor the implementation language for <span> <class="caps">Coq</span>). An example of
+internal reduction of <span class="caps">Coq</span> (not using the tactic language of <span class="caps">Coq</span>
+(<span class="caps">Ltac</span>) nor the implementation language for <span class="caps">Coq</span>). An example of
 tactic using the reflection mechanism is the <tt> ring</tt>  tactic. The
-reflection method consist in reflecting a subset of <span> <class="caps">Coq</span> language (for
-example the arithmetical expressions) into an object of the <span> <class="caps">Coq</span>language itself (in this case an inductive type denoting arithmetical
+reflection method consist in reflecting a subset of <span class="caps">Coq</span> language (for
+example the arithmetical expressions) into an object of the <span class="caps">Coq</span>language itself (in this case an inductive type denoting arithmetical
 expressions). For more information see&nbsp;[<a href="#howe"><cite>14</cite></a><cite>, </cite><a href="#harrison"><cite>12</cite></a><cite>, </cite><a href="#boutin"><cite>3</cite></a>]
 and the last chapter of the Coq'Art.<br/>
 <br/>
@@ -4177,21 +4177,21 @@ You have to backtrack to the faulty occurrence of <tt> eauto</tt>  or
 
 <h4 class="subsubsection"><a name="htoc199">173</a>&nbsp;&nbsp;What can I do if I get &#8220;Cannot solve a second-order unification problem&#8221;?</h4><!--SEC END -->
 
-You can help <span> <class="caps">Coq</span> using the <tt> pattern</tt>  tactic.<br/>
+You can help <span class="caps">Coq</span> using the <tt> pattern</tt>  tactic.<br/>
 <br/>
-<!--TOC subsubsection Why does <span> <class="caps">Coq</span> tell me that <tt> {x:A|(P x)}</tt>  is not convertible with <tt> (sig A P)</tt> ?-->
+<!--TOC subsubsection Why does <span class="caps">Coq</span> tell me that <tt> {x:A|(P x)}</tt>  is not convertible with <tt> (sig A P)</tt> ?-->
 
-<h4 class="subsubsection"><a name="htoc200">174</a>&nbsp;&nbsp;Why does <span> <class="caps">Coq</span> tell me that <tt> {x:A|(P x)}</tt>  is not convertible with <tt> (sig A P)</tt> ?</h4><!--SEC END -->
+<h4 class="subsubsection"><a name="htoc200">174</a>&nbsp;&nbsp;Why does <span class="caps">Coq</span> tell me that <tt> {x:A|(P x)}</tt>  is not convertible with <tt> (sig A P)</tt> ?</h4><!--SEC END -->
 
 This is because <tt> {x:A|P x}</tt>  is a notation for
-<tt> sig (fun x:A =&gt; P x)</tt> . Since <span> <class="caps">Coq</span> does not reason up to
+<tt> sig (fun x:A =&gt; P x)</tt> . Since <span class="caps">Coq</span> does not reason up to
 &eta;-conversion, this is different from <tt> sig P</tt> .<br/>
 <br/>
-<!--TOC subsubsection I copy-paste a term and <span> <class="caps">Coq</span> says it is not convertible
+<!--TOC subsubsection I copy-paste a term and <span class="caps">Coq</span> says it is not convertible
  to the original term. Sometimes it even says the copied term is not
 well-typed.-->
 
-<h4 class="subsubsection"><a name="htoc201">175</a>&nbsp;&nbsp;I copy-paste a term and <span> <class="caps">Coq</span> says it is not convertible
+<h4 class="subsubsection"><a name="htoc201">175</a>&nbsp;&nbsp;I copy-paste a term and <span class="caps">Coq</span> says it is not convertible
  to the original term. Sometimes it even says the copied term is not
 well-typed.</h4><!--SEC END -->
 
@@ -4224,12 +4224,12 @@ again the missing coercion.<br/>
 <h4 class="subsubsection"><a name="htoc203">176</a>&nbsp;&nbsp;What if my question isn't answered here?</h4><!--SEC END -->
  
 <a name="lastquestion"></a>
-Don't panic <code>:-)</code>. You can try the <span> <class="caps">Coq</span> manual&nbsp;[<a href="#Coq:manual"><cite>17</cite></a>] for a technical
+Don't panic <code>:-)</code>. You can try the <span class="caps">Coq</span> manual&nbsp;[<a href="#Coq:manual"><cite>17</cite></a>] for a technical
 description of the prover. The Coq'Art&nbsp;[<a href="#Coq:coqart"><cite>2</cite></a>] is the first
-book written on <span> <class="caps">Coq</span> and provides a comprehensive review of the
+book written on <span class="caps">Coq</span> and provides a comprehensive review of the
 theorem prover as well as a number of example and exercises. Finally,
 the tutorial&nbsp;[<a href="#Coq:Tutorial"><cite>15</cite></a>] provides a smooth introduction to
-theorem proving in <span> <class="caps">Coq</span>.<br/>
+theorem proving in <span class="caps">Coq</span>.<br/>
 <br/>
 
 
