@@ -769,9 +769,9 @@ Calculus of Inductive Constructions and that can be safely added to
 standard library of <span class="caps">Coq</span>. The most interesting ones are
 <ul class="itemize"><li>
 Excluded-middle: &forall; <span class='italic'>A</span>:<span class='italic'>Prop</span>, <span class='italic'>A</span> &or; &not; <span class='italic'>A</span>
-<li>Proof-irrelevance: &forall; <span class='italic'>A</span>:<span class='italic'>Prop</span> &forall; <span class='italic'>p</span><SUB>1</SUB> <span class='italic'>p</span><SUB>2</SUB>:<span class='italic'>A</span>, <span class='italic'>p</span><SUB>1</SUB>=<span class='italic'>p</span><SUB>2</SUB>
+<li>Proof-irrelevance: &forall; <span class='italic'>A</span>:<span class='italic'>Prop</span> &forall; <span class='italic'>p</span><span class="sub">1</span> <span class='italic'>p</span><span class="sub">2</span>:<span class='italic'>A</span>, <span class='italic'>p</span><span class="sub">1</span>=<span class='italic'>p</span><span class="sub">2</span>
 <li>Unicity of equality proofs (or equivalently Streicher's axiom <span class='italic'>K</span>):
-&forall; <span class='italic'>A</span> &forall; <span class='italic'>x</span> <span class='italic'>y</span>:<span class='italic'>A</span> &forall; <span class='italic'>p</span><SUB>1</SUB> <span class='italic'>p</span><SUB>2</SUB>:<span class='italic'>x</span>=<span class='italic'>y</span>, <span class='italic'>p</span><SUB>1</SUB>=<span class='italic'>p</span><SUB>2</SUB>
+&forall; <span class='italic'>A</span> &forall; <span class='italic'>x</span> <span class='italic'>y</span>:<span class='italic'>A</span> &forall; <span class='italic'>p</span><span class="sub">1</span> <span class='italic'>p</span><span class="sub">2</span>:<span class='italic'>x</span>=<span class='italic'>y</span>, <span class='italic'>p</span><span class="sub">1</span>=<span class='italic'>p</span><span class="sub">2</span>
 <li>The axiom of unique choice: &forall; <span class='italic'>x</span> &exist;! <span class='italic'>y</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>y</span>) &rarr; &exist; <span class='italic'>f</span> &forall; <span class='italic'>x</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>f</span>(<span class='italic'>x</span>))
 <li>The functional axiom of choice: &forall; <span class='italic'>x</span> &exist; <span class='italic'>y</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>y</span>) &rarr; &exist; <span class='italic'>f</span> &forall; <span class='italic'>x</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>f</span>(<span class='italic'>x</span>))
 <li>Extensionality of predicates: &forall; <span class='italic'>P</span> <span class='italic'>Q</span>:<span class='italic'>A</span>&rarr; <span class='italic'>Prop</span>, (&forall; <span class='italic'>x</span>, <span class='italic'>P</span>(<span class='italic'>x</span>) &#8596; <span class='italic'>Q</span>(<span class='italic'>x</span>)) &rarr; <span class='italic'>P</span>=<span class='italic'>Q</span>
@@ -3328,7 +3328,7 @@ compilation algorithm to do the work for you. Here is an example:<br/>
 <br/>
 <br/>
 In case of dependencies in the type of the induction objects
-<span class='italic'>t</span><SUB>1</SUB> and <span class='italic'>t</span><SUB>2</SUB>, an extra argument stating <span class='italic'>t</span><SUB>1</SUB>=<span class='italic'>t</span><SUB>2</SUB> must be given to
+<span class='italic'>t</span><span class="sub">1</span> and <span class='italic'>t</span><span class="sub">2</span>, an extra argument stating <span class='italic'>t</span><span class="sub">1</span>=<span class='italic'>t</span><span class="sub">2</span> must be given to
 the fixpoint definition<br/>
 <br/>
 <!--TOC subsubsection How to perform nested and double induction?-->
@@ -3533,9 +3533,9 @@ will be printed out. The same applies to the <tt> fail</tt>  tactic<br/>
 
 <h4 class="subsubsection"><a name="htoc147">128</a>&nbsp;&nbsp;What is the syntax for let in <span class="caps">Ltac</span>?</h4><!--SEC END -->
 
-If <span class='italic'>x</span><SUB><span class='italic'>i</span></SUB> are identifiers and <span class='italic'>e</span><SUB><span class='italic'>i</span></SUB> and <span class='italic'>expr</span> are tactic expressions, then let reads:
+If <span class='italic'>x</span><span class="sub"><span class='italic'>i</span></span> are identifiers and <span class='italic'>e</span><span class="sub"><span class='italic'>i</span></span> and <span class='italic'>expr</span> are tactic expressions, then let reads:
 <div class="center">
-<tt> let <span class='italic'>x</span></tt> <SUB><tt> 1</tt> </SUB><tt> :=<span class='italic'>e</span></tt> <SUB><tt> 1</tt> </SUB><tt>  with <span class='italic'>x</span></tt> <SUB><tt> 2</tt> </SUB><tt> :=<span class='italic'>e</span></tt> <SUB><tt> 2</tt> </SUB><tt> ...with <span class='italic'>x</span></tt> <SUB><tt> <span class='italic'>n</span></tt> </SUB><tt> :=<span class='italic'>e</span></tt> <SUB><tt> <span class='italic'>n</span></tt> </SUB><tt>  in
+<tt> let <span class='italic'>x</span></tt> <span class="sub"><tt> 1</tt> </span><tt> :=<span class='italic'>e</span></tt> <span class="sub"><tt> 1</tt> </span><tt>  with <span class='italic'>x</span></tt> <span class="sub"><tt> 2</tt> </span><tt> :=<span class='italic'>e</span></tt> <span class="sub"><tt> 2</tt> </span><tt> ...with <span class='italic'>x</span></tt> <span class="sub"><tt> <span class='italic'>n</span></tt> </span><tt> :=<span class='italic'>e</span></tt> <span class="sub"><tt> <span class='italic'>n</span></tt> </span><tt>  in
 <span class='italic'>expr</span></tt> .
 </div>
 Beware that if <span class='italic'>expr</span> is complex (i.e. features at least a sequence) parenthesis
@@ -3552,14 +3552,14 @@ should be added around it. For example:
 <h4 class="subsubsection"><a name="htoc148">129</a>&nbsp;&nbsp;What is the syntax for pattern matching in <span class="caps">Ltac</span>?</h4><!--SEC END -->
 
 Pattern matching on a term <span class='italic'>expr</span> (non-linear first order unification)
-with patterns <span class='italic'>p</span><SUB><span class='italic'>i</span></SUB> and tactic expressions <span class='italic'>e</span><SUB><span class='italic'>i</span></SUB> reads:
+with patterns <span class='italic'>p</span><span class="sub"><span class='italic'>i</span></span> and tactic expressions <span class='italic'>e</span><span class="sub"><span class='italic'>i</span></span> reads:
 <div class="center">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <tt> match <span class='italic'>expr</span> with
-&nbsp;&nbsp;<span class='italic'>p</span></tt> <SUB><tt> 1</tt> </SUB><tt>  =&gt; <span class='italic'>e</span></tt> <SUB><tt> 1</tt> </SUB><tt> 
-&nbsp;|<span class='italic'>p</span></tt> <SUB><tt> 2</tt> </SUB><tt>  =&gt; <span class='italic'>e</span></tt> <SUB><tt> 2</tt> </SUB><tt> 
-&nbsp;...&nbsp;|<span class='italic'>p</span></tt> <SUB><tt> <span class='italic'>n</span></tt> </SUB><tt>  =&gt; <span class='italic'>e</span></tt> <SUB><tt> <span class='italic'>n</span></tt> </SUB><tt> 
-&nbsp;| _ =&gt; <span class='italic'>e</span></tt> <SUB><tt> <span class='italic'>n</span>+1</tt> </SUB><tt> 
+&nbsp;&nbsp;<span class='italic'>p</span></tt> <span class="sub"><tt> 1</tt> </span><tt>  =&gt; <span class='italic'>e</span></tt> <span class="sub"><tt> 1</tt> </span><tt> 
+&nbsp;|<span class='italic'>p</span></tt> <span class="sub"><tt> 2</tt> </span><tt>  =&gt; <span class='italic'>e</span></tt> <span class="sub"><tt> 2</tt> </span><tt> 
+&nbsp;...&nbsp;|<span class='italic'>p</span></tt> <span class="sub"><tt> <span class='italic'>n</span></tt> </span><tt>  =&gt; <span class='italic'>e</span></tt> <span class="sub"><tt> <span class='italic'>n</span></tt> </span><tt> 
+&nbsp;| _ =&gt; <span class='italic'>e</span></tt> <span class="sub"><tt> <span class='italic'>n</span>+1</tt> </span><tt> 
 end.
 </tt> 
 </div>
@@ -3571,12 +3571,12 @@ Underscore matches all terms.<br/>
 
 The semantics of <tt> match goal</tt>  depends on whether it returns
 tactics or not. The <tt> match goal</tt>  expression matches the current
-goal against a series of patterns: <span class='italic'>hyp</span><SUB>1</SUB> &hellip; <span class='italic'>hyp</span><SUB><span class='italic'>n</span></SUB> |-
+goal against a series of patterns: <span class='italic'>hyp</span><span class="sub">1</span> &hellip; <span class='italic'>hyp</span><span class="sub"><span class='italic'>n</span></span> |-
 <span class='italic'>ccl</span>. It uses a first-order unification algorithm and in case of
 success, if the right-hand-side is an expression, it tries to type it
 while if the right-hand-side is a tactic, it tries to apply it. If the
 typing or the tactic application fails, the <tt> match goal</tt>  tries all
-the possible combinations of <span class='italic'>hyp</span><SUB><span class='italic'>i</span></SUB> before dropping the branch and
+the possible combinations of <span class='italic'>hyp</span><span class="sub"><span class='italic'>i</span></span> before dropping the branch and
 moving to the next one. Underscore matches all terms.<br/>
 <br/>
 <!--TOC subsubsection Why can't I use a &#8220;match goal&#8221; returning a tactic in a non
@@ -4283,7 +4283,7 @@ In M.&nbsp;Abadi and T.&nbsp;Ito, editors, <span class='italic'>Proceedings of T
 <br/>
 </dd><dt><a name="LaTeX:symb"><span class="maroon">[4]</span></a></dt><dd>
 David Carlisle, Scott Pakin, and Alexander Holt.
-<span class='italic'>The Great, Big List of L<span class="sup">A</span>T<sub>E</sub>X Symbols</span>, February 2001.<br/>
+<span class='italic'>The Great, Big List of L<span class="sup">A</span>T<span class="sub">E</span>X Symbols</span>, February 2001.<br/>
 <br/>
 </dd><dt><a name="Coq85"><span class="maroon">[5]</span></a></dt><dd>
 Thierry Coquand.
@@ -4363,7 +4363,7 @@ Version 8.0.<br/>
 <br/>
 </dd><dt><a name="LaTeX:intro"><span class="maroon">[18]</span></a></dt><dd>
 Tobias Oetiker.
-<span class='italic'>The Not So Short Introduction to L<span class="sup">A</span>T<sub>E</sub>X2e</span>, January 1999.<br/>
+<span class='italic'>The Not So Short Introduction to L<span class="sup">A</span>T<span class="sub">E</span>X2e</span>, January 1999.<br/>
 <br/>
 </dd><dt><a name="Pau96b"><span class="maroon">[19]</span></a></dt><dd>
 Christine Paulin-Mohring.
