@@ -776,7 +776,7 @@ Excluded-middle: &forall; <span class='italic'>A</span>:<span class='italic'>Pro
 </li><li>The functional axiom of choice: &forall; <span class='italic'>x</span> &exist; <span class='italic'>y</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>y</span>) &rarr; &exist; <span class='italic'>f</span> &forall; <span class='italic'>x</span> <span class='italic'>R</span>(<span class='italic'>x</span>,<span class='italic'>f</span>(<span class='italic'>x</span>))
 </li><li>Extensionality of predicates: &forall; <span class='italic'>P</span> <span class='italic'>Q</span>:<span class='italic'>A</span>&rarr; <span class='italic'>Prop</span>, (&forall; <span class='italic'>x</span>, <span class='italic'>P</span>(<span class='italic'>x</span>) &#8596; <span class='italic'>Q</span>(<span class='italic'>x</span>)) &rarr; <span class='italic'>P</span>=<span class='italic'>Q</span>
 </li><li>Extensionality of functions: &forall; <span class='italic'>f</span> <span class='italic'>g</span>:<span class='italic'>A</span>&rarr; <span class='italic'>B</span>, (&forall; <span class='italic'>x</span>, <span class='italic'>f</span>(<span class='italic'>x</span>)=<span class='italic'>g</span>(<span class='italic'>x</span>)) &rarr; <span class='italic'>f</span>=<span class='italic'>g</span>
-</ul>
+</li></ul>
 Here is a summary of the relative strength of these axioms, most
 proofs can be found in directory <tt> Logic</tt>  of the standard library.
 The justification of their validity relies on the interpretability in
@@ -3154,17 +3154,17 @@ the arguments of the loop.<br/>
 
 <div class="flushleft">
 <tt> Coq&nbsp;&lt;&nbsp;Definition&nbsp;R&nbsp;(a&nbsp;b:list&nbsp;nat)&nbsp;:=&nbsp;length&nbsp;a&nbsp;&lt;&nbsp;length&nbsp;b.</tt> <br/>
-</div></li>
+</div><br/>
 <br/>
-<br/>
+</li>
 <li>Prove that this order is well-founded (in fact that all elements in <tt> A</tt>  are accessible along <tt> R</tt> ).<br/>
 <br/>
 
 <div class="flushleft">
 <tt> Coq&nbsp;&lt;&nbsp;Lemma&nbsp;Rwf&nbsp;:&nbsp;well_founded&nbsp;R.</tt> <br/>
-</div></li>
+</div><br/>
 <br/>
-<br/>
+</li>
 <li>Define the step function (which needs proofs that recursive
 calls are on smaller arguments).<br/>
 <br/>
@@ -3181,9 +3181,9 @@ calls are on smaller arguments).<br/>
 <tt> Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;let&nbsp;(l1,H1)&nbsp;:=&nbsp;lH1&nbsp;in</tt> <br/>
 <tt> Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;let&nbsp;(l2,H2)&nbsp;:=&nbsp;lH2&nbsp;in</tt> <br/>
 <tt> Coq&nbsp;&lt;&nbsp;&nbsp;&nbsp;concat&nbsp;(f&nbsp;l1&nbsp;H1)&nbsp;(f&nbsp;l2&nbsp;H2).</tt> <br/>
-</div></li>
+</div><br/>
 <br/>
-<br/>
+</li>
 <li>Define the recursive function by fixpoint on the step function.<br/>
 <br/>
 
