@@ -2,7 +2,22 @@
 <div class="frameworklabel">Handling proofs and programs</div>
 <div class="frameworkcontent">
 
-<p>Coq is a formal proof management system: a proof done with Coq is mechanically checked by the machine. It is based on a framework called "Calculus of Inductive
+<p>The user language of Coq, called <em>Gallina</em> is based on a formal language
+called the <em>Calculus of Inductive Constructions</em> that is both a logic
+and a functional programming language. Through a <em>vernacular</em> language
+of commands, Coq allows:
+
+    * to define functions or predicates, that can be evaluated efficiently;
+    * to state mathematical theorems and software specifications;
+    * to semi-interactively develop formal proofs of these theorems using a large set of proof methods and domain-specific decision procedures;
+    * to check these proofs by a relatively small certification "kernel";
+    * to extract certified programs to languages like Objective Caml, Haskell or Scheme.
+
+
+
+
+
+Coq is a formal proof management system: a proof done with Coq is mechanically checked by the machine. It is based on a framework called "Calculus of Inductive
     Constructions" that is both a logic and a functional programming
     language. In particular, Coq allows: </p>
 
