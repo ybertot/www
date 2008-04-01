@@ -2,41 +2,24 @@
 <div class="frameworklabel">Handling proofs and programs</div>
 <div class="frameworkcontent">
 
-<p>The user language of Coq, called <em>Gallina</em> is based on a formal language
-called the <em>Calculus of Inductive Constructions</em> that is both a logic
-and a functional programming language. Through a <em>vernacular</em> language
+<p>The user language of Coq, called <em>Gallina</em> is based on an expressive formal language
+called the <em>Calculus of Inductive Constructions</em> that is both a higher-order logic
+and an richly-typed functional programming language. Through a <em>vernacular</em> language
 of commands, Coq allows:
-
-    * to define functions or predicates, that can be evaluated efficiently;
-    * to state mathematical theorems and software specifications;
-    * to semi-interactively develop formal proofs of these theorems using a large set of proof methods and domain-specific decision procedures;
-    * to check these proofs by a relatively small certification "kernel";
-    * to extract certified programs to languages like Objective Caml, Haskell or Scheme.
-
-
-
-
-
-Coq is a formal proof management system: a proof done with Coq is mechanically checked by the machine. It is based on a framework called "Calculus of Inductive
-    Constructions" that is both a logic and a functional programming
-    language. In particular, Coq allows: </p>
 
     <ul>
       <li>to define functions or predicates, that can be evaluated efficiently;</li>
       <li>to state mathematical theorems and software specifications;</li>
-      <li>to develop interactively formal proofs of these theorems;</li>
-      <li>to check these proofs by a relatively small certification "kernel";</li>
-<li> to extract certified programs to languages like Objective Caml, Haskell or Scheme.</li>
+      <li>to interactively develop formal proofs of these theorems;</li>
+      <li>to machine-check these proofs by a relatively small certification "kernel";</li>
+      <li>to extract certified programs to languages like Objective Caml, Haskell or Scheme.</li>
     </ul>
 
-    <p>As a proof development system, Coq provides both interactive proof
-    methods and various certified decision and semi-decision
-    algorithms. Moreover, it implements a protocol for connecting with external
-    computer algebra system or theorem provers.</p>
+   <p>As a proof development system, Coq provides interactive proof
+    methods, decision and semi-decision
+    algorithms, and a <em>tactic</em> language for letting the user define its own proof methods. Connection with external computer algebra system or theorem provers is available.</p>
 
-    <p> As a platform for the formalization of mathematics, Coq provides
-    support for light notations and implicit contents. It also
-    provides some support for reasoning on algebraic structures.</p>
+    <p> As a platform for the formalization of mathematics or the development of programs, Coq provides support for high-level notations, implicit contents and various other useful kinds of macros.</p>
 
 </div>
 
@@ -64,8 +47,6 @@ Coq is a formal proof management system: a proof done with Coq is mechanically c
       <li>documentation tools (<tt>coqdoc</tt> and <tt>coq-tex</tt>),</li>
       <li>dependency and makefile generation tools for Coq
 	(<tt>coq_makefile</tt> and <tt>coqdep</tt>),</li>
-      <li>support for use from the <a href="http://proofgeneral.inf.ed.ac.uk/">Proof General</a> Emacs mode and from <a href="http://www-sop.inria.fr/lemme/pcoq">Pcoq</a>.</li>
-
       </ul>
 </div>
 
@@ -103,9 +84,7 @@ Coq is a formal proof management system: a proof done with Coq is mechanically c
 
 
     <p> Coq is written in the <a href="http://caml.inria.fr/ocaml/"
-   >Objective Caml</a> language (with a bit of C) and uses the <a
-    href="http://caml.inria.fr/camlp4/">Camlp4</a>
-    pre-processor-pretty-printer for Objective Caml. Coq is
+   >Objective Caml</a> language, with a bit of C. It is
     distributed under the GNU Lesser General Public Licence Version
     2.1 (LGPL).</p>
 </div>
