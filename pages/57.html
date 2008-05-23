@@ -55,11 +55,12 @@ for ($i=1;$i<=$nbpics;$i=$i+1) {
       echo "<img class=\"SCthumbselected\" src=\"files/coqide/thumbs/capture$i.jpg\"/>";
    }
    else {
-      echo "<a href=\"?q=node/57&amp;id=".$i."\"><img class=\"SCthumb\" src=\"files/coqide/thumbs/capture$i.jpg\"/></a>";
+      echo "<a href=\"?q=node/57&amp;id=".$i."#scr\"><img class=\"SCthumb\" src=\"files/coqide/thumbs/capture$i.jpg\"/></a>";
     }             
 }
 
-echo "\n </div> </div> <br/> \n";
+echo "\n </div> </div>\n";
+echo "<a name=\"scr\"></a>";
 
 echo "<div class=\"SCcontent\"><a href=\"files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/></a></div>";
 
