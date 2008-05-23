@@ -43,6 +43,7 @@
 $nbpics = 5;
 
 echo "<div class=\"SCpager\">\n";
+
 for ($i=1;$i<=$nbpics;$i=$i+1) {
    if ($i==$id) {
       echo "<img class=\"SCthumbselected\" src=\"files/coqide/thumbs/capture$i.jpg\"/>";
@@ -54,6 +55,6 @@ for ($i=1;$i<=$nbpics;$i=$i+1) {
 
 echo "\n </div> <br/> \n";
 
-echo "<a href=\"files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/></a>";
+echo "<div class=\"SCcontent\"><a href=\"files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/></a></div>";
 
 ?>
