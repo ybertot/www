@@ -1,14 +1,14 @@
 <style>
 
 .SCpager {
-  width:600px;
+  width:630px;
   padding-left:auto;
   padding-right:auto;
   background-color:yellow;
 }
 
 .SCcontent {
-  width:600px;
+  width:630px;
   padding-left:auto;
   padding-right:auto;
 }
@@ -42,7 +42,7 @@
 
 $nbpics = 5;
 
-echo "<div class=\"SCpager\">\n";
+echo "<div class=\"SCpager\">\n </div>";
 
 for ($i=1;$i<=$nbpics;$i=$i+1) {
    if ($i==$id) {
@@ -53,7 +53,7 @@ for ($i=1;$i<=$nbpics;$i=$i+1) {
     }             
 }
 
-echo "\n </div> <br/> \n";
+echo "\n </div> </div> <br/> \n";
 
 echo "<div class=\"SCcontent\"><a href=\"files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/></a></div>";
 
