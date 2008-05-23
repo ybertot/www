@@ -1,5 +1,12 @@
 <style>
 
+.pager {
+  width:100%;
+  padding-left:auto;
+  padding-right:auto;
+  background-color:yellow;
+}
+
 .thumb {
   height:65px;
   margin-left:2px;
@@ -29,6 +36,7 @@
 
 $nbpics = 5;
 
+echo "<div class=\"pager\">\n";
 for ($i=1;$i<=$nbpics;$i=$i+1) {
    if ($i==$id) {
       echo "<img class=\"thumbselected\" src=\"files/coqide/thumbs/capture$i.jpg\"/>";
@@ -38,7 +46,7 @@ for ($i=1;$i<=$nbpics;$i=$i+1) {
     }             
 }
 
-echo "\n <br/> \n";
+echo "\n </div> <br/> \n";
 
 echo "<a href=\"files/coqide/images/capture$id.jpg\"><img class=\"screenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/></a>";
 
