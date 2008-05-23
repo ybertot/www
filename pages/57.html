@@ -31,15 +31,15 @@ $nbpics = 5;
 
 for ($i=1;$i<=$nbpics;$i=$i+1) {
    if ($i==$id) {
-      echo "<a href=\"&amp;id=".$i."\"><img class=\"thumbselected\" src=\"files/coqide/thumbs/capture$i.jpg\"/></a>";
+      echo "<img class=\"thumbselected\" src=\"files/coqide/thumbs/capture$i.jpg\"/>";
    }
    else {
-      echo "<a href=\"files/coqide/thumbs/capture$i.jpg\"><img class=\"thumb\" src=\"files/coqide/thumbs/capture$i.jpg\"/></a>";
+      echo "<a href=\"&amp;id=".$i."\"><img class=\"thumb\" src=\"files/coqide/thumbs/capture$i.jpg\"/></a>";
     }             
 }
 
 echo "\n <br/> \n";
 
-echo "<img class=\"screenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/>";
+echo "<a href=\"files/coqide/images/capture$id.jpg\"><img class=\"screenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/></a>";
 
 ?>
