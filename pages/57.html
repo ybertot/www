@@ -1,0 +1,21 @@
+<?php
+  if (isset($_REQUEST['id'])) {
+      $id = $_REQUEST['id'];
+   }
+   else {
+       $id = 0;
+   }
+
+$nbpics = 5;
+
+for ($i=0;$i<5;$i=$i+1) {
+   if ($i==$id) {
+      echo "<img class=\"thumbselected\" src=\"files/coqide/thumbs/capture$i.jpg\"/>";
+   }
+   else {
+      echo "<img class=\"thumb\" src=\"files/coqide/thumbs/capture$i.jpg\"/>";
+    }             
+
+echo "<img class=\"sceenshot\" src=\"files/coqide/images/capture$i.jpg\"/>";
+
+?>
