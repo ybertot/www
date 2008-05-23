@@ -66,6 +66,15 @@ for ($i=1;$i<=$nbpics;$i=$i+1) {
 echo "\n </div> </div>\n";
 echo "<a name=\"scr\"></a>";
 
-echo "<div class=\"SCcontent\"><a href=\"files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/></a></div>";
+echo "<div class=\"SCcontent\">";
+
+if ($id>$nbpics) {
+     echo "$id is not a screenshot id.";
+}
+else {
+  echo "<a href=\"files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"files/coqide/images/capture".$id.".jpg\"/></a>";
+}
+
+echo "\n</div>";
 
 ?>
