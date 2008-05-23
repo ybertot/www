@@ -19,7 +19,7 @@
       $id = $_REQUEST['id'];
    }
    else {
-       $id = 0;
+       $id = 1;
    }
 
 $nbpics = 5;
@@ -32,6 +32,8 @@ for ($i=1;$i<=$nbpics;$i=$i+1) {
       echo "<img class=\"thumb\" src=\"files/coqide/thumbs/capture$i.jpg\"/>";
     }             
 }
+
+echo "\n <br/> \n";
 
 echo "<img class=\"screenshot\" src=\"files/coqide/images/capture$i.jpg\"/>";
 
