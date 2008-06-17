@@ -1,0 +1,155 @@
+<div class="framework">
+<div class="frameworklabel">Coq v8.2 <em>beta</em></div>
+<div class="frameworkcontent">
+
+  <p>Coq version 8.2 brings Haskell-style type classes, various
+  evolutions of the arithmetic libraries, and many other various
+  improvements and extensions regarding the module system, tactics,
+  syntax, etc (see the <a href="">more detailed
+  description</a> and the <a href="/coq/V8.2beta/CHANGES">summary of
+  changes</a>).</p>
+
+  <p> We cared for backward compatibility but some specific features
+  may require a few adaptations for upgrading. This is specially the
+  case of (more efficient) setoid rewriting and of the library of
+  functional sets and maps. If you encounter a migration problem not
+  mentioned in the list of <a href="/coq/V8.2beta/COMPATIBILITY">known
+  incompatibilities</a>, this can be considered as a bug.  </p> <p> Coq
+  8.2 is currently released in <i>beta</i> test. We thank beta-tester in
+  advance for feedback on the new version. There is a list of <a
+  href="/coq/V8.2beta/KNOWN-BUGS">known bugs</a> (some of them being fixed only in the
+  <a
+  href="https://gforge.inria.fr/plugins/scmsvn/viewcvs.php/branches/v8.2/?root=coq">subversion
+  repository</a>).
+  </p>
+
+</div>
+</div>  	       	     
+
+
+<div class="framework">
+<div class="frameworklabel">The distribution</div>
+<div class="frameworkcontent">
+
+  <table class="downloadtable">
+    <tr>
+      <td colspan="3" rowspan="1" class="downloadheader">Sources</td>
+    </tr>
+    <tr>
+      <td class="downloadcategory"><a name="src"></a></td>
+      <td class="downloadlink, downloadbottomback"><a href="http://coq.inria.fr/V8.2beta/files/coq-8.2beta.tar.gz">coq-8.2beta.tar.gz</a>
+      </td>
+      <td>4 MB</td>
+    </tr>
+    
+    <tr>
+      <td colspan="3" rowspan="1" class="downloadheader">Binaries</td>
+    </tr>
+    <!-- <tr><td>OS</td><td>Files</td><td>Notes</td></tr> -->
+      
+    <tr>
+      <td class="downloadcategory, downloadbottomback" colspan="1" rowspan="2"><a name="linux"></a>
+	<img src="files/OSlogos/linux_logo.png" width="30" height="30" style="vertical-align:middle" alt="linux"/>Linux
+      </td>
+      <td class="downloadlink"><a href="http://coq.inria.fr/V8.2beta/files/coq-8.2beta-Linux-i386.tar.gz">
+	coq-8.2beta-Linux-i386.tar.gz</a>
+      </td>
+      <td class="downloadback">24 MB</td>
+    </tr>
+    <tr>
+      <td class="downloadlink, downloadbottomline"><a href="http://coq.inria.fr/V8.2beta/files/coq-8.2beta-Linux-x86_64.tar.gz">
+	coq-8.2beta-Linux-x86_64.tar.gz</a>
+      </td>
+      <td class="downloadbottomback">24 MB</td>
+    </tr>
+    
+    <tr>
+      <td class="downloadcategory, downloadbottomline" colspan="1" rowspan="4"><a name="redhat"></a>
+	<img src="files/OSlogos/redhat_logo.png" width="30" height="30" style="vertical-align:middle" alt="redhat"/>RPM
+      </td>
+      <td class="downloadlink, downloadback"><a href="http://coq.inria.fr/V8.2beta/files/coq-8.2beta-1.i386.rpm">
+	coq-8.2beta-1.i386.rpm</a>
+      </td>
+      <td>24 MB</td>
+    </tr>
+    <tr>
+      <td class="downloadlink, downloadback"><a href="http://coq.inria.fr/V8.2beta/files/coqide-8.2beta-1.i386.rpm">
+	coqide-8.2beta-1.i386.rpm</a>
+      </td>
+      <td>7 MB</td>
+    </tr>
+    <tr>
+      <td class="downloadlink, downloadback"><a href="http://coq.inria.fr/V8.2beta/files/coq-8.2beta-1.i386.rpm">
+	coq-8.2beta-1.x86_64.rpm</a>
+      </td>
+      <td>24 MB</td>
+    </tr>
+    <tr><td class="downloadlink, downloadbottomback"><a href="http://coq.inria.fr/V8.2beta/files/coqide-8.2beta-1.x86_64.rpm">
+      coqide-8.2beta-1.x86_64.rpm</a></td>
+      <td class="downloadbottomline">5 MB</td>
+    </tr>
+      
+    <tr>
+      <td class="downloadcategory, downloadbottomback"><a name="win"></a><img src="files/OSlogos/windows_logo.png" width="30" height="30" style="vertical-align:middle" alt="windows"/>Windows</td>
+      <td class="downloadlink, downloadbottomline"><a href="http://coq.inria.fr/V8.2beta/files/coq-8.2beta-1-win.exe">
+	  coq-8.2beta-1-win.exe</a>
+      </td>
+      <td class="downloadbottomback">80 MB</td>
+    </tr>
+
+<!--
+    <tr>
+      <td class="downloadcategory, downloadbottomline" colspan="1" rowspan="4"><a name="macos"></a><img src="files/OSlogos/macos_logo.jpg" width="30" height="30" style="vertical-align:middle" alt="macosx"/>Mac OS (V8.1pl2)</td>
+      <td class="downloadlink, downloadback"><a href="http://coq.inria.fr/V8.1pl2/files/Coq_V8.1pl2_i386.dmg">
+	Coq_V8.1pl2_i386.dmg</a>
+      </td>
+      <td>27 MB</td>
+    </tr>
+      
+    <tr><td class="downloadlink, downloadback"><a href="http://coq.inria.fr/V8.1pl2/files/Coqide_V8.1pl2_i386.dmg">
+      Coqide_V8.1pl2_i386.dmg</a></td>
+      <td>56 MB</td>
+    </tr>
+      
+    <tr>
+      <td class="downloadlink, downloadback"><a href="http://coq.inria.fr/V8.1pl2/files/Coq_V8.1pl2_PPC.dmg">
+	Coq_V8.1pl2_PPC.dmg</a>
+      </td>
+      <td>24 MB</td>
+    </tr>
+    
+    <tr>
+      <td class="downloadlink, downloadbottomback"><a href="http://coq.inria.fr/V8.1pl2/files/Coqide_V8.1pl2_PPC.dmg">
+	Coqide_V8.1pl2_PPC.dmg</a>
+      </td>
+      <td class="downloadbottomline" >57 MB</td>
+    </tr>
+-->
+    
+    <tr>
+      <td colspan="3" rowspan="1" class="downloadheader">Documentation</td>
+    </tr>
+    
+<!--
+    <tr>
+      <td class="downloadcategory, downloadbottomback" rowspan="2"></td>
+      <td class="downloadlink"><a href="http://coq.inria.fr/V8.1/files/doc/Tutorial.pdf">
+	Tutorial.pdf</a>
+      </td>
+      <td class="downloadback">200 KB</td>
+    </tr>
+-->
+   
+    <tr>
+      <td class="downloadcategory, downloadbottomline" rowspan="2"></td>
+      <td class="downloadlink, downloadbottomback"><a href="http://coq.inria.fr/V8.2beta/doc/refman/Reference-Manual.pdf">
+	Reference-Manual.pdf</a>
+      </td>
+      <td class="downloadbottomline">2 MB</td>
+    </tr>
+
+  </table>
+  
+</div>
+</div>  	       	     
+
