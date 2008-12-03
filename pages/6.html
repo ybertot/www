@@ -34,7 +34,7 @@ or by abstracting over other existing propositions, e.g.:
 <br>
 <quote>
 <pre>
-  Definition divide (x y:Z) := ? z, x * z = y.
+  Definition divide (x y:N) := ? z, x * z = y.
   Definition prime x := ? y, divide y x -> y = 1 \/ y = x.
 </pre>
 </quote>
@@ -99,6 +99,15 @@ analysis:
     | S p => S (p + m)
     end
   where "p + m" := (plus p m).
+</pre>
+
+Coq can now be used as an interactive evaluator. Issuing the command 
+<pre>
+  Eval compute in (43+55)
+</pre>
+(where 43 and 57 denote the natural numbers with respectively 43 and 57 successors) returns
+<pre>
+  98 : nat
 </pre>
 </li>
 </ul>
