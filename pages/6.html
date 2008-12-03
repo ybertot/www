@@ -1,41 +1,41 @@
 <p>Coq is a proof assistant. It means that it is designed to develop
 mathematical proofs, and especially to write formal specifications,
 programs and proofs that programs comply to their specifications. An
-interesting feature of Coq is that it can automatically extract
+interesting additional feature of Coq is that it can automatically extract
 executable programs from specifications, as either <a href="http://caml.inria.fr/ocaml">Objective Caml</a> or <a href="http://www.haskell.org">Haskell</a>
 source code.</p>
 
 <p>Properties, programs and proofs are formalized in the
-same language called the Calculus of Inductive Constructions (CIC). Then, all logical
-judgments in Coq are typing judgments: the very heart of Coq is in
-fact a <em>type</em>-checking algorithm.</p>
+same language called the Calculus of Inductive Constructions (CIC). Then, all logical judgments in Coq are typing judgments: the very heart of Coq is in fact a <em>type</em>-checking algorithm.</p>
 
-<p>Coq basically manipulates objects of two <em>sorts</em>: <tt>Prop</tt> and <tt>Type</tt></p>
+<h3>The language of Coq</h3>
+
+<p>Coq objects are sorted into two categories: the <tt>Prop</tt> <em>sort</em> and the <tt>Type</tt> <em>sort</em>:</p>
 
 <ul>
 <li><tt>Prop</tt> is the sort for propositions, i.e. well-formed propositions are of <em>type</em> <tt>Prop</tt>. Typical propositions are:
 <quote>
 <pre>
-        ? A B : Prop, A /\ B -> B \/ B
-        ? x y : Z, x * y = 0 -> x = 0 \/ y = 0
+  ? A B : Prop, A /\ B -> B \/ B
+  ? x y : Z, x * y = 0 -> x = 0 \/ y = 0
 </pre>
 </quote>
 and new predicates can be defined either inductively, e.g.:
 <quote>
 <pre>
-        Inductive even : N -> Prop :=
-        | even_0 : even 0
-        | even_S n : odd n -> even (n + 1)
-        with odd : N -> Prop :=
-        | odd_S n : even n -> odd (n + 1).
+  Inductive even : N -> Prop :=
+  | even_0 : even 0
+  | even_S n : odd n -> even (n + 1)
+  with odd : N -> Prop :=
+  | odd_S n : even n -> odd (n + 1).
 </pre>
 </quote>
 or by abstracting over other existing propositions, e.g.:
 <br>
 <quote>
 <pre>
-        Definition divide (x y:Z) := ? z, x * z = y.
-        Definition prime x := ? y, divide y x -> y = 1 \/ y = x.
+  Definition divide (x y:Z) := ? z, x * z = y.
+  Definition prime x := ? y, divide y x -> y = 1 \/ y = x.
 </pre>
 </quote>
 </li>
@@ -43,80 +43,77 @@ or by abstracting over other existing propositions, e.g.:
 <li><tt>Type</tt> is the sort for datatypes and mathematical structures, i.e. well-formed types or structures are of <em>type</em> <tt>Type</tt>. Here is e.g. a basic example of type:
 <quote>
 <pre>
-        Z -> Z * Z
+  Z -> Z * Z
 </pre>
 </quote>
 Types can be inductive structures, e.g.:
 <quote>
 <pre>
-	Inductive nat : Set :=
-	| 0 : nat
-	| S : nat -> nat.
+  Inductive nat : Set :=
+  | 0 : nat
+  | S : nat -> nat.
 
-        Inductive list (A:Type) : Type :=
-        | nil : list A
-        | cons : A -> list A -> list A.
+  Inductive list (A:Type) : Type :=
+  | nil : list A
+  | cons : A -> list A -> list A.
 </pre>
 </quote>
-or tuples, e.g.:
+or types for tuples, e.g.:
 <quote>
 <pre>
-        Structure monoid := { 
-          dom : Type ; 
-          op : dom -> dom -> dom where "x * y" := (x * y); 
-          id : dom where "1" := id; 
-          assoc : ? x y z, x * (y * z) = (x * y) * z ; 
-          left_neutral : ? x, 1 * x = x ; right_neutral : ? x, x * 1 = x 
-        }.
+  Structure monoid := { 
+    dom : Type ; 
+    op : dom -> dom -> dom where "x * y" := (x * y); 
+    id : dom where "1" := id; 
+    assoc : ? x y z, x * (y * z) = (x * y) * z ; 
+    left_neutral : ? x, 1 * x = x ;
+    right_neutral : ? x, x * 1 = x 
+  }.
 </pre>
 </quote>
 or a form of subset types called ?-types, e.g. the type of even natural numbers:
 <pre>
-        {n : N | even n}
+  {n : N | even n}
 </pre>
 
 Coq implements a functional programming language supporting these types. For instance, the pairing function of type <tt>Z -> Z * Z</tt> is written <tt>fun x => (x,x)</tt> and <tt>cons (S (S O)) (cons (S O) nil)</tt> (shortened to <tt>2::1::nil</tt> in Coq) denotes a list of type <tt>list nat</tt> made of the two elements 2 and 1.
+<br>
+Using ?-types, a sorting function over lists of natural numbers can be given the type:
+<pre>
+  sort : ? (l : list nat), {l' : list nat | sorted l' /\ same_elements l l'}
+</pre>
+where <tt>sorted</tt> is a predicate that expresses that a list is sorted; and <tt>all_elements</tt> says if two lists contain the same elements. On the contrary, a sorting function in a "poor" type system could only be given the following less informative type:
+<pre>
+  sort : list nat -> list nat
+</pre>
+
+Such a type (specification) enforces the user to write the proofs of predicates <tt>sorted l'</tt> and <tt>same_elements l l'</tt> when writing a implementation for the function <tt>sort</tt>.
+
+Then, functions over inductive types are expressed using a case
+analysis:
+
+<pre>
+  Fixpoint plus (n m:nat) {struct n} : nat :=
+    match n with
+    | O => m
+    | S p => S (p + m)
+    end
+  where "p + m" := (plus p m).
+</pre>
 </li>
 </ul>
-
-<p>As another example, the type of a sorting function over lists of natural numbers in a "poor" type system would be:
-
-<pre>
-        sort : list nat -> list nat
-</pre>
-
-Thanks to subset types, Coq allows to be more specific:
-<pre>
-        sort : ? (l : list nat), {l' : list nat | sorted l' /\ same_elements l l'}
-</pre>
-where <tt>sorted</tt> is a predicate that expresses that a list is sorted; and <tt>all_elements</tt> says if two lists contain the same elements.
-</p>
-
-<p>Such a type (specification) enforces the user to write the proofs of predicates <tt>sorted l'</tt> and <tt>same_elements l l'</tt> when writing a implementation for the function <tt>sort</tt>.</p>
-
-<p>Then, functions over inductive types are expressed using a case
-analysis:</p>
-
-<pre>
-	Fixpoint plus (n m:nat) {struct n} : nat :=
-	  match n with
-	    | O => m
-	    | S p => S (p + m)
-	  end
-</pre>
 
 
 <h3>Proving in coq</h3>
 
 <p>Proof development in Coq is done through a language of tactics that 
-allow interactive step by step development. 
+allows a user-guided proof process.
 
-
-At the end, the curious user can chack that tactics build lambda-terms. For example the tactic
+At the end, the curious user can check that tactics build lambda-terms. For example the tactic
 <tt>intro n</tt>, where <tt>n</tt> is of type <tt>nat</tt>, builds the term (with a hole):</p>
 
 <pre>
-	fun (n:nat) => _ 
+  fun (n:nat) => _ 
 </pre>
 
 <p>where _ represents a term that will be constructed after, using other
@@ -125,60 +122,59 @@ tactics.</p>
 <p>Here is an example of a proof in the Coq system:</p>
 
 <pre>
-	Inductive sequ : nat -> Set :=
-	  void : sequ 0
-	| cons : forall n : nat, nat -> sequ n -> sequ (S n).
+  Inductive seq : nat -> Set :=
+  | niln : seq 0
+  | consn : forall n : nat, nat -> seq n -> seq (S n).
 
-	Fixpoint length (n : nat) (s : sequ n) {struct s} : nat := 
-	  match s with
-	    | void => 0
-	    | cons i _ s' => S (length i s')
-	  end.
+  Fixpoint length (n : nat) (s : seq n) {struct s} : nat := 
+    match s with
+    | niln => 0
+    | consn i _ s' => S (length i s')
+    end.
 
-	Theorem length_corr : forall (n : nat) (s : sequ n), length s = n.
-	Proof.
-	  intros n s.
+  Theorem length_corr : forall (n : nat) (s : seq n), length n s = n.
+  Proof.
+    intros n s.
 
-	  (* elim uses the induction principle sequ_ind on the current
-             goal. Then, we have two new goal corresponding on the
- 	     case analysis about n (either it is void or some cons *)
-	  elim s.
+    (* reasoning by induction over s. Then, we have two new goals
+       corresponding on the case analysis about s (either it is 
+       niln or some consn *)
+    induction s.
 
-	    (* We are in the case where s is void. We can reduce the
-	       term: length n void *)
-	    simpl. 
+      (* We are in the case where s is void. We can reduce the 
+         term: length 0 niln *)
+      simpl. 
 
-	    (* We obtain the goal 0 = 0. *)
-	    trivial.
+      (* We obtain the goal 0 = 0. *)
+      trivial.
 
-	    (* now, we treat the case s = cons n' e s' *)	    
-	    intros n' e s' IH.
-	    simpl. 
+      (* now, we treat the case s = consn n e s with induction 
+         hypothesis IHs *)
+      simpl. 
 
-	    (* IH is the induction hypothesis; its type is:
-	       length n' s' = n'. So we can use it to perform some
-	       rewriting in the goal: *)
-	    rewrite IH. 
+      (* The induction hypothesis has type length n s = n. 
+         So we can use it to perform some rewriting in the goal: *)
+      rewrite IHs. 
 
-	    (* Now the goal is the trivial equality: S n' = S n' *)
-	    trivial.
+      (* Now the goal is the trivial equality: S n = S n *)
+      trivial.
 
-	  (* Now all sub cases are closed, we perform the ultimate
-	     step: typing the term built using tactics and save it as
-	     a witness of the theorem. *)
-        Qed.	  
+    (* Now all sub cases are closed, we perform the ultimate
+       step: typing the term built using tactics and save it as
+       a witness of the theorem. *)
+  Qed.	  
 </pre>
 
-<p>Using the Print command, the user can check the term generated using the tactics:</p>
+<p>Using the Print command, the user can look at the proof-term generated using the tactics:</p>
 
 <pre>
-	length_corr = 
-	  fun (n : nat) (s : sequ n) =>
-		sequ_ind (fun (n0 : nat) (s0 : sequ n0) => length n0 s0 = n0) 
-		  (refl_equal 0)
-		  (fun (n' _ : nat) (s' : sequ n') (IH : length n' s' = n') =>
-		     eq_ind_r 
-			(fun n0 : nat => S n0 = S n') 
-			(refl_equal (S n')) IH) n s
-	     : forall (n : nat) (s : sequ n), length n s = n
+  length_corr =
+    fun (n : nat) (s : seq n) =>
+      seq_ind (fun (n0 : nat) (s0 : seq n0) => length n0 s0 = n0) 
+        (refl_equal 0)
+        (fun (n0 _ : nat) (s0 : seq n0) (IHs : length n0 s0 = n0) =>
+          eq_ind_r 
+            (fun n2 : nat => S n2 = S n0) 
+            (refl_equal (S n0)) IHs) n s
+  : forall (n : nat) (s : seq n), length n s = n
 </pre>
