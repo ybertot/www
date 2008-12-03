@@ -6,16 +6,14 @@ executable programs from specifications, as either <a href="http://caml.inria.fr
 source code.</p>
 
 <p>Properties, programs and proofs are formalized in the
-same language called the Calculus of Inductive Constructions (CIC). The
-CIC is a lambda-calculus with a rich type system. Then, all logical
+same language called the Calculus of Inductive Constructions (CIC). Then, all logical
 judgments in Coq are typing judgments: the very heart of Coq is in
 fact a <em>type</em>-checking algorithm.</p>
 
-<h3>Coq basically manipulates two <em>sorts</em> of objects: <tt>Prop</tt> and <tt>Type</tt></h3>
+<p>Coq basically manipulates objects of two <em>sorts</em>: <tt>Prop</tt> and <tt>Type</tt></p>
 
 <ul>
-<li><tt>Prop</tt> is for propositions, i.e. well-formed propositions are of <em>type</em> <tt>Prop</tt>. 
-Typical propositions are:
+<li><tt>Prop</tt> is the sort for propositions, i.e. well-formed propositions are of <em>type</em> <tt>Prop</tt>. Typical propositions are:
 <quote>
 <pre>
         ? A B : Prop, A /\ B -> B \/ B
@@ -42,7 +40,7 @@ or by abstracting over other existing propositions, e.g.:
 </quote>
 </li>
 
-<li><tt>Type</tt> is for datatypes and mathematical structures, i.e. well-formed types or structures are of <em>type</em> <tt>Type</tt>. Here is e.g. a basic example of type:
+<li><tt>Type</tt> is the sort for datatypes and mathematical structures, i.e. well-formed types or structures are of <em>type</em> <tt>Type</tt>. Here is e.g. a basic example of type:
 <quote>
 <pre>
         Z -> Z * Z
@@ -64,23 +62,24 @@ or tuples, e.g.:
 <quote>
 <pre>
         Structure monoid := { 
-          dom : Type ; op : dom -> dom -> dom ; id : dom ; 
+          dom : Type ; 
+          op : dom -> dom -> dom where "x * y" := (x * y); 
+          id : dom where "1" := id; 
           assoc : ? x y z, x * (y * z) = (x * y) * z ; 
           left_neutral : ? x, 1 * x = x ; right_neutral : ? x, x * 1 = x 
-        } where "x * y" := (x * y).
+        }.
 </pre>
 </quote>
 or a form of subset types called ?-types, e.g. the type of even natural numbers:
 <pre>
         {n : N | even n}
 </pre>
+
+Coq implements a functional programming language supporting these types. For instance, the pairing function of type <tt>Z -> Z * Z</tt> is written <tt>fun x => (x,x)</tt> and <tt>cons (S (S O)) (cons (S O) nil)</tt> (shortened to <tt>2::1::nil</tt> in Coq) denotes a list of type <tt>list nat</tt> made of the two elements 2 and 1.
 </li>
 </ul>
 
-<h3>A richly-typed functional programming language</h3>
-
-<p>
-The type of a sorting function over lists of natural numbers in a "poor" type system would be:
+<p>As another example, the type of a sorting function over lists of natural numbers in a "poor" type system would be:
 
 <pre>
         sort : list nat -> list nat
