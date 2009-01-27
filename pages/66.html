@@ -9,7 +9,7 @@
   description</a> and the <a href="/coq/distrib/V8.2rc1/CHANGES">summary of
   changes</a>).</p>
 
-  <p> The final 8.2 version solves many bugs and inefficiencies of version 8.2 beta. The syntax of some of the new features has also changed (most particularly the syntax of type classes). </p>
+  <p> The final 8.2 version solves many bugs and inefficiencies of version 8.2 beta. The syntax of some of the new features has changed (most particularly the syntax of type classes). Support for plugins has also been added (thanks to <a href="http://caml.inria.fr/ocaml/release.fr.html">Objective Caml 3.11</a> new native dynamic loading feature).</p>
 
   <p> Some specific features
   may require a few adaptations for upgrading from Coq version 8.1 or Coq version 8.2 beta.
@@ -144,6 +144,28 @@
     </tr>
 
   </table>
-  
+
+<p>
+The Reference Manual is also browsable <a href="http://coq.inria.fr/V8.rc1/doc/refman/html">online</a>.
+</p>
+
+<p>
+To compile Coq from the sources, you need:
+          <ul>
+            <li>
+            <A href="http://caml.inria.fr/ocaml/index.html"
+            TARGET=_top>Objective Caml</A> (3.07 &le; version but 3.08.0).<br/> For Objective Caml &ge; 3.10.0, you will need
+            to install <A
+            HREF="http://pauillac.inria.fr/~ddr/camlp5/">Camlp5</A>
+            (version 4.08, or &ge; 5.01 transitional, or &ge; 5.10 if with Objective Caml &ge; 3.11.0)
+            </li>
+            <li>a C compiler,</li>
+            <li><a href="http://www.gnu.org/software/make/" >GNU Make</a> &ge; 3.81</li>
+          </ul>
+</p>
+<p>
+          To compile CoqIde, you also need
+          the <a href="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgtk.html">LablGTK</a> library, and the GTK+ development environment.
+</p>
 </div>
 </div>  	       	     
