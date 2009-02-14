@@ -2,8 +2,8 @@
 <div class="frameworklabel">The current version : Coq 8.2</div>
 <div class="frameworkcontent">
     <p>This is the latest stable release of the Coq system
-      (see <a href="http://coq.inria.fr/V8.2/ANNONCE">ANNONCE</a> 
-and <a href="http://coq.inria.fr/V8.2/CHANGES">CHANGES</a> files).</p>
+      (see the <a href="http://coq.inria.fr/V8.2/description.html">detailed description</a> 
+and the <a href="http://coq.inria.fr/V8.2/CHANGES">full list of changes</a>).</p>
 
 <table class="downloadtable">
 <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
@@ -56,13 +56,28 @@ Reference-Manual.pdf</a></td>
 <div class="framework">
 <div class="frameworklabel">Extensions of Coq </div>
 <div class="frameworkcontent">
-   <p>We cordially invite users to test and evaluate the <i>small scale
-reflection</i> package (<a
-href="http://www.msr-inria.inria.fr/Projects/math-components">ssreflect</a>).
-It contains a robust and compact tactic language and basic libraries that served, among other applications, as support for the full
-formalization of the <a
-href="http://research.microsoft.com/%7Egonthier/">4 color theorem</a>
-in Coq.</p>
+   <p>
+
+When compiled with Objective Caml 3.11 (which is the case of the
+Windows and MacOS packages we release), Coq supports dynamic loading
+of extensions. Two extensions are known to work as plugins:
+
+<ul>
+
+<li> 
+The <i>small
+scale reflection</i> package (<a
+href="http://www.msr-inria.inria.fr/Projects/math-components" target=_top>ssreflect</a>) contains the robust and compact tactic language and basic libraries
+that served, among other applications, as support
+for the full formalization of the <a
+href="http://research.microsoft.com/%7Egonthier/" target=_top>4 color theorem</a>
+in Coq.
+</li>
+<li>
+The <a href="http://perso.ens-lyon.fr/alexandre.miquel/kextraction" target=_top>classical extraction module</a> provides extraction of programs from classical proofs in <tt>Prop</tt>.
+</li>
+</ul>
+Note for releasers: a bit of magic is needed to build plugins on MacOS 10.5 (please ask us).
 
 </div>
 </div>
