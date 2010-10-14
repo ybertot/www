@@ -1,140 +1,180 @@
 <div class="framework">
-<div class="frameworklabel">The current version : Coq 8.2</div>
+<div class="frameworklabel">The current version : Coq 8.3
+</div>
 <div class="frameworkcontent">
-    <p>This is the latest stable release of the Coq system
-      (see the <a href="coq-82-detailed-description">detailed description</a> 
-and the <a href="distrib/current/CHANGES">full list of changes</a>).</p>
+
+  <p>This version comes with many improvements of existing
+features, especially regarding the tactics, the module system,
+extraction, the type classes, the program command, libraries,
+coqdoc. It also includes a new tactic ("nsatz", standing for
+Hilbert's NullStellensatz, that solves systems of polynomial
+equations in Z or R) and a few new libraries (a certification
+of mergesort, a new library of finite sets with computational
+and logical contents separated). For a full log of changes,
+see the file <a href="http://coq.inria.fr/V8.3/CHANGES">
+CHANGES</a>.</p>
+
+  <p>Even if we try to preserve compatibility as much as possible with
+Coq 8.2, we had to arbitrate for a break of behavior in some
+situations. The major incompatibilities can be easily treated by using
+the new <code>"-compat 8.2"</code> option or by setting/unsetting
+adequate options. See the file
+<a href="http://coq.inria.fr/V8.3/COMPATIBILITY">COMPATIBILITY</a> for
+details and migration recommendations.</p>
 
 <table class="downloadtable">
-<tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
-<tr>
-<td class="downloadcategory"><a name="src"></a></td>
-<td class="downloadlink, downloadback"><a href="distrib/V8.2pl2/files/coq-8.2pl2.tar.gz">coq-8.2pl2.tar.gz</a>
-</td>
-<td>3.5 MB</td></tr>
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
+  <tr>
+    <td class="downloadcategory"><a name="src"></a></td>
+    <td class="downloadlink, downloadback"><a href="distrib/V8.3/files/coq-8.3.tar.gz">coq-8.3.tar.gz</a>
+    </td>
+    <td>3.7 MB</td>
+  </tr>
 
-<tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
-<!-- <tr><td>OS</td><td>Files</td><td>Notes</td></tr> -->
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
 
+  <tr>
+    <td class="downloadcategory, downloadbottomback" rowspan="2"></td>
+    <td class="downloadlink"><a href="distrib/V8.3/files/Tutorial.pdf">Tutorial.pdf</a></td>
+    <td class="downloadback">0.2 MB</td>
+  </tr>
 
-<tr><td class="downloadcategory, downloadbottomback"><a name="win"></a><img src="files/OSlogos/windows_logo.png" width="30" height="30" style="vertical-align:middle" alt="windows"/>Windows</td>
-<td class="downloadlink, downloadbottomline"><a href="distrib/V8.2pl2/files/coq-8.2pl2-win-1.exe">
-coq-8.2pl2-win-1.exe</a>
-</td>
-<td class="downloadbottomback">138 MB</td>
-</tr>
+<!--
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
 
-<tr><td rowspan="2" class="downloadcategory, downloadbottomline"><a name="macos"></a><img src="files/OSlogos/macos_logo.jpg" width="30" height="30" style="vertical-align:middle" alt="macos"/>MacOS</td>
-<td class="downloadlink, downloadback"><a href="distrib/v8.2/files/coq-8.2-intel.dmg">
-coq-8.2-intel.dmg</a></td>
-<td>90 MB</td>
-</tr><tr>
-<td class="downloadlink, downloadbottomback"><em>Warning</em>: This binary package contains Coq 8.2pl0 and was built for Mac OS 10.5. If you wish to use a newer version of Coq, or install it under Mac OS 10.6, you may follow these <a href="http://www.cs.princeton.edu/courses/archive/fall10/cos441/coq-mac.html">instructions to build a MacOS package using MacPorts</a>
-</td>
-<td class="downloadbottomline"></td>
-</tr>
+  <tr>
+    <td class="downloadcategory, downloadbottomback"><a
+      name="win"></a><img src="files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle"
+      alt="windows"/>Windows
+    </td>
 
-<tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
+    <td class="downloadlink, downloadbottomline"><a
+      href="distrib/V8.3/files/coq-8.3-win-1.exe">
+      coq-8.3-win-1.exe</a>
+    </td>
 
-<tr><td class="downloadcategory, downloadbottomback" rowspan="2"></td>
-<td class="downloadlink"><a href="distrib/V8.2pl2/files/Tutorial.pdf">
-Tutorial.pdf</a></td>
-<td class="downloadback">0.2 MB</td></tr>
+    <td class="downloadbottomback">138 MB</td>
+  </tr>
 
-<tr><td class="downloadlink, downloadbottomline"><a href="distrib/V8.2pl2/files/Reference-Manual.pdf">
-Reference-Manual.pdf</a></td>
-<td class="downloadbottomback">2 MB</td></tr>
+  <tr>
+    <td rowspan="2" class="downloadcategory, downloadbottomline"><a
+      name="macos"></a><img src="files/OSlogos/macos_logo.jpg"
+      width="30" height="30" style="vertical-align:middle"
+      alt="macos"/>MacOS
+    </td>
+    
+    <td class="downloadlink, downloadback"><a
+      href="distrib/V8.3/files/coq-8.3-intel.dmg">
+      coq-8.3-intel.dmg</a>
+    </td>
 
+    <td>90 MB</td>
+  </tr>
 
+-->
+  
+  <tr>
+    <td class="downloadlink, downloadbottomline"><a href="distrib/V8.3/files/Reference-Manual.pdf">
+      Reference-Manual.pdf</a>
+    </td>
+    <td class="downloadbottomback">1.5 MB</td>
+  </tr>
 
 </table>
 
 </div>
 </div>  	       	     
-
-
-
 
 
 <div class="framework">
-<div class="frameworklabel">The next version : Coq 8.3</div>
+<div class="frameworklabel">The previous version : Coq 8.2</div>
 <div class="frameworkcontent">
-    <p>This the first release candidate of Coq 8.3. Please be aware that, even if it is almost stable, it is still to be considered as a developpement version.</p>
+
+  <p>This is the previous stable release of the Coq system (see the <a
+  href="coq-82-detailed-description">detailed description</a> and the
+  <a href="distrib/current/CHANGES">full list of changes</a>).</p>
 
 <table class="downloadtable">
-<tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
-<tr>
-<td class="downloadcategory"><a name="src"></a></td>
-<td class="downloadlink, downloadback"><a href="distrib/V8.3-rc1/files/coq-8.3-rc1.tar.gz">coq-8.3-rc1.tar.gz</a>
-</td>
-<td>3.7 MB</td></tr>
+  <tr>
+    <td colspan="3" rowspan="1" class="downloadheader">Sources</td>
+  </tr>
+  <tr>
+    <td class="downloadcategory"><a name="src"></a></td>
+    <td class="downloadlink, downloadback"><a href="distrib/V8.2pl2/files/coq-8.2pl2.tar.gz">coq-8.2pl2.tar.gz</a>
+    </td>
+    <td>3.5 MB</td>
+  </tr>
 
-<tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
 
-<tr><td class="downloadcategory, downloadbottomback" rowspan="2"></td>
-<td class="downloadlink"><a href="distrib/V8.3-rc1/files/Tutorial.pdf">
-Tutorial.pdf</a></td>
-<td class="downloadback">0.2 MB</td></tr>
+  <tr>
+    <td class="downloadcategory, downloadbottomback"><a
+      name="win"></a><img src="files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle"
+      alt="windows"/>Windows
+    </td>
 
-<tr><td class="downloadlink, downloadbottomline"><a href="distrib/V8.3-rc1/files/Reference-Manual.pdf">
-Reference-Manual.pdf</a></td>
-<td class="downloadbottomback">2.2 MB</td></tr>
+    <td class="downloadlink, downloadbottomline"><a
+      href="distrib/V8.2pl2/files/coq-8.2pl2-win-1.exe">
+      coq-8.2pl2-win-1.exe</a>
+    </td>
 
+    <td class="downloadbottomback">138 MB</td>
+  </tr>
 
+  <tr>
+    <td rowspan="2" class="downloadcategory, downloadbottomline"><a
+      name="macos"></a><img src="files/OSlogos/macos_logo.jpg"
+      width="30" height="30" style="vertical-align:middle"
+      alt="macos"/>MacOS
+    </td>
+    
+    <td class="downloadlink, downloadback"><a
+      href="distrib/v8.2/files/coq-8.2-intel.dmg">
+      coq-8.2-intel.dmg</a>
+    </td>
+
+    <td>90 MB</td>
+  </tr>
+
+  <tr>
+
+    <td class="downloadlink, downloadbottomback"><em>Warning</em>:
+      This binary package contains Coq 8.2pl0 and was built for Mac OS
+      10.5. If you wish to use a newer version of Coq, or install it under
+      Mac OS 10.6, you may follow these <a
+      href="http://www.cs.princeton.edu/courses/archive/fall10/cos441/coq-mac.html">instructions
+      to build a MacOS package using MacPorts</a>
+    </td>
+
+    <td class="downloadbottomline"></td>
+  </tr>
+
+  <tr>
+    <td colspan="3" rowspan="1" class="downloadheader">Documentation</td>
+  </tr>
+
+  <tr>
+    <td class="downloadcategory, downloadbottomback" rowspan="2"></td>
+    <td class="downloadlink"><a href="distrib/V8.2pl2/files/Tutorial.pdf">
+      Tutorial.pdf</a>
+    </td>
+    <td class="downloadback">0.2 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadlink, downloadbottomline"><a href="distrib/V8.2pl2/files/Reference-Manual.pdf">
+      Reference-Manual.pdf</a>
+    </td>
+    <td class="downloadbottomback">2 MB</td>
+  </tr>
 
 </table>
 
 </div>
 </div>  	       	     
 
-
-
-
-
-
-
-
-
-<div class="framework">
-<div class="frameworklabel">The previous version : Coq 8.1</div>
-<div class="frameworkcontent">
-    <p>The last patch level for Coq 8.1 series is 8.1pl5. It has been released on june 2009.</p>
-
-<table class="downloadtable">
-<tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
-<tr>
-<td class="downloadcategory"><a name="src"></a></td>
-<td class="downloadlink, downloadbottomback"><a href="distrib/V8.1pl5/files/coq-8.1pl5-1.tar.gz">coq-8.1pl5-1.tar.gz</a>
-</td>
-<td>3 MB</td></tr>
-
-<tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
-<!-- <tr><td>OS</td><td>Files</td><td>Notes</td></tr> -->
-
-
-<tr><td class="downloadcategory, downloadbottomback"><a name="win"></a><img src="files/OSlogos/windows_logo.png" width="30" height="30" style="vertical-align:middle" alt="windows"/>Windows</td>
-<td class="downloadlink, downloadbottomline"><a href="distrib/V8.1pl5/files/coq-8.1pl5-1-win.exe">
-coq-8.1pl5-1-win.exe</a></td>
-<td class="downloadbottomback">111 MB</td>
-</tr>
-
-<tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
-
-<tr><td class="downloadcategory, downloadbottomline" rowspan="2"></td>
-<td class="downloadlink, downloadback"><a href="distrib/V8.1pl5/files/Tutorial.pdf">
-Tutorial.pdf</a></td>
-<td class="">0.2 MB</td></tr>
-
-<tr><td class="downloadlink, downloadbottomback"><a href="distrib/V8.1pl5/files/Reference-Manual.pdf">
-Reference-Manual.pdf</a></td>
-<td class="downloadbottomline">2 MB</td></tr>
-
-
-
-</table>
-
-</div>
-</div>  	       	     
 
 
 <div class="framework">
