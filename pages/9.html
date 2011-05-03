@@ -909,12 +909,12 @@ of Peirce's law may be proved in <span class="caps">Coq</span>&nbsp; using <code
 In classical logic, the double negation of a proposition is equivalent to this 
 proposition, but in the constructive logic of <span class="caps">Coq</span>&nbsp; this is not so. If you 
 want to use classical logic in <span class="caps">Coq</span>, you have to import explicitly the
-<code>classical</code> module, which will declare the axiom <code>classic</code>
+<code>Classical</code> module, which will declare the axiom <code>classic</code>
 of excluded middle, and classical tautologies such as de Morgan's laws.
 The <code>Require</code> command is used to import a module from <span class="caps">Coq</span>'s library:
 
 <div class="flushleft">
-<tt>Coq&nbsp;&lt;&nbsp;Require&nbsp;Import&nbsp;classical.</tt><br/>
+<tt>Coq&nbsp;&lt;&nbsp;Require&nbsp;Import&nbsp;Classical.</tt><br/>
 <br/>
 <tt>Coq&nbsp;&lt;&nbsp;Check&nbsp;NNPP.</tt><br/>
 <tt><span class="italic">NNPP</span></tt><br/>
