@@ -1,0 +1,122 @@
+<div class="framework">
+<div class="frameworklabel">The forthcoming version: Coq 8.4
+</div>
+<div class="frameworkcontent">
+
+Coq 8.4 is available in <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta">beta</a> testing. It features:
+
+<ul>
+<li> a new modular and uniform extension of the arithmetical libraries by
+  P. Letouzey which systematically provides power, gcd/lcm, square
+  root, base 2 logarithm, division, modulo, bitwise operators, logical
+  shift, comparisons, iterators on top of a uniform naming layer
+  (e.g. plus and mult are now consistently named add and mul while
+  still remaining mostly compatible with 8.3);</li>
+<li> a new proof engine by A. Spiwack whose most salient feature is the
+  introduction of bullets (+, -, *) and structured scripts ({ ... }).</li>
+</ul>
+
+The main other changes are:
+
+<ul>
+<li> addition of eta-conversion to the logic;</li>
+<li> a slightly more flexible guard condition for fixpoints;</li>
+<li> a more systematic support for pattern-matching on dependent types;</li>
+<li> more robust CoqIDE (including a new communication protocol by V. Gross);</li>
+<li> a new library of "vectors" (lists of a given length);</li>
+<li> support for referring to expressions of the goal using pattern in tactics;</li>
+<li> automatic computation of occurrences to abstract over in destruct/induction;</li>
+<li> various improvements to Ltac (timeout, eq_constr, is_evar, has_evar,
+  timeout, generic "match _ with _ => _ end" pattern);</li>
+<li> implicit arguments in anonymous functions;</li>
+<li> notations with binders (e.g. "exists x y z, P");</li>
+<li> many bug fixes and improvements of existing features (type classes,
+  setoid rewriting, nsatz, micromega, extraction, Function, module
+  system, coq_makefile, ...);</li>
+</ul>
+  <p>For a full log of changes,
+see the file <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/CHANGES">
+CHANGES</a>.</p>
+
+  <p>Coq 8.4 is not entirely upward compatible with 8.3. Please report manifest regressions not mentioned in the CHANGES file.</p>
+
+<table class="downloadtable">
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
+  <tr>
+    <td class="downloadcategory"><a name="src"></a></td>
+    <td class="downloadlink, downloadback"><a href="http://pauillac.inria.fr/~herbelin/distrib/V8.4beta/files/coq-8.4beta.tar.gz">coq-8.4beta.tar.gz</a>
+    </td>
+    <td>3.7 MB</td>
+  </tr>
+
+<!--
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
+
+  <tr>
+    <td class="downloadcategory, downloadbottomback"><a
+      name="win"></a><img src="files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle"
+      alt="windows"/><br>Windows
+    </td>
+
+    <td class="downloadlink, downloadbottomline"><a
+      href="distrib/V8.3pl2/files/coq-8.3pl2-win-1.exe">
+      coq-8.3pl2-win-1.exe</a> (bundled with CoqIDE)
+    </td>
+
+    <td class="downloadbottomback">49 MB</td>
+  </tr>
+
+  <tr>
+    <td rowspan="3" class="downloadcategory, downloadbottomline"><a
+      name="macos"></a><img src="files/OSlogos/macos_logo.jpg"
+      width="30" height="30" style="vertical-align:middle"
+      alt="macos"/><br>MacOS
+    </td>
+    
+    <td class="downloadlink, downloadback"><a
+      href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.3pl3/files/coq-8.3pl3-macosx.dmg">
+      coq-8.3pl3-macosx.dmg</a></td>
+    </td>
+
+    <td>70 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadlink, downloadback"><a
+      href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.3pl3/files/coqide-8.3pl3-macosx.dmg">
+      coqide-8.3pl3-macosx.dmg</a> (Coq bundled with CoqIDE interface)
+
+    <td>93 MB</td>
+
+  </tr>
+  <tr>
+    <td class="downloadback"><em>The packages require MacOS &ge; 10.5</em>
+    </td>
+    <td></td>
+  </tr>
+
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
+
+  <tr>
+    <td class="downloadcategory, downloadbottomback" rowspan="2"></td>
+    <td class="downloadlink"><a href="distrib/V8.3pl2/files/Tutorial.pdf">Tutorial.pdf</a></td>
+    <td class="downloadback">0.2 MB</td>
+  </tr>
+  
+  
+  <tr>
+    <td class="downloadlink, downloadbottomline"><a href="distrib/V8.3pl2/files/Reference-Manual.pdf">
+      Reference-Manual.pdf</a>
+    </td>
+    <td class="downloadbottomback">1.5 MB</td>
+  </tr>
+-->
+
+</table>
+
+On Linux, BSD or MacOS package-based distributions, Coq is released by the corresponding maintainers. For reports on the Windows package and the MacOS <code>dmg</code> packages, use the <a href="http://coq.inria.fr/bugs/">Coq bug tracker</a>.
+
+</div>
+</div>  	       	     
