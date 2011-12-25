@@ -9,9 +9,9 @@ Coq 8.4 is available in <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/
 <li> a new modular and uniform extension of the arithmetical libraries by
   P. Letouzey which systematically provides power, gcd/lcm, square
   root, base 2 logarithm, division, modulo, bitwise operators, logical
-  shift, comparisons, iterators on top of a uniform naming layer
+  shift, comparisons, iterators for all of nat, N, Z, BigN and BigZ on top of a uniform naming layer
   (e.g. plus and mult are now consistently named add and mul while
-  still remaining mostly compatible with 8.3) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Numbers.Natural.Abstract.NSqrt.html">example 1</a>, <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.ZArith.BinInt.html">example 2</a>);</li>
+  still remaining mostly compatible with 8.3) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Numbers.Natural.Abstract.NSqrt.html">example 1</a>, <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.ZArith.BinInt.html">example 2</a>, <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Numbers.Natural,Peano.NPeano.html">example 3</a>);</li>
 <li> a new proof engine by A. Spiwack whose most salient feature is the
   introduction of bullets (+, -, *) and structured scripts ({ ... }) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/binders_bullets.html#unique_sum_0">example</a>).</li>
 </ul>
@@ -26,10 +26,9 @@ The main other changes are:
 <li> a new library of <i><a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Vectors.Vector.html">vectors</a></i> (lists of a given length);</li>
 <li> support for referring to expressions of the goal using pattern in tactics;</li>
 <li> automatic computation of occurrences to abstract over in destruct/induction (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/eq_id_comm.html#eq_id_comm_r/">example</a>);</li>
-<li> various improvements to Ltac (timeout, eq_constr, is_evar, has_evar,
-  timeout, generic "match _ with _ => _ end" pattern);</li>
+<li> various improvements to Ltac (<tt>timeout</tt>, <tt>eq_constr</tt>, <tt>is_evar</tt>, <tt>has_evar</tt>, generic <tt>match _ with _ => _ end</tt> pattern, fine-tuning of <tt>simpl</tt>);</li>
 <li> implicit arguments in anonymous functions;</li>
-<li> notations with binders (e.g. "exists x y z, P") (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/binders_bullets.html">example</a>);</li>
+<li> notations with binders (e.g. <tt>exists x y z : A, P x y z</tt>) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/binders_bullets.html">example</a>);</li>
 <li> many bug fixes and improvements of existing features (type classes,
   setoid rewriting, nsatz, micromega, extraction, Function, module
   system, coq_makefile, ...);</li>
