@@ -11,9 +11,9 @@ Coq 8.4 is available in <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/
   root, base 2 logarithm, division, modulo, bitwise operators, logical
   shift, comparisons, iterators on top of a uniform naming layer
   (e.g. plus and mult are now consistently named add and mul while
-  still remaining mostly compatible with 8.3);</li>
+  still remaining mostly compatible with 8.3) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Numbers.Natural.Abstract.NSqrt.html">example 1</a>, <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.ZArith.BinInt.html">example 2</a>);</li>
 <li> a new proof engine by A. Spiwack whose most salient feature is the
-  introduction of bullets (+, -, *) and structured scripts ({ ... }).</li>
+  introduction of bullets (+, -, *) and structured scripts ({ ... }) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/binders_bullets.html#unique_sum_0">example</a>).</li>
 </ul>
 
 The main other changes are:
@@ -21,15 +21,15 @@ The main other changes are:
 <ul>
 <li> addition of eta-conversion to the logic;</li>
 <li> a slightly more flexible guard condition for fixpoints;</li>
-<li> a more systematic support for pattern-matching on dependent types;</li>
+<li> a more systematic support for pattern-matching on dependent types<!-- (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Vectors.Fin.html#rectS">example</a>)-->;</li>
 <li> more robust CoqIDE (including a new communication protocol by V. Gross);</li>
-<li> a new library of "vectors" (lists of a given length);</li>
+<li> a new library of <i><a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Vectors.Vector.html">vectors</a></i> (lists of a given length);</li>
 <li> support for referring to expressions of the goal using pattern in tactics;</li>
-<li> automatic computation of occurrences to abstract over in destruct/induction;</li>
+<li> automatic computation of occurrences to abstract over in destruct/induction<!-- (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/eq_id_comm.html#eq_id_comm_r/">example</a>)-->;</li>
 <li> various improvements to Ltac (timeout, eq_constr, is_evar, has_evar,
   timeout, generic "match _ with _ => _ end" pattern);</li>
 <li> implicit arguments in anonymous functions;</li>
-<li> notations with binders (e.g. "exists x y z, P");</li>
+<li> notations with binders (e.g. "exists x y z, P") (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/binders_bullets.html">example</a>);</li>
 <li> many bug fixes and improvements of existing features (type classes,
   setoid rewriting, nsatz, micromega, extraction, Function, module
   system, coq_makefile, ...);</li>
@@ -39,6 +39,8 @@ see the file <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/CH
 CHANGES</a>.</p>
 
   <p>Coq 8.4 is not entirely upward compatible with 8.3. Please report manifest regressions not mentioned in the CHANGES file.</p>
+
+  <p>The Reference Manual for Coq 8.4 is <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/refman/">browsable online</a> but is not yet fully up-to-date.</p>
 
 <table class="downloadtable">
   <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
