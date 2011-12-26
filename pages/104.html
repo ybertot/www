@@ -3,7 +3,7 @@
 </div>
 <div class="frameworkcontent">
 
-Coq 8.4 is available in <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta">beta</a> testing. It features:
+Coq 8.4 is available in <a href="http://coq.inria.fr/distrib/V8.4beta">beta</a> testing. It features:
 
 <ul>
 <li> a new modular and uniform extension of the arithmetical libraries by
@@ -11,9 +11,9 @@ Coq 8.4 is available in <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/
   root, base 2 logarithm, division, modulo, bitwise operators, logical
   shift, comparisons, iterators for all of <tt>nat</tt>, <tt>N</tt>, <tt>Z</tt>, <tt>BigN</tt> and <tt>BigZ</tt> on top of a uniform naming layer
   (e.g. <tt>plus</tt> and <tt>mult</tt> are now consistently named <tt>add</tt> and <tt>mul</tt> while
-  still remaining mostly compatible with 8.3) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Numbers.Natural.Abstract.NSqrt.html">example&nbsp;1</a>, <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.ZArith.BinInt.html">example&nbsp;2</a>, <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Numbers.Natural.Peano.NPeano.html">example&nbsp;3</a>);</li>
+  still remaining mostly compatible with 8.3) (<a href="http://coq.inria.fr/distrib/V8.4beta/stdlib/Coq.Numbers.Natural.Abstract.NSqrt.html">example&nbsp;1</a>, <a href="http://coq.inria.fr/distrib/V8.4beta/stdlib/Coq.ZArith.BinInt.html">example&nbsp;2</a>, <a href="http://coq.inria.fr/distrib/V8.4beta/stdlib/Coq.Numbers.Natural.Peano.NPeano.html">example&nbsp;3</a>);</li>
 <li> a new proof engine by A. Spiwack whose most salient feature is the
-  introduction of bullets (+, -, *) and structured scripts ({ ... }) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/binders_bullets.html#unique_sum_0">example</a>).</li>
+  introduction of bullets (+, -, *) and structured scripts ({ ... }) (<a href="http://coq.inria.fr/distrib/V8.4beta/examples/binders_bullets.html#unique_sum_0">example</a>).</li>
 </ul>
 
 The main other changes are:
@@ -21,31 +21,31 @@ The main other changes are:
 <ul>
 <li> addition of eta-conversion to the logic;</li>
 <li> a slightly more flexible guard condition for fixpoints;</li>
-<li> a more systematic support for pattern-matching on dependent types<!-- (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Vectors.Fin.html#rectS">example</a>)-->;</li>
+<li> a more systematic support for pattern-matching on dependent types<!-- (<a href="http://coq.inria.fr/distrib/V8.4beta/stdlib/Coq.Vectors.Fin.html#rectS">example</a>)-->;</li>
 <li> more robust CoqIDE (including a new communication protocol by V. Gross);</li>
-<li> a new library of <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/stdlib/Coq.Vectors.Vector.html">vectors</a> (lists of a given length);</li>
+<li> a new library of <a href="http://coq.inria.fr/distrib/V8.4beta/stdlib/Coq.Vectors.Vector.html">vectors</a> (lists of a given length);</li>
 <li> support for referring to expressions of the goal using pattern in tactics;</li>
-<li> automatic computation of occurrences to abstract over in destruct/induction (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/eq_id_comm.html#eq_id_comm_r/">example</a>);</li>
-<li> various improvements to Ltac (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/refman/Reference-Manual012.html#@tactic185"><tt>timeout</tt></a>, <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/refman/Reference-Manual012.html#@default745"><tt>appcontext</tt></a>, <tt>eq_constr</tt>, <tt>is_evar</tt>, <tt>has_evar</tt>, generic <tt>match _ with _ => _ end</tt> pattern, <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/refman/Reference-Manual011.html#@tactic67">fine-tuning of <tt>simpl</tt></a>);</li>
+<li> automatic computation of occurrences to abstract over in destruct/induction (<a href="http://coq.inria.fr/distrib/V8.4beta/examples/eq_id_comm.html#eq_id_comm_r/">example</a>);</li>
+<li> various improvements to Ltac (<a href="http://coq.inria.fr/distrib/V8.4beta/refman/Reference-Manual012.html#@tactic185"><tt>timeout</tt></a>, <a href="http://coq.inria.fr/distrib/V8.4beta/refman/Reference-Manual012.html#@default745"><tt>appcontext</tt></a>, <tt>eq_constr</tt>, <tt>is_evar</tt>, <tt>has_evar</tt>, generic <tt>match _ with _ => _ end</tt> pattern, <a href="http://coq.inria.fr/distrib/V8.4beta/refman/Reference-Manual011.html#@tactic67">fine-tuning of <tt>simpl</tt></a>);</li>
 <li> implicit arguments in anonymous functions;</li>
-<li> notations with binders (e.g. <tt>exists x y z : A, P x y z</tt>) (<a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/examples/binders_bullets.html">example</a>);</li>
+<li> notations with binders (e.g. <tt>exists x y z : A, P x y z</tt>) (<a href="http://coq.inria.fr/distrib/V8.4beta/examples/binders_bullets.html">example</a>);</li>
 <li> many bug fixes and improvements of existing features (type classes,
   setoid rewriting, nsatz, micromega, extraction, Function, module
   system, coq_makefile, ...);</li>
 </ul>
   <p>For a full log of changes,
-see the file <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/CHANGES">
+see the file <a href="http://coq.inria.fr/distrib/V8.4beta/CHANGES">
 CHANGES</a>.</p>
 
   <p>Coq 8.4 is not entirely upward compatible with 8.3. Please report manifest regressions not mentioned in the CHANGES file.</p>
 
-  <p>The Reference Manual for Coq 8.4 is <a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/refman/">browsable online</a> but is not yet fully up-to-date.</p>
+  <p>The Reference Manual for Coq 8.4 is <a href="http://coq.inria.fr/distrib/V8.4beta/refman/">browsable online</a> but is not yet fully up-to-date.</p>
 
 <table class="downloadtable">
   <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
   <tr>
     <td class="downloadcategory"><a name="src"></a></td>
-    <td class="downloadlink, downloadback"><a href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/files/coq-8.4beta.tar.gz">coq-8.4beta.tar.gz</a>
+    <td class="downloadlink, downloadback"><a href="http://coq.inria.fr/distrib/V8.4beta/files/coq-8.4beta.tar.gz">coq-8.4beta.tar.gz</a>
     </td>
     <td>4 MB</td>
   </tr>
@@ -60,7 +60,7 @@ CHANGES</a>.</p>
     </td>
 
     <td class="downloadlink, downloadbottomline"><a
-      href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.4beta/files/coq-8.4beta-win-0.exe">
+      href="http://coq.inria.fr/distrib/V8.4beta/files/coq-8.4beta-win-0.exe">
       coq-8.4beta-win-0.exe</a> (bundled with CoqIDE)
     </td>
 
@@ -75,7 +75,7 @@ CHANGES</a>.</p>
     </td>
     
     <td class="downloadlink, downloadback"><a
-      href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.3pl3/files/coq-8.3pl3-macosx.dmg">
+      href="http://coq.inria.fr/distrib/V8.3pl3/files/coq-8.3pl3-macosx.dmg">
       coq-8.3pl3-macosx.dmg</a></td>
     </td>
 
@@ -84,7 +84,7 @@ CHANGES</a>.</p>
 
   <tr>
     <td class="downloadlink, downloadback"><a
-      href="http://pauillac.inria.fr/~herbelin/coq/distrib/V8.3pl3/files/coqide-8.3pl3-macosx.dmg">
+      href="http://coq.inria.fr/distrib/V8.3pl3/files/coqide-8.3pl3-macosx.dmg">
       coqide-8.3pl3-macosx.dmg</a> (Coq bundled with CoqIDE interface)
 
     <td>93 MB</td>
