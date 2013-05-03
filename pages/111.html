@@ -14,7 +14,7 @@ The Coq Workshop series brings together Coq users, developers, and contributors.
 <tr>
   <td>60'</td>
   <td>Guillaume Melquiond</td>
-  <td><a href="#Melquiond">invited talk</a></td>
+  <td><a href="#Melquiond">Automations for verifying floating-point algorithms</a></td>
 </tr>
 
 <tr>
@@ -66,8 +66,30 @@ The Coq Workshop series brings together Coq users, developers, and contributors.
 <h2>Abstracts and slides</h2>
 
 
-<div style="margin-top: 1em"><A style="font-style:italic" name="Melquiond">Guillaume Melquiond</A>: invited talk</br>
-Abstract:</br>
+<div style="margin-top: 1em"><A style="font-style:italic" name="Melquiond">Guillaume Melquiond</A>: Automations for verifying floating-point algorithms</br>
+Abstract: Floating-point numbers are limited both in range and in precision, yet
+they are widely used as a way to implement computations on real numbers.
+Thus arithmetic operations cause small errors that might be amplified
+during subsequent computations. As such, it is important to guarantee
+that the computed values are still close enough to the ideal results.
+The traditional way to tackle the verification of such programs is to
+perform an error analysis, possibly using automated tools.
+
+Unfortunately, when it comes to the low-level floating-point functions
+found in mathematical libraries, the code is usually so contrived that
+this approach falls short. Falling back to a pen-and-paper proof makes
+it possible to verify such functions, but this process is long, tedious,
+and error-prone. Formal proofs take care of that last point, but they
+come at an even greater cost for the user. Thus one needs to recover
+some automations inside proof assistants to ease the verification
+process.
+
+This talk will present an overview of some of the methods available for
+the Coq proof assistant. In particular, it will focus on Gappa and some
+other interval-based automations. The presentation will not really be
+about the inner workings of these methods, but rather show how they can
+be used in practice to verify some floating-point algorithms in Coq.
+</br>
 Slides: <!-- <a href="http://coq.inria.fr/files/coq5_slide_invited_1.pdf">Download</a> -->
 </div>
 
