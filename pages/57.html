@@ -12,10 +12,10 @@ echo "<div class=\"SCpager\">\n <div class = \"SCpagercontent\">";
 
 for ($i=1;$i<=$nbpics;$i=$i+1) {
    if ($i==$id) {
-      echo "<img class=\"SCthumbselected\" src=\"/coq/files/coqide/thumbs/capture$i.jpg\" alt=\"thumb number $i\"/>";
+      echo "<img class=\"SCthumbselected\" src=\"/files/coqide/thumbs/capture$i.jpg\" alt=\"thumb number $i\"/>";
    }
    else {
-      echo "<a href=\"?q=node/57&amp;id=".$i."#scr\"><img class=\"SCthumb\" src=\"/coq/files/coqide/thumbs/capture$i.jpg\" alt=\"thumb number $i\"/></a>";
+      echo "<a href=\"?q=node/57&amp;id=".$i."#scr\"><img class=\"SCthumb\" src=\"/files/coqide/thumbs/capture$i.jpg\" alt=\"thumb number $i\"/></a>";
     }             
 }
 
@@ -28,7 +28,7 @@ if ($id>$nbpics) {
      echo "$id is not a screenshot id.";
 }
 else {
-  echo "<a href=\"/coq/files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"/coq/files/coqide/images/capture".$id.".jpg\" alt=\"screenshot number $i\" /></a>";
+  echo "<a href=\"/files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"/files/coqide/images/capture".$id.".jpg\" alt=\"screenshot number $i\" /></a>";
 }
 
 echo "\n</div>";
