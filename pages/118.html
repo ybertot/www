@@ -1,317 +1,282 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
-            "http://www.w3.org/TR/REC-html40/loose.dtd">
-<HTML>
-<HEAD>
-<TITLE>whodidwhat-8.4update</TITLE>
-
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<META name="GENERATOR" content="hevea 1.10">
-<STYLE type="text/css">
-.li-itemize{margin:1ex 0ex;}
-.li-enumerate{margin:1ex 0ex;}
-.dd-description{margin:0ex 0ex 1ex 4ex;}
-.dt-description{margin:0ex;}
-.toc{list-style:none;}
-.thefootnotes{text-align:left;margin:0ex;}
-.dt-thefootnotes{margin:0em;}
-.dd-thefootnotes{margin:0em 0em 0em 2em;}
-.footnoterule{margin:1em auto 1em 0px;width:50%;}
-.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
-.title{margin:2ex auto;text-align:center}
-.center{text-align:center;margin-left:auto;margin-right:auto;}
-.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
-.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
-DIV TABLE{margin-left:inherit;margin-right:inherit;}
-PRE{text-align:left;margin-left:0ex;margin-right:auto;}
-BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
-TD P{margin:0px;}
-.boxed{border:1px solid black}
-.textboxed{border:1px solid black}
-.vbar{border:none;width:2px;background-color:black;}
-.hbar{border:none;height:2px;width:100%;background-color:black;}
-.hfill{border:none;height:1px;width:200%;background-color:black;}
-.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
-.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
-.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
-.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
-.dcenter{margin:0ex auto;}
-.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
-.minipage{text-align:left; margin-left:0em; margin-right:auto;}
-.marginpar{border:solid thin black; width:20%; text-align:left;}
-.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
-.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
-.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
-.part{margin:2ex auto;text-align:center}
-</STYLE>
-</HEAD>
-<BODY >
-<!--HEVEA command line is: /usr/bin/hevea whodidwhat-8.4update -->
-<!--CUT DEF section 1 --><TABLE CLASS="title"><TR><TD><H1 CLASS="titlemain">Who did what in the Coq archive?</H1><H3 CLASS="titlerest">The Coq development team</H3></TD></TR>
-</TABLE><DIV CLASS="center">(updated for Coq 8.4)</DIV><!--TOC section The Calculus of Inductive Constructions-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc1">1</A>  The Calculus of Inductive Constructions</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+<!--HEVEA command line is: /home/letouzey/.opam/4.01.0/bin/hevea whodidwhat-8.4update.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><table class="title"><tr><td style="padding:1ex"><h1 class="titlemain">Who did what in the Coq archive?</h1></td></tr>
+</table><div class="center">(updated for Coq 8.4)</div>
+<!--TOC section id=sec1 The Calculus of Inductive Constructions-->
+<h2 id="sec1" class="section">1  The Calculus of Inductive Constructions</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 The Calculus of Constructions
-<UL CLASS="itemize"><LI CLASS="li-itemize">
+<ul class="itemize"><li class="li-itemize">
 Core type-checker: Gérard Huet and Thierry Coquand with
 optimizations by Chet Murthy, Bruno Barras
-</LI><LI CLASS="li-itemize">Head reduction functions: Gérard Huet, Christine Paulin, Bruno Barras
-</LI></UL>
-</LI><LI CLASS="li-itemize">Conversion and reduction
-<UL CLASS="itemize"><LI CLASS="li-itemize">
+</li><li class="li-itemize">Head reduction functions: Gérard Huet, Christine Paulin, Bruno Barras
+</li></ul>
+</li><li class="li-itemize">Conversion and reduction
+<ul class="itemize"><li class="li-itemize">
 Lazy conversion machine: Bruno Barras
-</LI><LI CLASS="li-itemize">Transparency/opacity: Bruno Barras
-</LI><LI CLASS="li-itemize">Bytecode-based conversion: Benjamin Grégoire
-</LI><LI CLASS="li-itemize">Binary-words retroknowledge: Arnaud Spiwack 
-</LI></UL>
-</LI><LI CLASS="li-itemize">The universe hierarchy
-<UL CLASS="itemize"><LI CLASS="li-itemize">
+</li><li class="li-itemize">Transparency/opacity: Bruno Barras
+</li><li class="li-itemize">Bytecode-based conversion: Benjamin Grégoire
+</li><li class="li-itemize">Binary-words retroknowledge: Arnaud Spiwack 
+</li></ul>
+</li><li class="li-itemize">The universe hierarchy
+<ul class="itemize"><li class="li-itemize">
 Floating universes: Gérard Huet, with contributions from Bruno Barras
-</LI><LI CLASS="li-itemize">Algebraic universes: Hugo Herbelin
-</LI></UL>
-</LI><LI CLASS="li-itemize">Mutual inductive types and recursive definitions
-<UL CLASS="itemize"><LI CLASS="li-itemize">
+</li><li class="li-itemize">Algebraic universes: Hugo Herbelin
+</li></ul>
+</li><li class="li-itemize">Mutual inductive types and recursive definitions
+<ul class="itemize"><li class="li-itemize">
 Type-checking: Christine Paulin
-</LI><LI CLASS="li-itemize">Positivity condition: Christine Paulin
-</LI><LI CLASS="li-itemize">Guardness condition for fixpoints: Christine Paulin;
+</li><li class="li-itemize">Positivity condition: Christine Paulin
+</li><li class="li-itemize">Guardness condition for fixpoints: Christine Paulin;
 extensions by Eduardo Gimenez, Bruno Barras, Pierre Boutillier
-</LI><LI CLASS="li-itemize">Recursively non-uniform parameters: Christine Paulin
-</LI><LI CLASS="li-itemize">Sort-polymorphism of inductive types: Hugo Herbelin
-</LI></UL>
-</LI><LI CLASS="li-itemize">Local definitions: Hugo Herbelin
-</LI><LI CLASS="li-itemize">Mutual coinductive types and corecursive definitions: Eduardo Gimenez
-</LI><LI CLASS="li-itemize">Module system
-<UL CLASS="itemize"><LI CLASS="li-itemize">
+</li><li class="li-itemize">Recursively non-uniform parameters: Christine Paulin
+</li><li class="li-itemize">Sort-polymorphism of inductive types: Hugo Herbelin
+</li></ul>
+</li><li class="li-itemize">Local definitions: Hugo Herbelin
+</li><li class="li-itemize">Mutual coinductive types and corecursive definitions: Eduardo Gimenez
+</li><li class="li-itemize">Module system
+<ul class="itemize"><li class="li-itemize">
 Core system: Jacek Chrz?szcz
-</LI><LI CLASS="li-itemize">Inlining: Claudio Sacerdoti Coen and Élie Soubiran
-</LI><LI CLASS="li-itemize">Module inclusion: Élie Soubiran
-</LI><LI CLASS="li-itemize">Functorial signature application: Élie Soubiran
-</LI><LI CLASS="li-itemize">Transparent name space: Élie Soubiran
-</LI><LI CLASS="li-itemize">Resolution of qualified names: Hugo Herbelin
-</LI><LI CLASS="li-itemize">Operator for nested functor application: Élie Soubiran and
+</li><li class="li-itemize">Inlining: Claudio Sacerdoti Coen and Élie Soubiran
+</li><li class="li-itemize">Module inclusion: Élie Soubiran
+</li><li class="li-itemize">Functorial signature application: Élie Soubiran
+</li><li class="li-itemize">Transparent name space: Élie Soubiran
+</li><li class="li-itemize">Resolution of qualified names: Hugo Herbelin
+</li><li class="li-itemize">Operator for nested functor application: Élie Soubiran and
 Pierre Letouzey
-</LI></UL>
-</LI><LI CLASS="li-itemize">Minimalist stand-alone type-checker (<TT>coqchk</TT>): Bruno Barras, with extra support for modules by Élie Soubiran and Pierre Letouzey
-</LI><LI CLASS="li-itemize">Eta-conversion: Hugo Herbelin, with contributions from Stéphane
+</li></ul>
+</li><li class="li-itemize">Minimalist stand-alone type-checker (<span style="font-family:monospace">coqchk</span>): Bruno Barras, with extra support for modules by Élie Soubiran and Pierre Letouzey
+</li><li class="li-itemize">Eta-conversion: Hugo Herbelin, with contributions from Stéphane
 Glondu, Benjamin Grégoire
-</LI></UL><!--TOC section Specification language-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc2">2</A>  Specification language</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li></ul>
+<!--TOC section id=sec2 Specification language-->
+<h2 id="sec2" class="section">2  Specification language</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 Sections: Gilles Dowek with extra contributions by Gérard
 Huet, Chet Murthy, Hugo Herbelin
-</LI><LI CLASS="li-itemize">The <TT>Russell</TT> specifications language, proof obligations (<TT>Program</TT>): Matthieu Sozeau
-</LI><LI CLASS="li-itemize">Type inference: Chet Murthy, with extra contributions by Bruno
+</li><li class="li-itemize">The <span style="font-family:monospace">Russell</span> specifications language, proof obligations (<span style="font-family:monospace">Program</span>): Matthieu Sozeau
+</li><li class="li-itemize">Type inference: Chet Murthy, with extra contributions by Bruno
 Barras, Hugo Herbelin, Matthieu Sozeau, Enrico Tassi
-</LI><LI CLASS="li-itemize">Pattern-matching: Hugo Herbelin on top of a first version by
+</li><li class="li-itemize">Pattern-matching: Hugo Herbelin on top of a first version by
 Cristina Cornes
-</LI><LI CLASS="li-itemize">Implicit arguments: Amokrane Saïbi, with extensions by Hugo
+</li><li class="li-itemize">Implicit arguments: Amokrane Saïbi, with extensions by Hugo
 Herbelin, Matthieu Sozeau, Pierre Boutillier
-</LI><LI CLASS="li-itemize">Synthetic <TT>Arguments</TT> command: Enrico Tassi
-</LI><LI CLASS="li-itemize">Coercions: Amokrane Saïbi
-</LI><LI CLASS="li-itemize">Records: Amokrane Saïbi with extensions by Arnaud Spiwack and
+</li><li class="li-itemize">Synthetic <span style="font-family:monospace">Arguments</span> command: Enrico Tassi
+</li><li class="li-itemize">Coercions: Amokrane Saïbi
+</li><li class="li-itemize">Records: Amokrane Saïbi with extensions by Arnaud Spiwack and
 Matthieu Sozeau
-</LI><LI CLASS="li-itemize">Canonical structures: Amokrane Saïbi
-</LI><LI CLASS="li-itemize">Type classes: Matthieu Sozeau
-</LI><LI CLASS="li-itemize">Functional schemes (<TT>Function</TT>, <TT>Functional Scheme</TT>, ...): Julien Forest and Pierre Courtieu (preliminary version by Yves Bertot)
-</LI><LI CLASS="li-itemize">Generation of induction schemes: Christine Paulin, Vincent
+</li><li class="li-itemize">Canonical structures: Amokrane Saïbi
+</li><li class="li-itemize">Type classes: Matthieu Sozeau
+</li><li class="li-itemize">Functional schemes (<span style="font-family:monospace">Function</span>, <span style="font-family:monospace">Functional Scheme</span>, ...): Julien Forest and Pierre Courtieu (preliminary version by Yves Bertot)
+</li><li class="li-itemize">Generation of induction schemes: Christine Paulin, Vincent
 Siles, Matthieu Sozeau
-</LI></UL><!--TOC section Tactics-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc3">3</A>  Tactics</H2><!--SEC END --><!--TOC subsection General tactic support-->
-<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc4">3.1</A>  General tactic support</H3><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li></ul>
+<!--TOC section id=sec3 Tactics-->
+<h2 id="sec3" class="section">3  Tactics</h2><!--SEC END -->
+<!--TOC subsection id=sec4 General tactic support-->
+<h3 id="sec4" class="subsection">3.1  General tactic support</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
 Proof engine: Arnaud Spiwack (first version by Thierry Coquand, second version by Chet Murthy)
-</LI><LI CLASS="li-itemize">Ltac: David Delahaye, with extensions by Hugo Herbelin, Bruno Barras, ...
-</LI><LI CLASS="li-itemize">Tactic notations: Hugo Herbelin (first version by Chet Murthy)
-</LI><LI CLASS="li-itemize">Main tactic unification procedure: Chet Murthy with
+</li><li class="li-itemize">Ltac: David Delahaye, with extensions by Hugo Herbelin, Bruno Barras, ...
+</li><li class="li-itemize">Tactic notations: Hugo Herbelin (first version by Chet Murthy)
+</li><li class="li-itemize">Main tactic unification procedure: Chet Murthy with
 contributions from Hugo Herbelin and Matthieu Sozeau
-</LI><LI CLASS="li-itemize">Mathematical-style language (C-Zar): Pierre Corbineau
-</LI><LI CLASS="li-itemize">Communication with external tools (<TT>external</TT>): Hugo Herbelin
-</LI><LI CLASS="li-itemize">Proof structuring (bullets and brackets): Arnaud Spiwack
-</LI></UL><!--TOC subsection Predefined tactics-->
-<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc5">3.2</A>  Predefined tactics</H3><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
-Basic tactics (<TT>intro</TT>, <TT>apply</TT>,
-<TT>assumption</TT>, <TT>exact</TT>: Thierry Coquand, with further
+</li><li class="li-itemize">Mathematical-style language (C-Zar): Pierre Corbineau
+</li><li class="li-itemize">Communication with external tools (<span style="font-family:monospace">external</span>): Hugo Herbelin
+</li><li class="li-itemize">Proof structuring (bullets and brackets): Arnaud Spiwack
+</li></ul>
+<!--TOC subsection id=sec5 Predefined tactics-->
+<h3 id="sec5" class="subsection">3.2  Predefined tactics</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
+Basic tactics (<span style="font-family:monospace">intro</span>, <span style="font-family:monospace">apply</span>,
+<span style="font-family:monospace">assumption</span>, <span style="font-family:monospace">exact</span>): Thierry Coquand, with further
 collective extensions
-</LI><LI CLASS="li-itemize">Reduction tactics: Christine Paulin (<TT>simpl</TT>), Bruno
-Barras (<TT>cbv</TT>, <TT>lazy</TT>), with contributions from Hugo Herbelin, Enrico Tassi, ...
-</LI><LI CLASS="li-itemize">Tacticals: Thierry Coquand, Chet Murthy, Eduardo Gimenez, ...;
-new versions of <TT>info</TT> and <TT>Show Script</TT> by Pierre Letouzey;
-<TT>timeout</TT> by Pierre Letouzey
-</LI><LI CLASS="li-itemize">Induction: Christine Paulin (<TT>elim</TT>, <TT>case</TT>), Hugo Herbelin (<TT>induction</TT>, <TT>destruct</TT>
-</LI><LI CLASS="li-itemize">Refinement (<TT>refine</TT>): Jean-Christophe Filliâtre
-</LI><LI CLASS="li-itemize">Introduction patterns: Eduardo Gimenez with collective extensions
-</LI><LI CLASS="li-itemize">Forward reasoning: Hugo Herbelin (<TT>assert</TT>, <TT>apply in</TT>), Pierre Letouzey (<TT>specialize</TT>, initial version by Amy Felty)
-</LI><LI CLASS="li-itemize">Rewriting tactics (<TT>rewrite</TT>): basic version by Christine Paulin,
+</li><li class="li-itemize">Reduction tactics: Christine Paulin (<span style="font-family:monospace">simpl</span>), Bruno
+Barras (<span style="font-family:monospace">cbv</span>, <span style="font-family:monospace">lazy</span>), with contributions from Hugo Herbelin, Enrico Tassi, ...
+</li><li class="li-itemize">Tacticals: Thierry Coquand, Chet Murthy, Eduardo Gimenez, ...;
+new versions of <span style="font-family:monospace">info</span> and <span style="font-family:monospace">Show Script</span> by Pierre Letouzey;
+<span style="font-family:monospace">timeout</span> by Pierre Letouzey
+</li><li class="li-itemize">Induction: Christine Paulin (<span style="font-family:monospace">elim</span>, <span style="font-family:monospace">case</span>), Hugo Herbelin (<span style="font-family:monospace">induction</span>, <span style="font-family:monospace">destruct</span>
+</li><li class="li-itemize">Refinement (<span style="font-family:monospace">refine</span>): Jean-Christophe Filliâtre
+</li><li class="li-itemize">Introduction patterns: Eduardo Gimenez with collective extensions
+</li><li class="li-itemize">Forward reasoning: Hugo Herbelin (<span style="font-family:monospace">assert</span>, <span style="font-family:monospace">apply in</span>), Pierre Letouzey (<span style="font-family:monospace">specialize</span>, initial version by Amy Felty)
+</li><li class="li-itemize">Rewriting tactics (<span style="font-family:monospace">rewrite</span>): basic version by Christine Paulin,
 extensions by Jean-Christophe Filliâtre and Pierre Letouzey
-</LI><LI CLASS="li-itemize">Tactics about equivalence properties (<TT>reflexivity</TT>,
-<TT>symmetry</TT>, <TT>transitivity</TT>): Christine Paulin (?),
-</LI><LI CLASS="li-itemize">Equality tactics (<TT>injection</TT>/<TT>discriminate</TT>):
+</li><li class="li-itemize">Tactics about equivalence properties (<span style="font-family:monospace">reflexivity</span>,
+<span style="font-family:monospace">symmetry</span>, <span style="font-family:monospace">transitivity</span>): Christine Paulin (?),
+</li><li class="li-itemize">Equality tactics (<span style="font-family:monospace">injection</span>/<span style="font-family:monospace">discriminate</span>):
 Cristina Cornes
-</LI><LI CLASS="li-itemize">Inversion tactics (<TT>inversion</TT>): Cristina Cornes, Chet Murthy
-</LI><LI CLASS="li-itemize">Setoid rewriting: Matthieu Sozeau (first version by Clément
+</li><li class="li-itemize">Inversion tactics (<span style="font-family:monospace">inversion</span>): Cristina Cornes, Chet Murthy
+</li><li class="li-itemize">Setoid rewriting: Matthieu Sozeau (first version by Clément
 Renard, second version by Claudio Sacerdoti Coen), contributions
 from Nicolas Tabareau
-</LI><LI CLASS="li-itemize">Decision of equality: Eduardo Gimenez
-</LI><LI CLASS="li-itemize">Basic Ltac-level tactics: Pierre Letouzey, Matthieu Sozeau,
+</li><li class="li-itemize">Decision of equality: Eduardo Gimenez
+</li><li class="li-itemize">Basic Ltac-level tactics: Pierre Letouzey, Matthieu Sozeau,
 Evgeny Makarov
-</LI><LI CLASS="li-itemize">Tactics about existential variables: Clément Renard, Pierre Corbineau, Stéphane Glondu, Arnaud Spiwack, ...
-</LI></UL><!--TOC subsection General automation tactics-->
-<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc6">3.3</A>  General automation tactics</H3><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
-Resolution (<TT>auto</TT>, <TT>trivial</TT>): Christine Paulin
+</li><li class="li-itemize">Tactics about existential variables: Clément Renard, Pierre Corbineau, Stéphane Glondu, Arnaud Spiwack, ...
+</li></ul>
+<!--TOC subsection id=sec6 General automation tactics-->
+<h3 id="sec6" class="subsection">3.3  General automation tactics</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
+Resolution (<span style="font-family:monospace">auto</span>, <span style="font-family:monospace">trivial</span>): Christine Paulin
 with extensions from Chet Murthy, Eduardo Gimenez, Patrick
 Loiseleur (hint bases), Matthieu Sozeau
-</LI><LI CLASS="li-itemize">Resolution with existential variables (<TT>eauto</TT>): Chet Murthy, Jean-Christophe Filliâtre, with extensions from Matthieu Sozeau
-</LI><LI CLASS="li-itemize">Automatic rewriting (<TT>autorewrite</TT>): David Delahaye
-</LI></UL><!--TOC subsection Domain-specific decision tactics-->
-<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc7">3.4</A>  Domain-specific decision tactics</H3><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
-Congruence closure (<TT>cc</TT>): Pierre Corbineau
-</LI><LI CLASS="li-itemize">Decision of first-order logic (<TT>firstorder</TT>): Pierre Corbineau
-</LI><LI CLASS="li-itemize">Simplification of polynomial fractions (<TT>field</TT>): Laurent
+</li><li class="li-itemize">Resolution with existential variables (<span style="font-family:monospace">eauto</span>): Chet Murthy, Jean-Christophe Filliâtre, with extensions from Matthieu Sozeau
+</li><li class="li-itemize">Automatic rewriting (<span style="font-family:monospace">autorewrite</span>): David Delahaye
+</li></ul>
+<!--TOC subsection id=sec7 Domain-specific decision tactics-->
+<h3 id="sec7" class="subsection">3.4  Domain-specific decision tactics</h3><!--SEC END --><ul class="itemize"><li class="li-itemize">
+Congruence closure (<span style="font-family:monospace">cc</span>): Pierre Corbineau
+</li><li class="li-itemize">Decision of first-order logic (<span style="font-family:monospace">firstorder</span>): Pierre Corbineau
+</li><li class="li-itemize">Simplification of polynomial fractions (<span style="font-family:monospace">field</span>): Laurent
 Théry and Benjamin Grégoire (first version by David Delahaye and
 Micaela Mayero)
-</LI><LI CLASS="li-itemize">Simplification of polynomial expressions (<TT>ring</TT>): Assia
+</li><li class="li-itemize">Simplification of polynomial expressions (<span style="font-family:monospace">ring</span>): Assia
 Mahboubi, Bruno Barras and Benjamin Grégoire (first version by
 Samuel Boutin, second version by Patrick Loiseleur)
-</LI><LI CLASS="li-itemize">Decision of systems of polynomial equations: Loïc Pottier (<TT>nsatz</TT>)
-</LI><LI CLASS="li-itemize">Decision of systems of linear inequations: Frédéric Besson
-(<TT>psatzl</TT>); Loïc Pottier (<TT>fourier</TT>)
-</LI><LI CLASS="li-itemize">Decision of systems of linear inequations over integers:
-Frédéric Besson (<TT>lia</TT>); Pierre Crégut (<TT>omega</TT> and
-<TT>romega</TT>)
-</LI><LI CLASS="li-itemize">(Partial) decision of systems of polynomical inequations
-(<TT>sos</TT>, <TT>psatz</TT>): Frédéric Besson, with generalization
+</li><li class="li-itemize">Decision of systems of polynomial equations: Loïc Pottier (<span style="font-family:monospace">nsatz</span>)
+</li><li class="li-itemize">Decision of systems of linear inequations: Frédéric Besson
+(<span style="font-family:monospace">psatzl</span>); Loïc Pottier (<span style="font-family:monospace">fourier</span>)
+</li><li class="li-itemize">Decision of systems of linear inequations over integers:
+Frédéric Besson (<span style="font-family:monospace">lia</span>); Pierre Crégut (<span style="font-family:monospace">omega</span> and
+<span style="font-family:monospace">romega</span>)
+</li><li class="li-itemize">(Partial) decision of systems of polynomical inequations
+(<span style="font-family:monospace">sos</span>, <span style="font-family:monospace">psatz</span>): Frédéric Besson, with generalization
 over arbitrary rings by Evgeny Makarov; uses HOL-Light interface to
-<TT>csdp</TT> by John Harrisson
-</LI><LI CLASS="li-itemize">Decision/simplification of intuitionistic propositional logic:
-David Delahaye (<TT>tauto</TT>, <TT>intuition</TT>, first version by
+<span style="font-family:monospace">csdp</span> by John Harrisson
+</li><li class="li-itemize">Decision/simplification of intuitionistic propositional logic:
+David Delahaye (<span style="font-family:monospace">tauto</span>, <span style="font-family:monospace">intuition</span>, first version by
 Cesar Muñoz, second version by Chet Murthy), with contributions
-from Judicaël Courant; Pierre Corbineau (<TT>rtauto</TT>)
-</LI><LI CLASS="li-itemize">Decision/simplification of intuition first-order logic: Pierre
-Corbineau (<TT>firstorder</TT>)
-</LI></UL><!--TOC section Extra tools-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc8">4</A>  Extra tools</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+from Judicaël Courant; Pierre Corbineau (<span style="font-family:monospace">rtauto</span>)
+</li><li class="li-itemize">Decision/simplification of intuition first-order logic: Pierre
+Corbineau (<span style="font-family:monospace">firstorder</span>)
+</li></ul>
+<!--TOC section id=sec8 Extra tools-->
+<h2 id="sec8" class="section">4  Extra tools</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 Program extraction: Pierre Letouzey (first implementation by
 Benjamin Werner, second by Jean-Christophe Filliâtre)
-</LI><LI CLASS="li-itemize">Export of context to external communication tools (<TT>dp</TT>):
+</li><li class="li-itemize">Export of context to external communication tools (<span style="font-family:monospace">dp</span>):
 Nicolas Ayache and Jean-Christophe Filliâtre, with contributions by
 Claude Marché
-</LI><LI CLASS="li-itemize">Export of terms and environments to XML format: Claudio
+</li><li class="li-itemize">Export of terms and environments to XML format: Claudio
 Sacerdoti Coen, with extensions from Cezary Kaliszyk
-</LI></UL><!--TOC section Environment management-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc9">5</A>  Environment management</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li></ul>
+<!--TOC section id=sec9 Environment management-->
+<h2 id="sec9" class="section">5  Environment management</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 Separate compilation: initiated by Chet Murthy
-</LI><LI CLASS="li-itemize">Import/Export: initiated by Chet Murthy
-</LI><LI CLASS="li-itemize">Options management: Hugo Herbelin with contributions by Arnaud Spiwack
-</LI><LI CLASS="li-itemize">Resetting and backtracking: Chet Murthy with contributions from Pierre Courtieu
-</LI><LI CLASS="li-itemize">Searching: Hugo Herbelin and Yves Bertot with extensions by Matthias Puech
-</LI><LI CLASS="li-itemize">Whelp suppport: Hugo Herbelin
-</LI></UL><!--TOC section Parsing and printing-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc10">6</A>  Parsing and printing</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li><li class="li-itemize">Import/Export: initiated by Chet Murthy
+</li><li class="li-itemize">Options management: Hugo Herbelin with contributions by Arnaud Spiwack
+</li><li class="li-itemize">Resetting and backtracking: Chet Murthy with contributions from Pierre Courtieu
+</li><li class="li-itemize">Searching: Hugo Herbelin and Yves Bertot with extensions by Matthias Puech
+</li><li class="li-itemize">Whelp suppport: Hugo Herbelin
+</li></ul>
+<!--TOC section id=sec10 Parsing and printing-->
+<h2 id="sec10" class="section">6  Parsing and printing</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 General parsing support: Chet Murthy, Bruno Barras, Daniel de Rauglaudre
-</LI><LI CLASS="li-itemize">General printing support: Chet Murthy, Jean-Christophe Filliâtre
-</LI><LI CLASS="li-itemize">Lexing: Daniel de Rauglaudre
-</LI><LI CLASS="li-itemize">Support for UTF-8: Hugo Herbelin, with contributions from Alexandre Miquel and Yann Régis-Gianas
-</LI><LI CLASS="li-itemize">Numerical notations: Hugo Herbelin, Patrick Loiseleur, Micaela Mayero
-</LI><LI CLASS="li-itemize">String notations: Hugo Herbelin
-</LI><LI CLASS="li-itemize">New V8 syntax: Bruno Barras, Hugo Herbelin with contributions by Olivier Desmettre
-</LI><LI CLASS="li-itemize">Abbreviations: Chet Murthy
-</LI><LI CLASS="li-itemize">Notations: Chet Murthy, Hugo Herbelin
-</LI></UL><!--TOC section Libraries-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc11">7</A>  Libraries</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li><li class="li-itemize">General printing support: Chet Murthy, Jean-Christophe Filliâtre
+</li><li class="li-itemize">Lexing: Daniel de Rauglaudre
+</li><li class="li-itemize">Support for UTF-8: Hugo Herbelin, with contributions from Alexandre Miquel and Yann Régis-Gianas
+</li><li class="li-itemize">Numerical notations: Hugo Herbelin, Patrick Loiseleur, Micaela Mayero
+</li><li class="li-itemize">String notations: Hugo Herbelin
+</li><li class="li-itemize">New V8 syntax: Bruno Barras, Hugo Herbelin with contributions by Olivier Desmettre
+</li><li class="li-itemize">Abbreviations: Chet Murthy
+</li><li class="li-itemize">Notations: Chet Murthy, Hugo Herbelin
+</li></ul>
+<!--TOC section id=sec11 Libraries-->
+<h2 id="sec11" class="section">7  Libraries</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 Init: collective (initiated by Christine Paulin and Gérard Huet)
-</LI><LI CLASS="li-itemize">Arith: collective (initiated by Christine Paulin)
-</LI><LI CLASS="li-itemize">ZArith: collective (initiated by Pierre Crégut)
-</LI><LI CLASS="li-itemize">Bool: collective (initiated by Christine Paulin)
-</LI><LI CLASS="li-itemize">NArith: Hugo Herbelin, Pierre Letouzey, Evgeny Makarov (out of
+</li><li class="li-itemize">Arith: collective (initiated by Christine Paulin)
+</li><li class="li-itemize">ZArith: collective (initiated by Pierre Crégut)
+</li><li class="li-itemize">Bool: collective (initiated by Christine Paulin)
+</li><li class="li-itemize">NArith: Hugo Herbelin, Pierre Letouzey, Evgeny Makarov (out of
 initial contibution by Pierre Crégut)
-</LI><LI CLASS="li-itemize">Lists: Pierre Letouzey, Jean-Marc Notin (initiated by Christine Paulin)
-</LI><LI CLASS="li-itemize">Vectors: Pierre Boutillier
-</LI><LI CLASS="li-itemize">Reals: Micaela Mayero (axiomatization and main properties), Olivier Desmettre (convergence, derivability, integrals, trigonometric functions), contributions from Russell OConnor, Cezary Kaliszyk, Guillaume Melquiond, Yves Bertot, Guillaume Allais
-</LI><LI CLASS="li-itemize">Relations: Bruno Barras, Cristina Cornes with contributions from
+</li><li class="li-itemize">Lists: Pierre Letouzey, Jean-Marc Notin (initiated by Christine Paulin)
+</li><li class="li-itemize">Vectors: Pierre Boutillier
+</li><li class="li-itemize">Reals: Micaela Mayero (axiomatization and main properties), Olivier Desmettre (convergence, derivability, integrals, trigonometric functions), contributions from Russell OConnor, Cezary Kaliszyk, Guillaume Melquiond, Yves Bertot, Guillaume Allais
+</li><li class="li-itemize">Relations: Bruno Barras, Cristina Cornes with contributions from
 Pierre Castéran
-</LI><LI CLASS="li-itemize">Wellfounded: Bruno Barras, Cristina Cornes
-</LI><LI CLASS="li-itemize">FSets: Pierre Letouzey, from initial work with Jean-Christophe Filliâtre, decision tactic for FSets by Aaron Bohannon, red-black trees by Andrew Appel and Pierre Letouzey
-</LI><LI CLASS="li-itemize">MSets: Pierre Letouzey
-</LI><LI CLASS="li-itemize">Logic: Christine Paulin, Hugo Herbelin, Bruno Barras
-</LI><LI CLASS="li-itemize">Numbers: Evgeny Makarov (abstractions), Laurent Théry and Benjamin Grégoire (big numbers), Arnaud Spiwack and Pierre Letouzey (word-based arithmetic), further extensions by Pierre Letouzey; integration of Arith and ZArith to Numbers by Pierre Letouzey
-</LI><LI CLASS="li-itemize">Classes: Matthieu Sozeau
-</LI><LI CLASS="li-itemize">QArith: Pierre Letouzey, with contributions from Russell OConnor
-</LI><LI CLASS="li-itemize">Setoid: Matthieu Sozeau (first version by Clément Renard, second version by Claudio Sacerdoti Coen)
-</LI><LI CLASS="li-itemize">Sets: Gilles Kahn and Gérard Huet
-</LI><LI CLASS="li-itemize">Sorting: Gérard Huet with revisions by Hugo Herbelin
-</LI><LI CLASS="li-itemize">Strings: Laurent Théry
-</LI><LI CLASS="li-itemize">Program: Matthieu Sozeau
-</LI><LI CLASS="li-itemize">Unicode: Claude Marché
-</LI></UL><!--TOC section Commands-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc12">8</A>  Commands</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
-Batch compiler (<TT>coqc</TT>): Chet Murthy (?)
-</LI><LI CLASS="li-itemize">Compilation dependency calculator (<TT>coqdep</TT>):
+</li><li class="li-itemize">Wellfounded: Bruno Barras, Cristina Cornes
+</li><li class="li-itemize">FSets: Pierre Letouzey, from initial work with Jean-Christophe Filliâtre, decision tactic for FSets by Aaron Bohannon, red-black trees by Andrew Appel and Pierre Letouzey
+</li><li class="li-itemize">MSets: Pierre Letouzey
+</li><li class="li-itemize">Logic: Christine Paulin, Hugo Herbelin, Bruno Barras
+</li><li class="li-itemize">Numbers: Evgeny Makarov (abstractions), Laurent Théry and Benjamin Grégoire (big numbers), Arnaud Spiwack and Pierre Letouzey (word-based arithmetic), further extensions by Pierre Letouzey; integration of Arith and ZArith to Numbers by Pierre Letouzey
+</li><li class="li-itemize">Classes: Matthieu Sozeau
+</li><li class="li-itemize">QArith: Pierre Letouzey, with contributions from Russell OConnor
+</li><li class="li-itemize">Setoid: Matthieu Sozeau (first version by Clément Renard, second version by Claudio Sacerdoti Coen)
+</li><li class="li-itemize">Sets: Gilles Kahn and Gérard Huet
+</li><li class="li-itemize">Sorting: Gérard Huet with revisions by Hugo Herbelin
+</li><li class="li-itemize">Strings: Laurent Théry
+</li><li class="li-itemize">Program: Matthieu Sozeau
+</li><li class="li-itemize">Unicode: Claude Marché
+</li></ul>
+<!--TOC section id=sec12 Commands-->
+<h2 id="sec12" class="section">8  Commands</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
+Batch compiler (<span style="font-family:monospace">coqc</span>): Chet Murthy (?)
+</li><li class="li-itemize">Compilation dependency calculator (<span style="font-family:monospace">coqdep</span>):
 Jean-Christophe Filliâtre
-</LI><LI CLASS="li-itemize">Statistic tool (<TT>coqwc</TT>): Jean-Christophe Filliâtre
-</LI><LI CLASS="li-itemize">Simple html presentation tool (<TT>gallina</TT>) (deprecated): Jean-Christophe Filliâtre
-</LI><LI CLASS="li-itemize">Auto-maker (<TT>coq_makefile</TT>): Jean-Christophe Filliâtre,
+</li><li class="li-itemize">Statistic tool (<span style="font-family:monospace">coqwc</span>): Jean-Christophe Filliâtre
+</li><li class="li-itemize">Simple html presentation tool (<span style="font-family:monospace">gallina</span>) (deprecated): Jean-Christophe Filliâtre
+</li><li class="li-itemize">Auto-maker (<span style="font-family:monospace">coq_makefile</span>): Jean-Christophe Filliâtre,
 with contributions from Judicaël Courant, updated by Pierre Boutillier
-</LI><LI CLASS="li-itemize">LaTeX presentation tool (<TT>coq-tex</TT>): Jean-Christophe Filliâtre
-</LI><LI CLASS="li-itemize">Multi-purpose presentation tool (<TT>coqdoc</TT>): Jean-Christophe Filliâtre with extensions from
+</li><li class="li-itemize">LaTeX presentation tool (<span style="font-family:monospace">coq-tex</span>): Jean-Christophe Filliâtre
+</li><li class="li-itemize">Multi-purpose presentation tool (<span style="font-family:monospace">coqdoc</span>): Jean-Christophe Filliâtre with extensions from
 Matthieu Sozeau, Jean-Marc Notin, Hugo Herbelin and contributions from Adam Chlipala
-</LI><LI CLASS="li-itemize">Interactive toplevel (<TT>coqtop</TT>): Jean-Christophe Filliâtre (?)
-</LI><LI CLASS="li-itemize">Custom toplevel builder (<TT>coqmktop</TT>): Jean-Christophe Filliâtre (?)
-</LI></UL><!--TOC section Graphical interfaces-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc13">9</A>  Graphical interfaces</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
-Support for <EM>PCoq</EM>: Yves Bertot with contributions by
-Laurence Rideau and Loïc Pottier; additional support for <EM>TmEgg</EM>
+</li><li class="li-itemize">Interactive toplevel (<span style="font-family:monospace">coqtop</span>): Jean-Christophe Filliâtre (?)
+</li><li class="li-itemize">Custom toplevel builder (<span style="font-family:monospace">coqmktop</span>): Jean-Christophe Filliâtre (?)
+</li></ul>
+<!--TOC section id=sec13 Graphical interfaces-->
+<h2 id="sec13" class="section">9  Graphical interfaces</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
+Support for <em>PCoq</em>: Yves Bertot with contributions by
+Laurence Rideau and Loïc Pottier; additional support for <em>TmEgg</em>
 by Lionel Mamane
-</LI><LI CLASS="li-itemize">Support for <EM>Proof General</EM>: Pierre Courtieu with contributions from Arnaud Spiwack
-</LI><LI CLASS="li-itemize"><EM>CoqIDE</EM>: Benjamin Monate with contributions from
+</li><li class="li-itemize">Support for <em>Proof General</em>: Pierre Courtieu with contributions from Arnaud Spiwack
+</li><li class="li-itemize"><em>CoqIDE</em>: Benjamin Monate with contributions from
 Jean-Christophe Filliâtre, Claude Marché, Pierre Letouzey, Julien
 Narboux, Hugo Herbelin, Pierre Corbineau, Pierre Boutillier,
 Pierre-Marie Pédrot; processus-based communication protocol by
 Vincent Gross with contributions from Pierre Letouzey, Pierre
 Boutillier, Pierre-Marie Pédrot; backtracking revised by Pierre
 Letouzey; uses the Cameleon library by Maxence Guesdon;
-</LI></UL><!--TOC section Architecture-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc14">10</A>  Architecture</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li></ul>
+<!--TOC section id=sec14 Architecture-->
+<h2 id="sec14" class="section">10  Architecture</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 Functional-kernel-based architecture: Jean-Christophe Filliâtre
-</LI><LI CLASS="li-itemize">Extensible objects and summaries: Chet Murthy
-</LI><LI CLASS="li-itemize">Hash-consing: Bruno Barras
-</LI><LI CLASS="li-itemize">Error locations: Jean-Christophe Filliâtre, Bruno Barras, Hugo Herbelin, with contributions from Arnaud Spiwack
-</LI><LI CLASS="li-itemize">Existential variables engine: Chet Murthy with revisions by
+</li><li class="li-itemize">Extensible objects and summaries: Chet Murthy
+</li><li class="li-itemize">Hash-consing: Bruno Barras
+</li><li class="li-itemize">Error locations: Jean-Christophe Filliâtre, Bruno Barras, Hugo Herbelin, with contributions from Arnaud Spiwack
+</li><li class="li-itemize">Existential variables engine: Chet Murthy with revisions by
 Bruno Barras and Arnaud Spiwack and extensions by Clément Renard and
 Hugo Herbelin
-</LI></UL><!--TOC section Development tools-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc15">11</A>  Development tools</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li></ul>
+<!--TOC section id=sec15 Development tools-->
+<h2 id="sec15" class="section">11  Development tools</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 Makefiles: Chet Murthy, Jean-Christophe Filliâtre, Judicaël
 Courant, Lionel Mamane, Pierre Corbineau, Pierre Letouzey with
 contributions from Stéphane Glondu, Hugo Herbelin, ...
-</LI><LI CLASS="li-itemize">Debugging: Jean-Christophe Filliâtre with contributions from Jacek Chrz?szcz, Hugo Herbelin, Bruno Barras, ...
-</LI><LI CLASS="li-itemize">ML quotations: David Delahaye and Daniel de Rauglaudre
-</LI><LI CLASS="li-itemize">ML tactic and vernacular extensions: Hugo Herbelin (first version by Chet Murthy)
-</LI><LI CLASS="li-itemize">Test suite: collective content, initiated by Jean-Christophe Filliâtre with further extensions by Hugo Herbelin, Jean-Marc Notin
-</LI></UL><!--TOC section Maintenance and system engineering-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc16">12</A>  Maintenance and system engineering</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li><li class="li-itemize">Debugging: Jean-Christophe Filliâtre with contributions from Jacek Chrz?szcz, Hugo Herbelin, Bruno Barras, ...
+</li><li class="li-itemize">ML quotations: David Delahaye and Daniel de Rauglaudre
+</li><li class="li-itemize">ML tactic and vernacular extensions: Hugo Herbelin (first version by Chet Murthy)
+</li><li class="li-itemize">Test suite: collective content, initiated by Jean-Christophe Filliâtre with further extensions by Hugo Herbelin, Jean-Marc Notin
+</li></ul>
+<!--TOC section id=sec16 Maintenance and system engineering-->
+<h2 id="sec16" class="section">12  Maintenance and system engineering</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 General bug support: Gérard Huet, Christine Paulin, Chet Murthy,
 Jean-Christophe Filliâtre, Hugo Herbelin, Bruno Barras, Pierre
 Letouzey with contributions at some time from Benjamin Werner,
 Jean-Marc Notin, Pierre Boutillier, ...
-</LI><LI CLASS="li-itemize">Team coordination: Gérard Huet, Christine Paulin, Hugo Herbelin,
+</li><li class="li-itemize">Team coordination: Gérard Huet, Christine Paulin, Hugo Herbelin,
 with various other contributions
-</LI><LI CLASS="li-itemize">Packaging tools: Henri Laulhere, David Delahaye, Julien Narboux,
+</li><li class="li-itemize">Packaging tools: Henri Laulhere, David Delahaye, Julien Narboux,
 Pierre Letouzey, Enrico Tassi (Windows); Damien Doligez, Hugo
 Herbelin, Pierre Boutillier (MacOS); Jean-Christophe Filliâtre,
 Judicaël Courant, Hugo Herbelin, Stéphane Glondu (Linux)
-</LI></UL><!--TOC section Documentation-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc17">13</A>  Documentation</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">Reference Manual: collective, layout by Patrick Loiseleur,
+</li></ul>
+<!--TOC section id=sec17 Documentation-->
+<h2 id="sec17" class="section">13  Documentation</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">Reference Manual: collective, layout by Patrick Loiseleur,
 Claude Marché (former Users Guide in 1991 by Gilles Dowek, Amy
 Felty, Hugo Herbelin, Gérard Huet, Christine Paulin, Benjamin
 Werner; initial documentation in 1989 by Thierry Coquand, Gilles
 Dowek, Gérard Huet, Christine Paulin),
-</LI><LI CLASS="li-itemize">Basic tutorial: Gérard Huet, Gilles Kahn, Christine Paulin
-</LI><LI CLASS="li-itemize">Tutorial on recursive types: Eduardo Gimenez with updates by Pierre Castéran
-</LI><LI CLASS="li-itemize">FAQ: Hugo Herbelin, Julien Narboux, Florent Kirchner
-</LI></UL><!--TOC section Features discontinued by lack of support-->
-<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc18">14</A>  Features discontinued by lack of support</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+</li><li class="li-itemize">Basic tutorial: Gérard Huet, Gilles Kahn, Christine Paulin
+</li><li class="li-itemize">Tutorial on recursive types: Eduardo Gimenez with updates by Pierre Castéran
+</li><li class="li-itemize">FAQ: Hugo Herbelin, Julien Narboux, Florent Kirchner
+</li></ul>
+<!--TOC section id=sec18 Features discontinued by lack of support-->
+<h2 id="sec18" class="section">14  Features discontinued by lack of support</h2><!--SEC END --><ul class="itemize"><li class="li-itemize">
 Searching modulo isomorphism: David Delahaye
-</LI><LI CLASS="li-itemize">Explanation of proofs in pseudo-natural language: Yann Coscoy
-</LI></UL><P>For probable oversights or accidental errors, please report to Hugo <CODE>.</CODE> Herbelin <CODE>@</CODE> inria <CODE>.</CODE> fr</P><!--CUT END -->
-<!--HTMLFOOT-->
-<!--ENDHTML-->
-<!--FOOTER-->
-<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
-</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
-</HTML>
+</li><li class="li-itemize">Explanation of proofs in pseudo-natural language: Yann Coscoy
+</li></ul><p>For probable oversights or accidental errors, please report to Hugo <code>.</code> Herbelin <code>@</code> inria <code>.</code> fr</p><!--CUT END -->
