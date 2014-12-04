@@ -496,9 +496,9 @@ behind <span class="caps">Coq</span>.</dd>
 <span class="bold">The Calculus of Inductive Constructions</span>
 </dt>
 <dd> The
-<a href="http://coq.inria.fr/doc/Reference-Manual006.html">corresponding</a>
+<a href="/refman/Reference-Manual006.html">corresponding</a>
 chapter and the chapter on
-<a href="http://coq.inria.fr/doc/Reference-Manual007.html">modules</a> in
+<a href="/refman/Reference-Manual007.html">modules</a> in
 the <span class="caps">Coq</span> Reference Manual.</dd>
 <dt><span class="bold">Type theory</span>
 </dt>
@@ -515,7 +515,7 @@ Eduardo Giménez' thesis&nbsp;[<a href="#EGThese"><cite>9</cite></a>].</dd>
 <dt><span class="bold">Miscellaneous</span>
 </dt>
 <dd> A
-<a href="http://coq.inria.fr/doc/biblio.html">bibliography</a> about Coq</dd>
+<a href="/refman/biblio.html">bibliography</a> about Coq</dd>
 </dl>
 <!--TOC subsubsection How can I use <span class="caps">Coq</span> to prove programs?-->
 
@@ -618,7 +618,7 @@ data-flow synchronous calculus used by Esterel-Technologies.<br/>
  
 All the documentation about <span class="caps">Coq</span>, from the reference manual&nbsp;[<a href="#Coq:manual"><cite>17</cite></a>] to
 friendly tutorials&nbsp;[<a href="#Coq:Tutorial"><cite>15</cite></a>] and documentation of the standard library, is available 
-<a href="http://coq.inria.fr/doc-eng.html">online</a>.
+<a href="/documentation">online</a>.
 All these documents are viewable either in browsable HTML, or as
 downloadable postscripts.<br/>
 <br/>
@@ -626,7 +626,7 @@ downloadable postscripts.<br/>
 
 <h4 class="subsubsection"><a name="htoc18">15</a>&nbsp;&nbsp;Where can I find this FAQ on the web?</h4><!--SEC END -->
 
-This FAQ is available online at <a href="http://coq.inria.fr/faq"><tt> http://coq.inria.fr/faq</tt> </a>.<br/>
+This FAQ is available online at <a href="/faq"><tt> http://coq.inria.fr/faq</tt> </a>.<br/>
 <br/>
 <!--TOC subsubsection How can I submit suggestions / improvements / additions for this FAQ?-->
 
@@ -684,7 +684,7 @@ You can also find large developments using
 
 <h4 class="subsubsection"><a name="htoc25">22</a>&nbsp;&nbsp;How can I report a bug?</h4><!--SEC END -->
 <a name="coqbug"></a>
-You can use the web interface accessible at <a href="http://coq.inria.fr"><tt> http://coq.inria.fr</tt> </a>, linkcontacts.<br/>
+You can use the web interface accessible at <a href="/bugs/"><tt> http://coq.inria.fr/bugs</tt> </a><br/>
 <br/>
 <!--TOC section Installation-->
 
@@ -702,8 +702,7 @@ You can use the web interface accessible at <a href="http://coq.inria.fr"><tt> h
 <h4 class="subsubsection"><a name="htoc28">24</a>&nbsp;&nbsp;Where can I find the sources of <span class="caps">Coq</span>?</h4><!--SEC END -->
 
 The sources of <span class="caps">Coq</span> can be found online in the tar.gz'ed packages
-(<a href="http://coq.inria.fr"><tt> http://coq.inria.fr</tt> </a>, link
-&#8220;download&#8221;). Development sources can be accessed at
+(<a href="/download"><tt> http://coq.inria.fr/download</tt> </a>). Development sources can be accessed at
 <a href="http://coq.gforge.inria.fr/"><tt> http://coq.gforge.inria.fr/</tt> </a><br/>
 <br/>
 <!--TOC subsubsection On which platform is <span class="caps">Coq</span> available?-->
@@ -834,7 +833,7 @@ dependent elimination of reflexive equality proofs.<br/>
 <br/>
 In the general case, axiom <span class='italic'>K</span> is an independent statement of the
 Calculus of Inductive Constructions. However, it is true on decidable
-domains (see file <a href="http://coq.inria.fr/library/Coq.Logic.Eqdep_dec.html
+domains (see file <a href="/stdlib/Coq.Logic.Eqdep_dec.html
 "><tt> Eqdep_dec.v</tt> </a>). It is also
 trivially a consequence of proof-irrelevance (see
 <a href="#proof-irrelevance">33</a>) hence of classical logic.<br/>
@@ -901,13 +900,13 @@ inconsistent in <tt> Set</tt>  since there are types in <tt> Set</tt> , such as 
 type of booleans, that are provably more than 2 elements.<br/>
 <br/>
 Proof-irrelevance (in <tt> Prop</tt> ) is a consequence of classical logic
-(see proofs in file <a href="http://coq.inria.fr/library/Coq.Logic.Classical.html
+(see proofs in file <a href="/stdlib/Coq.Logic.Classical.html
 "><tt> Classical.v</tt> </a> and
-<a href="http://coq.inria.fr/library/Coq.Logic.Berardi.html
+<a href="/stdlib/Coq.Logic.Berardi.html
 "><tt> Berardi.v</tt> </a>). Proof-irrelevance is also a
 consequence of propositional extensionality (i.e. <tt> (A &lt;-&gt; B)
 -&gt; A=B</tt> , see the proof in file
-<a href="http://coq.inria.fr/library/Coq.Logic.ClassicalFacts.html
+<a href="/stdlib/Coq.Logic.ClassicalFacts.html
 "><tt> ClassicalFacts.v</tt> </a>).<br/>
 <br/>
 Proof-irrelevance directly implies Streicher's axiom <span class='italic'>K</span>.<br/>
@@ -959,7 +958,7 @@ knowledgeable users, the logic of <span class="caps">Coq</span> can be set impre
 <tt> Set</tt>  has been made predicative from version 8.0 of <span class="caps">Coq</span>. The main
 reason is to interact smoothly with a classical mathematical world
 where both excluded-middle and the axiom of description are valid (see
-file <a href="http://coq.inria.fr/library/Coq.Logic.ClassicalDescription.html
+file <a href="/stdlib/Coq.Logic.ClassicalDescription.html
 "><tt> ClassicalDescription.v</tt> </a> for a
 proof that excluded-middle and description implies the double negation
 of excluded-middle in <tt> Set</tt>  and file <tt> Hurkens_Set.v</tt>  from the
@@ -1019,7 +1018,7 @@ assuming Streicher's axiom <span class='italic'>K</span> (see [<a href="#HofStr9
 assumption such as proof-irrelevance (see <a href="#proof-irrelevance">33</a>) or
 classical logic.<br/>
 <br/>
-All of these statements can be found in file <a href="http://coq.inria.fr/library/Coq.Logic.Eqdep.html
+All of these statements can be found in file <a href="/stdlib/Coq.Logic.Eqdep.html
 "><tt> Eqdep.v</tt> </a>.<br/>
 <br/>
 <!--TOC subsubsection Can I prove that the second components of equal dependent
@@ -1031,13 +1030,13 @@ pairs are equal?</h4><!--SEC END -->
 The answer is the same as for proofs of equality
 statements. It is provable if equality on the domain of the first
 component is decidable (look at <code>inj_right_pair</code> from file
-<a href="http://coq.inria.fr/library/Coq.Logic.Eqdep_dec.html
+<a href="/stdlib/Coq.Logic.Eqdep_dec.html
 "><tt> Eqdep_dec.v</tt> </a>), but not provable in the general
 case. However, it is consistent (with the Calculus of Constructions)
-to assume it is true. The file <a href="http://coq.inria.fr/library/Coq.Logic.Eqdep.html
+to assume it is true. The file <a href="/stdlib/Coq.Logic.Eqdep.html
 "><tt> Eqdep.v</tt> </a> actually
 provides an axiom (equivalent to Streicher's axiom <span class='italic'>K</span>) which entails
-the result (look at <code>inj_pair2</code> in <a href="http://coq.inria.fr/library/Coq.Logic.Eqdep.html
+the result (look at <code>inj_pair2</code> in <a href="/stdlib/Coq.Logic.Eqdep.html
 "><tt> Eqdep.v</tt> </a>).<br/>
 <br/>
 <!--TOC subsection Impredicativity-->
@@ -3149,7 +3148,7 @@ as the termination of the evaluation of CIC programs themselves!).<br/>
 <br/>
 In spite of this, all non-pathological termination orders can be mapped
 to a structural order. Tools to do this are provided in the file 
-<a href="http://coq.inria.fr/library/Coq.Init.Wf.html
+<a href="/stdlib/Coq.Init.Wf.html
 "><tt> Wf.v</tt> </a> of the standard library of <span class="caps">Coq</span>.<br/>
 <br/>
 <!--TOC subsubsection How to define loops based on non structurally smaller
@@ -3237,7 +3236,7 @@ decreasing in the accessibility tree of <tt> R</tt> . This is emphasised in
 the definition of <tt> fix</tt>  which recurs not on its argument <tt> x:A</tt> 
 but on the accessibility of this argument along <tt> R</tt> .<br/>
 <br/>
-See file <a href="http://coq.inria.fr/library/Coq.Init.Wf.html
+See file <a href="/stdlib/Coq.Init.Wf.html
 "><tt> Wf.v</tt> </a>.<br/>
 <br/>
 <!--TOC subsubsection How to perform simultaneous double induction?-->
