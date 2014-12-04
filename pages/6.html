@@ -19,7 +19,6 @@ Coq objects are sorted into two categories: the <tt>Prop</tt> <em>sort</em> and 
   ? x y : Z, x * y = 0 -> x = 0 \/ y = 0
 </pre>
 and new predicates can be defined either inductively, e.g.:
-<quote>
 <pre>
   Inductive even : N -> Prop :=
   | even_0 : even 0
@@ -27,25 +26,19 @@ and new predicates can be defined either inductively, e.g.:
   with odd : N -> Prop :=
   | odd_S n : even n -> odd (n + 1).
 </pre>
-</quote>
 or by abstracting over other existing propositions, e.g.:
 <br>
-<quote>
 <pre>
   Definition divide (x y:N) := ? z, x * z = y.
   Definition prime x := ? y, divide y x -> y = 1 \/ y = x.
 </pre>
-</quote>
 </li>
 
 <li><tt>Type</tt> is the sort for datatypes and mathematical structures, i.e. well-formed types or structures are of <em>type</em> <tt>Type</tt>. Here is e.g. a basic example of type:
-<quote>
 <pre>
   Z -> Z * Z
 </pre>
-</quote>
 Types can be inductive structures, e.g.:
-<quote>
 <pre>
   Inductive nat : Set :=
   | 0 : nat
@@ -55,9 +48,7 @@ Types can be inductive structures, e.g.:
   | nil : list A
   | cons : A -> list A -> list A.
 </pre>
-</quote>
 or types for tuples, e.g.:
-<quote>
 <pre>
   Structure monoid := { 
     dom : Type ; 
@@ -68,7 +59,6 @@ or types for tuples, e.g.:
     right_neutral : ? x, x * 1 = x 
   }.
 </pre>
-</quote>
 or a form of subset types called ?-types, e.g. the type of even natural numbers:
 <pre>
   {n : N | even n}
