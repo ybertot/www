@@ -1,1 +1,4 @@
-Version 8.4pl4 of Coq fixes several bugs of version 8.4pl3 including 3 critical ones. More information to be found in the <a href="http://coq.inria.fr/distrib/V8.4pl4/CHANGES">CHANGES</a> file.
+Version 8.4pl4 of Coq fixes several bugs of version 8.4pl3 including 3 critical ones. More information to be found in the <a href="/distrib/V8.4pl4/CHANGES">CHANGES</a> file.
+
+WARNING: The current logic of Coq is now known to be inconsistent with Axiom prop_extensionality :
+forall A B:Prop, (A <-> B) -> A = B.
