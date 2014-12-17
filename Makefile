@@ -4,7 +4,7 @@
 DST:=dest
 YAMLPP:=yamlpp-0.3/yamlpp.ml
 PP=mkdir -p $(dir $@) && ocaml $(YAMLPP) $< -o $@
-INCLS:=incl/header.html incl/footer.html
+INCLS:=incl/header.html incl/footer.html incl/news/recent.html
 DEPS:=$(INCLS) $(YAMLPP)
 
 all: html aliases news newsaliases
@@ -195,6 +195,9 @@ NEWSSRC:=$(addprefix news/,$(NEWS))
 NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))
 
 news: $(DST)/news/index.html $(DST)/rss.xml $(NEWSDST)
+
+incl/news/recent.html: $(YAMLPP) $(addprefix news/,$(RECENTNEWS))
+	ocaml $(YAMLPP) -o $@ $(patsubst %,news/% incl/news/li.html,$(RECENTNEWS))
 
 $(DST)/news/index.html: $(NEWSSRC) $(DEPS) incl/news/item.html incl/news/title.html
 	mkdir -p $(dir $@)
