@@ -139,7 +139,7 @@ rule process = parse
 (*s Reads a macro body and stores it in buffer [mbuf]. *)
 
 and def_body = parse
-  | "</#def>"
+  | "</#def>" '\n'?
       { () }
   | eof 
       { eprintf "Error: Unterminated macro definition\n"; exit 1}
