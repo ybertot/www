@@ -1,6 +1,7 @@
+<#def ID>67</#def>
 <#def TITLE>Coq 8.2 release candidate</#def>
 <#def AUTHOR>coq-www</#def>
-<#def DATE>23. January 2009 - 20:27</#def>
+<#def DATE>23 Jan 2009 20:27 GMT</#def>
 <#def DESCR>
 <p>A release candidate for Coq 8.2 is now out ! You can download it from <a href="/node/66">this page</a>.</p>
 </#def>

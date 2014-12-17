@@ -1,6 +1,7 @@
+<#def ID>65</#def>
 <#def TITLE>Bug-fix release for Coq 8.1</#def>
 <#def AUTHOR>herbelin</#def>
-<#def DATE>8. December 2008 - 16:09</#def>
+<#def DATE>8 Dec 2008 16:09 GMT</#def>
 <#def DESCR>
 <p>The patch level 4 release of Coq 8.1 is out. See the download page.</p>
 </#def>

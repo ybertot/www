@@ -1,6 +1,7 @@
+<#def ID>114</#def>
 <#def TITLE>Coq received ACM SIGPLAN Programming Languages Software 2013 award</#def>
 <#def AUTHOR>herbelin</#def>
-<#def DATE>30. June 2013 - 16:26</#def>
+<#def DATE>30 Jun 2013 16:26 GMT</#def>
 <#def DESCR>
 <p>The development of Coq has been initiated in 1984 at INRIA by Thierry Coquand and Gérard Huet, then joined by Christine Paulin-Mohring and more than 40 direct <a href="/who-did-what-in-coq">contributors</a>.</p>
 <p>The first public release was CoC 4.10 in 1989. Extended with native inductive types, it was renamed Coq in 1991.</p>

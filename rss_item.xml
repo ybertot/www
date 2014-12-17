@@ -1,0 +1,9 @@
+<item>
+ <title><#TITLE></title>
+ <link>https://coq.inria.fr/news/<#ID>.html</link>
+ <description><![CDATA[<#DESCR>]]>
+ </description>
+ <pubDate><#DATE></pubDate>
+ <dc:creator><#AUTHOR></dc:creator>
+ <guid>https://coq.inria.fr/news/<#ID>.html</guid>
+</item>

@@ -1,6 +1,7 @@
+<#def ID>20</#def>
 <#def TITLE>Le nouveau site est en ligne !</#def>
 <#def AUTHOR>coq-www</#def>
-<#def DATE>15. February 2008 - 18:22</#def>
+<#def DATE>15 Feb 2008 18:22 GMT</#def>
 <#def DESCR>
 <p>Après des mois douloureux de gestation, le nouveau site de Coq est
   enfin en ligne. Enjoy it !</p>

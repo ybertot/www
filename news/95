@@ -1,6 +1,7 @@
+<#def ID>95</#def>
 <#def TITLE>Alpha-release of Coq Modulo Theories</#def>
 <#def AUTHOR>herbelin</#def>
-<#def DATE>22. June 2010 - 22:10</#def>
+<#def DATE>22 Jun 2010 22:10 GMT</#def>
 <#def DESCR>
 <p>Coq Modulo Theories (CoqMT) is an extension of the Coq proof assistant (8.2) that embeds, in its computational mechanism, validity entailment for user-defined first-order equational theories.</p>
 <p>The <a href="http://pierre-yves.strub.nu/research/coqmt/">alpha-release</a> is out.</p>

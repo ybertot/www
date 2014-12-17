@@ -1,6 +1,7 @@
+<#def ID>71</#def>
 <#def TITLE>A locally-nameless backend for Ott</#def>
 <#def AUTHOR>coq-www</#def>
-<#def DATE>10. March 2009 - 12:29</#def>
+<#def DATE>10 Mar 2009 12:29 GMT</#def>
 <#def DESCR>
 <p>The <a href="http://www.cl.cam.ac.uk/~pes20/ott/">Ott</a> tool, 
 developed by  Peter Sewell and Francesco Zappa Nardelli,

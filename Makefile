@@ -191,18 +191,23 @@ NEWS:= \
   122 121 120 119 115 114 110 107 106 105 100 99 98 96 95 \
   94 93 91 83 81 78 72 71 70 69 68 67 65 62 59 58 20
 
+RECENTNEWS:= 122
+
 NEWSSRC:=$(addprefix news/,$(NEWS))
 NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))
 
-news: $(DST)/news/index.html $(NEWSDST)
+news: $(DST)/news/index.html $(DST)/rss.xml $(NEWSDST)
 
-$(DST)/news/index.html: $(NEWSSRC) $(DEPS)
+$(DST)/news/index.html: $(NEWSSRC) $(DEPS) news_item.html
 	mkdir -p $(dir $@)
 	ocaml $(YAMLPP) header.html $(patsubst %,% news_item.html,$(NEWSSRC)) footer.html -o $@
 
-$(DST)/news/%.html: news/% $(DEPS)
+$(DST)/news/%.html: news/% $(DEPS) news_single.html
 	mkdir -p $(dir $@)
 	ocaml $(YAMLPP) $< news_single.html -o $@
+
+$(DST)/rss.xml: $(NEWSSRC) rss_header.xml rss_footer.xml rss_item.xml $(YAMLPP)
+	ocaml $(YAMLPP) rss_header.xml $(patsubst %,% rss_item.xml,$(NEWSSRC)) rss_footer.xml -o $@
 
 # 20
 # 58

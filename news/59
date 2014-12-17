@@ -1,6 +1,7 @@
+<#def ID>59</#def>
 <#def TITLE>Announcing Ssreflect 1.1</#def>
 <#def AUTHOR>dcousineau</#def>
-<#def DATE>6. June 2008 - 12:52</#def>
+<#def DATE>6 Jun 2008 12:52 GMT</#def>
 <#def DESCR>
 <p>The Microsoft Research-Inria Joint Center is pleased to announce<br />
 the first full release of the Ssreflect extension library for the Coq<br />

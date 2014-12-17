@@ -1,6 +1,7 @@
+<#def ID>78</#def>
 <#def TITLE>A tactic for deciding Kleene algebras</#def>
 <#def AUTHOR>coq-www</#def>
-<#def DATE>9. June 2009 - 20:58</#def>
+<#def DATE>9 Jun 2009 20:58 GMT</#def>
 <#def DESCR>
 <p>Thomas Braibant and Damien Pous are pleased to announce the first release of ATBR, a Coq library whose aim is to provide tools for working with various algebraic structures, including non-commutative idempotent semirings and Kleene algebras.</p>
 <p>The main tactic they provide in this library is a reflexive tactic for solving (in)equations in Kleene algebras. The decision procedure goes through standard finite automata constructions, that they formalized.</p>

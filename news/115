@@ -1,6 +1,7 @@
+<#def ID>115</#def>
 <#def TITLE>Coq source repository migrated to git</#def>
 <#def AUTHOR>letouzey</#def>
-<#def DATE>22. November 2013 - 15:08</#def>
+<#def DATE>22 Nov 2013 15:08 GMT</#def>
 <#def DESCR>
 <p>The main source repository for Coq on <a href="http://coq.gforge.inria.fr">gforge.inria.fr</a> is now using git instead of subversion.</p>
 <p>For accessing this new repository, see the <a href="https://gforge.inria.fr/scm/?group_id=269">"sources" page</a> of the <a href="http://coq.gforge.inria.fr">coq project on gforge</a>.</p>

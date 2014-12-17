@@ -1,6 +1,7 @@
+<#def ID>58</#def>
 <#def TITLE>New CoLoR release</#def>
 <#def AUTHOR>dcousineau</#def>
-<#def DATE>9. May 2008 - 13:00</#def>
+<#def DATE>9 May 2008 13:00 GMT</#def>
 <#def DESCR>
 Frédéric Blanqui is pleased to announce  a new release of CoLoR.
 <br /> You can download it and find more details on <a href="http://color.loria.fr/">http://color.loria.fr/</a>.
