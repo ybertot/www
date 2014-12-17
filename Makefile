@@ -196,16 +196,23 @@ NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))
 
 news: $(DST)/news/index.html $(DST)/rss.xml $(NEWSDST)
 
-$(DST)/news/index.html: $(NEWSSRC) $(DEPS) incl/news/item.html
+$(DST)/news/index.html: $(NEWSSRC) $(DEPS) incl/news/item.html incl/news/title.html
 	mkdir -p $(dir $@)
-	ocaml $(YAMLPP) incl/header.html $(patsubst %,% incl/news/item.html,$(NEWSSRC)) incl/footer.html -o $@
+	ocaml $(YAMLPP) -o $@ \
+          incl/news/title.html \
+          incl/header.html \
+          $(patsubst %,% incl/news/item.html,$(NEWSSRC)) \
+          incl/footer.html
 
 $(DST)/news/%.html: news/% $(DEPS) incl/news/solo.html
 	mkdir -p $(dir $@)
 	ocaml $(YAMLPP) $< incl/news/solo.html -o $@
 
 $(DST)/rss.xml: $(NEWSSRC) incl/rss/header.xml incl/rss/footer.xml incl/rss/item.xml $(YAMLPP)
-	ocaml $(YAMLPP) incl/rss/header.xml $(patsubst %,% incl/rss/item.xml,$(NEWSSRC)) incl/rss/footer.xml -o $@
+	ocaml $(YAMLPP) -o $@ \
+          incl/rss/header.xml \
+          $(patsubst %,% incl/rss/item.xml,$(NEWSSRC)) \
+          incl/rss/footer.xml
 
 NEWSALIASES:= \
  $(patsubst %,$(DST)/news/%/index.html, \
