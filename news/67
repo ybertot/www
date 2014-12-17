@@ -3,5 +3,5 @@
 <#def AUTHOR>coq-www</#def>
 <#def DATE>23 Jan 2009 20:27 GMT</#def>
 <#def DESCR>
-<p>A release candidate for Coq 8.2 is now out ! You can download it from <a href="/node/66">this page</a>.</p>
+<p>A release candidate for Coq 8.2 is now out ! You can download it from <a href="/coq-82-rc">this page</a>.</p>
 </#def>
