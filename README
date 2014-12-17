@@ -35,9 +35,9 @@ How to create a new page ?
    the other pages of the site, your file should look like:
 
    <#def TITLE> your page title </#def>
-   <#include "header.html">
+   <#include "incl/header.html">
    Your html code corresponding roughly to the inner of the html body
-   <#include "footer.html">
+   <#include "incl/footer.html">
 
    In addition, you could add just after the TITLE two other macro definitions:
    - HEAD : anything in it will be added at the end of the <head> section

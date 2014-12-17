@@ -4,7 +4,7 @@
 DST:=dest
 YAMLPP:=yamlpp-0.3/yamlpp.ml
 PP=mkdir -p $(dir $@) && ocaml $(YAMLPP) $< -o $@
-INCLS:=header.html footer.html
+INCLS:=incl/header.html incl/footer.html
 DEPS:=$(INCLS) $(YAMLPP)
 
 all: html aliases news newsaliases
@@ -164,7 +164,7 @@ $(DST)/coq-workshop/files: ; mkdir -p $(dir $@) && ln -snf ../files $@
 $(DST)/getting-started: ; ln -snf tutorial/0-getting-started $@
 $(DST)/1-basic-predicate-calculus: ; ln -snf tutorial/1-basic-predicate-calculus $@
 $(DST)/what-is-coq: ; ln -snf about-coq $@
-$(DST)/coq-workshop/2009/cfp: ; mkdir -p $(dir $@) && ln -snf ../../news/69.html $@ #TODO...
+$(DST)/coq-workshop/2009/cfp: ; mkdir -p $(dir $@) && ln -snf ../../news/69.html $@
 $(DST)/the-coq-workshop: ; ln -snf coq-workshop $@
 $(DST)/the-coq-workshop-2009-0: ; ln -snf coq-workshop/2009 $@
 $(DST)/the-coq-workshop-2010: ; ln -snf coq-workshop/2010 $@
@@ -196,16 +196,16 @@ NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))
 
 news: $(DST)/news/index.html $(DST)/rss.xml $(NEWSDST)
 
-$(DST)/news/index.html: $(NEWSSRC) $(DEPS) news_item.html
+$(DST)/news/index.html: $(NEWSSRC) $(DEPS) incl/news/item.html
 	mkdir -p $(dir $@)
-	ocaml $(YAMLPP) header.html $(patsubst %,% news_item.html,$(NEWSSRC)) footer.html -o $@
+	ocaml $(YAMLPP) incl/header.html $(patsubst %,% incl/news/item.html,$(NEWSSRC)) incl/footer.html -o $@
 
-$(DST)/news/%.html: news/% $(DEPS) news_single.html
+$(DST)/news/%.html: news/% $(DEPS) incl/news/solo.html
 	mkdir -p $(dir $@)
-	ocaml $(YAMLPP) $< news_single.html -o $@
+	ocaml $(YAMLPP) $< incl/news/solo.html -o $@
 
-$(DST)/rss.xml: $(NEWSSRC) rss_header.xml rss_footer.xml rss_item.xml $(YAMLPP)
-	ocaml $(YAMLPP) rss_header.xml $(patsubst %,% rss_item.xml,$(NEWSSRC)) rss_footer.xml -o $@
+$(DST)/rss.xml: $(NEWSSRC) incl/rss/header.xml incl/rss/footer.xml incl/rss/item.xml $(YAMLPP)
+	ocaml $(YAMLPP) incl/rss/header.xml $(patsubst %,% incl/rss/item.xml,$(NEWSSRC)) incl/rss/footer.xml -o $@
 
 NEWSALIASES:= \
  $(patsubst %,$(DST)/news/%/index.html, \
