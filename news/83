@@ -1,7 +1,7 @@
-<title>Announcing Ssreflect version 1.2</title>
-<author>coq-www</author>
-<date>19. August 2009 - 12:00</date>
-<description>
+<#def TITLE>Announcing Ssreflect version 1.2</#def>
+<#def AUTHOR>coq-www</#def>
+<#def DATE>19. August 2009 - 12:00</#def>
+<#def DESCR>
 <p>The Mathematical Components Team, at the Microsoft Research-Inria Joint Center released a new version of Ssreflect, an powerful extension for Coq. For more information, read the official announcement:</p>
 <p>«<br />
 We are pleased to announce the new release of the Ssreflect<br />
@@ -70,4 +70,4 @@ word ssreflect, or use the following web interface:<br />
 <p>The Mathematical Components Team, at the Microsoft Research-Inria<br />
 Joint Center<br />
 »</p>
-</description>
+</#def>

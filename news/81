@@ -1,6 +1,6 @@
-<title>Coq 8.2pl1 is out !</title>
-<author>coq-www</author>
-<date>4. July 2009 - 3:47</date>
-<description>
+<#def TITLE>Coq 8.2pl1 is out !</#def>
+<#def AUTHOR>coq-www</#def>
+<#def DATE>4. July 2009 - 3:47</#def>
+<#def DESCR>
 <p>A new patch level for Coq 8.2 is now available. You can get it from the <a href="/download">download</a> page.</p>
-</description>
+</#def>

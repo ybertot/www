@@ -1,7 +1,7 @@
-<title>A locally-nameless backend for Ott</title>
-<author>coq-www</author>
-<date>10. March 2009 - 12:29</date>
-<description>
+<#def TITLE>A locally-nameless backend for Ott</#def>
+<#def AUTHOR>coq-www</#def>
+<#def DATE>10. March 2009 - 12:29</#def>
+<#def DESCR>
 <p>The <a href="http://www.cl.cam.ac.uk/~pes20/ott/">Ott</a> tool, 
 developed by  Peter Sewell and Francesco Zappa Nardelli,
 has recently been extended to compile language definitions
@@ -14,4 +14,4 @@ Stark) and the documentation are available from the <a
 href="http://www.di.ens.fr/~zappa/projects/ln_ott/">ln-ott page</a> and the 
 <a href="http://www.cl.cam.ac.uk/~pes20/ott/">project web-site</a>.</p>
 <p>This is related to the recent <a href="http://web.archive.org/web/20100716005113/http://www.cis.upenn.edu/~baydemir/papers/lngen/">LNgen</a> tool of Brian Aydemir and Stephanie Weirich.</p>
-</description>
+</#def>

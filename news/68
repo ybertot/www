@@ -1,8 +1,8 @@
-<title>Coq 8.2 has arrived</title>
-<author>dcousineau</author>
-<date>15. February 2009 - 12:08</date>
-<description>
+<#def TITLE>Coq 8.2 has arrived</#def>
+<#def AUTHOR>dcousineau</#def>
+<#def DATE>15. February 2009 - 12:08</#def>
+<#def DESCR>
 <p>Coq 8.2 brings Haskell-style type classes, various evolutions of the arithmetic libraries, and many other various improvements and extensions regarding the module system, tactics, syntax, etc. You can download it from <a href="/download">this page</a>.<br />
 Enjoy!</p>
 <p>The Coq development team</p>
-</description>
+</#def>

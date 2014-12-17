@@ -1,6 +1,6 @@
-<title>Release candidate of Coq 8.4 is out</title>
-<author>herbelin</author>
-<date>8. August 2012 - 21:28</date>
-<description>
+<#def TITLE>Release candidate of Coq 8.4 is out</#def>
+<#def AUTHOR>herbelin</#def>
+<#def DATE>8. August 2012 - 21:28</#def>
+<#def DESCR>
 <p>Coq 8.4 is available as a release candidate. More on the <a href="/coq-84">Coq 8.4</a> web page...</p>
-</description>
+</#def>

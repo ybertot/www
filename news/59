@@ -1,7 +1,7 @@
-<title>Announcing Ssreflect 1.1</title>
-<author>dcousineau</author>
-<date>6. June 2008 - 12:52</date>
-<description>    
+<#def TITLE>Announcing Ssreflect 1.1</#def>
+<#def AUTHOR>dcousineau</#def>
+<#def DATE>6. June 2008 - 12:52</#def>
+<#def DESCR>
 <p>The Microsoft Research-Inria Joint Center is pleased to announce<br />
 the first full release of the Ssreflect extension library for the Coq<br />
 proof assistant, version 8.1.</p>
@@ -59,4 +59,4 @@ word ssreflect, or use the following web interface:<br />
 <p>Enjoy!</p>
 <p>The Mathematical Components Team,<br />
 at the Microsoft Research-Inria Joint Center</p>
-</description>
+</#def>

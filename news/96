@@ -1,7 +1,7 @@
-<title>Coq 8.3 is out !</title>
-<author>coq-www</author>
-<date>14. October 2010 - 16:45</date>
-<description>
+<#def TITLE>Coq 8.3 is out !</#def>
+<#def AUTHOR>coq-www</#def>
+<#def DATE>14. October 2010 - 16:45</#def>
+<#def DESCR>
 <p>We are pleased to announce the final release of <a href="/download">Coq 8.3</a> which includes a new tactic (<code>nsatz</code>, standing for Hilbert's NullStellensatz, that extends <code>ring</code> to systems of polynomial equations) and a few new libraries (a certification of mergesort, a new library of finite sets with computational and logical contents separated).</p>
 <p>This version also comes with many improvements of existing features, especially regarding the tactics, the module system, extraction, the type classes, the program command, libraries, coqdoc. Here is an excerpt:</p>
 <ul>
@@ -30,4 +30,4 @@
 </ul>
 <p>If you want to try it, go to the <a href="/download">download</a> page.</p>
 <p>The Coq development team</p>
-</description>
+</#def>

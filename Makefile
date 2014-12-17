@@ -7,7 +7,7 @@ PP=mkdir -p $(dir $@) && ocaml $(YAMLPP) $< -o $@
 INCLS:=header.html footer.html
 DEPS:=$(INCLS) $(YAMLPP)
 
-all: html aliases
+all: html aliases news
 
 clean:
 	rm -rf $(DST)/*
@@ -15,7 +15,7 @@ clean:
 $(YAMLPP): $(YAMLPP:.ml=.mll)
 	ocamllex $<
 
-.PHONY: all html aliases clean
+.PHONY: all html aliases news clean
 
 ## Generated pages : their list and how to generate them
 
@@ -166,7 +166,7 @@ $(DST)/coq-workshop/files: ; mkdir -p $(dir $@) && ln -snf ../files $@
 $(DST)/getting-started: ; ln -snf tutorial/0-getting-started $@
 $(DST)/1-basic-predicate-calculus: ; ln -snf tutorial/1-basic-predicate-calculus $@
 $(DST)/what-is-coq: ; ln -snf about-coq $@
-$(DST)/coq-workshop/2009/cfp: ; mkdir -p $(dir $@) && ln -snf ../../news/69 $@ #TODO...
+$(DST)/coq-workshop/2009/cfp: ; mkdir -p $(dir $@) && ln -snf ../../news/69.html $@ #TODO...
 $(DST)/the-coq-workshop: ; ln -snf coq-workshop $@
 $(DST)/the-coq-workshop-2009-0: ; ln -snf coq-workshop/2009 $@
 $(DST)/the-coq-workshop-2010: ; ln -snf coq-workshop/2010 $@
@@ -184,6 +184,58 @@ $(DST)/journée-«-interfaces-»-du-27-octobre-2010: ; ln -snf adt/interfaces $@
 $(DST)/coq-82-detailed-description: ; ln -snf coq-82 $@
 $(DST)/coq-84-0: ; ln -snf coq-8.4 $@
 $(DST)/coq-8.3: ; ln -snf coq-83 $@
+
+## News
+
+NEWS:= \
+  122 121 120 119 115 114 110 107 106 105 100 99 98 96 95 \
+  94 93 91 83 81 78 72 71 70 69 68 67 65 62 59 58 20
+
+NEWSSRC:=$(addprefix news/,$(NEWS))
+NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))
+
+news: $(DST)/news/index.html $(NEWSDST)
+
+$(DST)/news/index.html: $(NEWSSRC) $(DEPS)
+	mkdir -p $(dir $@)
+	ocaml $(YAMLPP) header.html $(patsubst %,% news_item.html,$(NEWSSRC)) footer.html -o $@
+
+$(DST)/news/%.html: news/% $(DEPS)
+	mkdir -p $(dir $@)
+	ocaml $(YAMLPP) $< news_single.html -o $@
+
+# 20
+# 58
+# 59
+# 62
+# 65
+# 67
+# 68
+# 69 /the-coq-workshop-2009
+# 70 /announcing-lngen
+# 71 /a-locally-nameless-backend-for-ott
+# 72 /first-asian-pacific-coq-summer-school
+# 78 /a-tactic-for-deciding-kleene-algebras
+# 81 /coq-82pl1-is-out
+# 83 /announcing-ssreflect-version-12
+# 91 /coq-83-beta-version
+# 93 /coq-workshop-2010
+# 94 /2nd-asian-pacific-coq-summer-school
+# 95 /alpha-release-of-coq-modulo-theories
+# 96 /coq-83-is-out
+# 98 /coq-83pl2-is-out
+# 99 /3rd-asian-pacific-summer-school-on-formal-methods
+# 100 /coq-workshop-2011
+# 105 /coq-83pl3-is-out
+# 106 /beta-release-of-coq-84
+# 107 /release-candidate-of-coq-84-is-out
+# 110 /coq-84-is-out
+# 114 /coq-received-acm-sigplan-programming-languages-software-2013-award
+# 115 /coq-source-repository-migrated-to-git
+# 119 /coq-received-acm-software-system-2013-award
+# 120 /coq-84pl4-is-out
+# 121 /coq-is-hiring-a-specialized-engineer-for-2-years
+# 122
 
 printenv:
 	@echo "### PAGES ###"
