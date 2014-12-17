@@ -1,0 +1,11 @@
+<#def ID>NNN</#def>
+<#def TITLE>Happy New Year!</#def>
+<#def AUTHOR>myself</#def>
+<#def DATE>01 Jan 2015 00:00 GMT</#def>
+<#def DESCR>
+This description is the text of this news entry, to fill with some html code.
+The ID above should be a unique number, equal to the filename of this news.
+The TITLE and AUTHOR are obvious (if unsure, use coq-www as author).
+In the DATE field, please keep the exact same formatting (RFC-822), in order
+to please the RSS readers.
+</#def>

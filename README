@@ -70,4 +70,12 @@ Look in the Makefile the variable $(ALIASES) and the rules to install links
 And for news ?
 --------------
 
-TODO
+1) Add a new file in news/ with an increased number as filename.
+   You can for instance copy news/template and adapt it, or any existing
+   news files. See news/template for details about the expected syntax.
+
+2) In the Makefile, add your news number to $(NEWS) and $(RECENTNEWS).
+   You may also add an textual URL alias for this news, see $(NEWSALIASES)
+   and the corresponding rules.
+
+3) make, verify, commit, push as usual
