@@ -7,7 +7,7 @@ PP=mkdir -p $(dir $@) && ocaml $(YAMLPP) $< -o $@
 INCLS:=header.html footer.html
 DEPS:=$(INCLS) $(YAMLPP)
 
-all: html aliases news
+all: html aliases news newsaliases
 
 clean:
 	rm -rf $(DST)/*
@@ -15,7 +15,7 @@ clean:
 $(YAMLPP): $(YAMLPP:.ml=.mll)
 	ocamllex $<
 
-.PHONY: all html aliases news clean
+.PHONY: all html aliases news newsaliases clean
 
 ## Generated pages : their list and how to generate them
 
@@ -155,8 +155,6 @@ ALIASES:= \
 
 aliases: $(ALIASES)
 
-#TODO? : $(DST)/node
-
 $(DST)/index.html: ; ln -s welcome/index.html $@
 
 $(DST)/files: ; ln -snf ../files $@
@@ -209,38 +207,59 @@ $(DST)/news/%.html: news/% $(DEPS) news_single.html
 $(DST)/rss.xml: $(NEWSSRC) rss_header.xml rss_footer.xml rss_item.xml $(YAMLPP)
 	ocaml $(YAMLPP) rss_header.xml $(patsubst %,% rss_item.xml,$(NEWSSRC)) rss_footer.xml -o $@
 
-# 20
-# 58
-# 59
-# 62
-# 65
-# 67
-# 68
-# 69 /the-coq-workshop-2009
-# 70 /announcing-lngen
-# 71 /a-locally-nameless-backend-for-ott
-# 72 /first-asian-pacific-coq-summer-school
-# 78 /a-tactic-for-deciding-kleene-algebras
-# 81 /coq-82pl1-is-out
-# 83 /announcing-ssreflect-version-12
-# 91 /coq-83-beta-version
-# 93 /coq-workshop-2010
-# 94 /2nd-asian-pacific-coq-summer-school
-# 95 /alpha-release-of-coq-modulo-theories
-# 96 /coq-83-is-out
-# 98 /coq-83pl2-is-out
-# 99 /3rd-asian-pacific-summer-school-on-formal-methods
-# 100 /coq-workshop-2011
-# 105 /coq-83pl3-is-out
-# 106 /beta-release-of-coq-84
-# 107 /release-candidate-of-coq-84-is-out
-# 110 /coq-84-is-out
-# 114 /coq-received-acm-sigplan-programming-languages-software-2013-award
-# 115 /coq-source-repository-migrated-to-git
-# 119 /coq-received-acm-software-system-2013-award
-# 120 /coq-84pl4-is-out
-# 121 /coq-is-hiring-a-specialized-engineer-for-2-years
-# 122
+NEWSALIASES:= \
+ $(patsubst %,$(DST)/news/%/index.html, \
+   the-coq-workshop-2009 \
+   announcing-lngen \
+   a-locally-nameless-backend-for-ott \
+   first-asian-pacific-coq-summer-school \
+   a-tactic-for-deciding-kleene-algebras \
+   coq-82pl1-is-out \
+   announcing-ssreflect-version-12 \
+   coq-83-beta-version \
+   coq-workshop-2010 \
+   2nd-asian-pacific-coq-summer-school \
+   alpha-release-of-coq-modulo-theories \
+   coq-83-is-out \
+   coq-83pl2-is-out \
+   3rd-asian-pacific-summer-school-on-formal-methods \
+   coq-workshop-2011 \
+   coq-83pl3-is-out \
+   beta-release-of-coq-84 \
+   release-candidate-of-coq-84-is-out \
+   coq-84-is-out \
+   coq-received-acm-sigplan-programming-languages-software-2013-award \
+   coq-source-repository-migrated-to-git \
+   coq-received-acm-software-system-2013-award \
+   coq-84pl4-is-out \
+   coq-is-hiring-a-specialized-engineer-for-2-years )
+
+newsaliases: $(NEWSALIASES)
+
+$(DST)/news/the-coq-workshop-2009/index.html: ; mkdir -p $(dir $@) && ln -s ../69.html $@
+$(DST)/news/announcing-lngen/index.html: ; mkdir -p $(dir $@) && ln -s ../70.html $@
+$(DST)/news/a-locally-nameless-backend-for-ott/index.html: ; mkdir -p $(dir $@) && ln -s ../71.html $@
+$(DST)/news/first-asian-pacific-coq-summer-school/index.html: ; mkdir -p $(dir $@) && ln -s ../72.html $@
+$(DST)/news/a-tactic-for-deciding-kleene-algebras/index.html: ; mkdir -p $(dir $@) && ln -s ../78.html $@
+$(DST)/news/coq-82pl1-is-out/index.html: ; mkdir -p $(dir $@) && ln -s ../81.html $@
+$(DST)/news/announcing-ssreflect-version-12/index.html: ; mkdir -p $(dir $@) && ln -s ../83.html $@
+$(DST)/news/coq-83-beta-version/index.html: ; mkdir -p $(dir $@) && ln -s ../91.html $@
+$(DST)/news/coq-workshop-2010/index.html: ; mkdir -p $(dir $@) && ln -s ../93.html $@
+$(DST)/news/2nd-asian-pacific-coq-summer-school/index.html: ; mkdir -p $(dir $@) && ln -s ../94.html $@
+$(DST)/news/alpha-release-of-coq-modulo-theories/index.html: ; mkdir -p $(dir $@) && ln -s ../95.html $@
+$(DST)/news/coq-83-is-out/index.html: ; mkdir -p $(dir $@) && ln -s ../96.html $@
+$(DST)/news/coq-83pl2-is-out/index.html: ; mkdir -p $(dir $@) && ln -s ../98.html $@
+$(DST)/news/3rd-asian-pacific-summer-school-on-formal-methods/index.html: ; mkdir -p $(dir $@) && ln -s ../99.html $@
+$(DST)/news/coq-workshop-2011/index.html: ; mkdir -p $(dir $@) && ln -s ../100.html $@
+$(DST)/news/coq-83pl3-is-out/index.html: ; mkdir -p $(dir $@) && ln -s ../105.html $@
+$(DST)/news/beta-release-of-coq-84/index.html: ; mkdir -p $(dir $@) && ln -s ../106.html $@
+$(DST)/news/release-candidate-of-coq-84-is-out/index.html: ; mkdir -p $(dir $@) && ln -s ../107.html $@
+$(DST)/news/coq-84-is-out/index.html: ; mkdir -p $(dir $@) && ln -s ../110.html $@
+$(DST)/news/coq-received-acm-sigplan-programming-languages-software-2013-award/index.html: ; mkdir -p $(dir $@) && ln -s ../114.html $@
+$(DST)/news/coq-source-repository-migrated-to-git/index.html: ; mkdir -p $(dir $@) && ln -s ../115.html $@
+$(DST)/news/coq-received-acm-software-system-2013-award/index.html: ; mkdir -p $(dir $@) && ln -s ../119.html $@
+$(DST)/news/coq-84pl4-is-out/index.html: ; mkdir -p $(dir $@) && ln -s ../120.html $@
+$(DST)/news/coq-is-hiring-a-specialized-engineer-for-2-years/index.html: ; mkdir -p $(dir $@) && ln -s ../121.html $@
 
 printenv:
 	@echo "### PAGES ###"
