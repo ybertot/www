@@ -69,6 +69,9 @@
 
 
 <script type="text/javascript">
+//Protect again xhtml parsing of special characters such as comparisons
+//<![CDATA[
+
 // There should be as many divs than links !
 divs = document.querySelectorAll(".SCcontent");
 links = document.querySelectorAll("a.thumbnail");
@@ -90,4 +93,5 @@ select(0);
 function do_select(i) { return (function (e) {e.preventDefault(); select(i);}) }
 for (var i = 0; i < links.length; i++) { links[i].onclick = do_select(i); }
 
+//]]>
 </script>
