@@ -1,36 +1,78 @@
-<?php
-  if (isset($_REQUEST['id'])) {
-      $id = $_REQUEST['id'];
-   }
-   else {
-       $id = 1;
-   }
+<div class="SCpager">
+ <div class="SCpagercontent">
+  <a name="thumbnail" href="#1">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture1.jpg" alt="thumbnail 1"/>
+ </a>
+ <a name="thumbnail" href="#2">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture2.jpg" alt="thumbnail 2"/>
+ </a>
+ <a name="thumbnail" href="#3">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture3.jpg" alt="thumbnail 3"/>
+ </a>
+ <a name="thumbnail" href="#4">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture4.jpg" alt="thumbnail 4"/>
+ </a>
+ <a name="thumbnail" href="#5">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture5.jpg" alt="thumbnail 5"/>
+ </a>
+ </div>
+</div>
 
-$nbpics = 5;
+ <a name="1"></a>
+ <div class="SCcontent" name="screenshot">
+  <a href="/files/coqide/images/capture1.jpg">
+   <img class="SCscreenshot" src="/files/coqide/images/capture1.jpg" alt="screenshot 1" />
+  </a>
+ </div>
 
-echo "<div class=\"SCpager\">\n <div class = \"SCpagercontent\">";
+ <a name="2"></a>
+ <div class="SCcontent" name="screenshot">
+  <a href="/files/coqide/images/capture2.jpg">
+   <img class="SCscreenshot" src="/files/coqide/images/capture2.jpg" alt="screenshot 2" />
+  </a>
+ </div>
 
-for ($i=1;$i<=$nbpics;$i=$i+1) {
-   if ($i==$id) {
-      echo "<img class=\"SCthumbselected\" src=\"/files/coqide/thumbs/capture$i.jpg\" alt=\"thumb number $i\"/>";
-   }
-   else {
-      echo "<a href=\"?q=node/57&amp;id=".$i."#scr\"><img class=\"SCthumb\" src=\"/files/coqide/thumbs/capture$i.jpg\" alt=\"thumb number $i\"/></a>";
-    }             
+ <a name="3"></a>
+ <div class="SCcontent" name="screenshot">
+  <a href="/files/coqide/images/capture3.jpg">
+   <img class="SCscreenshot" src="/files/coqide/images/capture3.jpg" alt="screenshot 3" />
+  </a>
+ </div>
+
+ <a name="4"></a>
+ <div class="SCcontent" name="screenshot">
+  <a href="/files/coqide/images/capture4.jpg">
+   <img class="SCscreenshot" src="/files/coqide/images/capture4.jpg" alt="screenshot 4" />
+  </a>
+ </div>
+
+ <a name="5"></a>
+ <div class="SCcontent" name="screenshot">
+  <a href="/files/coqide/images/capture5.jpg">
+   <img class="SCscreenshot" src="/files/coqide/images/capture5.jpg" alt="screenshot 5" />
+  </a>
+ </div>
+
+<script type="text/javascript">
+// There should be as many divs than links !
+divs = document.getElementsByName("screenshot");
+links = document.getElementsByName("thumbnail");
+
+function select(j) {
+  for (var i = 0; i < divs.length; i++) {
+    if (i == j) {
+      divs[i].style.display = "block";
+    } else {
+      divs[i].style.display = "none";
+    }
+  }
 }
 
-echo "\n </div> </div>\n";
-echo "<a name=\"scr\"></a>";
+select(0);
 
-echo "<div class=\"SCcontent\">";
+// Do not inline do_select below, otherwise i in the closure is evaluated
+// at click time only, and always contains links.length ! 
+function do_select(i) { return (function (e) {e.preventDefault(); select(i);}) }
+for (var i = 0; i < links.length; i++) { links[i].onclick = do_select(i); }
 
-if ($id>$nbpics) {
-     echo "$id is not a screenshot id.";
-}
-else {
-  echo "<a href=\"/files/coqide/images/capture$id.jpg\"><img class=\"SCscreenshot\" src=\"/files/coqide/images/capture".$id.".jpg\" alt=\"screenshot number $i\" /></a>";
-}
-
-echo "\n</div>";
-
-?>
+</script>
