@@ -1,62 +1,77 @@
 <div class="SCpager">
  <div class="SCpagercontent">
-  <a name="thumbnail" href="#1">
+
+ <a class="thumbnail" href="#1">
  <img class="SCthumb" src="/files/coqide/thumbs/capture1.jpg" alt="thumbnail 1"/>
  </a>
- <a name="thumbnail" href="#2">
+
+
+ <a class="thumbnail" href="#2">
  <img class="SCthumb" src="/files/coqide/thumbs/capture2.jpg" alt="thumbnail 2"/>
  </a>
- <a name="thumbnail" href="#3">
+
+
+ <a class="thumbnail" href="#3">
  <img class="SCthumb" src="/files/coqide/thumbs/capture3.jpg" alt="thumbnail 3"/>
  </a>
- <a name="thumbnail" href="#4">
+
+
+ <a class="thumbnail" href="#4">
  <img class="SCthumb" src="/files/coqide/thumbs/capture4.jpg" alt="thumbnail 4"/>
  </a>
- <a name="thumbnail" href="#5">
+
+
+ <a class="thumbnail" href="#5">
  <img class="SCthumb" src="/files/coqide/thumbs/capture5.jpg" alt="thumbnail 5"/>
  </a>
+
  </div>
 </div>
 
- <a name="1"></a>
- <div class="SCcontent" name="screenshot">
+ <div class="SCcontent">
+  <a id="1"></a>
   <a href="/files/coqide/images/capture1.jpg">
    <img class="SCscreenshot" src="/files/coqide/images/capture1.jpg" alt="screenshot 1" />
   </a>
  </div>
 
- <a name="2"></a>
- <div class="SCcontent" name="screenshot">
+
+ <div class="SCcontent">
+  <a id="2"></a>
   <a href="/files/coqide/images/capture2.jpg">
    <img class="SCscreenshot" src="/files/coqide/images/capture2.jpg" alt="screenshot 2" />
   </a>
  </div>
 
- <a name="3"></a>
- <div class="SCcontent" name="screenshot">
+
+ <div class="SCcontent">
+  <a id="3"></a>
   <a href="/files/coqide/images/capture3.jpg">
    <img class="SCscreenshot" src="/files/coqide/images/capture3.jpg" alt="screenshot 3" />
   </a>
  </div>
 
- <a name="4"></a>
- <div class="SCcontent" name="screenshot">
+
+ <div class="SCcontent">
+  <a id="4"></a>
   <a href="/files/coqide/images/capture4.jpg">
    <img class="SCscreenshot" src="/files/coqide/images/capture4.jpg" alt="screenshot 4" />
   </a>
  </div>
 
- <a name="5"></a>
- <div class="SCcontent" name="screenshot">
+
+ <div class="SCcontent">
+  <a id="5"></a>
   <a href="/files/coqide/images/capture5.jpg">
    <img class="SCscreenshot" src="/files/coqide/images/capture5.jpg" alt="screenshot 5" />
   </a>
  </div>
 
+
 <script type="text/javascript">
 // There should be as many divs than links !
-divs = document.getElementsByName("screenshot");
-links = document.getElementsByName("thumbnail");
+divs = document.querySelectorAll(".SCcontent");
+links = document.querySelectorAll("a.thumbnail");
 
 function select(j) {
   for (var i = 0; i < divs.length; i++) {
@@ -71,7 +86,7 @@ function select(j) {
 select(0);
 
 // Do not inline do_select below, otherwise i in the closure is evaluated
-// at click time only, and always contains links.length ! 
+// at click time only, and always contains links.length !
 function do_select(i) { return (function (e) {e.preventDefault(); select(i);}) }
 for (var i = 0; i < links.length; i++) { links[i].onclick = do_select(i); }
 
