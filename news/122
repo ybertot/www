@@ -1,1 +1,6 @@
-Version <a href="/download">8.4pl5</a> of Coq fixes several bugs of version 8.4pl4 including the compatibility with OCaml 4.02. More information to be found in the <a href="/distrib/V8.4pl5/CHANGES">CHANGES</a> file.
+<title>Coq 8.4pl5 is out</title>
+<author>coq-www</author>
+<date>31. October 2014 - 6:11</date>
+<description>
+<p>Version <a href="/download">8.4pl5</a> of Coq fixes several bugs of version 8.4pl4 including the compatibility with OCaml 4.02. More information to be found in the <a href="/distrib/V8.4pl5/CHANGES">CHANGES</a> file.</p>
+</description>

@@ -1,10 +1,13 @@
+<#def TITLE>A short introduction to Coq</#def>
+<#include "header.html">
+
 Coq is a proof assistant. It means that it is designed to develop
 mathematical proofs, and especially to write formal specifications,
 programs and proofs that programs comply to their specifications. An
 interesting additional feature of Coq is that it can automatically extract
 executable programs from specifications, as either <a href="http://caml.inria.fr/ocaml/">Objective Caml</a> or <a href="https://www.haskell.org/haskellwiki/Haskell">Haskell</a>
 source code.
-<br><br>
+<br /><br />
 Properties, programs and proofs are formalized in the
 same language called the Calculus of Inductive Constructions (CIC). Then, all logical judgments in Coq are typing judgments: the very heart of Coq is in fact a <em>type</em>-checking algorithm.
 
@@ -15,8 +18,8 @@ Coq objects are sorted into two categories: the <tt>Prop</tt> <em>sort</em> and 
 <ul>
 <li><tt>Prop</tt> is the sort for propositions, i.e. well-formed propositions are of <em>type</em> <tt>Prop</tt>. Typical propositions are:
 <pre>
-  ? A B : Prop, A /\ B -> B \/ B
-  ? x y : Z, x * y = 0 -> x = 0 \/ y = 0
+  ∀ A B : Prop, A /\ B -> B \/ B
+  ∀ x y : Z, x * y = 0 -> x = 0 \/ y = 0
 </pre>
 and new predicates can be defined either inductively, e.g.:
 <pre>
@@ -27,10 +30,10 @@ and new predicates can be defined either inductively, e.g.:
   | odd_S n : even n -> odd (n + 1).
 </pre>
 or by abstracting over other existing propositions, e.g.:
-<br>
+<br />
 <pre>
-  Definition divide (x y:N) := ? z, x * z = y.
-  Definition prime x := ? y, divide y x -> y = 1 \/ y = x.
+  Definition divide (x y:N) := ∃ z, x * z = y.
+  Definition prime x := ∀ y, divide y x -> y = 1 \/ y = x.
 </pre>
 </li>
 
@@ -54,21 +57,21 @@ or types for tuples, e.g.:
     dom : Type ; 
     op : dom -> dom -> dom where "x * y" := (op x y); 
     id : dom where "1" := id; 
-    assoc : ? x y z, x * (y * z) = (x * y) * z ; 
-    left_neutral : ? x, 1 * x = x ;
-    right_neutral : ? x, x * 1 = x 
+    assoc : ∀ x y z, x * (y * z) = (x * y) * z ; 
+    left_neutral : ∀ x, 1 * x = x ;
+    right_neutral : ∀ x, x * 1 = x 
   }.
 </pre>
-or a form of subset types called ?-types, e.g. the type of even natural numbers:
+or a form of subset types called Σ-types, e.g. the type of even natural numbers:
 <pre>
   {n : N | even n}
 </pre>
 
 Coq implements a functional programming language supporting these types. For instance, the pairing function of type <tt>Z -> Z * Z</tt> is written <tt>fun x => (x,x)</tt> and <tt>cons (S (S O)) (cons (S O) nil)</tt> (shortened to <tt>2::1::nil</tt> in Coq) denotes a list of type <tt>list nat</tt> made of the two elements 2 and 1.
-<br>
-Using ?-types, a sorting function over lists of natural numbers can be given the type:
+<br />
+Using Σ-types, a sorting function over lists of natural numbers can be given the type:
 <pre>
-  sort : ? (l : list nat), {l' : list nat | sorted l' /\ same_elements l l'}
+  sort : ∀ (l : list nat), {l' : list nat | sorted l' /\ same_elements l l'}
 </pre>
 where <tt>sorted</tt> is a predicate that expresses that a list is sorted; and <tt>all_elements</tt> says if two lists contain the same elements. On the contrary, a sorting function in a "poor" type system could only be given the following less informative type:
 <pre>
@@ -76,7 +79,7 @@ where <tt>sorted</tt> is a predicate that expresses that a list is sorted; and <
 </pre>
 
 Such a type (specification) enforces the user to write the proofs of predicates <tt>sorted l'</tt> and <tt>same_elements l l'</tt> when writing a implementation for the function <tt>sort</tt>.
-<br><br>
+<br /><br />
 Then, functions over inductive types are expressed using a case
 analysis:
 
@@ -113,7 +116,7 @@ At the end, the curious user can check that tactics build lambda-terms. For exam
 </pre>
 where _ represents a term that will be constructed after, using other
 tactics.
-<br><br>
+<br /><br />
 Here is an example of a proof in the Coq system:
 
 <pre>
@@ -173,3 +176,5 @@ Using the Print command, the user can look at the proof-term generated using the
             (refl_equal (S n0)) IHs) n s
   : forall (n : nat) (s : seq n), length n s = n
 </pre>
+
+<#include "footer.html">

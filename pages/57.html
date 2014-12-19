@@ -1,97 +1,30 @@
+<#def TITLE>CoqIDE Screenshots</#def>
+<#def PATH><a href="/">Home</a> :: <a href="/about-coq">About Coq</a></#def>
+<#include "header.html">
+
 <div class="SCpager">
- <div class="SCpagercontent">
-
- <a class="thumbnail" href="#scr1">
- <img class="SCthumb" src="/files/coqide/thumbs/capture1.jpg" alt="thumbnail 1"/>
+ <div class = "SCpagercontent">
+ <img class="SCthumbselected" src="/files/coqide/thumbs/capture1.jpg" alt="thumb number 1"/>
+ <a href="?q=node/57&amp;id=2#scr">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture2.jpg" alt="thumb number 2"/>
  </a>
-
-
- <a class="thumbnail" href="#scr2">
- <img class="SCthumb" src="/files/coqide/thumbs/capture2.jpg" alt="thumbnail 2"/>
+ <a href="?q=node/57&amp;id=3#scr">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture3.jpg" alt="thumb number 3"/>
  </a>
-
-
- <a class="thumbnail" href="#scr3">
- <img class="SCthumb" src="/files/coqide/thumbs/capture3.jpg" alt="thumbnail 3"/>
+ <a href="?q=node/57&amp;id=4#scr">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture4.jpg" alt="thumb number 4"/>
  </a>
-
-
- <a class="thumbnail" href="#scr4">
- <img class="SCthumb" src="/files/coqide/thumbs/capture4.jpg" alt="thumbnail 4"/>
+ <a href="?q=node/57&amp;id=5#scr">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture5.jpg" alt="thumb number 5"/>
  </a>
-
-
- <a class="thumbnail" href="#scr5">
- <img class="SCthumb" src="/files/coqide/thumbs/capture5.jpg" alt="thumbnail 5"/>
- </a>
-
  </div>
 </div>
+<a name="scr"></a>
+<div class="SCcontent">
+ <a href="/files/coqide/images/capture1.jpg">
+ <img class="SCscreenshot" src="/files/coqide/images/capture1.jpg" alt="screenshot number 6" />
+ </a>
+</div>
 
- <div class="SCcontent">
-  <a id="scr1"></a>
-  <a href="/files/coqide/images/capture1.jpg">
-   <img class="SCscreenshot" src="/files/coqide/images/capture1.jpg" alt="screenshot 1" />
-  </a>
- </div>
+<#include "footer.html">
 
-
- <div class="SCcontent">
-  <a id="scr2"></a>
-  <a href="/files/coqide/images/capture2.jpg">
-   <img class="SCscreenshot" src="/files/coqide/images/capture2.jpg" alt="screenshot 2" />
-  </a>
- </div>
-
-
- <div class="SCcontent">
-  <a id="scr3"></a>
-  <a href="/files/coqide/images/capture3.jpg">
-   <img class="SCscreenshot" src="/files/coqide/images/capture3.jpg" alt="screenshot 3" />
-  </a>
- </div>
-
-
- <div class="SCcontent">
-  <a id="scr4"></a>
-  <a href="/files/coqide/images/capture4.jpg">
-   <img class="SCscreenshot" src="/files/coqide/images/capture4.jpg" alt="screenshot 4" />
-  </a>
- </div>
-
-
- <div class="SCcontent">
-  <a id="scr5"></a>
-  <a href="/files/coqide/images/capture5.jpg">
-   <img class="SCscreenshot" src="/files/coqide/images/capture5.jpg" alt="screenshot 5" />
-  </a>
- </div>
-
-
-<script type="text/javascript">
-//Protect again xhtml parsing of special characters such as comparisons
-//<![CDATA[
-
-// There should be as many divs than links !
-divs = document.querySelectorAll(".SCcontent");
-links = document.querySelectorAll("a.thumbnail");
-
-function select(j) {
-  for (var i = 0; i < divs.length; i++) {
-    if (i == j) {
-      divs[i].style.display = "block";
-    } else {
-      divs[i].style.display = "none";
-    }
-  }
-}
-
-select(0);
-
-// Do not inline do_select below, otherwise i in the closure is evaluated
-// at click time only, and always contains links.length !
-function do_select(i) { return (function (e) {e.preventDefault(); select(i);}) }
-for (var i = 0; i < links.length; i++) { links[i].onclick = do_select(i); }
-
-//]]>
-</script>

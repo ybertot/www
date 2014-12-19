@@ -1,0 +1,23 @@
+
+* news :
+  - une page recent news
+  - personnalisation de la sidebar
+  - rss.xml
+
+* CSS : verifier si les multiples css drupal avaient un interet
+  laisser /modules et /misc par compatilités
+
+* entrées de faq en gras
+
+* node/ ?? ou pas ??
+
+* node/57 (coqide screeshots)
+  node/16 (faq)
+  un poil de javascript pour l'animation ? Ou bien retour au statique
+
+* node/108 : un redirect plutôt...
+  plus généralement, preparer un .htaccess avec les redirects...
+
+* mise en place sur github
+
+* automatic generation of /faq /tutorial /tutorial-nahas

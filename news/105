@@ -1,3 +1,7 @@
-Version 8.3pl3 of Coq fixes several bugs of version 8.3pl2. At the same time, new patch-level releases of 8.1 and 8.2 have been released to fix critical bugs related to sort-polymorphism of inductive types.
-
-For 8.3pl3, see the <a href="/distrib/V8.3pl3/CHANGES.updated">CHANGES</a> file for a selected list of changes since 8.3pl2.
+<title>Coq 8.3pl3 is out</title>
+<author>herbelin</author>
+<date>27. December 2011 - 10:30</date>
+<description>
+<p>Version 8.3pl3 of Coq fixes several bugs of version 8.3pl2. At the same time, new patch-level releases of 8.1 and 8.2 have been released to fix critical bugs related to sort-polymorphism of inductive types.</p>
+<p>For 8.3pl3, see the <a href="/distrib/V8.3pl3/CHANGES.updated">CHANGES</a> file for a selected list of changes since 8.3pl2.</p>
+</description>

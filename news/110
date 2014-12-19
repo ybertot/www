@@ -1,4 +1,6 @@
-The final release of Coq 8.4 is now <a href="/download">available</a>. Its features among other things a modular and uniform extension of the arithmetical libraries and a new proof engine providing bullets. See the <a href="/coq-84">dedicated</a> page or <a href="/download">download</a> page for more details.
-
-
-
+<title>Coq 8.4 is out!</title>
+<author>herbelin</author>
+<date>12. August 2012 - 12:16</date>
+<description>
+<p>The final release of Coq 8.4 is now <a href="/download">available</a>. Its features among other things a modular and uniform extension of the arithmetical libraries and a new proof engine providing bullets. See the <a href="/coq-84">dedicated</a> page or <a href="/download">download</a> page for more details.</p>
+</description>
