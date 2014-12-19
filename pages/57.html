@@ -2,29 +2,64 @@
 <#def PATH><a href="/">Home</a> :: <a href="/about-coq">About Coq</a></#def>
 <#include "incl/header.html">
 
+<#def thumbnail>
+ <a class="thumbnail" href="#scr<#N>">
+ <img class="SCthumb" src="/files/coqide/thumbs/capture<#N>.jpg" alt="thumbnail <#N>"/>
+ </a>
+</#def>
+
+<#def screenshot>
+ <div class="SCcontent">
+  <a id="scr<#N>"></a>
+  <a href="/files/coqide/images/capture<#N>.jpg">
+   <img class="SCscreenshot" src="/files/coqide/images/capture<#N>.jpg" alt="screenshot <#N>" />
+  </a>
+ </div>
+</#def>
+
 <div class="SCpager">
- <div class = "SCpagercontent">
- <img class="SCthumbselected" src="/files/coqide/thumbs/capture1.jpg" alt="thumb number 1"/>
- <a href="?q=node/57&amp;id=2#scr">
- <img class="SCthumb" src="/files/coqide/thumbs/capture2.jpg" alt="thumb number 2"/>
- </a>
- <a href="?q=node/57&amp;id=3#scr">
- <img class="SCthumb" src="/files/coqide/thumbs/capture3.jpg" alt="thumb number 3"/>
- </a>
- <a href="?q=node/57&amp;id=4#scr">
- <img class="SCthumb" src="/files/coqide/thumbs/capture4.jpg" alt="thumb number 4"/>
- </a>
- <a href="?q=node/57&amp;id=5#scr">
- <img class="SCthumb" src="/files/coqide/thumbs/capture5.jpg" alt="thumb number 5"/>
- </a>
+ <div class="SCpagercontent">
+<#def N>1</#def><#thumbnail>
+<#def N>2</#def><#thumbnail>
+<#def N>3</#def><#thumbnail>
+<#def N>4</#def><#thumbnail>
+<#def N>5</#def><#thumbnail>
  </div>
 </div>
-<a name="scr"></a>
-<div class="SCcontent">
- <a href="/files/coqide/images/capture1.jpg">
- <img class="SCscreenshot" src="/files/coqide/images/capture1.jpg" alt="screenshot number 6" />
- </a>
-</div>
+<#def N>1</#def><#screenshot>
+<#def N>2</#def><#screenshot>
+<#def N>3</#def><#screenshot>
+<#def N>4</#def><#screenshot>
+<#def N>5</#def><#screenshot>
+
+<script type="text/javascript">
+//Protect against interpretation of special character by xhtml parser...
+//<![CDATA[
+
+// There should be as many divs as links !
+divs = document.querySelectorAll(".SCcontent");
+links = document.querySelectorAll("a.thumbnail");
+
+function select(j) {
+  for (var i = 0; i < divs.length; i++) {
+    if (i == j) {
+      divs[i].style.display = "block";
+    } else {
+      divs[i].style.display = "none";
+    }
+  }
+}
+
+select(0);
+
+// Do not inline do_select below, otherwise i in the closure is evaluated
+// at click time only, and always contains links.length !
+function do_select(i) { return (function (e) {e.preventDefault(); select(i);}) }
+for (var i = 0; i < links.length; i++) { links[i].onclick = do_select(i); }
+
+//]]>
+</script>
+
 
 <#include "incl/footer.html">
 
