@@ -1,0 +1,73 @@
+Résumé de la discussion d'organisation de l'ADT du mercredi 29 octobre
+======================================================================
+
+Groupes de travail inter-sites trimestriels
+-------------------------------------------
+
+Les deux prochains groupes de travail inter-sites seront sur les
+thèmes suivants :
+
+Mi-décembre (date à fixer, et localisation probable à Sophia) :
+  Qu'attendre de la bibliothèque standard de Coq, qu'attendre du
+  langage de tactique, relations entre les deux ?
+
+En mars :
+  Qu'attendre et comment organiser l'automatisation ?
+
+Groupes de travail intermédiaires
+---------------------------------
+
+Les non-parisiens disent avoir besoin de 3 semaines pour s'organiser à
+l'avance. Je suis un peu sceptique sur le fait qu'on réussisse à
+fonctionner ainsi de manière systématique. Expérimentons.
+
+Discussions entre date à jour fixe ou date fixée par un « doodle ».
+Une majorité semble se dégager pour le principe du « doodle ».
+
+Principe d'une rotation pour la rédaction systématique d'un
+compte-rendu.
+
+Support de discussions entre développeurs
+-----------------------------------------
+
+Principe adopté de travailler sur une page cocorico, éventuellement
+avec mise en place de droits d'écriture restreints.
+
+Calendrier des releases
+-----------------------
+
+Discussion animée sur la question du délai entre la 8.1 et la 8.2 jugé
+trop long par plusieurs développeurs ayant dû attendre avant de voir
+leur nouveautés rendues publiques.
+
+À défaut de visibilité suffisante à la date d'aujourd'hui, la question
+du contenu et de la date de sortie de la 8.3 sera rediscutée dans
+au plus 6 mois en tenant compte de l'état d'avancement des projets durs
+(refonte moteur de preuve et filtrage dépendant, qui se feront dans
+des branches) et du contenu du trunk.
+
+Événement international
+-----------------------
+
+Trois propositions indépendantes ont été dégagées :
+
+- Une réunion des utilisateurs en marge de TPHOLs 2009 (Munich, août 2009)
+  [organisée par Hugo].
+
+- Une formation possible en marge soit de ICFP (Edimbourg, septembre),
+  soit (suggestion additionnelle pendant le repas) d'une conférence
+  plus généraliste comme ETAPS (mais trop tard pour 2009) ou ICALP
+  (Rhodes, juillet, mise en place des événements satellites en ce moment)
+
+- Une possibilité de colloque pour des présentations liées à Coq avec
+  publication dans JFR (localisation possible : Sophia-Antipolis à
+  l'automne).
+
+Autre localisation possible (suggestion ultérieure) : Formal Methods 2009
+
+Mise en place du travail des ingénieurs associés
+------------------------------------------------
+- Interface graphique de Coq : discussion technique avec Vincent Gross
+  prévue jeudi 13 novembre à 14h suite au travail préliminaire de prise
+  en main de l'interface graphique existante.
+- Protocoles de communication : ingénieur pas encore arrivé.

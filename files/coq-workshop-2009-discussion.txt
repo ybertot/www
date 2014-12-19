@@ -1,0 +1,29 @@
+The discussion was mainly about wishes:
+
+Question: Can we have stronger automatically-generated induction principles
+(e.g. for trees made from lists of trees)?
+
+Answer: This has not been implemented because there
+is no canonical way to define such induction principles.
+
+Question: Can we reopen a module after it has been closed to extend it?
+
+Answer: This does not seem to present some intrinsic difficulties.
+
+Question: Is it possible to combine coinductive and inductive types?
+
+Answer: The current state of knowledge is that in the general case,
+this leads to paradoxes.
+
+Question: Could it be possible to document in the extracted source
+file the propositional parts that have been removed?
+
+Answer: This does not seem to be difficult.
+
+Question: How safe is extraction? Can we claim that extracted
+certified programs are trustable?
+
+Answer: As far as we assume that the extraction module is not bugged,
+the extracted programs are safe under the assumption that they are
+applied to arguments that satisfy the preconditions of the
+specification of the program.

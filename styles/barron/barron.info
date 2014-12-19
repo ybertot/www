@@ -1,0 +1,33 @@
+
+name = Barron
+description = XHTML & CSS based two column theme
+core = 6.x
+version = VERSION
+engine = phptemplate
+
+regions[right] = Right Sidebar
+regions[content_top] = Content Top
+regions[content_bottom] = Content Bottom
+regions[tryptych_col1] = Tryptych Column 1
+regions[tryptych_col2] = Tryptych Column 2
+regions[tryptych_col3] = Tryptych Column 3
+regions[footer] = Footer
+
+features[] = logo
+features[] = favicon
+features[] = name
+features[] = slogan
+features[] = mission
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = primary_links
+features[] = search
+stylesheets[all][] = style.css
+
+
+
+; Information added by drupal.org packaging script on 2012-08-09
+version = "6.x-2.3"
+core = "6.x"
+project = "barron"
+datestamp = "1344480403"

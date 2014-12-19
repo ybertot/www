@@ -1,0 +1,44 @@
+Discussion:
+
+* The Isabelle/Scala experiment proved that smart user interfaces (UI)
+  for proof assistants (PA) that constantly and dynamically computes
+  and recomputes the consistency and the metadata of the document are
+  realistic. What are the issues in going towards this model of UI?
+
+- having a purely functional interpretation PA loop able to extend
+  arbitrary states of the history, leading to full support for acyclic
+  graphs of states (Bruno: we shall be able to get rid of the global
+  state)
+
+- a level of abstraction for asynchronous parallel interaction with
+  the PA, so that several tasks can be sent in parallel by the UI
+
+- document model
+
+- parallel tactics, ocaml parallelism: what would permit the level of
+  abstraction for asynchronous parallel interaction to effectively
+  work on 3 to 5 independent tasks at the same time (depending on the
+  number of CPU cores)
+
+- improve modularity of state extension in PA (e.g. support to declare
+  a promise of theorem and give the proof only long time after)
+
+- use of good heuristics to avoid space and time explosion in
+  recomputing states and metadata constantly
+
+* Other issues discussed:
+
+pipes vs sockets:
+  Makarius: sockets are told to be much slower
+  Stéphane: sockets are mainly good for registering to services
+  Vincent: pipes need 7bits encoding because some ttys do not support 8bit
+  Basic consensus: pipes are better for communicating with PA
+
+Tom: lack of documentation of the Coq code is a pain; everyone fully agrees
+
+Sending signals under Windows are available if using cygwin (it has kill)
+
+Vincent: threads are a problem in gtk+? Stéphane suggests using lwt
+
+Makarius and Vincent: the pretty-formatting of PA outputs has to be
+done on the UI side, so that it adapts to the actual geometry of the UI

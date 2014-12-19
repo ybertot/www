@@ -1,0 +1,24 @@
+Ssreflect: Structured Scripting for Higher-Order Theorem Proving
+----------------------------------------------------------------
+
+The name Ssreflect stands for "small scale reflection", a style of
+proof that evolved from the computer-checked proof of the Four Colour
+Theorem and which leverages the higher-order nature of Coq's
+underlying logic to provide effective automation for many small,
+clerical proof steps. This is often accomplished by restating
+("reflecting") problems in a more concrete form, hence the name.
+
+While reflection is entirely implemented as a Coq theory library, the
+Ssreflect proof scripting language provides essential support,
+supplying the structure for building large proofs based on this
+higer-order library, with features such
+- tacticals for most structural operations (e.g., moving assumptions),
+  so that script steps mostly match logical steps.
+- support for structured layout, including reordering subgoals and
+  supporting "without loss of generality" arguments.
+- extensive support for rewriting, including a new algorithm for
+  higher-order matching and surgical control over where and how much
+  rewriting occurs.
+
+In this talk we will explore the rationale behind the language and
+show how it complements the reflection theory library.
