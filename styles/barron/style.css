@@ -858,6 +858,12 @@ body.admin-menu {
 /** CUSTOMIZATION COQ **/
 
 
+/* In the FAQ, turn the question titles in bold */
+
+h4.subsubsection {
+    font-weight: bold
+}
+
 /*----------table styles----------*/
 table
 {
