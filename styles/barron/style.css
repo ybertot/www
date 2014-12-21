@@ -921,11 +921,6 @@ td.menu-disabled,td.menu-disabled a
 	margin:5px 0 20px;
 }
 
-.thumbnail,.preview
-{
-	border:1px solid #ccc;
-}
-
 /*----------download table------------*/
 
 table.downloadtable
@@ -1178,3 +1173,53 @@ pre {  font-size: 1em; }
    margin:0;
    padding: 3px 9px 0px 9px;
  }
+
+/****************** CoqIDE Screenshots *****************/
+
+.SCpager {
+    position:relative;
+    top:5px;
+    width:630px;
+    background: transparent url('images/header_bot.png') repeat-x;
+    padding:4px;
+}
+
+.SCpagercontent {
+    width:390px;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.SCthumb {
+    height:45px;
+    margin-left:2px;
+    margin-right:2px;
+}
+
+.SCthumbselected {
+    height:55px;
+    margin-left:2px;
+    margin-right:2px;
+}
+
+.SCcontent {
+    position:relative;
+    top:5px;
+    width:638px;
+    background-color: #dfbfbe;
+}
+
+.SCscreenshot {
+    position:relative;
+    height:400px;
+    width:auto;
+    margin:15px auto 15px 19px;
+}
+
+/* Borrowed from system.css:
+   in the news sidebar, the link "more" is on the right */
+
+.more-link {
+    text-align: right
+}
