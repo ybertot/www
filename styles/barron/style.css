@@ -117,29 +117,6 @@ ul.inline li {
   padding: 0 1em 0 0;
 }
 
-ol.task-list {
-  list-style-image: none;
-  list-style-type: none;
-  margin-left: 0;
-}
-
-ol.task-list li {
-  padding: 0.5em 1em 0.5em 2em;
-}
-
-ol.task-list li.active {
-  background: transparent url('images/task-list.png') no-repeat 3px 50%;
-}
-
-ol.task-list li.done {
-  background: transparent url('../../misc/watchdog-ok.png') no-repeat 0px 50%;
-  color: #393;
-}
-
-ol.task-list li.active {
-  margin-right: 1em;
-}
-
 fieldset ul.clear-block li {
   background-image: none;
 	margin: 0;
@@ -299,18 +276,6 @@ h2.page-title {
 	margin: 10px 0 20px;
 }
 
-.mission {
-	background-color: #efefef;
-	border: solid 1px #ccc;
-	margin: 0;
-	padding: 10px;
-}
-
-.messages {
-	color: #C80000;
-	font-size: 110%;
-	margin: 10px 0;
-}
 
 /*----------node styles----------*/
 .node {
@@ -351,22 +316,6 @@ h2.page-title {
 	padding: 0;
 }
 
-.taxonomy {
-	background: url('icons/tag_red.png') no-repeat 0 7px;
-	font-size: 0.846em;
-	padding: 0 0 5px 16px;
-}
-
-.picture {
-  float: right;
-  padding-right: 1em;
-}
-
-.preview .node {
-  padding: 0.75em;
-
-}
-
 /*----------block styles----------*/
 .block {
 	margin: 0 0 20px;
@@ -390,44 +339,6 @@ h2.page-title {
 	background-position: 0 0.461em;
 }
 
-/*----------comment styles----------*/
-h2.comments {
-  font-size: 1.538em;
-  line-height: 1.2em;
-  margin-bottom: 0.25em;
-}
-
-h3.comment-title {
-  font-size: 1.35em;
-  margin: 0;
-  padding: 0;
-}
-
-.comment {
-	background-color: #F7F7F7;
-  border: 1px solid #ccc;
-  margin: 0 0 2em;
-  padding: 1em;
-}
-
-.content blockquote p {
-  margin: 0;
-  padding: 0 20px 8px;
-}
-
-blockquote {
-  background: url('images/close-quote.gif') no-repeat right bottom;
-  color: #620203;
-  font-family: serif;
-  margin: 10px 0;
-}
-
-
-
-blockquote p {
-  background: url('images/open-quote.gif') no-repeat left top;
-}
-
 /*----------footer----------*/
 #footer {
 	clear: both;
@@ -449,48 +360,6 @@ blockquote p {
 
 #content .feed-icon img {
 	border: none
-}
-
-/*----------icons for links----------*/
-/*
- * Please see the README.txt file in the icons directory
- * for directions on how to obtain the icons for this theme
- *
- */
-.comment_comments a {
-	background: transparent url('icons/comment.png') no-repeat 0 2px;
-	padding-bottom: 5px;
-	padding-left: 20px;
-}
-
-.node_read_more a {
-	background: transparent url('icons/page_white_go.png') no-repeat;
-	padding-bottom: 5px;
-	padding-left: 20px;
-}
-
-.comment_add a,.comment_reply a {
-	background: transparent url('icons/comment_add.png') no-repeat;
-	padding-bottom: 5px;
-	padding-left: 20px;
-}
-
-.comment_delete a {
-	background: transparent url('icons/comment_delete.png') no-repeat;
-	padding-bottom: 5px;
-	padding-left: 20px;
-}
-
-.comment_edit a {
-	background: transparent url('icons/comment_edit.png') no-repeat;
-	padding-bottom: 5px;
-	padding-left: 20px;
-}
-
-.blog_usernames_blog a {
-	background: transparent url('icons/user_comment.png') no-repeat;
-	padding-bottom: 5px;
-	padding-left: 20px;
 }
 
 /*----------misc. styles----------*/
@@ -517,10 +386,6 @@ dt {
 
 dl {
   margin: 0.5em 0 1em 1.5em;
-}
-
-span.form-required {
-  color: #ffae00;
 }
 
 .description {
@@ -584,80 +449,6 @@ table .form-button, table .form-submit {
   margin-bottom: 2.5em;
 }
 
-div.admin {
-  margin: 0;
-  padding: 0;
-}
-
-.user-signature {
-  color: #949494;
-  font-family: Cursive, sans;
-  font-size: 0.80em;
-  margin: 0;
-  padding: 0;
-}
-
-/*-----user profiles-----*/
-
-.profile {
-  margin-top: 1.5em;
-}
-.profile h3 {
-  border-bottom: 0;
-  margin-bottom: 1em;
-}
-.profile dl {
-  margin: 0;
-}
-.profile dt {
-  font-weight: normal;
-  color: #898989;
-  font-size: 0.92em;
-  line-height: 1.3em;
-  margin-top: 1.4em;
-  margin-bottom: 0.45em;
-}
-.profile dd {
-  margin-bottom: 1.6em;
-}
-
-/*-----admin styles-----*/
-
-div.admin-panel,
-div.admin-panel .description,
-div.admin-panel .body,
-div.admin,
-div.admin .left,
-div.admin .right,
-div.admin .expert-link,
-div.item-list,
-.menu {
-  margin: 0;
-  padding: 0;
-}
-
-div.admin-panel {
-  background: #fff;
-  padding: 1em 1em 1.5em;
-}
-div.admin-panel .description {
-  margin-bottom: 1.5em;
-}
-div.admin-panel dl {
-  margin: 0;
-}
-div.admin-panel dd {
-  color: #898989;
-  font-size: 0.92em;
-  line-height: 1.3em;
-  margin-top: -.2em;
-  margin-bottom: .65em;
-}
-
-table.system-status-report th {
-  border-color: #d3e7f4;
-}
-
 #autocomplete li.selected,
 tr.selected td, tr.selected td.active {
   background: #FFFFCC;
@@ -670,42 +461,6 @@ tr.selected td a:active {
   color: #333;
 }
 
-tr.taxonomy-term-preview {
-  opacity: 0.85;
-}
-
-tr.taxonomy-term-divider-top {
-  border-bottom: none;
-}
-
-tr.taxonomy-term-divider-bottom {
-  border-top: 1px dotted #CCC;
-}
-
-
-/*---------------user-login-form---remove center alignment---------------*/
-#user-login-form {
-  margin: 0;
-  padding: 0 0 0 10px;
-  text-align: left;
-}
-
-#user-login-form .form-item {
-  margin: 0;
-  padding: 0;
-	text-align: left;
-}
-
-/*----------TinyMCE editor----------*/
-body.mceContentBody {
-	background: #fff;
-	color: #000;
-	font-size: 12px;
-}
-
-body.mceContentBody a:link {
-	color: #ff0000;
-}
 
 /*---------------table styles---------------*/
 table {
@@ -757,64 +512,6 @@ td.active {
   background-color: #f7f7f7;
 }
 
-/**
- * dblog.module
- */
-tr.dblog-user {
-  background-color: #fcf9e5;
-}
-
-tr.dblog-user td.active {
-  background-color: #fbf5cf;
-}
-
-tr.dblog-content {
-  background-color: #fefefe;
-}
-
-tr.dblog-content td.active {
-  background-color: #f5f5f5;
-}
-
-tr.dblog-warning {
-  background-color: #fdf5e6;
-}
-
-tr.dblog-warning td.active {
-  background-color: #fdf2de;
-}
-
-tr.dblog-error {
-  background-color: #fbe4e4;
-}
-
-tr.dblog-error td.active {
-  background-color: #fbdbdb;
-}
-tr.dblog-page-not-found, tr.dblog-access-denied {
-  background: #d7ffd7;
-}
-tr.dblog-page-not-found td.active, tr.dblog-access-denied td.active {
-  background: #c7eec7;
-}
-
-/**
- * Status report colors.
- */
-table.system-status-report tr.error, table.system-status-report tr.error th {
-  background-color: #fcc;
-  border-color: #ebb;
-  color: #200;
-}
-table.system-status-report tr.warning, table.system-status-report tr.warning th {
-  background-color: #ffd;
-  border-color: #eeb;
-}
-table.system-status-report tr.ok, table.system-status-report tr.ok th {
-  background-color: #dfd;
-  border-color: #beb;
-}
-
 /* Additional Styles */
 /* Pierre L: off to mimic the old style (cf coq-83 page)
 code, pre {
@@ -830,28 +527,6 @@ code, pre {
 
 #footer #credits {
   float: right;
-}
-
-/* Drupal Related CSS */
-body.admin-menu {
-  background-position: 0 20px;
-  margin-top: 20px !important;
-}
-.admin-menu #logo-wrapper {
-  margin-top: 20px;
-}
-.comment-unpublished {
-  background-color: #FFF4F4;
-}
-
-/* Tryptych CSS */
-#tryptych-col {
-  width: 31%;
-  float: left;
-  padding-left: 2%;
-}
-#tryptych .content {
-  padding: 10px;
 }
 
 
