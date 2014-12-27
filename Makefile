@@ -3,7 +3,6 @@
 
 DST:=dest
 YAMLPP:=yamlpp-0.3/yamlpp.ml
-PP=mkdir -p $(dir $@) && ocaml $(YAMLPP) $< -o $@
 INCLS:=incl/header.html incl/footer.html incl/news/recent.html
 DEPS:=$(INCLS) $(YAMLPP)
 
@@ -20,6 +19,19 @@ $(YAMLPP): $(YAMLPP:.ml=.mll)
 ## Generated pages : their list and how to generate them
 
 PAGES:= \
+ 1 3 4 5 6 7 8 9 10 11 16 17 19 57 60 61 63 64 66 \
+ 73 74 75 76 77 79 80 82 84 86 87 88 89 90 92 97 \
+ 101 102 103 104 108 109 111 112 113 116 117 118 123
+
+html: $(patsubst %,$(DST)/node/%.html, $(PAGES))
+
+$(DST)/node/%: pages/% $(DEPS)
+	mkdir -p $(dir $@) && ocaml $(YAMLPP) $< -o $@
+
+## Aliases. Handled here via symbolink links, could also be Apache redirects
+
+ALIASES:= \
+ $(DST)/index.html \
  $(patsubst %,$(DST)/%/index.html, \
    welcome \
    download \
@@ -68,69 +80,7 @@ PAGES:= \
    who-did-what-in-coq-8.2 \
    who-did-what-in-coq-8.3 \
    who-did-what-in-coq-8.4 \
-   tutorial-nahas )
-
-html: $(PAGES)
-
-# NOTA: instead of having commands on separate lines (starting by tabs)
-# we use here the shorter syntax "target: dep; action"
-
-$(DST)/welcome/index.html: pages/1.html $(DEPS) ; $(PP)
-$(DST)/download/index.html: pages/3.html $(DEPS) ; $(PP)
-$(DST)/documentation/index.html: pages/4.html $(DEPS) ; $(PP)
-$(DST)/community/index.html: pages/5.html $(DEPS); $(PP)
-$(DST)/a-short-introduction-to-coq/index.html: pages/6.html $(DEPS); $(PP)
-$(DST)/tutorial/index.html: pages/7.html $(DEPS); $(PP)
-$(DST)/tutorial/0-getting-started/index.html: pages/8.html $(DEPS); $(PP)
-$(DST)/tutorial/1-basic-predicate-calculus/index.html: pages/9.html $(DEPS); $(PP)
-$(DST)/tutorial/2-induction/index.html: pages/10.html $(DEPS); $(PP)
-$(DST)/tutorial/3-modules/index.html: pages/11.html $(DEPS); $(PP)
-$(DST)/faq/index.html: pages/16.html $(DEPS); $(PP)
-$(DST)/related-tools/index.html: pages/17.html $(DEPS); $(PP)
-$(DST)/about-coq/index.html: pages/19.html $(DEPS); $(PP)
-$(DST)/coqide-screenshots/index.html: pages/57.html $(DEPS); $(PP)
-$(DST)/coq-82-beta/index.html: pages/60.html $(DEPS); $(PP)
-$(DST)/coq-82-beta-detailed-description/index.html: pages/61.html $(DEPS); $(PP)
-$(DST)/adt/index.html: pages/63.html $(DEPS); $(PP)
-$(DST)/adt-english/index.html: pages/64.html $(DEPS); $(PP)
-$(DST)/coq-82-rc/index.html: pages/66.html $(DEPS); $(PP)
-$(DST)/coq-82/index.html: pages/73.html $(DEPS); $(PP)
-$(DST)/adt/demarrage/index.html: pages/74.html $(DEPS); $(PP)
-$(DST)/adt/biblios/index.html: pages/75.html $(DEPS); $(PP)
-$(DST)/adt/automatisation/index.html: pages/76.html $(DEPS); $(PP)
-$(DST)/coq-workshop/2009/index.html: pages/77.html $(DEPS); $(PP)
-$(DST)/adt/tactiques/index.html: pages/79.html $(DEPS); $(PP)
-$(DST)/coq-workshop/2009/accepted-papers/index.html: pages/80.html $(DEPS); $(PP)
-$(DST)/coq-workshop/2009/program/index.html: pages/82.html $(DEPS); $(PP)
-$(DST)/the-coq-workshop-old/index.html: pages/84.html $(DEPS); $(PP)
-$(DST)/coq-workshop/2010/cfp/index.html: pages/86.html $(DEPS); $(PP)
-$(DST)/coq-workshop/2010/index.html: pages/87.html $(DEPS); $(PP)
-$(DST)/coq-workshop/index.html: pages/88.html $(DEPS); $(PP)
-$(DST)/adt/egalite-terminaison/index.html: pages/89.html $(DEPS); $(PP)
-$(DST)/macos-plugin-note/index.html: pages/90.html $(DEPS); $(PP)
-$(DST)/who-did-what-in-coq/index.html: pages/92.html $(DEPS); $(PP)
-$(DST)/adt/interfaces/index.html: pages/97.html $(DEPS); $(PP)
-$(DST)/coq-workshop/2012/index.html: pages/101.html $(DEPS); $(PP)
-$(DST)/v84/index.html: pages/102.html $(DEPS); $(PP)
-$(DST)/v84-0/index.html: pages/103.html $(DEPS); $(PP)
-$(DST)/coq-84/index.html: pages/104.html $(DEPS); $(PP)
-$(DST)/coq-8.4/index.html: pages/108.html $(DEPS); $(PP)
-$(DST)/coq-83/index.html: pages/109.html $(DEPS); $(PP)
-$(DST)/coq-workshop/2013/index.html: pages/111.html $(DEPS); $(PP)
-$(DST)/coq-working-group-february-14th-2013/index.html: pages/112.html $(DEPS); $(PP)
-$(DST)/wgs/index.html: pages/113.html $(DEPS); $(PP)
-$(DST)/who-did-what-in-coq-8.2/index.html: pages/116.html $(DEPS); $(PP)
-$(DST)/who-did-what-in-coq-8.3/index.html: pages/117.html $(DEPS); $(PP)
-$(DST)/who-did-what-in-coq-8.4/index.html: pages/118.html $(DEPS); $(PP)
-$(DST)/tutorial-nahas/index.html: pages/123.html $(DEPS); $(PP)
-
-## Aliases. Handled here via symbolink links, could also be Apache redirects
-
-ALIASES:= \
- $(addprefix $(DST)/, \
-   index.html \
-   files \
-   styles \
+   tutorial-nahas \
    getting-started \
    1-basic-predicate-calculus \
    what-is-coq \
@@ -153,35 +103,90 @@ ALIASES:= \
    coq-84-0 \
    coq-8.3 )
 
-aliases: $(ALIASES)
+aliases: $(ALIASES) $(DST)/styles $(DST)/files $(DST)/coq-workshop/files
 
-$(DST)/index.html: ; ln -s welcome/index.html $@
+# NOTA: instead of having commands on separate lines (starting by tabs)
+# we use here the shorter syntax "target: dep; action"
+
+LINK= mkdir -p $(dir $@) && ln -s
+
+$(DST)/index.html: ; $(LINK) node/1.html $@
+$(DST)/welcome/index.html: ; $(LINK) ../node/1.html $@
+$(DST)/download/index.html: ; $(LINK) ../node/3.html $@
+$(DST)/documentation/index.html: ; $(LINK) ../node/4.html $@
+$(DST)/community/index.html: ; $(LINK) ../node/5.html $@
+$(DST)/a-short-introduction-to-coq/index.html: ; $(LINK) ../node/6.html $@
+$(DST)/tutorial/index.html: ; $(LINK) ../node/7.html $@
+$(DST)/tutorial/0-getting-started/index.html: ; $(LINK) ../../node/8.html $@
+$(DST)/tutorial/1-basic-predicate-calculus/index.html: ; $(LINK) ../../node/9.html $@
+$(DST)/tutorial/2-induction/index.html: ; $(LINK) ../../node/10.html $@
+$(DST)/tutorial/3-modules/index.html: ; $(LINK) ../../node/11.html $@
+$(DST)/faq/index.html: ; $(LINK) ../node/16.html $@
+$(DST)/related-tools/index.html: ; $(LINK) ../node/17.html $@
+$(DST)/about-coq/index.html: ; $(LINK) ../node/19.html $@
+$(DST)/coqide-screenshots/index.html: ; $(LINK) ../node/57.html $@
+$(DST)/coq-82-beta/index.html: ; $(LINK) ../node/60.html $@
+$(DST)/coq-82-beta-detailed-description/index.html: ; $(LINK) ../node/61.html $@
+$(DST)/adt/index.html: ; $(LINK) ../node/63.html $@
+$(DST)/adt-english/index.html: ; $(LINK) ../node/64.html $@
+$(DST)/coq-82-rc/index.html: ; $(LINK) ../node/66.html $@
+$(DST)/coq-82/index.html: ; $(LINK) ../node/73.html $@
+$(DST)/adt/demarrage/index.html: ; $(LINK) ../../node/74.html $@
+$(DST)/adt/biblios/index.html: ; $(LINK) ../../node/75.html $@
+$(DST)/adt/automatisation/index.html: ; $(LINK) ../../node/76.html $@
+$(DST)/coq-workshop/2009/index.html: ; $(LINK) ../../node/77.html $@
+$(DST)/adt/tactiques/index.html: ; $(LINK) ../../node/79.html $@
+$(DST)/coq-workshop/2009/accepted-papers/index.html: ; $(LINK) ../../../node/80.html $@
+$(DST)/coq-workshop/2009/program/index.html: ; $(LINK) ../../../node/82.html $@
+$(DST)/the-coq-workshop-old/index.html: ; $(LINK) ../node/84.html $@
+$(DST)/coq-workshop/2010/cfp/index.html: ; $(LINK) ../../../node/86.html $@
+$(DST)/coq-workshop/2010/index.html: ; $(LINK) ../../node/87.html $@
+$(DST)/coq-workshop/index.html: ; $(LINK) ../node/88.html $@
+$(DST)/adt/egalite-terminaison/index.html: ; $(LINK) ../../node/89.html $@
+$(DST)/macos-plugin-note/index.html: ; $(LINK) ../node/90.html $@
+$(DST)/who-did-what-in-coq/index.html: ; $(LINK) ../node/92.html $@
+$(DST)/adt/interfaces/index.html: ; $(LINK) ../../node/97.html $@
+$(DST)/coq-workshop/2012/index.html: ; $(LINK) ../../node/101.html $@
+$(DST)/v84/index.html: ; $(LINK) ../node/102.html $@
+$(DST)/v84-0/index.html: ; $(LINK) ../node/103.html $@
+$(DST)/coq-84/index.html: ; $(LINK) ../node/104.html $@
+$(DST)/coq-8.4/index.html: ; $(LINK) ../node/108.html $@
+$(DST)/coq-83/index.html: ; $(LINK) ../node/109.html $@
+$(DST)/coq-workshop/2013/index.html: ; $(LINK) ../../node/111.html $@
+$(DST)/coq-working-group-february-14th-2013/index.html: ; $(LINK) ../node/112.html $@
+$(DST)/wgs/index.html: ; $(LINK) ../node/113.html $@
+$(DST)/who-did-what-in-coq-8.2/index.html: ; $(LINK) ../node/116.html $@
+$(DST)/who-did-what-in-coq-8.3/index.html: ; $(LINK) ../node/117.html $@
+$(DST)/who-did-what-in-coq-8.4/index.html: ; $(LINK) ../node/118.html $@
+$(DST)/tutorial-nahas/index.html: ; $(LINK) ../node/123.html $@
 
 $(DST)/files: ; ln -snf ../files $@
 $(DST)/styles: ; ln -snf ../styles $@
 $(DST)/coq-workshop/files: ; mkdir -p $(dir $@) && ln -snf ../files $@
 
-$(DST)/getting-started: ; ln -snf tutorial/0-getting-started $@
-$(DST)/1-basic-predicate-calculus: ; ln -snf tutorial/1-basic-predicate-calculus $@
-$(DST)/what-is-coq: ; ln -snf about-coq $@
-$(DST)/coq-workshop/2009/cfp: ; mkdir -p $(dir $@) && ln -snf ../../news/69.html $@
-$(DST)/the-coq-workshop: ; ln -snf coq-workshop $@
-$(DST)/the-coq-workshop-2009-0: ; ln -snf coq-workshop/2009 $@
-$(DST)/the-coq-workshop-2010: ; ln -snf coq-workshop/2010 $@
-$(DST)/the-coq-workshop-2010-0: ; ln -snf coq-workshop/2010 $@
-$(DST)/the-coq-workshop-2012: ; ln -snf coq-workshop/2012 $@
-$(DST)/the-coq-workshop-2013: ; ln -snf coq-workshop/2013 $@
-$(DST)/adt-coq: ; ln -snf adt $@
-$(DST)/journée-de-démarrage-de-ladt: ; ln -snf adt/demarrage $@
-$(DST)/journée-«-bibliothèques-»: ; ln -snf adt/biblios $@
-$(DST)/journée-«-bibliothèques-»-du-11-décembre-2008: ; ln -snf adt/biblios $@
-$(DST)/journée-«-automatisation-»-du-24-mars-2009: ; ln -snf adt/automatisation $@
-$(DST)/journée-«-tactiques-»-du-30-juin-2009: ; ln -snf adt/tactiques $@ 
-$(DST)/journée-«-égalité-et-terminaison-»-du-2-février-2010: ; ln -snf adt/egalite-terminaison $@
-$(DST)/journée-«-interfaces-»-du-27-octobre-2010: ; ln -snf adt/interfaces $@
-$(DST)/coq-82-detailed-description: ; ln -snf coq-82 $@
-$(DST)/coq-84-0: ; ln -snf coq-8.4 $@
-$(DST)/coq-8.3: ; ln -snf coq-83 $@
+# Alternative / compatibility aliases
+
+$(DST)/getting-started/index.html: ; $(LINK) ../node/8.html $@
+$(DST)/1-basic-predicate-calculus/index.html: ; $(LINK) ../node/9.html $@
+$(DST)/what-is-coq/index.html: ; $(LINK) ../node/19.html $@
+$(DST)/coq-workshop/2009/cfp/index.html: ; $(LINK) ../../../news/69.html $@
+$(DST)/the-coq-workshop/index.html: ; $(LINK) ../coq-workshop/index.html $@
+$(DST)/the-coq-workshop-2009-0/index.html: ; $(LINK) ../coq-workshop/2009/index.html $@
+$(DST)/the-coq-workshop-2010/index.html: ; $(LINK) ../coq-workshop/2010/index.html $@
+$(DST)/the-coq-workshop-2010-0/index.html: ; $(LINK) ../coq-workshop/2010/index.html $@
+$(DST)/the-coq-workshop-2012/index.html: ; $(LINK) ../coq-workshop/2012/index.html $@
+$(DST)/the-coq-workshop-2013/index.html: ; $(LINK) ../coq-workshop/2013/index.html $@
+$(DST)/adt-coq/index.html: ; $(LINK) ../adt/index.html $@
+$(DST)/journée-de-démarrage-de-ladt/index.html: ; $(LINK) ../adt/demarrage/index.html $@
+$(DST)/journée-«-bibliothèques-»/index.html: ; $(LINK) ../adt/biblios/index.html $@
+$(DST)/journée-«-bibliothèques-»-du-11-décembre-2008/index.html: ; $(LINK) ../adt/biblios/index.html $@
+$(DST)/journée-«-automatisation-»-du-24-mars-2009/index.html: ; $(LINK) ../adt/automatisation/index.html $@
+$(DST)/journée-«-tactiques-»-du-30-juin-2009/index.html: ; $(LINK) ../adt/tactiques/index.html $@
+$(DST)/journée-«-égalité-et-terminaison-»-du-2-février-2010/index.html: ; $(LINK) ../adt/egalite-terminaison/index.html $@
+$(DST)/journée-«-interfaces-»-du-27-octobre-2010/index.html: ; $(LINK) ../adt/interfaces/index.html $@
+$(DST)/coq-82-detailed-description/index.html: ; $(LINK) ../coq-82/index.html $@
+$(DST)/coq-84-0/index.html: ; $(LINK) ../coq-8.4/index.html $@
+$(DST)/coq-8.3/index.html: ; $(LINK) ../coq-83/index.html $@
 
 ## News
 
