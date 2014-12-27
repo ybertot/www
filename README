@@ -19,12 +19,12 @@ an "ocamllex" to regenerate yamlpp.ml.
 How to edit an existing page ?
 ------------------------------
 
-1) Look in Makefile which is the corresponding source file.
+1) Look in the PAGES file which is the corresponding source file.
    For instance "download/" is pages/3.html
    Nota: for the moment, these numbers in pages/ correspond
    to former Drupal nodes.
 2) Edit this source file
-3) Run "make" and check that the produced file is ok
+3) Run "make" and check that the produced file is ok (e.g. dest/node/3)
    If that may help, "make run" launches a small local webserver
 4) Commit your change and push it to the main repository
    The update of coq.inria.fr should then be automatic
@@ -48,27 +48,15 @@ How to create a new page ?
      a sequence of links to your page ancestors. See Drupal's breadcrumb.
      By default: <a href="/">Home</a>.
 
-2) In the Makefile, ensure that your page is built and installed.
-   Normally, this amounts to:
-   - enriching the $(PAGES) variable with the final name of your page
-     (which isn't necessarily the name of the source file in pages/)
-   - adding a Makefile rule from the source file to the target name,
-     something like:
-
-$(DST)/myfancynewpage/index.html: pages/mysourcefile.html $(DEPS) ; $(PP)
+2) Ensure that your page is built and installed. Normally, this amounts to
+   adding a new line to the PAGES file, with the shape "localname:nicename".
+   You could add multiple lines to have multiple aliases for the same page.
 
    Nota: for pages converted from Drupal, the relevant part of the url is
    now a directory, in with we place an index.html. This approach is also
    recommended for new pages, but not mandatory.
 
 3) make, verify, commit, push as for the edition of an existing page below.
-
-
-What about page aliases ?
--------------------------
-
-Look in the Makefile the variable $(ALIASES) and the rules to install links
-
 
 And for news ?
 --------------
@@ -77,8 +65,7 @@ And for news ?
    You can for instance copy news/template and adapt it, or any existing
    news files. See news/template for details about the expected syntax.
 
-2) In the Makefile, add your news number to $(NEWS) and $(RECENTNEWS).
-   You may also add an textual URL alias for this news, see $(NEWSALIASES)
-   and the corresponding rules.
+2) In the file NEWS, add your news number, with an optional url alias.
+   In the Makefile, update the $(RECENTNEWS) variable.
 
 3) make, verify, commit, push as usual
