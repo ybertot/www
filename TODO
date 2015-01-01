@@ -10,3 +10,7 @@
 * mise en place sur github
 
 * automatic generation of /faq /tutorial /tutorial-nahas
+
+* local run of html validator ?
+
+* Handle secondary aliases via 301 (eg the-coq-workshop ---> coq-workshop)

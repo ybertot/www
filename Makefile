@@ -6,7 +6,9 @@ YAMLPP:=yamlpp-0.3/yamlpp.ml
 INCLS:=incl/header.html incl/footer.html incl/news/recent.html
 DEPS:=$(INCLS) $(YAMLPP)
 
-all: pages pagesaliases news newsaliases
+all: pages news htaccess
+
+aliases: pagesaliases newsaliases
 
 clean:
 	rm -rf $(DST)/*
@@ -15,7 +17,7 @@ clean:
 $(YAMLPP): $(YAMLPP:.ml=.mll)
 	ocamllex $<
 
-.PHONY: all pages pagesaliases news newsaliases clean
+.PHONY: all pages news htaccess pagesaliases newsaliases clean
 
 ## Generated pages, listed in the PAGES file
 
@@ -26,6 +28,15 @@ pages: $(PAGESDST)
 
 $(DST)/node/%: pages/% $(DEPS)
 	mkdir -p $(dir $@) && ocaml $(YAMLPP) $< -o $@
+
+## Page aliases through Apache RewriteRule...
+
+htaccess: $(DST)/.htaccess
+
+$(DST)/.htaccess: PAGES NEWS
+	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /node/\1.html [L]|p" PAGES > $@
+	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^/news/\2$$ /news/\1.html [L]|p" NEWS >> $@
+	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWS >> $@
 
 ## Aliases. Handled here via symbolink links, could also be Apache redirects
 
