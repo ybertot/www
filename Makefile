@@ -113,7 +113,7 @@ printenv:
 	@echo $(NEWS) | tr " " "\n"
 
 # Needs python 2.x (this exists also for python 3, with a different syntax)
-run:
+run: aliases
 	@echo "Starting a local web server for test"
 	@echo "It is accessible at: http://localhost:8000"
 	cd $(DST) && python -m SimpleHTTPServer 8000
