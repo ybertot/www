@@ -24,10 +24,10 @@ How to edit an existing page ?
    Nota: for the moment, these numbers in pages/ correspond
    to former Drupal nodes.
 2) Edit this source file
-3) Run "make" and check that the produced file is ok (e.g. dest/node/3)
+3) Run "make" and check that the produced file is ok (e.g. dest/node/3.html)
    If that may help, "make run" launches a small local webserver
 4) Commit your change and push it to the main repository
-   The update of coq.inria.fr should then be automatic
+   The update of coq.inria.fr should then be automatic (TODO)
 
 How to create a new page ?
 --------------------------
