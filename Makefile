@@ -49,7 +49,7 @@ pagesaliases: .pagesaliases.stamp \
 .pagesaliases.stamp: PAGES
 	IFS=':'; while read a b; \
 	do [ -n "$$b" ] && mkdir -p $(DST)/$$b && \
-	ln -snf $$PWD/$(DST)/node/$$a $(DST)/$$b/index.html; \
+	ln -snf $$PWD/$(DST)/node/$$a.html $(DST)/$$b/index.html; \
 	done < PAGES; touch $@
 
 ## Special aliases
