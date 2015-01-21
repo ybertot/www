@@ -4,7 +4,23 @@
 <#def DATE>21 Jan 2015 15:00 GMT</#def>
 <#def DESCR>
 The <a href="/download">first beta release of Coq 8.5</a> is available for
-testing. More information about the changes from 8.4 to 8.5 can be found in
+testing. The 8.5 version brings several major features to Coq:
+
+<ul>
+<li>asynchronous edition of documents under CoqIDE to keep working on a proof
+  while Coq checks the depencies in the background;</li>
+<li>universe polymorphism making it possible to reuse the same definitions at
+  various universe levels;</li>
+<li>primitive projections improving space and time efficiency of records, and
+  adding eta-conversion for records;</li>
+ <li>a new tactic engine allowing dependent subgoals, fully backtracking tactics,
+  as well as tactics which can consider multiple goals together;</li>
+<li>a new reduction procedure called <tt>native_compute</tt> to evaluate terms
+  using the OCaml native compiler, for proofs with large computational
+  steps.</li>
+</ul>
+
+More information about the changes from 8.4 to 8.5 can be found in
 the <a href="/distrib/V8.5beta1/CHANGES">CHANGES</a> file. Feedback and
 <a href="/bugs">bug reports</a> are extremely welcome. Enjoy!
 </#def>
