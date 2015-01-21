@@ -1,66 +1,175 @@
-<#def TITLE>Coq 8.4</#def>
+<#def TITLE>Download</#def>
 <#include "incl/header.html">
 
 <div class="framework">
-<div class="frameworklabel">Coq 8.4
+<div class="frameworklabel">The current version: Coq 8.4pl5
 </div>
 <div class="frameworkcontent">
 
-<p>
-This version features:
-</p>
+<p>This version features:</p>
 <ul>
 <li> a new modular and uniform extension of the arithmetical libraries by
   P. Letouzey which systematically provides power, gcd/lcm, square
   root, base 2 logarithm, division, modulo, bitwise operators, logical
   shift, comparisons, iterators for all of <tt>nat</tt>, <tt>N</tt>, <tt>Z</tt>, <tt>BigN</tt> and <tt>BigZ</tt> on top of a uniform naming layer
   (e.g. <tt>plus</tt> and <tt>mult</tt> are now consistently named <tt>add</tt> and <tt>mul</tt> while
-  still remaining mostly compatible with 8.3) (<a href="/distrib/V8.4/stdlib/Coq.Numbers.Natural.Abstract.NSqrt.html">example&nbsp;1</a>, <a href="/distrib/V8.4/stdlib/Coq.ZArith.BinInt.html">example&nbsp;2</a>, <a href="/distrib/V8.4/stdlib/Coq.Numbers.Natural.Peano.NPeano.html">example&nbsp;3</a>);</li>
+  still remaining mostly compatible with 8.3) (<a href="/distrib/V8.4pl5/stdlib/Coq.Numbers.Natural.Abstract.NSqrt.html">example&nbsp;1</a>, <a href="/distrib/V8.4pl5/stdlib/Coq.ZArith.BinInt.html">example&nbsp;2</a>, <a href="/distrib/V8.4pl5/stdlib/Coq.Numbers.Natural.Peano.NPeano.html">example&nbsp;3</a>);</li>
 <li> a new proof engine by A. Spiwack whose most salient feature is the
   introduction of bullets (+, -, *) and structured scripts ({ ... }) (<a href="/distrib/V8.4/examples/binders_bullets.html#unique_sum_0">example</a>).</li>
 </ul>
 
-<p>
-The main other changes are:
-</p>
+<p>The main other changes are:</p>
 <ul>
 <li> addition of eta-conversion to the logic;</li>
 <li> a slightly more flexible guard condition for fixpoints;</li>
-<li> a more systematic support for pattern-matching on dependent types<!-- (<a href="/distrib/V8.4/stdlib/Coq.Vectors.Fin.html#rectS">example</a>)-->;</li>
+<li> a more systematic support for pattern-matching on dependent types<!-- (<a href="/distrib/V8.4pl5/stdlib/Coq.Vectors.Fin.html#rectS">example</a>)-->;</li>
 <li> more robust CoqIDE (including a new communication protocol by V. Gross);</li>
-<li> a new library of <a href="/distrib/V8.4/stdlib/Coq.Vectors.Vector.html">vectors</a> (lists of a given length);</li>
+<li> a new library of <a href="/distrib/V8.4pl5/stdlib/Coq.Vectors.Vector.html">vectors</a> (lists of a given length);</li>
 <li> support for referring to expressions of the goal using pattern in tactics;</li>
 <li> automatic computation of occurrences to abstract over in destruct/induction (<a href="/distrib/V8.4/examples/eq_id_comm.html#eq_id_comm_r/">example</a>);</li>
-<li> various improvements to Ltac (<a href="/distrib/V8.4/refman/Reference-Manual012.html#@tactic185"><tt>timeout</tt></a>, <a href="/distrib/V8.4/refman/Reference-Manual012.html#@default745"><tt>appcontext</tt></a>, <tt>constr_eq</tt>, <tt>is_evar</tt>, <tt>has_evar</tt>, generic <tt>match _ with _ => _ end</tt> pattern, <a href="/distrib/V8.4/refman/Reference-Manual011.html#@tactic67">fine-tuning of <tt>simpl</tt></a>);</li>
+<li> various improvements to Ltac (<a href="/distrib/V8.4pl5/refman/Reference-Manual012.html#@tactic185"><tt>timeout</tt></a>, <a href="/distrib/V8.4pl5/refman/Reference-Manual012.html#@default745"><tt>appcontext</tt></a>, <tt>constr_eq</tt>, <tt>is_evar</tt>, <tt>has_evar</tt>, generic <tt>match _ with _ => _ end</tt> pattern, <a href="/distrib/V8.4pl5/refman/Reference-Manual011.html#@tactic67">fine-tuning of <tt>simpl</tt></a>);</li>
 <li> implicit arguments in anonymous functions;</li>
 <li> notations with binders (e.g. <tt>exists x y z : A, P x y z</tt>) (<a href="/distrib/V8.4/examples/binders_bullets.html">example</a>);</li>
 <li> many bug fixes and improvements of existing features (type classes,
-  setoid rewriting, nsatz, micromega, extraction, Function, module
+  setoid rewriting, ring, nsatz, micromega, extraction, Function, module
   system, coq_makefile, ...);</li>
 </ul>
-
-  <p>For a full log of changes,
-see the file <a href="/distrib/V8.4/CHANGES">
+<p>For a full log of changes,
+see the file <a href="/distrib/V8.4pl5/CHANGES">
 CHANGES</a>.</p>
 
-  <p>Coq 8.4 is not entirely upward compatible with 8.3 (see <a href="/distrib/V8.4/COMPATIBILITY">main incompatibilities</a>)</p>
+  <p>Coq 8.4 is not entirely upward compatible with 8.3 (see <a href="/distrib/V8.4pl5/COMPATIBILITY">main incompatibilities</a>)</p>
 
+<table class="downloadtable">
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
+  <tr>
+    <td class="downloadcategory"><a name="src"></a></td>
+    <td class="downloadlink, downloadback"><a href="/distrib/V8.4pl5/files/coq-8.4pl5.tar.gz">coq-8.4pl5.tar.gz</a>
+    </td>
+    <td>4 MB</td>
+  </tr>
 
-<p>
-Coq 8.4 is the result of the work of many people. The main developers
-involved in 8.4 were Pierre Letouzey, Hugo Herbelin, Arnaud Spiwack,
-Matthieu Sozeau, Vincent Gross, Pierre Boutillier, Stéphane Glondu and
-Enrico Tassi with contributions also from Andrew Appel, Bruno Barras,
-Yves Bertot, Frédéric Besson, Pierre Corbineau, Pierre Courtieu,
-Julien Forest, Benjamin Grégoire, Robbert Krebbers, Assia Mahboubi
-(doc), Guillaume Melquiond, Jean-Marc Notin, Loïc Pottier,
-Pierre-Marie Pédrot, Matthias Puech, Yann Régis-Gianas, Vincent Siles
-and Élie Soubiran as well as patches from Tom Prince, Adam Chlipala,
-Cédric Auger, David Baelde, Dan Grayson, François Garillot, Nima Hoda,
-Paolo Herms, Robbert Krebbers, Marc Lasson, Adam Megacz, Benjamin
-Monate, Daniel de Rauglaudre, Hendriks Tews and Eelis van der Weegen.
-</p>
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
+
+  <tr>
+    <td class="downloadcategory, downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle"
+      alt="windows" /><br />Windows
+    </td>
+
+    <td class="downloadlink, downloadbottomline"><a
+      href="/distrib/V8.4pl5/files/coq-installer-8.4pl5.exe">
+      coq-installer-8.4pl5.exe</a> (bundled with CoqIDE)
+      (<a href="/distrib/V8.4pl5/files/coq-installer-8.4pl5.exe.sha1">sha1</a>, <a href="/distrib/V8.4pl5/files/coq-installer-8.4pl5.exe.sha1.asc">sig</a>)
+    </td>
+
+    <td class="downloadbottomback">54 MB</td>
+  </tr>
+
+  <tr>
+    <td rowspan="2" class="downloadcategory, downloadbottomline"><a
+      name="macos"></a><img src="/files/OSlogos/macos_logo.jpg"
+      width="30" height="30" style="vertical-align:middle"
+      alt="macos" /><br />MacOS
+    </td>
+    
+    <td class="downloadback, downloadback"><a href="/distrib/V8.4pl5/files/coqide-8.4pl5.dmg">
+      coqide-8.4pl5.dmg</a> (bundled with CoqIDE interface) </td>
+    
+
+    <td>98 MB</td>
+  </tr>
+<!--
+  <tr>
+
+   <td class="downloadlink, downloadback"><a
+      href="http://www.pps.univ-paris-diderot.fr/%7Epboutill/coq-night/v8.4/coqide-8.4pl4-ssreflect-1.5.dmg">
+      coqide-8.4pl4-ssreflect-1.5.dmg</a> (bundled with CoqIDE interface and ssreflect plugin)--> <!-- and some plugins: Ssreflect, AAC, Containers, DescenteInfinie) --><!--
+
+    <td>93 MB</td>
+
+  </tr>-->
+  <tr>
+    <td class="downloadback"><em>The above packages are packages for MacOS == 10.9; Coq 8.4pl5 is otherwise available through <a href="http://www.macports.org">MacPorts</a> and <a href="http://brew.sh">Homebrew</a></em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
+
+  <tr>
+    <td class="downloadcategory, downloadbottomback" rowspan="2"></td>
+    <td class="downloadlink"><a href="/distrib/V8.4pl5/files/Tutorial.pdf">Tutorial.pdf</a></td>
+    <td class="downloadback">0.2 MB</td>
+  </tr>
+  
+  
+  <tr>
+    <td class="downloadlink, downloadbottomline"><a href="/distrib/V8.4pl5/files/Reference-Manual.pdf">
+      Reference-Manual.pdf</a>
+    </td>
+    <td class="downloadbottomback">1.5 MB</td>
+  </tr>
+
+</table>
+
 </div>
 </div>
+
+<div class="framework">
+<div class="frameworklabel">Previous and Development versions of Coq </div>
+<div class="frameworkcontent">
+
+  <p> The previous stable releases of the Coq system are the <a
+  href="/coq-8.3">version 8.3</a> and <a
+  href="/coq-82-detailed-description">version 8.2</a>.</p>
+
+   <p>The development version of Coq is <a href="https://gforge.inria.fr/scm/browser.php?group_id=269">browsable</a> and downloadable from our Git repository using command:
+	  <tt>git clone git://scm.gforge.inria.fr/coq/coq.git</tt>. The daily level of stability of this version (and of the bug-fix branches) can be observed at the <a href="/bench/">coq-bench</a> site or by subscribing to the <a href="https://sympa.inria.fr/sympa/info/coq-bench">coq-bench</a> mailing list.
+   </p> 
+   <p>Most of the previous version of Coq are available <a href="/distrib/">here</a>.</p>
+
+</div>
+</div>
+
+<div class="framework">
+<div class="frameworklabel">Extensions of Coq </div>
+<div class="frameworkcontent">
+   <p>
+When compiled with Objective Caml 3.11 (which is the case of the
+Windows and MacOS packages we release), Coq supports dynamic loading
+of extensions. The following extensions are known to work as plugins:</p>
+
+<ul>
+<li> 
+The <a href="http://www.msr-inria.fr/projects/mathematical-components-2/">small
+scale reflection</a> package (ssreflect) contains the robust and compact tactic language and <a href="http://ssr.msr-inria.inria.fr/doc/mathcomp-1.5/">libraries</a>
+that were started for supporting the full formalization of the <a
+href="http://research.microsoft.com/en-us/people/gonthier/">4 color theorem</a>
+and that now serves, among other applications, as support for the ongoing formalization of the odd order theorem in group theory. (*)
+</li>
+<li>
+The <a href="http://www.lix.polytechnique.fr/coq/pylons/contribs/view/AACTactics/v8.4">rewriting modulo associativity and commutativity</a> plugin (AAC_tactics). (*)
+</li>
+<li>
+The <a href="http://web.archive.org/web/20121014114440/http://perso.ens-lyon.fr/alexandre.miquel/kextraction">classical extraction module</a> provides extraction of programs from classical proofs in <tt>Prop</tt>.
+</li>
+<li>
+The <a href="https://github.com/tomprince/rippling">rippling</a> plugin for automation of inductive arguments.
+</li>
+<li>
+The <a href="http://www.lix.polytechnique.fr/coq/pylons/coq/pylons/contribs/view/DescenteInfinie/v8.4">descente infinie</a> plugin for delayed inference of the induction hypothesis needed in well-founded induction. (*)
+</li>
+</ul>
+<p>Note: Objective Caml &ge; 3.11.1 is required for building plugins on MacOS 10.5. (*) above means that the plugin is submitted to the <a href="/contribs">user contributions</a> and planned to be kept compatible with the new releases of Coq to come.</p>
+
+<p>Consider also the experimental Coq Modulo Theories (<a
+href="http://pierre-yves.strub.nu/research/coqmt/">CoqMT</a>) which
+modifies Coq with primitive support for user-defined first-order
+equational theories (starting with linear arithmetic).</p>
+
+</div>
+</div><!-- /framework -->
 
 <#include "incl/footer.html">
