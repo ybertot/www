@@ -1,0 +1,10 @@
+<#def ID>123</#def>
+<#def TITLE>Coq 8.5 beta 1 is out!</#def>
+<#def AUTHOR>coq-www</#def>
+<#def DATE>21 Jan 2015 15:00 GMT</#def>
+<#def DESCR>
+The <a href="/download">first beta release of Coq 8.5</a> is available for
+testing. More information about the changes from 8.4 to 8.5 to be found in
+the <a href="/distrib/V8.5beta1/CHANGES">CHANGES</a> file. Feedback and
+<a href="/bugs">bug reports</a> extremely welcome. Enjoy!
+</#def>
