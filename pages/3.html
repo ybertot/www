@@ -13,10 +13,9 @@ see <a href="/coq-84">Coq 8.4</a>. The current beta version features:</p>
   while Coq checks the depencies in the background;</li>
 <li>universe polymorphism making it possible to reuse the same definitions at
   various universe levels;</li>
-<li>primitive projections for records making the representation of projections
-  more compact, without parameters and preventing them from exposing a match
-  when they reduce;</li>
-<li>a new tactic engine allowing dependent subgoals, fully backtracking tactics,
+<li>primitive projections improving space and time efficiency of records, and
+  adding eta-conversion for records;</li>
+ <li>a new tactic engine allowing dependent subgoals, fully backtracking tactics,
   as well as tactics which can consider multiple goals together;</li>
 <li>a new reduction procedure called <tt>native_compute</tt> to evaluate terms
   using the OCaml native compiler, for proofs with large computational
