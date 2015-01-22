@@ -10,16 +10,17 @@
 see <a href="/coq-84">Coq 8.4</a>. The current beta version features:</p>
 <ul>
 <li>asynchronous edition of documents under CoqIDE to keep working on a proof
-  while Coq checks the depencies in the background;</li>
+  while Coq checks the other proofs in the background (by Enrico Tassi);</li>
 <li>universe polymorphism making it possible to reuse the same definitions at
-  various universe levels;</li>
+  various universe levels (by Matthieu Sozeau);</li>
 <li>primitive projections improving space and time efficiency of records, and
-  adding eta-conversion for records;</li>
- <li>a new tactic engine allowing dependent subgoals, fully backtracking tactics,
-  as well as tactics which can consider multiple goals together;</li>
+  adding eta-conversion for records (by Matthieu Sozeau);</li>
+ <li>a new tactic engine allowing dependent subgoals, fully backtracking
+  tactics, as well as tactics which can consider multiple goals together (by
+  Arnaud Spiwack);</li>
 <li>a new reduction procedure called <tt>native_compute</tt> to evaluate terms
   using the OCaml native compiler, for proofs with large computational
-  steps.</li>
+  steps (by Maxime Dénès).</li>
 </ul>
 
 <p>The main other changes are:</p>
@@ -28,12 +29,14 @@ see <a href="/coq-84">Coq 8.4</a>. The current beta version features:</p>
 <li>a more restrictive guard condition to recover compatibility with axioms
   like propositional extensionality and (some consequences of) univalence;</li>
 <li>a new option <tt>-type-in-type</tt> to collapse the universe hierarchy (makes
-  the logic inconsistent but useful for exploration);<li>
+  the logic inconsistent but useful for exploration);</li>
 <li>a well-behaved alternative to <tt>simpl</tt>, called <tt>cbn</tt>;</li>
-<li>a new introduction pattern <tt>[= x1 ... xn]</tt> which applies injection on
-  the fly (inspired by SSReflect);</li>
-<li>a new construct <tt>uconstr:c</tt> and <tt>type_term c</tt>to build untyped
+<li>various improvements to the tactic language, like a new introduction
+  pattern <tt>[= x1 ... xn]</tt> which applies injection on the fly (inspired by
+  SSReflect);</li>
+<li>a new construct <tt>uconstr:c</tt> and <tt>type_term c</tt> to build untyped
   terms in Ltac;</li>
+<li>various improvements on efficiency;</li>
 </ul>
 <p>For a full log of changes, see the file <a href="/distrib/V8.5beta1/CHANGES">
 CHANGES</a>.</p>
