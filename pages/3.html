@@ -1,4 +1,4 @@
-<#def TITLE>Download</#def>
+<#def TITLE>Getting Coq</#def>
 <#include "incl/header.html">
 
 <div class="framework">
@@ -45,18 +45,37 @@ CHANGES</a>.</p>
 
   <p>Coq 8.5 is not entirely upward compatible with 8.4</p>
 
+</div>
+</div>
+
+<div class="framework">
+<div class="frameworklabel">Installation of Coq 8.5</div>
+<div class="frameworkcontent">
+
+<p>The recommended way for getting Coq depends on the operating system
+you are running.</p>
+
+<p>For the <b>Windows</b> operating system we provide an installer that bundles
+Coq and the CoqIDE user interface.</p>
+
+<p>For Unix systems like <b>Mac OS X</b> or <b>Linux</b> we recomment to use the
+OPAM tool to install Coq.  Such tool can also be used to install additional Coq
+libraries and plugins.  On Linux systems OPAM can also install CoqIDE.  On Mac
+OS X we provide a package for CoqIDE.<br/> The OPAM tool assists you in the
+compilation of Coq by providing a clean build environment and resolving the
+dependencies of Coq, like the OCaml compiler.  See the page dedicated to
+<a href="/howto-opam">installing Coq via OPAM</a>.</p>
+
+<!-- This sentence makes more sense for the final 8.5, for the beta is a 
+     bit pretentious -->
+<p>Coq is also distributed as part of many Linux distributions, like Debian,
+Ubuntu or Fedora.  If you are using one of these Linux distribution the
+easiest way to install Coq for you may be using the software center of your
+distribution.</p>
+
 <table class="downloadtable">
-  <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
   <tr>
-    <td class="downloadcategory"><a name="src"></a></td>
-    <td class="downloadlink, downloadback"><a href="/distrib/V8.5beta1/files/coq-8.5beta1.tar.gz">coq-8.5beta1.tar.gz</a>
-    </td>
-    <td>5.1 MB</td>
-  </tr>
-
   <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
-
-  <tr>
     <td class="downloadcategory, downloadbottomback"><a
       name="win"></a><img src="/files/OSlogos/windows_logo.png"
       width="30" height="30" style="vertical-align:middle"
@@ -66,7 +85,9 @@ CHANGES</a>.</p>
     <td class="downloadlink, downloadbottomline"><a
       href="/distrib/V8.5beta1/files/coq-installer-8.5beta1.exe">
       coq-installer-8.5beta1.exe</a> (bundled with CoqIDE)
+<!--  Not sure this makes sense now that I've signed the installer
       (<a href="/distrib/V8.5beta1/files/coq-installer-8.5beta1.exe.sha1">sha1</a>, <a href="/distrib/V8.5beta1/files/coq-installer-8.5beta1.exe.sha1.asc">sig</a>)
+-->
     </td>
 
     <td class="downloadbottomback">54 MB</td>
@@ -80,16 +101,18 @@ CHANGES</a>.</p>
     </td>
     
     <td class="downloadback, downloadback"><a href="/distrib/V8.5beta1/files/coqide-8.5beta1.dmg">
-      coqide-8.5beta1.dmg</a> (bundled with CoqIDE interface) </td>
-    
+      coqide-8.5beta1.dmg</a> (contains only the CoqIDE) </td>
+   
 
     <td>98 MB</td>
   </tr>
   <tr>
+  <!-- do we keep these?
     <td class="downloadback"><em>The above packages are packages for MacOS ==
     10.9; Coq 8.5 is otherwise available through <a href="http://www.macports.org">MacPorts</a> and <a href="http://brew.sh">Homebrew</a></em>
     </td>
     <td></td>
+  -->
   </tr>
 
   <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
@@ -106,6 +129,14 @@ CHANGES</a>.</p>
       Reference-Manual.pdf</a>
     </td>
     <td class="downloadbottomback">1.5 MB</td>
+  </tr>
+  
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
+  <tr>
+    <td class="downloadcategory"><a name="src"></a></td>
+    <td class="downloadlink, downloadback"><a href="/distrib/V8.5beta1/files/coq-8.5beta1.tar.gz">coq-8.5beta1.tar.gz</a>
+    </td>
+    <td>5.1 MB</td>
   </tr>
 
 </table>
@@ -138,31 +169,40 @@ work as plugins:</p>
 
 <ul>
 <li> 
-The <a href="http://www.msr-inria.fr/projects/mathematical-components-2/">small
-scale reflection</a> package (ssreflect) contains the robust and compact tactic language and <a href="http://ssr.msr-inria.inria.fr/doc/mathcomp-1.5/">libraries</a>
-that were started for supporting the full formalization of the <a
-href="http://research.microsoft.com/en-us/people/gonthier/">4 color theorem</a>
-and that now serves, among other applications, as support for the ongoing formalization of the odd order theorem in group theory. (*)
+The <a href="http://ssr.msr-inria.inria.fr/">small scale reflection</a> package  contains the robust and compact tactic language. It is used to write the
+<a href="http://ssr.msr-inria.inria.fr/">mathamtical components library</a>
+on top of which the formal proof of the 4 color theorem and the odd order
+theorem stand. (*)
 </li>
+<!-- FIXME: this link has v8.4 in it, and v8.5 does not work -->
 <li>
 The <a href="http://www.lix.polytechnique.fr/coq/pylons/contribs/view/AACTactics/v8.4">rewriting modulo associativity and commutativity</a> plugin (AAC_tactics). (*)
 </li>
+<!-- FIXME: the link is odd and if I get it right we should use the link to the contribs -->
 <li>
 The <a href="http://web.archive.org/web/20121014114440/http://perso.ens-lyon.fr/alexandre.miquel/kextraction">classical extraction module</a> provides extraction of programs from classical proofs in <tt>Prop</tt>.
 </li>
+<!-- inactive for 3 years
 <li>
 The <a href="https://github.com/tomprince/rippling">rippling</a> plugin for automation of inductive arguments.
 </li>
+-->
+
+<!-- FIXME: this link has v8.4 in it, and v8.5 does not work -->
 <li>
 The <a href="http://www.lix.polytechnique.fr/coq/pylons/coq/pylons/contribs/view/DescenteInfinie/v8.4">descente infinie</a> plugin for delayed inference of the induction hypothesis needed in well-founded induction. (*)
 </li>
 </ul>
 <p>(*) above means that the plugin is submitted to the <a href="/contribs">user contributions</a> and planned to be kept compatible with the new releases of Coq to come.</p>
 
+<!-- Last version of CoqMT is 8.3pl3.
 <p>Consider also the experimental Coq Modulo Theories (<a
 href="http://pierre-yves.strub.nu/research/coqmt/">CoqMT</a>) which
 modifies Coq with primitive support for user-defined first-order
 equational theories (starting with linear arithmetic).</p>
+-->
+
+Building 
 
 </div>
 </div><!-- /framework -->
