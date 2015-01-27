@@ -32,13 +32,13 @@ see <a href="/coq-84">Coq 8.4</a>. The current beta version features:</p>
   like propositional extensionality and (some consequences of) univalence;</li>
 <li>a new option <tt>-type-in-type</tt> to collapse the universe hierarchy (makes
   the logic inconsistent but useful for exploration);</li>
-<li>a well-behaved alternative to <tt>simpl</tt>, called <tt>cbn</tt>;</li>
+<li>a better-behaved alternative to <tt>simpl</tt>, called <tt>cbn</tt>;</li>
 <li>various improvements to the tactic language, like a new introduction
   pattern <tt>[= x1 ... xn]</tt> which applies injection on the fly (inspired by
   SSReflect);</li>
 <li>a new construct <tt>uconstr:c</tt> and <tt>type_term c</tt> to build untyped
   terms in Ltac;</li>
-<li>various improvements on efficiency;</li>
+<li>significant improvements on efficiency in general.</li>
 </ul>
 <p>For a full log of changes, see the file <a href="/distrib/V8.5beta1/CHANGES">
 CHANGES</a>.</p>
@@ -58,7 +58,7 @@ you are running.</p>
 <p>For the <b>Windows</b> operating system we provide an installer that bundles
 Coq and the CoqIDE user interface.</p>
 
-<p>For Unix systems like <b>Mac OS X</b> or <b>Linux</b> we recomment to use the
+<p>For Unix systems like <b>MacOS X</b> or <b>Linux</b> we recommend to use the
 OPAM tool to install Coq.  Such tool can also be used to install additional Coq
 libraries and plugins.  On Linux systems OPAM can also install CoqIDE.  On Mac
 OS X we provide a package for CoqIDE.<br/> The OPAM tool assists you in the
@@ -102,26 +102,25 @@ distribution.</p>
   </tr>
 
   <tr>
-    <td rowspan="2" class="downloadcategory, downloadbottomline"><a
+    <td class="downloadcategory, downloadbottomline"><a
       name="macos"></a><img src="/files/OSlogos/macos_logo.jpg"
       width="30" height="30" style="vertical-align:middle"
       alt="macos" /><br />MacOS
     </td>
-    
+
     <td class="downloadback, downloadback"><a href="/distrib/V8.5beta1/files/coqide-8.5beta1.dmg">
-      coqide-8.5beta1.dmg</a> (contains only the CoqIDE) </td>
-   
+      coqide-8.5beta1.dmg</a> (contains only the CoqIDE user interface, to be installed of Coq, as indicated above) </td>
 
     <td>98 MB</td>
   </tr>
-  <tr>
   <!-- do we keep these?
+  <tr>
     <td class="downloadback"><em>The above packages are packages for MacOS ==
     10.9; Coq 8.5 is otherwise available through <a href="http://www.macports.org">MacPorts</a> and <a href="http://brew.sh">Homebrew</a></em>
     </td>
     <td></td>
-  -->
   </tr>
+  -->
 
   <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
 
@@ -131,10 +130,9 @@ distribution.</p>
     <td class="downloadback">0.2 MB</td>
   </tr>
   
-  
   <tr>
     <td class="downloadlink, downloadbottomline"><a href="/distrib/V8.5beta1/files/Reference-Manual.pdf">
-      Reference-Manual.pdf</a>
+      Reference-Manual.pdf</a> (also <a href="/distrib/V8.5beta1/refman">online</a>)
     </td>
     <td class="downloadbottomback">1.5 MB</td>
   </tr>
