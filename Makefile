@@ -2,9 +2,9 @@
 ### Coq website : generation of static pages ###
 
 DST:=dest
-YAMLPP:=yamlpp-0.3/yamlpp.ml
+PP:=yamlpp-0.3/yamlpp
 INCLS:=incl/header.html incl/footer.html incl/news/recent.html
-DEPS:=$(INCLS) $(YAMLPP)
+DEPS:=$(INCLS) $(PP)
 
 all: pages news conf
 
@@ -14,9 +14,19 @@ clean:
 	rm -rf $(DST)/*
 	rm -rf .*.stamp
 	rm -f incl/news/recent.html
+	rm -f $(PP) $(PP).cm* $(PP).o
 
-$(YAMLPP): $(YAMLPP:.ml=.mll)
+## In case we need to regenerate yamlpp.ml from its .mll.
+
+$(PP).ml: $(PP).mll
 	ocamllex $<
+
+## If ocamlopt is there, we use it to compile yamlpp, otherwise we use
+## the yamlpp.ml as an ocaml script...
+
+$(PP): $(PP).ml
+	ocamlopt -o $@ $< || printf 'ocaml %s $$@' $< > $@
+	chmod +x $@
 
 .PHONY: all pages news conf pagesaliases newsaliases clean
 
@@ -28,7 +38,7 @@ PAGESDST:=$(patsubst %,$(DST)/node/%.html, $(PAGES))
 pages: $(PAGESDST)
 
 $(DST)/node/%: pages/% $(DEPS)
-	mkdir -p $(dir $@) && ocaml $(YAMLPP) $< -o $@
+	mkdir -p $(dir $@) && $(PP) $< -o $@
 
 ## Page aliases through Apache RewriteRule...
 
@@ -78,12 +88,12 @@ NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))
 
 news: $(DST)/news/index.html $(DST)/rss.xml $(NEWSDST)
 
-incl/news/recent.html: $(YAMLPP) $(addprefix news/,$(RECENTNEWS))
-	ocaml $(YAMLPP) -o $@ $(patsubst %,news/% incl/news/li.html,$(RECENTNEWS))
+incl/news/recent.html: $(PP) $(addprefix news/,$(RECENTNEWS))
+	$(PP) -o $@ $(patsubst %,news/% incl/news/li.html,$(RECENTNEWS))
 
 $(DST)/news/index.html: $(NEWSSRC) $(DEPS) incl/news/item.html incl/news/title.html
 	mkdir -p $(dir $@)
-	ocaml $(YAMLPP) -o $@ \
+	$(PP) -o $@ \
           incl/news/title.html \
           incl/header.html \
           $(patsubst %,% incl/news/item.html,$(NEWSSRC)) \
@@ -91,10 +101,10 @@ $(DST)/news/index.html: $(NEWSSRC) $(DEPS) incl/news/item.html incl/news/title.h
 
 $(DST)/news/%.html: news/% $(DEPS) incl/news/solo.html
 	mkdir -p $(dir $@)
-	ocaml $(YAMLPP) $< incl/news/solo.html -o $@
+	$(PP) $< incl/news/solo.html -o $@
 
-$(DST)/rss.xml: $(NEWSSRC) incl/rss/header.xml incl/rss/footer.xml incl/rss/item.xml $(YAMLPP)
-	ocaml $(YAMLPP) -o $@ \
+$(DST)/rss.xml: $(NEWSSRC) incl/rss/header.xml incl/rss/footer.xml incl/rss/item.xml $(PP)
+	$(PP) -o $@ \
           incl/rss/header.xml \
           $(patsubst %,% incl/rss/item.xml,$(NEWSSRC)) \
           incl/rss/footer.xml
