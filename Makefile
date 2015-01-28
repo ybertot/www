@@ -6,7 +6,7 @@ YAMLPP:=yamlpp-0.3/yamlpp.ml
 INCLS:=incl/header.html incl/footer.html incl/news/recent.html
 DEPS:=$(INCLS) $(YAMLPP)
 
-all: pages news htaccess
+all: pages news conf
 
 aliases: pagesaliases newsaliases
 
@@ -18,7 +18,7 @@ clean:
 $(YAMLPP): $(YAMLPP:.ml=.mll)
 	ocamllex $<
 
-.PHONY: all pages news htaccess pagesaliases newsaliases clean
+.PHONY: all pages news conf pagesaliases newsaliases clean
 
 ## Generated pages, listed in the PAGES file
 
@@ -32,9 +32,9 @@ $(DST)/node/%: pages/% $(DEPS)
 
 ## Page aliases through Apache RewriteRule...
 
-htaccess: $(DST)/.htaccess
+conf: $(DST)/aliases.conf
 
-$(DST)/.htaccess: PAGES NEWS
+$(DST)/aliases.conf: PAGES NEWS
 	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /node/\1.html [L]|p" PAGES > $@
 	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^/news/\2$$ /news/\1.html [L]|p" NEWS >> $@
 	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWS >> $@
