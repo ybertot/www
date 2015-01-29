@@ -1,4 +1,4 @@
-<#def TITLE>Getting Coq</#def>
+<#def TITLE>Coq 8.5</#def>
 <#include "incl/header.html">
 
 <div class="framework">
@@ -15,9 +15,9 @@ see <a href="/coq-84">Coq 8.4</a>. The current beta version features:</p>
   various universe levels (by Matthieu Sozeau);</li>
 <li>primitive projections improving space and time efficiency of records, and
   adding eta-conversion for records (by Matthieu Sozeau);</li>
- <li>a new tactic engine allowing dependent subgoals, fully backtracking
-  tactics, as well as tactics which can consider multiple goals together (by
-  Arnaud Spiwack);</li>
+ <li>new extensions of the proof engine featuring dependent subgoals
+  management, fully backtracking tactics, as well as tactics which can
+  consider multiple goals together (by Arnaud Spiwack);</li>
 <li>a new reduction procedure called <tt>native_compute</tt> to evaluate terms
   using the OCaml native compiler, for proofs with large computational
   steps (by Maxime Dénès).</li>
@@ -25,8 +25,8 @@ see <a href="/coq-84">Coq 8.4</a>. The current beta version features:</p>
 
 <p>The main other changes are:</p>
 <ul>
-<li>a new compilation chain that produces .vio files quickly by skipping
-    the checking of proofs;</li>
+<li>a new fast compilation chain that skips checking of proofs (producing
+  .vio files);</li>
 <li>a new construct <tt>$(..)$</tt> to call tactics from term definitions;</li>
 <li>a more restrictive guard condition to recover compatibility with axioms
   like propositional extensionality and (some consequences of) univalence;</li>
@@ -46,35 +46,6 @@ CHANGES</a>.</p>
   <p>Coq 8.5 is not entirely upward compatible with 8.4</p>
 
 </div>
-</div>
-
-<div class="framework">
-<div class="frameworklabel">Installation of Coq 8.5</div>
-<div class="frameworkcontent">
-
-<p>The recommended way for getting Coq depends on the operating system
-you are running.</p>
-
-<p>For the <b>Windows</b> operating system we provide an installer that bundles
-Coq and the CoqIDE user interface.</p>
-
-<p>For <b>MacOS X</b>, a binary package is planned to be released too.</p>
-
-<p>Whenever possible we recommend to use the OPAM tool to install Coq
-and CoqIDE. Such tool can also be used to install additional Coq
-libraries and plugins. The OPAM tool assists you in the compilation of
-Coq by providing a clean build environment and resolving the
-dependencies of Coq, like the OCaml compiler. This applies to Unix
-systems, like <b>Linux</b>, but also to MacOS X. See the page dedicated to
-installing Coq via OPAM (coming soon).</p>
-
-<!-- This sentence makes more sense for the final 8.5, for the beta is a 
-     bit pretentious
-<p>Coq is also distributed as part of many Linux distributions, like Debian,
-Ubuntu or Fedora.  If you are using one of these Linux distributions the
-easiest way to install Coq for you may be using the software center of your
-distribution.</p>
- -->
 
 <table class="downloadtable">
   <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
@@ -147,66 +118,6 @@ distribution.</p>
 
 </div>
 </div>
-
-<div class="framework">
-<div class="frameworklabel">Previous and development versions of Coq </div>
-<div class="frameworkcontent">
-
-  <p> The current stable releases of the Coq system is
-  <a href="/coq-84">version 8.4</a> and the previous one was <a href="/coq-8.3">version 8.3</a>.</p>
-
-   <p>The development version of Coq is <a href="https://gforge.inria.fr/scm/browser.php?group_id=269">browsable</a> and downloadable from our Git repository using command:
-	  <tt>git clone git://scm.gforge.inria.fr/coq/coq.git</tt>. The daily level of stability of this version (and of the bug-fix branches) can be observed at the <a href="/bench/">coq-bench</a> site or by subscribing to the <a href="https://sympa.inria.fr/sympa/info/coq-bench">coq-bench</a> mailing list.
-   </p> 
-   <p>Most of the previous version of Coq are available <a href="/distrib/">here</a>.</p>
-
 </div>
-</div>
-
-<div class="framework">
-<div class="frameworklabel">Extensions of Coq </div>
-<div class="frameworkcontent">
-   <p>
-When compiled on an architecture for which OCaml supports dynamic linking, Coq
-supports dynamic loading of extensions. The following extensions are known to
-work as plugins:</p>
-
-<ul>
-<li> 
-The <a href="http://ssr.msr-inria.inria.fr/">small scale reflection</a> package  contains the robust and compact tactic language. It is used to write the
-<a href="http://ssr.msr-inria.inria.fr/">mathamtical components library</a>
-on top of which the formal proof of the 4 color theorem and the odd order
-theorem stand. (*)
-</li>
-<!-- FIXME: this link has v8.4 in it, and v8.5 does not work -->
-<li>
-The <a href="http://www.lix.polytechnique.fr/coq/pylons/contribs/view/AACTactics/v8.4">rewriting modulo associativity and commutativity</a> plugin (AAC_tactics). (*)
-</li>
-<!-- FIXME: the link is odd and if I get it right we should use the link to the contribs -->
-<li>
-The <a href="http://web.archive.org/web/20121014114440/http://perso.ens-lyon.fr/alexandre.miquel/kextraction">classical extraction module</a> provides extraction of programs from classical proofs in <tt>Prop</tt>.
-</li>
-<!-- inactive for 3 years
-<li>
-The <a href="https://github.com/tomprince/rippling">rippling</a> plugin for automation of inductive arguments.
-</li>
--->
-
-<!-- FIXME: this link has v8.4 in it, and v8.5 does not work -->
-<li>
-The <a href="http://www.lix.polytechnique.fr/coq/pylons/coq/pylons/contribs/view/DescenteInfinie/v8.4">descente infinie</a> plugin for delayed inference of the induction hypothesis needed in well-founded induction. (*)
-</li>
-</ul>
-<p>(*) above means that the plugin is submitted to the <a href="/contribs">user contributions</a> and planned to be kept compatible with the new releases of Coq to come.</p>
-
-<!-- Last version of CoqMT is 8.3pl3.
-<p>Consider also the experimental Coq Modulo Theories (<a
-href="http://pierre-yves.strub.nu/research/coqmt/">CoqMT</a>) which
-modifies Coq with primitive support for user-defined first-order
-equational theories (starting with linear arithmetic).</p>
--->
-
-</div>
-</div><!-- /framework -->
 
 <#include "incl/footer.html">
