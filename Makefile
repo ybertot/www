@@ -25,7 +25,7 @@ $(PP).ml: $(PP).mll
 ## the yamlpp.ml as an ocaml script...
 
 $(PP): $(PP).ml
-	ocamlopt -o $@ $< || printf 'ocaml %s $$@' $< > $@
+	ocamlopt -o $@ $< || printf 'ocaml %s "$$@"' $< > $@
 	chmod +x $@
 
 .PHONY: all pages news conf pagesaliases newsaliases clean
