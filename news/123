@@ -3,7 +3,7 @@
 <#def AUTHOR>coq-www</#def>
 <#def DATE>21 Jan 2015 15:00 GMT</#def>
 <#def DESCR>
-The <a href="/node/110.html">first beta release of Coq 8.5</a> is available for
+The <a href="/coq-85">first beta release of Coq 8.5</a> is available for
 testing. The 8.5 version brings several major features to Coq:
 
 <ul>
