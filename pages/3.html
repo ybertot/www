@@ -1,0 +1,120 @@
+<#def TITLE>Coq 8.5</#def>
+<#include "incl/header.html">
+
+<div class="framework">
+<div class="frameworklabel">The forthcoming version: Coq 8.5
+</div>
+<div class="frameworkcontent">
+
+<p>Coq 8.5 is available for beta testing. If you wish to use a stable version,
+see <a href="/coq-84">Coq 8.4</a>. The current beta version features:</p>
+<ul>
+<li>asynchronous edition of documents under CoqIDE to keep working on a proof
+  while Coq checks the other proofs in the background (by Enrico Tassi);</li>
+<li>universe polymorphism making it possible to reuse the same definitions at
+  various universe levels (by Matthieu Sozeau);</li>
+<li>primitive projections improving space and time efficiency of records, and
+  adding eta-conversion for records (by Matthieu Sozeau);</li>
+ <li>new extensions of the proof engine featuring dependent subgoals
+  management, fully backtracking tactics, as well as tactics which can
+  consider multiple goals together (by Arnaud Spiwack);</li>
+<li>a new reduction procedure called <tt>native_compute</tt> to evaluate terms
+  using the OCaml native compiler, for proofs with large computational
+  steps (by Maxime Dénès).</li>
+</ul>
+
+<p>The main other changes are:</p>
+<ul>
+<li>a new fast compilation chain that skips checking of proofs (producing
+  .vio files);</li>
+<li>a new construct <tt>$(..)$</tt> to call tactics from term definitions;</li>
+<li>a more restrictive guard condition to recover compatibility with axioms
+  like propositional extensionality and (some consequences of) univalence;</li>
+<li>a new option <tt>-type-in-type</tt> to collapse the universe hierarchy (makes
+  the logic inconsistent but useful for exploration);</li>
+<li>a better-behaved alternative to <tt>simpl</tt>, called <tt>cbn</tt>;</li>
+<li>various improvements to the tactic language, like a new introduction
+  pattern <tt>[= x1 ... xn]</tt> which applies injection on the fly (inspired by
+  SSReflect);</li>
+<li>a new construct <tt>uconstr:c</tt> and <tt>type_term c</tt> to build untyped
+  terms in Ltac;</li>
+<li>significant improvements on efficiency in general.</li>
+</ul>
+<p>For a full log of changes, see the file <a href="/distrib/V8.5beta1/CHANGES">
+CHANGES</a>.</p>
+
+  <p>Coq 8.5 is not entirely upward compatible with 8.4</p>
+
+<table class="downloadtable">
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
+  <tr>
+    <td class="downloadcategory"><a name="src"></a></td>
+    <td class="downloadlink, downloadback"><a href="/distrib/V8.5beta1/files/coq-8.5beta1.tar.gz">coq-8.5beta1.tar.gz</a>
+    </td>
+    <td>5.1 MB</td>
+  </tr>
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
+  <tr>
+    <td class="downloadcategory, downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle"
+      alt="windows" /><br />Windows
+    </td>
+
+    <td class="downloadlink, downloadbottomline"><a
+      href="/distrib/V8.5beta1/files/coq-installer-8.5beta1.exe">
+      coq-installer-8.5beta1.exe</a> (bundled with CoqIDE)
+<!--  Not sure this makes sense now that I've signed the installer
+      (<a href="/distrib/V8.5beta1/files/coq-installer-8.5beta1.exe.sha1">sha1</a>, <a href="/distrib/V8.5beta1/files/coq-installer-8.5beta1.exe.sha1.asc">sig</a>)
+-->
+    </td>
+
+    <td class="downloadbottomback">54 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadcategory, downloadbottomline"><a
+      name="macos"></a><img src="/files/OSlogos/macos_logo.jpg"
+      width="30" height="30" style="vertical-align:middle"
+      alt="macos" /><br />MacOS
+    </td>
+    
+    <td class="downloadcategory, downloadbottomback">
+    MacOS packages will soon be available
+    </td>
+    <td class="downloadcategory, downloadbottomline">
+    </td>
+
+  </tr>
+  <!-- do we keep these?
+  <tr>
+    <td class="downloadback"><em>The above packages are packages for MacOS ==
+    10.9; Coq 8.5 is otherwise available through <a href="http://www.macports.org">MacPorts</a> and <a href="http://brew.sh">Homebrew</a></em>
+    </td>
+    <td></td>
+  </tr>
+  -->
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
+
+  <tr>
+    <td class="downloadcategory, downloadbottomback" rowspan="2"></td>
+    <td class="downloadlink"><a href="/distrib/V8.5beta1/files/Tutorial.pdf">Tutorial.pdf</a></td>
+    <td class="downloadback">0.2 MB</td>
+  </tr>
+  
+  <tr>
+    <td class="downloadlink, downloadbottomline"><a href="/distrib/V8.5beta1/files/Reference-Manual.pdf">
+      Reference-Manual.pdf</a> (also <a href="/distrib/V8.5beta1/refman">online</a>)
+    </td>
+    <td class="downloadbottomback">1.6 MB</td>
+  </tr>
+  
+
+</table>
+
+</div><!-- frameworkcontent -->
+</div><!-- framework -->
+
+<#include "incl/footer.html">
