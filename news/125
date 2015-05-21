@@ -1,0 +1,27 @@
+<#def ID>125</#def>
+<#def TITLE>Coq 8.5 beta 2 is out!</#def>
+<#def AUTHOR>Matthieu Sozeau</#def>
+<#def DATE>22 Apr 2015 19:00 GMT</#def>
+<#def DESCR>
+The <a href="/coq-85">second beta release of Coq 8.5</a> is available for
+testing. The 8.5 version brings several major features to Coq:
+
+<ul>
+<li>asynchronous edition of documents under CoqIDE to keep working on a proof
+  while Coq checks the other proofs in the background (by Enrico Tassi);</li>
+<li>universe polymorphism making it possible to reuse the same definitions at
+  various universe levels (by Matthieu Sozeau);</li>
+<li>primitive projections improving space and time efficiency of records, and
+  adding eta-conversion for records (by Matthieu Sozeau);</li>
+ <li>a new tactic engine allowing dependent subgoals, fully backtracking
+  tactics, as well as tactics which can consider multiple goals together (by
+  Arnaud Spiwack);</li>
+<li>a new reduction procedure called <tt>native_compute</tt> to evaluate terms
+  using the OCaml native compiler, for proofs with large computational
+  steps (by Maxime Dénès).</li>
+</ul>
+
+More information about the changes from 8.4 to 8.5 and since the first
+beta release can be found in the <a
+href="/distrib/V8.5beta2/CHANGES">CHANGES</a> file. Feedback and <a
+href="/bugs">bug reports</a> are extremely welcome. Enjoy!  </#def>
