@@ -2,99 +2,34 @@
 <#include "incl/header.html">
 
 <div class="framework">
-  <div class="frameworklabel">Step 1: getting opam</div>
+  <div class="frameworklabel">Use OPAM</div>
   <div class="frameworkcontent">
-    <p>The recommended way to install Coq on Unix systems like Linux is use the <a href="http://opam.ocaml.org/">opam</a> tool. OPAM can be installed by following the guide &ldquo;<a href="http://opam.ocaml.org/doc/Install.html"> Install OPAM in 2 minutes</a>&rdquo;. OPAM can also be used on Mac OSX.<p/>
-    <p>We recommend to use OPAM version 1.2 or above.</p>
-    <p>Once installed type the following commands to set up an clean opam environment:</p>
-    <pre>opam init --comp 4.01.0</pre>
-    <p>Don't forget to follow the instructions to set up your environment variables correctly.  The quickest way of doing so is by typing</p>
-    <pre>eval `opam config env`</pre>
-    <p>If you already had OPAM installed, you can create a clean environment this way:</p>
-    <pre>opam switch coq-8.5 --alias-of 4.01.0</pre>
+    <p>OPAM is the package manager of Coq. The general documentation can be found on the <a href="http://opam.ocaml.org/">OPAM website</a>. To install the version <code>1.2.2</code> of OPAM from the sources:</p>
+    <pre>curl -L https://github.com/ocaml/opam/archive/1.2.2.tar.gz |tar -xz
+cd opam-1.2.2
+./configure
+make lib-ext
+make
+sudo make install</pre>
+    <p>To add the repository for the Coq packages:</p>
+    <pre>opam repo add coq-released https://coq.inria.fr/opam/released</pre>
+    <p>To install Coq:</p>
+    <pre>opam install -j4 -v coq</pre>
+    <p>To install a package:</p>
+    <pre>opam install coq:that-super-package</pre>
+    <p>To add the repository of development packages (use it at your own risks):</p>
+    <pre>opam repo add coq-extra-dev https://coq.inria.fr/opam/extra-dev</pre>
+    <p>To add the repository of development versions of Coq (use it at your own risks):</p>
+    <pre>opam repo add coq-core-dev https://coq.inria.fr/opam/core-dev</pre>
+    <p>TODO: talk about the distribution mechanism.</p>
   </div>
 </div>
 
-<div class="framework"><div class="frameworklabel">Step 2: installing Coq</div>
-<div class="frameworkcontent">
-
-To install Coq type:
-
-<pre>
-opam repo add coq-8.5 https://github.com/coq/repo-8.5.git
-opam install coq
-</pre>
-
-
-</div> </div>
-
-<div class="framework"><div class="frameworklabel">Step 3: installing CoqIDE</div>
-<div class="frameworkcontent">
-
-If you are running Linux, be sure you have installed the development packages
-of gtk+2, gtksourceview2, expat and the m4 utility.  Such packages are named
-
-<pre>
-libgtksourceview2.0-dev libexpat1-dev libgtk2.0-dev m4
-</pre>
-
-on Debian, Ubuntu, Mint and derivatives, and are named
-
-<pre>
-gtksourceview2-devel expat-devel gtk2-devel m4
-</pre>
-
-on Fedora and derivatives. Then type:
-
-<pre>
-opam install coqide
-</pre>
-
-</div> </div>
-
-<div class="framework"><div class="frameworklabel">Step 4: installing Coq extensions</div>
-<div class="frameworkcontent">
-
-The opam repository for Coq 8.5 also contains the packages for some plugins
-and libraries.  Type the following command to get a list of the available
-packages:
-
-<pre>
-opam search coq:
-</pre>
-
-They can all be installed by typing
-
-<pre>
-opam install coq:something
-</pre>
-
-<div class="framework"><div class="frameworklabel">Version compatibility</div>
-<div class="frameworkcontent">
-
-<p>Not all Coq packages are available for all Coq versions. If you have
-installed Coq 8.4 through OPAM, and try to install a 8.5-only package,
-the dependency solver will propose to uninstall Coq 8.4 and install
-Coq 8.5 instead -- this is probably not what you want, if only because
-of compilation times. You may "pin" the Coq package to a specific
-version to avoid such propositions (<code>opam show coq</code> will
-show you which version you have installed).</p>
-
-<pre>
-opam pin coq 8.4.5
-</pre>
-
-<p>See <code>opam pin --help</code> for how to un-pin.<!-- note: OPAM
-1.1.1 and OPAM 1.2 have incompatible pinning command languages, so
-I was careful *not* to give a precise command that would not work for
-some users. -->If you wish to maintain several Coq setups in parallel,
-with different versions, you may either
-use <a href="http://opam.ocaml.org/doc/Usage.html#opamswitch">opam
-switches</a>, a common mechanism for having independent OPAM setups
-and juggling between them, or use project-local roots (if you are
-ready to recompile Coq for each project) as
-described <a href="http://coq-blog.clarus.me/use-opam-for-coq.html">here</a>.
-</div>
+<div class="framework">
+  <div class="frameworklabel">Make a package</div>
+  <div class="frameworkcontent">
+    <p>New packages can be submitted by a pull-request on the <a href="https://github.com/coq/opam-coq-archive">opam-coq-archive</a> repository. For more information, you can follow this <a href="http://coq-blog.clarus.me/make-a-coq-package.html">tutorial</a> or read the <a href="http://opam.ocaml.org/doc/Packaging.html">OPAM documentation</a>.</p>
+  </div>
 </div>
 
 <#include "incl/footer.html">
