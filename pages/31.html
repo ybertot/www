@@ -1,36 +1,19 @@
 <#def TITLE>OPAM for Coq</#def>
 <#include "incl/header.html">
 
-<div class="framework"><div class="frameworklabel">Step 1: getting opam</div>
-<div class="frameworkcontent">
-
-<p>
-The recommended way to install Coq on Unix systems like Linux
-is use the <a href="http://opam.ocaml.org/">opam</a> tool.
-OPAM can be installed by following the guide &ldquo;<a href="http://opam.ocaml.org/doc/Install.html">Install OPAM in 2 minutes</a>&rdquo;.
-OPAM can also be used on Mac OSX.
-<p/>
-
-<p>
-We recommend to use OPAM version 1.2 or above.
-</p>
-
-Once installed type the following commands to set up an clean opam environment:
-
-<pre>
-opam init --comp 4.01.0
-</pre>
-
-Don't forget to follow the instructions to set up your environment variables correctly.  The quickest way of doing so is by typing
-<pre>eval `opam config env`</pre>
-
-If you already had OPAM installed, you can create a clean environment this way:
-
-<pre>
-opam switch coq-8.5 --alias-of 4.01.0
-</pre>
-
-</div> </div>
+<div class="framework">
+  <div class="frameworklabel">Step 1: getting opam</div>
+  <div class="frameworkcontent">
+    <p>The recommended way to install Coq on Unix systems like Linux is use the <a href="http://opam.ocaml.org/">opam</a> tool. OPAM can be installed by following the guide &ldquo;<a href="http://opam.ocaml.org/doc/Install.html"> Install OPAM in 2 minutes</a>&rdquo;. OPAM can also be used on Mac OSX.<p/>
+    <p>We recommend to use OPAM version 1.2 or above.</p>
+    <p>Once installed type the following commands to set up an clean opam environment:</p>
+    <pre>opam init --comp 4.01.0</pre>
+    <p>Don't forget to follow the instructions to set up your environment variables correctly.  The quickest way of doing so is by typing</p>
+    <pre>eval `opam config env`</pre>
+    <p>If you already had OPAM installed, you can create a clean environment this way:</p>
+    <pre>opam switch coq-8.5 --alias-of 4.01.0</pre>
+  </div>
+</div>
 
 <div class="framework"><div class="frameworklabel">Step 2: installing Coq</div>
 <div class="frameworkcontent">
@@ -111,8 +94,7 @@ switches</a>, a common mechanism for having independent OPAM setups
 and juggling between them, or use project-local roots (if you are
 ready to recompile Coq for each project) as
 described <a href="http://coq-blog.clarus.me/use-opam-for-coq.html">here</a>.
-
-</div> </div>
-
+</div>
+</div>
 
 <#include "incl/footer.html">
