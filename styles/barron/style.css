@@ -719,6 +719,11 @@ pre {  font-size: 1em; }
   text-align: justify;
 }
 
+.frameworkcontent pre
+{
+  text-indent: 0;
+  margin-left: 6em;
+}
 
 .frameworklabel
 {

@@ -1,6 +1,9 @@
 # Coq website
 This repository contains the static pages of the Coq website
 
+    make
+    make run
+
 Pre-html sources are in `pages/` and `news/`, while final html files
 will be assembled in `dest/`.
 
