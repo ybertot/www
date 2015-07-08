@@ -4,8 +4,15 @@
 <div class="framework">
   <div class="frameworklabel">Use OPAM</div>
   <div class="frameworkcontent">
-    <p>OPAM is the package manager of Coq. The general documentation can be found on the <a href="http://opam.ocaml.org/">OPAM website</a>. To install the version <code>1.2.2</code> of OPAM from the sources:</p>
-    <pre>curl -L https://github.com/ocaml/opam/archive/1.2.2.tar.gz |tar -xz
+    <p>OPAM is a package manager for OCaml, which can be used to install
+      Coq and many of its packages.  The general documentation can be
+      found on the
+      <a href="http://opam.ocaml.org/">OPAM website</a>.
+
+      For example, to install the version <code>1.2.2</code> of OPAM
+      from the sources on a Unix system:</p>
+
+<pre>curl -L https://github.com/ocaml/opam/archive/1.2.2.tar.gz |tar -xz
 cd opam-1.2.2
 ./configure
 make lib-ext
