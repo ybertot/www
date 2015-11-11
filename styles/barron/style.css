@@ -605,7 +605,6 @@ table.downloadtable
   margin-right:auto;
 }
 
-
 table.downloadtable td.downloadheader
 {
 padding: 2px 1em;
@@ -622,6 +621,14 @@ table.downloadtable td.downloadcategory
 {
 padding: 2px 1em;
 background-color: #dfbfbe;
+text-indent: 0;
+}
+
+table.downloadtable td.downloadsize
+{
+text-indent: 0;
+white-space: nowrap;
+height: 52px;
 }
 
 table.downloadtable td
