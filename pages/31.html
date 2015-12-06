@@ -20,8 +20,10 @@ make
 sudo make install</pre>
     <p>To add the repository for the Coq packages:</p>
     <pre>opam repo add coq-released https://coq.inria.fr/opam/released</pre>
-    <p>To install Coq:</p>
-    <pre>opam install -j4 -v coq</pre>
+    <p>To list all the version of Coq:</p>
+    <pre>opam show --field=available-versions coq</pre>
+    <p>To install the version <code>8.4.6</code> of Coq:</p>
+    <pre>opam pin add coq 8.4.6</pre>
     <p>To install a package:</p>
     <pre>opam install coq:that-super-package</pre>
     <p>To add the repository of development packages (use it at your own risks):</p>
