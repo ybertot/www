@@ -20,15 +20,17 @@ make
 sudo make install</pre>
     <p>To add the repository for the Coq packages:</p>
     <pre>opam repo add coq-released https://coq.inria.fr/opam/released</pre>
-    <p>To install Coq:</p>
-    <pre>opam install -j4 -v coq</pre>
+    <p>To list all the version of Coq:</p>
+    <pre>opam show --field=available-versions coq</pre>
+    <p>To install the version <code>8.4.6</code> of Coq:</p>
+    <pre>opam pin add coq 8.4.6</pre>
     <p>To install a package:</p>
-    <pre>opam install coq:that-super-package</pre>
-    <p>To add the repository of development packages (use it at your own risks):</p>
-    <pre>opam repo add coq-extra-dev https://coq.inria.fr/opam/extra-dev</pre>
-    <p>To add the repository of development versions of Coq (use it at your own risks):</p>
-    <pre>opam repo add coq-core-dev https://coq.inria.fr/opam/core-dev</pre>
-    <p>TODO: talk about the distribution mechanism.</p>
+    <pre>opam install coq-compcert</pre>
+    <p>To list all the Coq packages:</p>
+    <pre>opam search coq</pre>
+    <p>To install the beta version of Coq:</p>
+    <pre>opam repo add coq-core-dev https://coq.inria.fr/opam/core-dev
+opam pin add coq 8.5~beta3</pre>
   </div>
 </div>
 
