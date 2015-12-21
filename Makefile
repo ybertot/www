@@ -81,7 +81,7 @@ $(DST)/coq-workshop/2009/cfp/index.html:
 
 NEWS:= $(shell cut -f1 -d: NEWS | sort -r -n)
 
-RECENTNEWS:= 126 125 124
+RECENTNEWS:= 127 126 125
 
 NEWSSRC:=$(addprefix news/,$(NEWS))
 NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))
@@ -127,4 +127,4 @@ printenv:
 run: aliases
 	@echo "Starting a local web server for test"
 	@echo "It is accessible at: http://localhost:8000"
-	cd $(DST) && python -m SimpleHTTPServer 8000
+	cd $(DST) && python -m http.server 8000
