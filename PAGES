@@ -1,6 +1,5 @@
 1:/
 1:welcome
-3:download
 4:documentation
 5:community
 6:a-short-introduction-to-coq
@@ -60,6 +59,7 @@
 109:coq-83
 109:coq-8.3
 110:coq-85
+110:download
 111:coq-workshop/2013
 111:the-coq-workshop-2013
 112:coq-working-group-february-14th-2013
