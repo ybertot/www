@@ -30,9 +30,9 @@ $(PP): $(PP).ml
 
 .PHONY: all pages news conf pagesaliases newsaliases clean
 
-## Generated pages, listed in the PAGES file
+## Generated pages, listed in the PAGESINDEX file
 
-PAGES:= $(shell cut -f1 -d: PAGES | uniq)
+PAGES:= $(shell cut -f1 -d: PAGESINDEX | uniq)
 PAGESDST:=$(patsubst %,$(DST)/node/%.html, $(PAGES))
 
 pages: $(PAGESDST)
@@ -44,10 +44,10 @@ $(DST)/node/%: pages/% $(DEPS)
 
 conf: $(DST)/aliases.conf
 
-$(DST)/aliases.conf: PAGES NEWS
-	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /node/\1.html [L]|p" PAGES > $@
-	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^/news/\2$$ /news/\1.html [L]|p" NEWS >> $@
-	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWS >> $@
+$(DST)/aliases.conf: PAGESINDEX NEWSINDEX
+	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /node/\1.html [L]|p" PAGESINDEX > $@
+	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^/news/\2$$ /news/\1.html [L]|p" NEWSINDEX >> $@
+	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
 
 ## Aliases. Handled here via symbolink links, could also be Apache redirects
 
@@ -57,11 +57,11 @@ pagesaliases: .pagesaliases.stamp \
 	$(DST)/coq-workshop/files \
 	$(DST)/coq-workshop/2009/cfp/index.html
 
-.pagesaliases.stamp: PAGES
+.pagesaliases.stamp: PAGESINDEX
 	IFS=':'; while read a b; \
 	do [ -n "$$b" ] && mkdir -p $(DST)/$$b && \
 	ln -snf $$PWD/$(DST)/node/$$a.html $(DST)/$$b/index.html; \
-	done < PAGES; touch $@
+	done < PAGESINDEX; touch $@
 
 ## Special aliases
 
@@ -77,9 +77,9 @@ $(DST)/coq-workshop/files:
 $(DST)/coq-workshop/2009/cfp/index.html:
 	mkdir -p $(dir $@) && ln -snf $$PWD/$(DST)/news/69.html $@
 
-## News, listed in the NEWS file
+## News, listed in the NEWSINDEX file
 
-NEWS:= $(shell cut -f1 -d: NEWS | sort -r -n)
+NEWS:= $(shell cut -f1 -d: NEWSINDEX | sort -r -n)
 
 RECENTNEWS:= 128 127 126
 
@@ -111,11 +111,11 @@ $(DST)/rss.xml: $(NEWSSRC) incl/rss/header.xml incl/rss/footer.xml incl/rss/item
 
 newsaliases: .newsaliases.stamp
 
-.newsaliases.stamp: NEWS
+.newsaliases.stamp: NEWSINDEX
 	IFS=':'; while read a b; \
 	do [ -n "$$b" ] && mkdir -p $(DST)/news/$$b && \
 	ln -snf ../$$a.html $(DST)/news/$$b/index.html; \
-	done < NEWS; touch $@
+	done < NEWSINDEX; touch $@
 
 printenv:
 	@echo "### PAGES ###"
