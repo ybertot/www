@@ -3,5 +3,5 @@
 <#def AUTHOR>coq-www</#def>
 <#def DATE>9 Apr 2015 16:25 GMT</#def>
 <#def DESCR>
-<p>Version <a href="/download">8.4pl6</a> of Coq fixes several bugs of version 8.4pl5. More information to be found in the <a href="/distrib/V8.4pl6/CHANGES">CHANGES</a> file.</p>
+<p>Version <a href="/coq-84">8.4pl6</a> of Coq fixes several bugs of version 8.4pl5. More information to be found in the <a href="/distrib/V8.4pl6/CHANGES">CHANGES</a> file.</p>
 </#def>
