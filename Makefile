@@ -91,7 +91,7 @@ news: $(DST)/news/index.html $(DST)/rss.xml $(NEWSDST)
 incl/news/recent.html: Makefile $(PP) $(addprefix news/,$(RECENTNEWS))
 	$(PP) -o $@ $(patsubst %,news/% incl/news/li.html,$(RECENTNEWS))
 
-$(DST)/news/index.html: $(NEWSSRC) $(DEPS) incl/news/item.html incl/news/title.html
+$(DST)/news/index.html: NEWSINDEX $(NEWSSRC) $(DEPS) incl/news/item.html incl/news/title.html
 	mkdir -p $(dir $@)
 	$(PP) -o $@ \
           incl/news/title.html \
