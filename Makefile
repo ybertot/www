@@ -3,7 +3,7 @@
 
 DST:=dest
 PP:=yamlpp-0.3/yamlpp
-INCLS:=incl/header.html incl/footer.html incl/news/recent.html
+INCLS:=incl/header.html incl/footer.html incl/news/recent.html incl/macros.html
 DEPS:=$(INCLS) $(PP)
 
 all: pages news conf

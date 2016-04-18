@@ -1,8 +1,9 @@
-<#def TITLE>Coq 8.5</#def>
+<#include "incl/macros.html">
+<#def TITLE>Coq <#CURRENTVERSION></#def>
 <#include "incl/header.html">
 
 <div class="framework">
-<div class="frameworklabel">The current version: Coq 8.5
+<div class="frameworklabel">The current version: Coq <#CURRENTVERSION>
 </div>
 <div class="frameworkcontent">
 
@@ -39,7 +40,7 @@
   terms in Ltac;</li>
 <li>significant improvements on efficiency in general.</li>
 </ul>
-<p>For a full log of changes, see the file <a href="/distrib/V8.5/CHANGES">
+<p>For a log of changes, see the file <a href="/distrib/V<#CURRENTVERSION>/CHANGES">
 CHANGES</a>.</p>
 
   <p>Coq 8.5 is not entirely upward compatible with 8.4</p>
@@ -48,7 +49,7 @@ CHANGES</a>.</p>
   <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
   <tr>
     <td class="downloadcategory"><a name="src"></a></td>
-    <td class="downloadlink downloadback"><a href="/distrib/V8.5/files/coq-8.5.tar.gz">coq-8.5.tar.gz</a>
+    <td class="downloadlink downloadback"><a href="/distrib/V<#CURRENTVERSION>/files/coq-<#CURRENTVERSION>.tar.gz">coq-<#CURRENTVERSION>.tar.gz</a>
     </td>
     <td class="downloadsize"><div>5.2 MB</div></td>
   </tr>
@@ -62,9 +63,9 @@ CHANGES</a>.</p>
     </td>
 
     <td class="downloadlink downloadbottomline"><a
-      href="/distrib/V8.5/files/coq-installer-8.5-win32.exe">
-      coq-installer-8.5-win32.exe</a> (32 bits, bundled with CoqIDE, compiled
-      using <a href="/distrib/V8.5/files/CoqSDK-85-1.zip">CoqSDK</a>)
+      href="/distrib/V<#CURRENTVERSION>/files/coq-installer-<#CURRENTVERSION>-win32.exe">
+      coq-installer-<#CURRENTVERSION>-win32.exe</a> (32 bits, bundled with CoqIDE, compiled
+      using <a href="/distrib/V<#CURRENTVERSION>/files/CoqSDK-85-1.zip">CoqSDK</a>)
     </td>
 
     <td class="downloadsize downloadbottomback">94 MB</td>
@@ -78,9 +79,9 @@ CHANGES</a>.</p>
     </td>
 
     <td class="downloadlink downloadbottomline"><a
-      href="/distrib/V8.5/files/coq-installer-8.5-win64.exe">
-      coq-installer-8.5-win64.exe</a> (64 bits, bundled with CoqIDE, compiled
-      using <a href="/distrib/V8.5/files/CoqSDK-85-1_64.zip">CoqSDK 64 bits</a>)
+      href="/distrib/V<#CURRENTVERSION>/files/coq-installer-<#CURRENTVERSION>-win64.exe">
+      coq-installer-<#CURRENTVERSION>-win64.exe</a> (64 bits, bundled with CoqIDE, compiled
+      using <a href="/distrib/V<#CURRENTVERSION>/files/CoqSDK-85-1_64.zip">CoqSDK 64 bits</a>)
     </td>
 
     <td class="downloadsize downloadbottomback">92 MB</td>
@@ -96,8 +97,8 @@ CHANGES</a>.</p>
     </td>
     
     <td class="downloadcategory downloadbottomback">
-    <a href="/distrib/V8.5/files/CoqIDE_8.5.dmg">
-      CoqIDE_8.5.dmg</a> (bundled with CoqIDE, compiled using OCaml 4.02.3 and
+    <a href="/distrib/V<#CURRENTVERSION>/files/CoqIDE_<#CURRENTVERSION>.dmg">
+      CoqIDE_<#CURRENTVERSION>.dmg</a> (bundled with CoqIDE, compiled using OCaml 4.02.3 and
       Camlp5 6.14)
     </td>
     <td class="downloadsize downloadbottomline">125 MB</td>
@@ -107,20 +108,20 @@ CHANGES</a>.</p>
 
   <tr>
     <td class="downloadcategory downloadbottomback" rowspan="3"></td>
-    <td class="downloadlink"><a href="/distrib/V8.5/files/Tutorial.pdf">Tutorial.pdf</a></td>
+    <td class="downloadlink"><a href="/distrib/V<#CURRENTVERSION>/files/Tutorial.pdf">Tutorial.pdf</a></td>
     <td class="downloadsize downloadback">0.2 MB</td>
   </tr>
   
   <tr>
-    <td class="downloadlink downloadbottomline"><a href="/distrib/V8.5/files/Reference-Manual.pdf">
-      Reference-Manual.pdf</a> (also <a href="/distrib/V8.5/refman">online</a>)
+    <td class="downloadlink downloadbottomline"><a href="/distrib/V<#CURRENTVERSION>/files/Reference-Manual.pdf">
+      Reference-Manual.pdf</a> (also <a href="/distrib/V<#CURRENTVERSION>/refman">online</a>)
     </td>
     <td class="downloadsize downloadbottomback">1.6 MB</td>
   </tr>
 
   <tr>
     <td class="downloadlink downloadbottomline">
-    <a href="/distrib/V8.5/stdlib">Standard Library</a> online documentation
+    <a href="/distrib/V<#CURRENTVERSION>/stdlib">Standard Library</a> online documentation
     </td>
     <td class="downloadsize downloadbottomback"></td>
   </tr>

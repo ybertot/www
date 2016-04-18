@@ -1,3 +1,4 @@
+<#include "incl/macros.html">
 <#def TITLE>Welcome!</#def>
 <#def PATH></#def>
 <#include "incl/header.html">
@@ -20,19 +21,18 @@
 <div class="framework">
 <div class="frameworklabel"><a style="color:black;font-weight:bold" href="/download">How to get it ?</a></div>
 <div class="frameworkcontent">
-  <p>You can download <a href="/download">the current stable version, Coq 8.5</a>.
-  Released in January 2016, it features among other things
-  asynchronous edition of documents under CoqIDE, universe polymorphism,
-  primitive projections, new extensions of the proof engine and a new reduction
-  procedure by compilation to native code. You can also download the previous
-  stable version, <a href="/coq-84">Coq 8.4.</a></p>
+  <p>You can download <a href="/download">the current stable version, Coq
+  <#CURRENTVERSION></a>, released in <#CURRENTVERSIONDATE>. Since version
+  <#CURRENTMAJORVERSION>, Coq features among other things asynchronous edition
+  of documents under CoqIDE, universe polymorphism, primitive projections, new
+  extensions of the proof engine and a new reduction procedure by compilation to
+  native code.</a></p>
 
 </div>
 
 <div class="frameworklinks">
 <ul>
-<li><a href="/download">Get Coq 8.5</a></li>
-<li><a href="/coq-84">Get Coq 8.4</a></li>
+<li><a href="/download">Get Coq <#CURRENTVERSION></a></li>
 </ul>
 </div>
 </div>
