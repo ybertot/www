@@ -45,9 +45,9 @@ $(DST)/node/%: pages/% $(DEPS)
 conf: $(DST)/aliases.conf
 
 $(DST)/aliases.conf: PAGESINDEX NEWSINDEX
-	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /node/\1.html [L]|p" PAGESINDEX > $@
-	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^/news/\2$$ /news/\1.html [L]|p" NEWSINDEX >> $@
-	sed -n -e "s|\(.\+\):\(.\+\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
+	sed -n -e "s|\(..*\):\(..*\)|RewriteRule ^\2$$ /node/\1.html [L]|p" PAGESINDEX > $@
+	sed -n -e "s|\(..*\):\(..*\)|RewriteRule ^/news/\2$$ /news/\1.html [L]|p" NEWSINDEX >> $@
+	sed -n -e "s|\(..*\):\(..*\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
 
 ## Aliases. Handled here via symbolink links, could also be Apache redirects
 
