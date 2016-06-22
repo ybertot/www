@@ -20,6 +20,43 @@ August 26, 2016<br />
   <li>Interfacing with Coq</li>
   <li>Formalization tricks and Coq pearls</li>
 </ul>
+
+<h2> Contributed Talks </h2>
+
+<style>.accepted {clear:right;margin-bottom:20pt;padding:3pt}</style>
+<style>.abstract {padding:20pt}</style>
+<style>.paper {padding:2pt}</style>
+<style>.title {font-style: italic; padding:2pt}</style>
+
+<div class="paper">
+  <span class="authors"><span><a href="http://www-math.bgsu.edu/~rblok/">Rieuwert Blok</a> and <a href="http://www.birmingham.ac.uk/staff/profiles/maths/hoffman-corneliu.aspx">Corneliu Hoffman</a></span>. </span>
+  <span class="title">SpatchCoq</span>
+</div>
+<div class="abstract"><b>Abstract: </b>This is a project on the use of Coq to assist mathematics students  in writing structured proofs, by means of an interface between natural language and Coq. The tool we develop also allows exporting proofs to LaTeX and, in time, we hope it will develop into a platform involving complementary mathematical tools such as Sage and GAP.  Thus, we aim to contribute to bridging the gap between computer scientists developing proof assistants and mathematics students and researchers using Coq as a standard tool for writing proofs. We would like to demonstrate this tool during the workshop and invite informal discussion and suggestions from the Coq community.<br/></div>
+<div class="paper">
+  <span class="authors"><span><a href="http://www.thomas-tuerk.de/en">Thomas Tuerk</a> and  Fireeye Formal Methods Team Dresden</span>. </span>
+  <span class="title">Efficiently Executable Sets used by FireEye</span>
+</div>
+<div class="abstract"><b>Abstract: </b>FireEye provides cybersecurity solutions for detecting, preventing and resolving cyber-attacks. In order to increase the confidence in many of our products we perform proofs of security-critical software components in parallel with development of the components themselves. We carry out the proofs in a Coq model that follows the structure of the implementation, but is much more abstract. The resulting gap is bridged by model-based testing. Our testing framework is developed in OCaml and hinges on Coq's code extraction to obtain an executable version of the model. We  execute millions of test cases, each with a state comprising thousands of objects. Thus, performance is a critical aspect: we need to fine-tune the used data structures based on the frequency of the operations performed. Coq's sets library, while well-suited for mathematical reasoning, proved to be a bottleneck for our testing framework. In this note, we describe an extension of this library that drastically improves its usefulness in our development.</div>
+<div class="paper"><span class="authors"><a href="http://perso.ens-lyon.fr/lionel.rieg/en.html">Lionel Rieg</a>. </span>
+  <span class="title">Formalizing extensible languages in Coq</span>
+</div>
+<div class="abstract"><b>Abstract: </b>This talk presents a technique for formalizing a programming language with on-the-fly extensions, meaning that one can add new constructions in the language at any time.  An example case study is given: Krivine's classical realizability.</div>
+<div class="paper"><span class="authors"><span><a href="https://www.ps.uni-saarland.de/~forster/"> Yannick Forster</a> and <href="https://www.ps.uni-saarland.de/~kunze/"> Fabian Kunze</a></span>.</span>
+  <span class="title">Verified Extraction from Coq to a Lambda-Calculus</span>
+</div>
+<div class="abstract"><b>Abstract: </b>We present a framework to export programs written in Coq to a weak call-by-value lambda calculus. The calculus can be seen as a very basic functional programming language, featuring abstraction, match-constructs based on Scott's encoding and full recursion. The extraction from Coq is not verified itself, but produces proofs for the correctness of each single extracted program semi-automatically. The frameworks builds on the Coq plugin Template Coq by Gregory Malecha. It eliminates the non-computational parts of the Gallina program and produces a lambda-term and the corresponding correctness statement, which in turn can be verified using several provided automation tactics.</div>
+<div class="paper"><span class="authors"><a href="http://www-sop.inria.fr/marelle/Yves.Bertot">Yves Bertot</a>. </span>
+  <span class="title">Arithmetic Geometric Means and the computation of PI</span>
+</div>
+<div class="abstract"><b>Abstract: </b>I propose to describe a mathematical formalization in analysis that leads to an algorithm able to compute up to a million decimals of PI inside the Coq system.</div>
+<div class="paper"><span class="authors"><span><a href="http://www-sop.inria.fr/members/Benjamin.Gregoire/"> Benjamin Gregoire</a> and <a href="http://www-sop.inria.fr/members/Enrico.Tassi/">Enrico Tassi</a></span>. </span>
+  <span class="title">Boolean reflection via type classes</span>
+</div>
+<div class="abstract"><b>Abstract: </b>The SSReflect proof language provides the view mechanism to switch from the computational realm of <samp>bool</samp> to the semantic one of <samp>Prop</samp>.  To minimize the syntactic noise due to view application SSReflect accepts views as annotations of most linguistic constructs.  Still a user needs to mention the view name explicitly, even when there is only one view to be applied. We propose a type-class based machinery to attach canonical views to predicates and connectives to relief the Coq user from some of the bookkeeping required by the boolean reflection formalization technique.<br/></div>
+
+<h2> Submission </h2>
+
 <p>Authors should submit short proposals through <a href="https://www.easychair.org/conferences/?conf=coq8">EasyChair</a>.  Submissions should be in portable document format (PDF).  Proposals should not exceed 2 pages in length in single-column full-page style.</p>
 <p>This year, we are open to many ideas on how to use the workshop time.  Some suggestions to drive proposals include sessions on tool demonstrations or lessons learned from teaching Coq.</p>
 <p>Important Dates</p>
@@ -30,7 +67,9 @@ August 26, 2016<br />
 </ul>
 <p>Submission URL</p>
 <p><a href="https://www.easychair.org/conferences/?conf=coq8">https://www.easychair.org/conferences/?conf=coq8</a> </p>
-<p>Program Committee (to be completed) </p>
+
+
+<h2>Program Committee </h2> 
 <ul>
   <li><a href="http://rewriting.gforge.inria.fr/">Fr&eacute;d&eacute;ric Blanqui</a>, INRIA, France</li>
   <li><a href="http://adam.chlipala.net/">Adam Chlipala</a>, MIT, United States</li>
