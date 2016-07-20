@@ -30,38 +30,38 @@ $(PP): $(PP).ml
 
 .PHONY: all pages news conf pagesaliases newsaliases clean
 
-## Generated pages, listed in the PAGESINDEX file
+## We generate html pages from all .html files in pages
 
-PAGES:= $(shell cut -f1 -d: PAGESINDEX | uniq)
-PAGESDST:=$(patsubst %,$(DST)/node/%.html, $(PAGES))
+PAGES:= $(shell find pages -name *.html)
+PAGESDST:=$(patsubst pages/%,$(DST)/%, $(PAGES))
 
 pages: $(PAGESDST)
 
-$(DST)/node/%: pages/% $(DEPS)
+$(DST)/%: pages/% $(DEPS)
 	mkdir -p $(dir $@) && $(PP) $< -o $@
 
 ## Page aliases through Apache RewriteRule...
 
 conf: $(DST)/aliases.conf
 
-$(DST)/aliases.conf: PAGESINDEX NEWSINDEX
-	sed -n -e "s|\(..*\):\(..*\)|RewriteRule ^\2$$ /node/\1.html [L]|p" PAGESINDEX > $@
-	sed -n -e "s|\(..*\):\(..*\)|RewriteRule ^/news/\2$$ /news/\1.html [L]|p" NEWSINDEX >> $@
-	sed -n -e "s|\(..*\):\(..*\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
+## LEGACYINDEX contains links from old Drupal nodes to nice URLs
+## SECONDARYINDEX contains secondary URLs, redirected via 301 to the
+##   corresponding main URLs
+
+$(DST)/aliases.conf: LEGACYINDEX SECONDARYINDEX NEWSINDEX
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^node/\1$$ /\2 [R=301]|p" LEGACYINDEX > $@
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\1$$ /\2 [R=301]|p" SECONDARYINDEX >> $@
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\2$$ /news/\1.html [L]|p" NEWSINDEX >> $@
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\1$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
+	cat aliases.footer.conf >> $@
 
 ## Aliases. Handled here via symbolink links, could also be Apache redirects
 
-pagesaliases: .pagesaliases.stamp \
-	$(DST)/styles \
+pagesaliases: $(DST)/styles \
 	$(DST)/files \
 	$(DST)/coq-workshop/files \
 	$(DST)/coq-workshop/2009/cfp/index.html
-
-.pagesaliases.stamp: PAGESINDEX
-	IFS=':'; while read a b; \
-	do [ -n "$$b" ] && mkdir -p $(DST)/$$b && \
-	ln -snf $$PWD/$(DST)/node/$$a.html $(DST)/$$b/index.html; \
-	done < PAGESINDEX; touch $@
 
 ## Special aliases
 
