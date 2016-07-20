@@ -15,11 +15,8 @@ file `yamlpp.mll` to customize the pre-processing, you will also need
 `ocamllex` to regenerate `yamlpp.ml`.
 
 ## How to edit an existing page?
-* Look in the PAGES file which is the corresponding source file.
-   For instance `download/` is `pages/3.html`
-   Nota: for the moment, these numbers in `pages/` correspond
-   to former Drupal nodes.
-* Edit this source file
+* Edit the source file containing the webpage (legacy and secondary URL aliases
+  can be found in the `LEGACYINDEX` and `SECONDARYINDEX` files)
 * Run `make` and check that the produced file is ok (e.g. `dest/node/3.html`)
    If that may help, `make run` launches a small local webserver
 * Commit your change and push it to the main repository
