@@ -51,7 +51,7 @@ conf: $(DST)/aliases.conf
 $(DST)/aliases.conf: LEGACYINDEX SECONDARYINDEX NEWSINDEX
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^node/\1$$ /\2 [R=301]|p" LEGACYINDEX > $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\1$$ /\2 [R=301]|p" SECONDARYINDEX >> $@
-	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\2$$ /news/\1.html [L]|p" NEWSINDEX >> $@
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\2$$ /news/\1.html [END,L]|p" NEWSINDEX >> $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\1$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
 	cat aliases.footer.conf >> $@
