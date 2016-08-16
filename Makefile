@@ -48,9 +48,14 @@ conf: $(DST)/aliases.conf
 ## SECONDARYINDEX contains secondary URLs, redirected via 301 to the
 ##   corresponding main URLs
 
+# L flags are needed because we don't want to add a .html suffix to the
+# original requested URL if it has been rewritten. Note after an L rule is
+# triggered, another pass of rewriting will be performed on the new URL
+# unless we specify E=END.
+
 $(DST)/aliases.conf: LEGACYINDEX SECONDARYINDEX NEWSINDEX
-	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^node/\1$$ /\2 [R=301]|p" LEGACYINDEX > $@
-	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\1$$ /\2 [R=301]|p" SECONDARYINDEX >> $@
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^node/\1$$ /\2 [L,R=301]|p" LEGACYINDEX > $@
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\1$$ /\2 [L,R=301]|p" SECONDARYINDEX >> $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\2$$ /news/\1.html [E=END:1,L]|p" NEWSINDEX >> $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\1$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
