@@ -513,17 +513,21 @@ td.active {
 }
 
 /* Additional Styles */
-/* Pierre L: off to mimic the old style (cf coq-83 page)
-code, pre {
-  background:#FFF9F9;
-  border:1px dashed #FF6868;
-  display:block;
-  overflow:auto;
-  padding:10px;
+pre {
+  background-color: rgb(245, 245, 245);
+  border-color: rgb(204, 204, 204);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  padding:12px;
   margin:10px;
-  white-space: pre;
 }
-*/
+code {
+  background-color: rgb(245, 245, 245);
+  font-family:monospace;
+  padding: 2px;
+  border-radius: 4px;
+}
 
 #footer #credits {
   float: right;
