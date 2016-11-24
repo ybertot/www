@@ -73,7 +73,7 @@ Using Σ-types, a sorting function over lists of natural numbers can be given th
 <pre>
   sort : ∀ (l : list nat), {l' : list nat | sorted l' /\ same_elements l l'}
 </pre>
-where <tt>sorted</tt> is a predicate that expresses that a list is sorted; and <tt>all_elements</tt> says if two lists contain the same elements. On the contrary, a sorting function in a "poor" type system could only be given the following less informative type:
+where <tt>sorted</tt> is a predicate that expresses that a list is sorted; and <tt>same_elements</tt> says if two lists contain the same elements. On the contrary, a sorting function in a "poor" type system could only be given the following less informative type:
 <pre>
   sort : list nat -> list nat
 </pre>
