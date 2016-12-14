@@ -1,0 +1,134 @@
+<#include "incl/macros.html">
+<#def TITLE>Coq 8.5pl3</#def>
+<#include "incl/header.html">
+
+<div class="framework">
+<div class="frameworklabel">Coq 8.5pl3
+</div>
+<div class="frameworkcontent">
+
+<p>This version features:</p>
+<ul>
+<li>asynchronous edition of documents under CoqIDE to keep working on a proof
+  while Coq checks the other proofs in the background (by Enrico Tassi);</li>
+<li>universe polymorphism making it possible to reuse the same definitions at
+  various universe levels (by Matthieu Sozeau);</li>
+<li>primitive projections improving space and time efficiency of records, and
+  adding eta-conversion for records (by Matthieu Sozeau);</li>
+ <li>new extensions of the proof engine featuring dependent subgoals
+  management, fully backtracking tactics, as well as tactics which can
+  consider multiple goals together (by Arnaud Spiwack);</li>
+<li>a new reduction procedure called <tt>native_compute</tt> to evaluate terms
+  using the OCaml native compiler, for proofs with large computational
+  steps (by Maxime Dénès).</li>
+</ul>
+
+<p>The main other changes are:</p>
+<ul>
+<li>a new fast compilation chain that skips checking of proofs (producing
+  .vio files);</li>
+<li>a new construct <tt>ltac:(..)</tt> to call tactics from term definitions;</li>
+<li>a more restrictive guard condition to recover compatibility with axioms
+  like propositional extensionality and (some consequences of) univalence;</li>
+<li>a new option <tt>-type-in-type</tt> to collapse the universe hierarchy (makes
+  the logic inconsistent but useful for exploration);</li>
+<li>a better-behaved alternative to <tt>simpl</tt>, called <tt>cbn</tt>;</li>
+<li>various improvements to the tactic language, like a new introduction
+  pattern <tt>[= x1 ... xn]</tt> which applies injection on the fly (inspired by
+  SSReflect);</li>
+<li>a new construct <tt>uconstr:c</tt> and <tt>type_term c</tt> to build untyped
+  terms in Ltac;</li>
+<li>significant improvements on efficiency in general.</li>
+</ul>
+<p>For a log of changes, see the file <a href="/distrib/V8.5pl3/CHANGES">
+CHANGES</a>.</p>
+
+  <p>Coq 8.5 is not entirely upward compatible with 8.4</p>
+
+<table class="downloadtable">
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
+  <tr>
+    <td class="downloadcategory"><a name="src"></a></td>
+    <td class="downloadlink downloadback"><a href="/distrib/V8.5pl3/files/coq-8.5pl3.tar.gz">coq-8.5pl3.tar.gz</a>
+    </td>
+    <td class="downloadsize"><div>5.2 MB</div></td>
+  </tr>
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
+  <tr>
+    <td class="downloadcategory downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="windows" /><div>Windows</div>
+    </td>
+
+    <td class="downloadlink downloadbottomline"><a
+      href="/distrib/V8.5pl3/files/coq-installer-8.5pl3-win32.exe">
+      coq-installer-8.5pl3-win32.exe</a> (32 bits, bundled with CoqIDE, compiled
+      using <a href="/distrib/V8.5pl3/files/CoqSDK-85-1.zip">CoqSDK</a>)
+    </td>
+
+    <td class="downloadsize downloadbottomback">94 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadcategory downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="windows" /><div>Windows</div>
+    </td>
+
+    <td class="downloadlink downloadbottomline"><a
+      href="/distrib/V8.5pl3/files/coq-installer-8.5pl3-win64.exe">
+      coq-installer-8.5pl3-win64.exe</a> (64 bits, bundled with CoqIDE, compiled
+      using <a href="/distrib/V8.5pl3/files/CoqSDK-85-1_64.zip">CoqSDK 64 bits</a>)
+    </td>
+
+    <td class="downloadsize downloadbottomback">92 MB</td>
+  </tr>
+
+
+  
+  <tr>
+    <td class="downloadcategory downloadbottomline"><a
+      name="macos"></a><img src="/files/OSlogos/macos_logo.jpg"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="macos" /><div>MacOS</div>
+    </td>
+    
+    <td class="downloadcategory downloadbottomback">
+    <a href="/distrib/V8.5pl3/files/CoqIDE_8.5pl3.dmg">
+      CoqIDE_8.5pl3.dmg</a> (bundled with CoqIDE, compiled using OCaml 4.02.3 and
+      Camlp5 6.14)
+    </td>
+    <td class="downloadsize downloadbottomline">125 MB</td>
+  </tr>
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
+
+  <tr>
+    <td class="downloadcategory downloadbottomback" rowspan="3"></td>
+    <td class="downloadlink"><a href="/distrib/V8.5pl3/files/Tutorial.pdf">Tutorial.pdf</a></td>
+    <td class="downloadsize downloadback">0.2 MB</td>
+  </tr>
+  
+  <tr>
+    <td class="downloadlink downloadbottomline"><a href="/distrib/V8.5pl3/files/Reference-Manual.pdf">
+      Reference-Manual.pdf</a> (also <a href="/distrib/V8.5pl3/refman">online</a>)
+    </td>
+    <td class="downloadsize downloadbottomback">1.6 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadlink downloadbottomline">
+    <a href="/distrib/V8.5pl3/stdlib">Standard Library</a> online documentation
+    </td>
+    <td class="downloadsize downloadbottomback"></td>
+  </tr>
+
+</table>
+
+</div><!-- frameworkcontent -->
+</div><!-- framework -->
+
+<#include "incl/footer.html">

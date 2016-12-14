@@ -7,43 +7,47 @@
 </div>
 <div class="frameworkcontent">
 
-<p>This version features:</p>
+  <p>This version features:</p>
+
 <ul>
-<li>asynchronous edition of documents under CoqIDE to keep working on a proof
-  while Coq checks the other proofs in the background (by Enrico Tassi);</li>
-<li>universe polymorphism making it possible to reuse the same definitions at
-  various universe levels (by Matthieu Sozeau);</li>
-<li>primitive projections improving space and time efficiency of records, and
-  adding eta-conversion for records (by Matthieu Sozeau);</li>
- <li>new extensions of the proof engine featuring dependent subgoals
-  management, fully backtracking tactics, as well as tactics which can
-  consider multiple goals together (by Arnaud Spiwack);</li>
-<li>a new reduction procedure called <tt>native_compute</tt> to evaluate terms
-  using the OCaml native compiler, for proofs with large computational
-  steps (by Maxime Dénès).</li>
+  <li>A new, faster state-of-the-art universe constraint checker by
+    Jacques-Henri Jourdan.</li>
+  <li>In CoqIDE and other asynchronous interfaces, more fine-grained
+  asynchronous processing and error reporting by Enrico Tassi, making Coq
+  capable of recovering from errors and continuing to process the document.</li>
+  <li>Better access to the proof engine features from Ltac: goal
+    management primitives, range selectors and a <tt>typeclasses
+      eauto</tt> engine handling multiple goals and multiple successes, by
+    Cyprien Mangin, Matthieu Sozeau and Arnaud Spiwack.</li>
+  <li>Tactic behavior uniformization and specification, generalization
+    of intro-patterns by Hugo Herbelin and others.</li>
+  <li>A brand new warning system allowing to control warnings, turn them
+  into errors or ignore them selectively by Maxime Dénès, Guillaume
+  Melquiond, Pierre-Marie Pédrot and others.</li>
+  <li>Irrefutable patterns in abstractions, by Daniel de Rauglaudre.</li>
+  <li>The ssreflect subterm selection algorithm by Georges Gonthier and
+  Enrico Tassi, now accessible to tactic writers through the ssrmatching
+  plugin.</li>
+  <li>LtacProf, a profiler for Ltac by Jason Gross, Paul Steckler, Enrico Tassi
+    and Tobias Tebbi.</li>
 </ul>
 
-<p>The main other changes are:</p>
-<ul>
-<li>a new fast compilation chain that skips checking of proofs (producing
-  .vio files);</li>
-<li>a new construct <tt>ltac:(..)</tt> to call tactics from term definitions;</li>
-<li>a more restrictive guard condition to recover compatibility with axioms
-  like propositional extensionality and (some consequences of) univalence;</li>
-<li>a new option <tt>-type-in-type</tt> to collapse the universe hierarchy (makes
-  the logic inconsistent but useful for exploration);</li>
-<li>a better-behaved alternative to <tt>simpl</tt>, called <tt>cbn</tt>;</li>
-<li>various improvements to the tactic language, like a new introduction
-  pattern <tt>[= x1 ... xn]</tt> which applies injection on the fly (inspired by
-  SSReflect);</li>
-<li>a new construct <tt>uconstr:c</tt> and <tt>type_term c</tt> to build untyped
-  terms in Ltac;</li>
-<li>significant improvements on efficiency in general.</li>
-</ul>
-<p>For a log of changes, see the file <a href="/distrib/V<#CURRENTVERSION>/CHANGES">
-CHANGES</a>.</p>
+<p>A lot of other changes are described in the
+<a href="/distrib/V<#CURRENTVERSION>/CHANGES">CHANGES file</a>.</p>
 
-  <p>Coq 8.5 is not entirely upward compatible with 8.4</p>
+<p>Coq 8.6 initiates a time-based release cycle, with a major version being
+released every 10 months.
+<a href="https://github.com/coq/roadmaps/blob/master/text/roadmap-8.6.md">The
+roadmap</a> is also made public.</p>
+
+<p>To date, Coq 8.6 contains more external contributions than any previous
+Coq version. Code reviews were systematically done before integration of
+new features, with an important focus given to compatibility and performance
+issues.</p>
+
+<p><a href="https://github.com/coq/ceps">Coq Enhancement Proposals</a>
+(CEPs for short) were introduced by Enrico Tassi to provide more visibility
+and a discussion period on new features.</p>
 
 <table class="downloadtable">
   <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
@@ -51,7 +55,7 @@ CHANGES</a>.</p>
     <td class="downloadcategory"><a name="src"></a></td>
     <td class="downloadlink downloadback"><a href="/distrib/V<#CURRENTVERSION>/files/coq-<#CURRENTVERSION>.tar.gz">coq-<#CURRENTVERSION>.tar.gz</a>
     </td>
-    <td class="downloadsize"><div>5.2 MB</div></td>
+    <td class="downloadsize"><div>5.3 MB</div></td>
   </tr>
 
   <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
@@ -63,12 +67,12 @@ CHANGES</a>.</p>
     </td>
 
     <td class="downloadlink downloadbottomline"><a
-      href="/distrib/V<#CURRENTVERSION>/files/coq-installer-<#CURRENTVERSION>-win32.exe">
-      coq-installer-<#CURRENTVERSION>-win32.exe</a> (32 bits, bundled with CoqIDE, compiled
-      using <a href="/distrib/V<#CURRENTVERSION>/files/CoqSDK-85-1.zip">CoqSDK</a>)
+      href="/distrib/V<#CURRENTVERSION>/files/coq-installer-<#CURRENTVERSION>-i686.exe">
+      coq-installer-<#CURRENTVERSION>-i686.exe</a> (32 bits, bundled with CoqIDE, compiled
+      using OCaml 4.02.3 and Camlp5 6.14)
     </td>
 
-    <td class="downloadsize downloadbottomback">94 MB</td>
+    <td class="downloadsize downloadbottomback">82 MB</td>
   </tr>
 
   <tr>
@@ -79,12 +83,12 @@ CHANGES</a>.</p>
     </td>
 
     <td class="downloadlink downloadbottomline"><a
-      href="/distrib/V<#CURRENTVERSION>/files/coq-installer-<#CURRENTVERSION>-win64.exe">
-      coq-installer-<#CURRENTVERSION>-win64.exe</a> (64 bits, bundled with CoqIDE, compiled
-      using <a href="/distrib/V<#CURRENTVERSION>/files/CoqSDK-85-1_64.zip">CoqSDK 64 bits</a>)
+      href="/distrib/V<#CURRENTVERSION>/files/coq-installer-<#CURRENTVERSION>-x86_64.exe">
+      coq-installer-<#CURRENTVERSION>-x86_64.exe</a> (64 bits, bundled with CoqIDE, compiled
+      using OCaml 4.02.3 and Camlp5 6.14)
     </td>
 
-    <td class="downloadsize downloadbottomback">92 MB</td>
+    <td class="downloadsize downloadbottomback">83 MB</td>
   </tr>
 
 
@@ -96,12 +100,12 @@ CHANGES</a>.</p>
       margin: 0 auto" alt="macos" /><div>MacOS</div>
     </td>
     
-    <td class="downloadcategory downloadbottomback">
+    <td class="downloadlink downloadbottomback">
     <a href="/distrib/V<#CURRENTVERSION>/files/CoqIDE_<#CURRENTVERSION>.dmg">
       CoqIDE_<#CURRENTVERSION>.dmg</a> (bundled with CoqIDE, compiled using OCaml 4.02.3 and
       Camlp5 6.14)
     </td>
-    <td class="downloadsize downloadbottomline">125 MB</td>
+    <td class="downloadsize downloadbottomline">109 MB</td>
   </tr>
 
   <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
@@ -116,7 +120,7 @@ CHANGES</a>.</p>
     <td class="downloadlink downloadbottomline"><a href="/distrib/V<#CURRENTVERSION>/files/Reference-Manual.pdf">
       Reference-Manual.pdf</a> (also <a href="/distrib/V<#CURRENTVERSION>/refman">online</a>)
     </td>
-    <td class="downloadsize downloadbottomback">1.6 MB</td>
+    <td class="downloadsize downloadbottomback">1.7 MB</td>
   </tr>
 
   <tr>
@@ -125,6 +129,40 @@ CHANGES</a>.</p>
     </td>
     <td class="downloadsize downloadbottomback"></td>
   </tr>
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Misc</td></tr>
+  <tr>
+    <td class="downloadcategory downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="windows" /><div>Windows</div>
+    </td>
+
+    <td class="downloadlink downloadbottomline"><a
+      href="/distrib/V<#CURRENTVERSION>/files/coq-opensource-archive-win32.zip">
+      coq-opensource-archive-win32.zip</a> (sources of the files installed by
+      the 32 bit Windows installer, to comply with license requirements)
+    </td>
+
+    <td class="downloadsize downloadbottomback">262 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadcategory downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="windows" /><div>Windows</div>
+    </td>
+
+    <td class="downloadlink downloadbottomline"><a
+      href="/distrib/V<#CURRENTVERSION>/files/coq-opensource-archive-win64.zip">
+      coq-opensource-archive-win64.zip</a> (sources of the files installed by
+      the 64 bit Windows installer, to comply with license requirements)
+    </td>
+
+    <td class="downloadsize downloadbottomback">262 MB</td>
+  </tr>
+
 
 </table>
 
