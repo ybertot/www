@@ -3,7 +3,7 @@
 <#def AUTHOR>Maxime Dénès</#def>
 <#def DATE>11 Jul 2016</#def>
 <#def DESCR>
-<a href="/download">Version 8.5pl2 of Coq</a> is available. It fixes several bugs
+<a href="/coq-85">Version 8.5pl2 of Coq</a> is available. It fixes several bugs
 of version 8.5pl1, including one critical bug. More information can be found in
 the <a href="/distrib/V8.5pl2/CHANGES">CHANGES</a> file. Feedback and
 <a href="/bugs">bug reports</a> are extremely welcome.
