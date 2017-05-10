@@ -137,4 +137,32 @@ third-party graphical interfaces are also available :</p>
 </div>
 </div><!-- /framework -->
 
+
+<div class="framework">
+<div class="frameworklabel">Automated Manipulation of Coq Developments</div>
+<div class="frameworkcontent">
+<ul>
+  <li><a href="https://github.com/JasonGross/coq-tools">coq-tools</a> is a collection of scripts for manipulating Coq developments:
+          <ul>
+            <li><a href="https://github.com/JasonGross/coq-tools/blob/master/find-bug.py"><tt>find-bug.py</tt></a> automatically minimizes a <tt>.v</tt> file producing an error, allowing automatic creation of small stand-alone test cases for Coq bugs;</li>
+            <li><a href="https://github.com/JasonGross/coq-tools/blob/master/absolutize-imports.py"><tt>absolutize-imports.py</tt></a> processes <tt>.v</tt> files, replacing things like <tt>Require Import Program.</tt> with <tt>Require Import Coq.Program.Program;</tt>, making <tt>Require</tt>s robust against shadowing of file names.</li>
+            <li><a href="https://github.com/JasonGross/coq-tools/blob/master/inline-imports.py"><tt>inline-imports.py</tt></a> inlines the <tt>Require</tt>d dependencies of a <tt>.v</tt> file, allowing the automatic creation of stand-alone files from developments;</li>
+            <li><a href="https://github.com/JasonGross/coq-tools/blob/master/minimize-requires.py"><tt>minimize-requires.py</tt></a> removes unused <tt>Require</tt> and <tt>Require Import</tt> statements, and, optionally, unused <tt>Require Export</tt> statements;</li>
+            <li><a href="https://github.com/JasonGross/coq-tools/blob/master/move-requires.py"><tt>move-requires.py</tt></a> splits all <tt>Require Import</tt> and <tt>Require Export</tt> statements into separate <tt>Require</tt> and <tt>Import</tt>/<tt>Export</tt> statements, and moves all <tt>Require</tt> statements to the top of a <tt>.v</tt> file;</li>
+            <li><a href="https://github.com/JasonGross/coq-tools/blob/master/move-vernaculars.py"><tt>move-vernaculars.py</tt></a> lifts many vernacular commands and inner lemmas out of <tt>Proof. &hellip; Qed.</tt> blocks;</li>
+            <li><a href="https://github.com/JasonGross/coq-tools/blob/master/proof-using-helper.py"><tt>proof-using-helper.py</tt></a> processes the output of running <tt>coqc</tt> on a file with <tt>Suggest Proof Using</tt> set, to modify the file with the given <tt>Proof using</tt> suggestions;</li>
+          </ul>
+  </li>
+  <li><a href="https://github.com/JasonGross/coq-scripts/tree/master/timing">coq-scripts/timing</a> is a collection of scripts for tabulating changes in in per-file and per-library build times for Coq developments.</li>
+</ul>
+</div>
+
+<div class="frameworklinks">
+<ul>
+<li><a href="https://github.com/JasonGross/coq-tools">coq-tools</a></li>
+<li><a href="https://github.com/JasonGross/coq-scripts/tree/master/timing">coq-scripts/timing</a></li>
+</ul>
+</div>
+</div><!-- /framework -->
+
 <#include "incl/footer.html">
