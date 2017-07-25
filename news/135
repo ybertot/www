@@ -1,0 +1,10 @@
+<#def ID>135</#def>
+<#def TITLE>Coq 8.6.1 is out</#def>
+<#def AUTHOR>Maxime Dénès</#def>
+<#def DATE>25 Jul 2017</#def>
+<#def DESCR>
+<a href="/coq-85">Version 8.6.1 of Coq</a> is available. It fixes several bugs
+of version 8.6. More information can be found in the <a
+href="/distrib/V8.6.1/CHANGES">CHANGES</a> file. Feedback and
+<a href="/bugs">bug reports</a> are extremely welcome.
+</#def>
