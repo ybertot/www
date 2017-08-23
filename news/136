@@ -1,0 +1,9 @@
+<#def ID>136</#def>
+<#def TITLE>Alleged &quot;hack&quot; of our site: just a spam</#def>
+<#def AUTHOR>Pierre Letouzey</#def>
+<#def DATE>23 Aug 2017</#def>
+<#def DESCR>
+The alleged &quot;hack&quot; of coq.inria.fr that led to several days of downtime
+for investigations was nothing more than a spam bug report. More details
+<a href="https://sympa.inria.fr/sympa/arc/coq-club/2017-08/msg00040.html">here</a>.
+</#def>
