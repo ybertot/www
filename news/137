@@ -3,7 +3,7 @@
 <#def AUTHOR>Maxime Dénès</#def>
 <#def DATE>6 Sep 2017</#def>
 <#def DESCR>
-The <a href="/coq-86">first beta release of Coq 8.7</a> is available for
+The <a href="/coq-87">first beta release of Coq 8.7</a> is available for
 testing.
 
 Coq 8.7 includes:
