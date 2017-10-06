@@ -2,3 +2,4 @@ dest/
 incl/news/recent.html
 yamlpp-*/yamlpp*
 .*.stamp
+*~
