@@ -1,15 +1,12 @@
-<#include "incl/macros.html">
-<#def TITLE>Coq <#UPCOMINGVERSION></#def>
-<#include "incl/header.html">
+<#def ID>137</#def>
+<#def TITLE>Coq 8.7+beta2 is out</#def>
+<#def AUTHOR>Théo Zimmermann</#def>
+<#def DATE>6 Oct 2017</#def>
+<#def DESCR>
+The <a href="/coq-87">second beta release of Coq 8.7</a> is available for
+testing.
 
-<div class="framework">
-<div class="frameworklabel">The upcoming version: Coq <#UPCOMINGVERSION>
-</div>
-<div class="frameworkcontent">
-
-  <p>Coq <#UPCOMINGMAJORVERSION> is available for beta testing. If you wish to
-  use a stable version, see <a href="/download">Coq <#CURRENTVERSION></a>. The
-  beta version features:</p>
+Coq 8.7 includes:
 
 <ul>
   <li>A large amount of work on cleaning and speeding up the code base, notably
@@ -37,8 +34,9 @@
     <tt>_CoqProject</tt> files more palatable to IDEs by Enrico Tassi.</li>
 </ul>
 
-<p>A lot of other changes are described in the
-<a href="https://github.com/coq/coq/blob/V<#UPCOMINGMAJORVERSION>/CHANGES">CHANGES file</a>.</p>
+<p>More information can be found in the <a
+href="https://github.com/coq/coq/blob/V8.7+beta2/CHANGES">CHANGES</a> file. Feedback and
+<a href="/bugs">bug reports</a> are extremely welcome.</p>
 
 <p>This is the second release of Coq developed on a time-based development
   cycle. Its development spanned 9 months from the release of Coq 8.6 and was
@@ -46,13 +44,6 @@
   reviews and continuous integration testing were systematically used before
   integration of new features, with an important focus given to compatibility
   and performance issues.</p>
+<ul>
 
-<p>For downloads (in particular to get installers for Windows and Mac OS, or a
-  tarball of the sources), please go to
-  <a href="https://github.com/coq/coq/releases/tag/V<#UPCOMINGMAJORVERSION>">the release
-    page on GitHub</a>.</p>
-
-</div><!-- frameworkcontent -->
-</div><!-- framework -->
-
-<#include "incl/footer.html">
+</#def>
