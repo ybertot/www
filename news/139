@@ -3,8 +3,7 @@
 <#def AUTHOR>Maxime Dénès</#def>
 <#def DATE>17 Oct 2017</#def>
 <#def DESCR>
-The <a href="/coq-87">final release of Coq 8.7.0</a> is available for
-testing.
+The <a href="/coq-87">final release of Coq 8.7.0</a> is available.
 
 Coq 8.7 includes:
 
