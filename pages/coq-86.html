@@ -1,0 +1,167 @@
+<#include "incl/macros.html">
+<#def TITLE>Coq 8.6</#def>
+<#include "incl/header.html">
+
+<div class="framework">
+<div class="frameworklabel">Coq 8.6.1
+</div>
+<div class="frameworkcontent">
+
+  <p>This version features:</p>
+
+<ul>
+  <li>A new, faster state-of-the-art universe constraint checker by
+    Jacques-Henri Jourdan.</li>
+  <li>In CoqIDE and other asynchronous interfaces, more fine-grained
+  asynchronous processing and error reporting by Enrico Tassi, making Coq
+  capable of recovering from errors and continuing to process the document.</li>
+  <li>Better access to the proof engine features from Ltac: goal
+    management primitives, range selectors and a <tt>typeclasses
+      eauto</tt> engine handling multiple goals and multiple successes, by
+    Cyprien Mangin, Matthieu Sozeau and Arnaud Spiwack.</li>
+  <li>Tactic behavior uniformization and specification, generalization
+    of intro-patterns by Hugo Herbelin and others.</li>
+  <li>A brand new warning system allowing to control warnings, turn them
+  into errors or ignore them selectively by Maxime Dénès, Guillaume
+  Melquiond, Pierre-Marie Pédrot and others.</li>
+  <li>Irrefutable patterns in abstractions, by Daniel de Rauglaudre.</li>
+  <li>The ssreflect subterm selection algorithm by Georges Gonthier and
+  Enrico Tassi, now accessible to tactic writers through the ssrmatching
+  plugin.</li>
+  <li>LtacProf, a profiler for Ltac by Jason Gross, Paul Steckler, Enrico Tassi
+    and Tobias Tebbi.</li>
+</ul>
+
+<p>A lot of other changes are described in the
+<a href="/distrib/V8.6.1/CHANGES">CHANGES file</a>.</p>
+
+<p>Coq 8.6 initiates a time-based release cycle, with a major version being
+released every 10 months.
+<a href="https://github.com/coq/roadmaps/blob/master/text/roadmap-8.6.md">The
+roadmap</a> is also made public.</p>
+
+<p>To date, Coq 8.6 contains more external contributions than any previous
+Coq version. Code reviews were systematically done before integration of
+new features, with an important focus given to compatibility and performance
+issues.</p>
+
+<p><a href="https://github.com/coq/ceps">Coq Enhancement Proposals</a>
+(CEPs for short) were introduced by Enrico Tassi to provide more visibility
+and a discussion period on new features.</p>
+
+<table class="downloadtable">
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Sources</td></tr>
+  <tr>
+    <td class="downloadcategory"><a name="src"></a></td>
+    <td class="downloadlink downloadback"><a href="/distrib/V8.6.1/files/coq-8.6.1.tar.gz">coq-8.6.1.tar.gz</a>
+    </td>
+    <td class="downloadsize"><div>5.3 MB</div></td>
+  </tr>
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Binaries</td></tr>
+  <tr>
+    <td class="downloadcategory downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="windows" /><div>Windows</div>
+    </td>
+
+    <td class="downloadlink downloadbottomline"><a
+      href="/distrib/V8.6.1/files/coq-installer-8.6.1-i686.exe">
+      coq-installer-8.6.1-i686.exe</a> (32 bits, bundled with CoqIDE, compiled
+      using OCaml 4.02.3 and Camlp5 6.14)
+    </td>
+
+    <td class="downloadsize downloadbottomback">82 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadcategory downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="windows" /><div>Windows</div>
+    </td>
+
+    <td class="downloadlink downloadbottomline"><a
+      href="/distrib/V8.6.1/files/coq-installer-8.6.1-x86_64.exe">
+      coq-installer-8.6.1-x86_64.exe</a> (64 bits, bundled with CoqIDE, compiled
+      using OCaml 4.02.3 and Camlp5 6.14)
+    </td>
+
+    <td class="downloadsize downloadbottomback">83 MB</td>
+  </tr>
+
+
+  
+  <tr>
+    <td class="downloadcategory downloadbottomline"><a
+      name="macos"></a><img src="/files/OSlogos/macos_logo.jpg"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="macos" /><div>MacOS</div>
+    </td>
+    
+    <td class="downloadlink downloadbottomback">
+    <a href="/distrib/V8.6.1/files/CoqIDE_8.6.1.dmg">
+      CoqIDE_8.6.1.dmg</a> (bundled with CoqIDE, compiled using OCaml 4.02.3 and
+      Camlp5 6.14)
+    </td>
+    <td class="downloadsize downloadbottomline">109 MB</td>
+  </tr>
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Documentation</td></tr>
+  
+  <tr>
+    <td class="downloadcategory downloadbottomback" rowspan="2"></td>
+    <td class="downloadlink downloadbottomline"><a href="/distrib/V8.6.1/files/Reference-Manual.pdf">
+      Reference-Manual.pdf</a> (also <a href="/distrib/V8.6.1/refman">online</a>)
+    </td>
+    <td class="downloadsize downloadbottomback">1.7 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadlink downloadbottomline">
+    <a href="/distrib/V8.6.1/stdlib">Standard Library</a> online documentation
+    </td>
+    <td class="downloadsize downloadbottomback"></td>
+  </tr>
+
+  <tr><td colspan="3" rowspan="1" class="downloadheader">Misc</td></tr>
+  <tr>
+    <td class="downloadcategory downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="windows" /><div>Windows</div>
+    </td>
+
+    <td class="downloadlink downloadbottomline"><a
+      href="/distrib/V8.6.1/files/coq-opensource-archive-i686.zip">
+      coq-opensource-archive-i686.zip</a> (sources of the files installed by
+      the 32 bit Windows installer, to comply with license requirements)
+    </td>
+
+    <td class="downloadsize downloadbottomback">262 MB</td>
+  </tr>
+
+  <tr>
+    <td class="downloadcategory downloadbottomback"><a
+      name="win"></a><img src="/files/OSlogos/windows_logo.png"
+      width="30" height="30" style="vertical-align:middle; display: block;
+      margin: 0 auto" alt="windows" /><div>Windows</div>
+    </td>
+
+    <td class="downloadlink downloadbottomline"><a
+      href="/distrib/V8.6.1/files/coq-opensource-archive-x86_64.zip">
+      coq-opensource-archive-x86_64.zip</a> (sources of the files installed by
+      the 64 bit Windows installer, to comply with license requirements)
+    </td>
+
+    <td class="downloadsize downloadbottomback">262 MB</td>
+  </tr>
+
+
+</table>
+
+</div><!-- frameworkcontent -->
+</div><!-- framework -->
+
+<#include "incl/footer.html">
