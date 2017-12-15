@@ -15,9 +15,9 @@ file `yamlpp.mll` to customize the pre-processing, you will also need
 `ocamllex` to regenerate `yamlpp.ml`.
 
 ## How to edit an existing page?
-* Edit the source file containing the webpage (legacy and secondary URL aliases
-  can be found in the `LEGACYINDEX` and `SECONDARYINDEX` files)
-* Run `make` and check that the produced file is ok (e.g. `dest/node/3.html`)
+* Edit the source file containing the webpage (secondary URL aliases
+  can be found in the `SECONDARYINDEX` file)
+* Run `make` and check that the produced file is ok.
    If that may help, `make run` launches a small local webserver
 * Commit your change and push it to the main repository
    The update of [coq.inria.fr](https://coq.inria.fr/) should then be automatic (TODO)
@@ -41,8 +41,8 @@ file `yamlpp.mll` to customize the pre-processing, you will also need
      a sequence of links to your page ancestors. See Drupal's breadcrumb.
      By default: `<a href="/">Home</a>`.
 
-* Ensure that your page is built and installed. Normally, this amounts to
-   adding a new line to the PAGES file, with the shape `localname:nicename`.
+* Ensure that your page is built and installed. Normally, this should be
+   automatic now. For aliases, you could edit `SECONDARYINDEX`.
    You could add multiple lines to have multiple aliases for the same page.
 
    Nota: for pages converted from Drupal, the relevant part of the url is

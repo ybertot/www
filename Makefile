@@ -44,7 +44,6 @@ $(DST)/%: pages/% $(DEPS)
 
 conf: $(DST)/aliases.conf
 
-## LEGACYINDEX contains links from old Drupal nodes to nice URLs
 ## SECONDARYINDEX contains secondary URLs, redirected via 301 to the
 ##   corresponding main URLs
 
@@ -53,8 +52,7 @@ conf: $(DST)/aliases.conf
 # triggered, another pass of rewriting will be performed on the new URL
 # unless we specify E=END.
 
-$(DST)/aliases.conf: LEGACYINDEX SECONDARYINDEX NEWSINDEX
-	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^node/\1$$ /\2 [L,R=301]|p" LEGACYINDEX > $@
+$(DST)/aliases.conf: SECONDARYINDEX NEWSINDEX
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\1$$ /\2 [L,R=301]|p" SECONDARYINDEX >> $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\2$$ /news/\1.html [E=END:1,L]|p" NEWSINDEX >> $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\1$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
