@@ -84,7 +84,7 @@ $(DST)/coq-workshop/2009/cfp/index.html:
 
 NEWS:= $(shell cut -f1 -d: NEWSINDEX | sort -r -n)
 
-RECENTNEWS:= 142 141 140
+RECENTNEWS:= 143 142 141
 
 NEWSSRC:=$(addprefix news/,$(NEWS))
 NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))
