@@ -1,0 +1,76 @@
+<#include "incl/macros.html">
+<#def TITLE>Coq 8.7</#def>
+<#include "incl/header.html">
+
+<div class="framework">
+<div class="frameworklabel">The previous version: Coq 8.7
+</div>
+<div class="frameworkcontent">
+
+<p>This version features:</p>
+
+<ul>
+  <li>A large amount of work on cleaning and speeding up the code base, notably
+    the work of Pierre-Marie Pédrot on making the tactic-level system
+    insensitive to existential variable expansion, providing a safer API to
+    plugin writers and making the code more robust.</li>
+  <li>New tactics:
+    <ul>
+      <li>Variants of tactics supporting existential variables <tt>eassert</tt>,
+        <tt>eenough</tt>, etc. by Hugo Herbelin;</li>
+      <li>Tactics <tt>extensionality in H</tt> and <tt>inversion_sigma</tt> by
+        Jason Gross;</li>
+      <li><tt>specialize with</tt> accepting partial bindings by Pierre
+        Courtieu.</li>
+    </ul>
+  </li>
+  <li>Cumulative Polymorphic Inductive Types, allowing cumulativity of
+    universes to go through applied inductive types, by Amin Timany and
+    Matthieu Sozeau.</li>
+  <li>The SSReflect plugin by Georges Gonthier, Assia Mahboubi and Enrico Tassi
+    was integrated (with its documentation in the reference manual) by Maxime
+    Dénès, Assia Mahboubi and Enrico Tassi.</li>
+  <li>The <tt>coq_makefile</tt> tool was completely redesigned to improve its
+    maintainability and the extensibility of generated Makefiles, and to make
+    <tt>_CoqProject</tt> files more palatable to IDEs by Enrico Tassi.</li>
+</ul>
+
+<p>A lot of other changes are described in the
+<a href="https://github.com/coq/coq/blob/V8.7.2/CHANGES">CHANGES file</a>.</p>
+
+<p>This is the second release of Coq developed on a time-based development
+  cycle. Its development spanned 9 months from the release of Coq 8.6 and was
+  based on a public road-map. It attracted many external contributions. Code
+  reviews and continuous integration testing were systematically used before
+  integration of new features, with an important focus given to compatibility
+  and performance issues.</p>
+
+<p>For downloads (in particular to get installers for Windows and Mac OS, or a
+  tarball of the sources), please go to
+  <a href="https://github.com/coq/coq/releases/tag/V8.7.2">the release
+    page on GitHub</a>.</p>
+
+</div><!-- frameworkcontent -->
+</div><!-- framework -->
+
+<div class="framework">
+<div class="frameworklabel">Previous and development versions of Coq </div>
+<div class="frameworkcontent">
+
+<p> The previous stable release of the Coq system is
+<a href="/coq-86">version 8.6</a>.
+</p>
+
+<p>The development version of Coq is <a href="https://github.com/coq/coq">browsable</a>
+and downloadable from our Git repository using command:
+<tt>git clone https://github.com/coq/coq.git</tt>.
+The daily level of stability of this version can be observed at the
+<a href="https://ci.inria.fr/coq/job/bench-clone-coq/">bench-clone-coq</a> site.
+</p>
+
+<p>Most of the previous versions of Coq are available <a href="/distrib/">here</a>.</p>
+
+</div>
+</div>
+
+<#include "incl/footer.html">
