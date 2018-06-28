@@ -1,3 +1,4 @@
+<#include "incl/macros.html">
 <#def TITLE>What is Coq?</#def><#include "incl/header.html">
 
 <div class="framework">
@@ -41,12 +42,12 @@
     <p> Coq is released with:</p>
       <ul>
 
-      <li>a graphical user interface based on gtk (CoqIde) (<a
-    href="/coqide-screenshots">see screenshots</a>),</li>
+      <li>a graphical user interface based on gtk (CoqIDE) (<a
+    href="/refman/practical-tools/coqide.html">see the chapter of the reference manual about CoqIDE</a>),</li>
       <li>documentation tools (<tt>coqdoc</tt> and <tt>coq-tex</tt>) and a statistics tool (<tt>coqwc</tt>),</li>
       <li>dependency and makefile generation tools for Coq
 	(<tt>coq_makefile</tt> and <tt>coqdep</tt>),</li>
-      <li>a stand-alone proof verifier.</li>
+      <li>a stand-alone proof verifier (<tt>coqchk</tt>).</li>
       </ul>
 </div>
 
@@ -68,16 +69,15 @@
     Christine Paulin extended it to the Calculus of Inductive
     Constructions. All in all, about fifty people contributed to the development of
     Coq features (see our <a
-    href="/distrib/current/CREDITS">credits</a> file, the <a
-    href="/distrib/current/refman/Reference-Manual002.html">credits</a> chapter in the Coq
+    href="<#CURRENTCREDITSURL>">credits</a> file, the <a
+    href="/refman/credits.html">credits</a> chapter in the Coq
     Reference Manual or the synthetic <a href="/who-did-what-in-coq">who did what</a> table).</p>
 
     <p>The development is coordinated by the ADT Coq (Action for Technological Development), that gathers the teams involved in the implementation of the Coq Proof Assistant. The teams registered in the ADT are the <a href="http://www.inria.fr">INRIA</a> projects <a href="http://www.pps.univ-paris-diderot.fr/pi.r2/">πr²</a> and <a href="http://www-sop.inria.fr/marelle/">Marelle</a>, and the team <a href="http://cedric.cnam.fr/AfficheEquipe.php?id=7&amp;lang=fr">CPR</a> from <a href="http://www.cnam.fr">CNAM</a>.
 </p>
 
 
-    <p> Coq is written in the <a href="http://caml.inria.fr/ocaml/index.en.html"
-   >Objective Caml</a> language, with a bit of C. It is
+    <p> Coq is written in the <a href="https://ocaml.org/index.fr.html">OCaml</a> language, with a bit of C. It is
     distributed under the <a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public Licence Version
     2.1</a> (LGPL).</p>
 </div>
