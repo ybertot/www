@@ -1,7 +1,7 @@
 <#def ID>146</#def>
 <#def TITLE>Coq 8.8.1 is out</#def>
 <#def AUTHOR>Théo Zimmermann</#def>
-<#def DATE>29 Jun 2018</#def>
+<#def DATE>9 Jul 2018</#def>
 <#def DESCR>
 <p>The <a href="https://github.com/coq/coq/releases/tag/V8.8.1">8.8.1 release of Coq</a> is available.</p>
 
