@@ -1,0 +1,12 @@
+<#def ID>148</#def>
+<#def TITLE>Coq 8.9+beta1 is out</#def>
+<#def AUTHOR>Guillaume Melquiond</#def>
+<#def DATE>2 Nov 2018</#def>
+<#def DESCR>
+The <a href="https://github.com/coq/coq/releases/tag/V8.9+beta1">first beta
+release of Coq 8.9</a> is available for testing. It features many
+quality-of-life improvements, including goal differences as well as numeral
+and custom notations.
+
+Feedback and <a href="https://github.com/coq/coq/issues">bug reports</a> are extremely welcome.
+</#def>
