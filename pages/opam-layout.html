@@ -1,0 +1,27 @@
+<#def TITLE>Layout of the Coq Package Index</#def>
+<#include "incl/header.html">
+<p>The archive is organized in the following OPAM repositories.</p>
+
+<h2>released</h2>
+
+<p>The repository contains packages for Coq and for Coq extensions that were
+officially released by the Coq team or their corresponding authors.
+All packages have a version number (i.e. no .dev packages).
+The repository is self contained.
+The repository is intended to be used by people familiar with the OPAM
+tool.</p>
+
+<h2>core-dev</h2>
+
+<p>The repository contains package for development versions of Coq. Typically
+.dev packages for Coq branches. The repository is self contained. The
+repository is intended to be used by developers only.</p>
+
+<h2>extra-dev</h2>
+
+<p>The repository contains packages for development versions of external
+contributions to Coq. Typically .dev packages following the branches of the
+extension. The repository is not self contained, i.e. a package may depend on
+a development version of Coq part of the <code>core-dev</code> repository. The repository
+is intended to be used by developers only.</p>
+<#include "incl/footer.html">
