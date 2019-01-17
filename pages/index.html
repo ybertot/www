@@ -22,19 +22,20 @@
 <div class="frameworklabel"><a style="color:black;font-weight:bold" href="/download">How to get it ?</a></div>
 <div class="frameworkcontent">
   <p>You can download <a href="<#CURRENTVERSIONURL>">the current stable version,
-      Coq <#CURRENTVERSION></a>, released in <#CURRENTVERSIONDATE>. It features
-      better performances, tactic improvements, many enhancements for universe
-      users, a new Export modifier for setting options, support for goal
-      selectors in front of focusing brackets and a new experimental
-      -mangle-names option for linting proof scripts.
-  </p>
+      Coq <#CURRENTVERSION></a>, released in <#CURRENTVERSIONDATE>. It
+      features many quality-of-life improvements, including goal
+      differences as well as numeral and custom notations.</p>
+<#ifdef UPCOMINGVERSION>
   <p><a href="<#UPCOMINGVERSIONURL>">The upcoming version, Coq <#UPCOMINGVERSION></a>,
     released in <#UPCOMINGVERSIONDATE>, is also available for testing.</p>
+</#ifdef>
 </div>
 <div class="frameworklinks">
 <ul>
 <li><a href="<#CURRENTVERSIONURL>">Get Coq <#CURRENTVERSION></a></li>
+<#ifdef UPCOMINGVERSION>
 <li><a href="<#UPCOMINGVERSIONURL>">Get Coq <#UPCOMINGVERSION></a></li>
+</#ifdef>
 </ul>
 </div>
 </div>
@@ -82,13 +83,12 @@
 <div class="framework">
 <div class="frameworklabel"><a style="color:black;font-weight:bold" href="/community">The Coq Community</a></div>
 <div class="frameworkcontent">
-  
+
 <p>There is a strong and active community of users working with
 Coq. They are contributing formal developments,
 extensions of Coq
-(see <a href="/packages">Coq Package Index</a>), 
+(see <a href="/packages">Coq Package Index</a>),
 and tools based on Coq
-
 (see <a href="/related-tools">Related Tools</a>).
 </p>
 
