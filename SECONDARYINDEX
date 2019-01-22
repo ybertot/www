@@ -2,7 +2,6 @@ welcome:
 getting-started:tutorial/0-getting-started
 1-basic-predicate-calculus:tutorial/1-basic-predicate-calculus
 adt:adt-coq
-coq-82-detailed-description:coq-82
 journée-de-démarrage-de-ladt:adt/demarrage
 journée-«-bibliothèques-»:adt/biblios
 journée-«-bibliothèques-»-du-11-décembre-2008:adt/biblios
