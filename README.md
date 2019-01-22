@@ -15,8 +15,7 @@ file `yamlpp.mll` to customize the pre-processing, you will also need
 `ocamllex` to regenerate `yamlpp.ml`.
 
 ## How to edit an existing page?
-* Edit the source file containing the webpage (secondary URL aliases
-  can be found in the `SECONDARYINDEX` file)
+* Edit the source file containing the webpage.
 * Run `make` and check that the produced file is ok.
    If that may help, `make run` launches a small local webserver
 * Commit your change and push it to the main repository
@@ -42,7 +41,7 @@ file `yamlpp.mll` to customize the pre-processing, you will also need
      By default: `<a href="/">Home</a>`.
 
 * Ensure that your page is built and installed. Normally, this should be
-   automatic now. For aliases, you could edit `SECONDARYINDEX`.
+   automatic now.
    You could add multiple lines to have multiple aliases for the same page.
 
    Nota: for pages converted from Drupal, the relevant part of the url is
