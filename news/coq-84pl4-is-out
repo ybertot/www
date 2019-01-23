@@ -1,0 +1,9 @@
+<#def ID>coq-84pl4-is-out</#def>
+<#def TITLE>Coq 8.4pl4 is out</#def>
+<#def AUTHOR>boutillier</#def>
+<#def DATE>12 May 2014 11:11 GMT</#def>
+<#def DESCR>
+<p>Version 8.4pl4 of Coq fixes several bugs of version 8.4pl3 including 3 critical ones. More information to be found in the <a href="/distrib/V8.4pl4/CHANGES">CHANGES</a> file.</p>
+<p>WARNING: The current logic of Coq is now known to be inconsistent with Axiom prop_extensionality :<br />
+forall A B:Prop, (A &lt;-&gt; B) -&gt; A = B.</p>
+</#def>

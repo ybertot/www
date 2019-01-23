@@ -1,7 +1,0 @@
-<#def ID>106</#def>
-<#def TITLE>Beta-release of Coq 8.4</#def>
-<#def AUTHOR>herbelin</#def>
-<#def DATE>27 Dec 2011 19:38 GMT</#def>
-<#def DESCR>
-<p>Coq 8.4 is available for beta-testing. More on the <a href="/coq-84">Coq 8.4</a> web page...</p>
-</#def>

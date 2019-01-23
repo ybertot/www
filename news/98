@@ -1,7 +1,0 @@
-<#def ID>98</#def>
-<#def TITLE>Coq 8.3pl2 is out</#def>
-<#def AUTHOR>herbelin</#def>
-<#def DATE>25 Apr 2011 17:44 GMT</#def>
-<#def DESCR>
-<p>Version 8.3pl2 of Coq fixes several bugs of version 8.3pl1. In particular, it provides compatibility for compiling Coq from sources with the latest versions of Objective Caml and Camlp5. More information to be found in the <a href="/distrib/8.3pl2/CHANGES">CHANGES</a> file.</p>
-</#def>

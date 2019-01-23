@@ -82,9 +82,9 @@ $(DST)/coq-workshop/2009/cfp/index.html:
 
 ## News, listed in the NEWSINDEX file
 
-NEWS:= $(shell cut -f1 -d: NEWSINDEX | sort -r -n)
+NEWS:= $(shell cut -f1 -d: NEWSINDEX)
 
-RECENTNEWS:= 149 148 147
+RECENTNEWS:= coq-890-is-out coq-89beta1-is-out coq-882-is-out
 
 NEWSSRC:=$(addprefix news/,$(NEWS))
 NEWSDST:=$(patsubst %,$(DST)/news/%.html,$(NEWS))

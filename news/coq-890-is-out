@@ -1,0 +1,16 @@
+<#def ID>coq-890-is-out</#def>
+<#def TITLE>Coq 8.9.0 is out</#def>
+<#def AUTHOR>Guillaume Melquiond</#def>
+<#def DATE>18 Jan 2019</#def>
+<#def DESCR>
+<p>The <a href="https://github.com/coq/coq/releases/tag/V8.9.0">8.9.0
+release of Coq</a> is available.</p>
+
+<p>It features many quality-of-life improvements, including goal
+differences as well as numeral and custom notations. For details, see the
+<a href="https://github.com/coq/coq/blob/V8.9.0/CHANGES.md">CHANGES</a>
+file.</p>
+
+<p>Feedback and <a href="https://github.com/coq/coq/issues">bug
+reports</a> are extremely welcome.</p>
+</#def>

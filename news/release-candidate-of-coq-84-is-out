@@ -1,0 +1,7 @@
+<#def ID>release-candidate-of-coq-84-is-out</#def>
+<#def TITLE>Release candidate of Coq 8.4 is out</#def>
+<#def AUTHOR>herbelin</#def>
+<#def DATE>8 Aug 2012 21:28 GMT</#def>
+<#def DESCR>
+<p>Coq 8.4 is available as a release candidate. More on the <a href="/coq-84">Coq 8.4</a> web page...</p>
+</#def>

@@ -1,0 +1,8 @@
+<#def ID>coq-83pl3-is-out</#def>
+<#def TITLE>Coq 8.3pl3 is out</#def>
+<#def AUTHOR>herbelin</#def>
+<#def DATE>27 Dec 2011 10:30 GMT</#def>
+<#def DESCR>
+<p>Version 8.3pl3 of Coq fixes several bugs of version 8.3pl2. At the same time, new patch-level releases of 8.1 and 8.2 have been released to fix critical bugs related to sort-polymorphism of inductive types.</p>
+<p>For 8.3pl3, see the <a href="/distrib/V8.3pl3/CHANGES.updated">CHANGES</a> file for a selected list of changes since 8.3pl2.</p>
+</#def>
