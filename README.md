@@ -52,11 +52,11 @@ file `yamlpp.mll` to customize the pre-processing, you will also need
 * make, verify, commit, push as for the edition of an existing page below.
 
 ## And for news?
-* Add a new file in `news/` with an increased number as filename.
+* Add a new file in `news/` with the file name of your liking.
    You can for instance copy `news/template` and adapt it, or any existing
    news files. See `news/template` for details about the expected syntax.
 
-* In the file NEWS, add your news number, with an optional url alias.
-   In the Makefile, update the `$(RECENTNEWS)` variable.
+* In the file NEWS, add your news title (filename) at the top
+   (this list is sorted in chronological order, most recent first).
 
 * make, verify, commit, push as usual

@@ -1,0 +1,7 @@
+<#def ID>coq-84pl5-is-out</#def>
+<#def TITLE>Coq 8.4pl5 is out</#def>
+<#def AUTHOR>coq-www</#def>
+<#def DATE>31 Oct 2014 06:11 GMT</#def>
+<#def DESCR>
+<p>Version <a href="/coq-84">8.4pl5</a> of Coq fixes several bugs of version 8.4pl4 including the compatibility with OCaml 4.02. More information to be found in the <a href="/distrib/V8.4pl5/CHANGES">CHANGES</a> file.</p>
+</#def>
