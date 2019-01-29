@@ -1,0 +1,73 @@
+<#def TITLE>Installing Coq via OPAM</#def>
+<#def OCAMLV>4.02.3</#def>
+<#include "incl/macros.html">
+<#include "incl/header.html">
+<h2>What is OPAM</h2>
+
+<p>OPAM is the package manager for the OCaml programming language, the language
+in which Coq is implemented.
+Instructions on
+<a href="http://opam.ocaml.org/doc/Install.html">how to install OPAM</a>
+itself are available on the OPAM website.</p>
+
+<p>By following the instructions on this web page one installs the last stable
+version of Coq and all additional packages in the directory <code>~/opam-coq.<#CURRENTVERSION></code>.
+Instructions target an OPAM newcomer.</p>
+
+<h2>Using OPAM to install Coq</h2>
+
+<p>Once the <code>opam</code> command is available, i.e. OPAM is installed, one can
+proceed as follows (using opam 2):</p>
+
+<pre><code>export OPAMROOT=~/opam-coq.<#CURRENTVERSION> # installation directory
+opam init -n --comp=ocaml-base-compiler.<#OCAMLV> -j 2 # 2 is the number of CPU cores
+opam repo add coq-released http://coq.inria.fr/opam/released
+opam install coq.<#CURRENTVERSION> &amp;&amp; opam pin add coq <#CURRENTVERSION>
+</code></pre>
+
+<p>If using <code>opam 1.2</code>, the <code>init</code> command should be:</p>
+
+<pre><code>opam init -n --comp <#OCAMLV>
+</code></pre>
+
+<p>One may also want to install CoqIDE. Note that this requires GTK+ development
+files (gtksourceview2) to be available on the system.</p>
+
+<pre><code>opam install coqide
+</code></pre>
+
+<p>For alternative user interfaces / editors, see instructions on their own
+homepage, e.g. <a href="https://proofgeneral.github.io/#quick-installation-instructions">https://proofgeneral.github.io/#quick-installation-instructions</a>
+for Proof-General.</p>
+
+<h2>Running Coq</h2>
+
+<p>Every time a new shell is opened one has to type in the following lines
+in order to use Coq</p>
+
+<pre><code>export OPAMROOT=~/opam-coq.<#CURRENTVERSION>
+eval `opam config env`
+</code></pre>
+
+<p>After that <code>coqc -v</code> shall run and print the version of Coq.</p>
+
+<h2>Using OPAM to install Coq packages</h2>
+
+<p>If Coq has been installed as described above, the list of available Coq
+packages can be accessed as follows</p>
+
+<pre><code>opam search coq
+</code></pre>
+
+<p>The command lists the Coq package names followed by a short description.
+One can access a more detailed description of a package, say <code>coq-sudoku</code>,
+by typing</p>
+
+<pre><code>opam show coq-sudoku
+</code></pre>
+
+<p>One can install the package by typing</p>
+
+<pre><code>opam install coq-sudoku
+</code></pre>
+<#include "incl/footer.html">
