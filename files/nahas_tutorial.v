@@ -1,7 +1,9 @@
 (**
 Mike Nahas's Coq Tutorial
+
 Started 2012-Nov-06
-Version 1.0, 2014-Oct-10
+Version 1.2, 2019-Jan-22
+Tested with Coq version 8.10+alpha
 
 ------------------------
 Dedicated to Kernighan and Ritchie,
@@ -39,70 +41,78 @@ using Coq.
 (** ** Prerequisites *)
 (**
 This tutorial will teach you how to use Coq to write formal proofs.  I
-assume you already know how how write a proof and about the formal
-logic on which proofs are based on.  If this tutorial teaches you
-about proofs or formal proofs, that is a happy accident.  I also
-assume you understand a programming language.  It doesn't matter which
-programming language.
+assume you already know how to write a proof and know about formal
+logic.  I tried to make this tutorial easy to read, so if you don't
+know those things, keep reading and you _might_ be able to pick them
+up.
 
-For learning about proofs, I recommend the Pulitzer Prize winning book
-"Godel, Escher, Bach", Chapters 7 and 8.  (Pages 181 to 230 in my
-copy.)
+I also assume you understand a programming language.  It doesn't
+matter which programming language.
 
-For learning about some of the ideas used in formal proofs, it might
-be good to read about Intuitionistic logic, the Curry-Howard
-correspondence, and the BHK-Interpretation.
-
-http://en.wikipedia.org/wiki/Intuitionistic_logic
-
-http://en.wikipedia.org/wiki/Curry-Howard_correspondence
-
-http://en.wikipedia.org/wiki/BHK_interpretation
-
-If you have more interest in logic, I highly recommend Gentzen's
-"Investigations into Logical Deductions".  It's not necessary at all,
-but it is a beautiful paper.
-
-
-If you need to learn a programming language, OCaML is the one that
-would help you with Coq the most.  Coq is written in OCaML and it
-borrows a lot of OCaML's syntax and style.
-
-http://caml.inria.fr/
-
+If you feel unprepared, the "further reading" section at the end has
+useful links.
 *)
+
 
 (** ** Installing Coq *)
 (**
-To get started, you need to install Coq.
-The simple way is:
-  - Get "CoqIDE", the graphical version of Coq.
-    It is available at http://coq.inria.fr/download
-    (If you're running Linux, your package manager may have it.)
 
-If you like the Emacs text editor, the alternative is
-  - Get "coqtop", the command-line version of Coq.
-    It is available at http://coq.inria.fr/download
-    (If you're running Linux, your package manager may have it.)
-  - Get "Proof General" Emacs mode.
-    Is is available at http://proofgeneral.inf.ed.ac.uk/
-  - Install Proof General for Emacs.
-    This is not difficult.  Or, at least, it is easier than learning Emacs.
-    The Proof General documentation will tell you how to install it.
+This tutorial now ships with CoqIDE, so if you're reading this in
+CoqIDE, you can skip this section and the next one.  If you don't yet
+have Coq installed, keep reading.
+
+The easiest thing is to install "CoqIDE", the graphical version of
+Coq.  Windows and MacOS installers and the latest source code are
+available at http://coq.inria.fr/download If you're running Linux,
+your package manager probably has a recent-ish version.
+(Debian/Ubuntu/Mint: "sudo apt install coqide", Fedora/CentOS might be
+'su -c "yum install coq-coqide"'.  Arch might be "sudo pacman -S
+coqide")
+
+If you like the Emacs text editor, the alternative is to run "coqtop",
+the command-line version of Coq.  It is also available at
+http://coq.inria.fr/download The Linux package is usually called
+"coq".  To use it in Emacs, you have to also download and install the
+"Proof General" Emacs mode.  Is is available at
+https://proofgeneral.github.io/ Linux package managers include some
+version of it.  (Debian/Ubuntu/Mint calls it "proofgeneral".
+Fedora/CentOS might call it "emacs-common-proofgeneral".  Arch might
+call it "proofgeneral".)
+
 *)
 
 
 (** ** Loading this file *)
 (**
+
+This tutorial now ships with CoqIDE, so if you're running a recent
+version of CoqIDE, you can load the tutorial by going to the "Help"
+menu and selecting "Tutorial".  If the "Help" menu doesn't have a
+"Tutorial" button, you're running an older version of CoqIDE, which is
+fine, but keep reading to learn how to load this file.
+
 This file (yes, the one you're reading right now) is a Coq file.  Coq
 file's names usually end in ".v".  If this file's name currently ends
 in ".txt", you'll want to change it to ".v" before loading it into
 CoqIDE or Emacs.  (If this file's name ends in ".html" or ".pdf",
 someone used Coq to generate this document, in which case you need to
-find the original ".v" file they used.)
+find the original ".v" file they used.  If you can't find it, the
+author hosts a recent version at
+https://mdnahas.github.io/doc/nahas_tutorial.v)
 
 Once you've made sure the file's name ends in ".v", start CoqIDE or
 Emacs and load the file.
+
+You need to know that this file was designed to work in a specific
+version of Coq.  Coq is a research tool and the developers
+occasionally make small changes to its file format, so it is possible
+that this file is for a different version of Coq.  As you progress
+through the tutorial, you may find a proof that your version of Coq
+doesn't like.  You can probably make it work, but if you can't, you
+can always install a version of CoqIDE that ships with the tutorial
+(version 8.10 and higher) and that version of the tutorial will be
+sure to be compatible with that version of Coq.
+
 *)
 
 (** * Comments *)
@@ -149,23 +159,23 @@ proof, which takes 3 steps.  Lastly, the "Qed" command ends the proof.
 
 (NOTE: Instead of "Theorem", you may also see proofs that start with
 "Lemma", "Remark", "Fact", "Corollary", and "Proposition", which all
-mean the _SAME_ thing.  I think it is good style to only use "Theorem".
-Instead of "Qed", you may also see proofs that end with "Admitted" or
+mean the _SAME_ thing.  In my proofs, I only use "Theorem".  Instead
+of "Qed", you may also see proofs that end with "Admitted" or
 "Defined", but these mean _DIFFERENT_ things.  Use "Qed" for now.)
 
 
 Coq uses 3 different "languages" and you can see them all here in this
 proof.
-  - The "vernacular" language manages definitions,
-    and each of its commands starts with a capital letter:
+  - The "vernacular" language manages definitions and top-level
+    interactions.  Each of its commands starts with a capital letter:
     "Theorem", "Proof", and "Qed".
-  - The "tactics" language is used to write proofs,
-    and its commands start with a lower-case letter:
-    "intros" and "exact".
-  - The "Gallina" language is used to express what you want to prove,
-    and its expressions use lots of operators and parentheses:
-     "(forall A : Prop, A -> A)".
-
+  - The "tactics" language is used to write proofs.  Its commands start
+    with a lower-case letter: "intros" and "exact".
+  - The unnamed language of Coq terms is used to express what you want
+    to prove.  Its expressions use lots of operators and
+    parentheses: "(forall A : Prop, A -> A)".  (Technically, this
+    language is a subset of the vernacular language, but it is useful to
+    think of it as its own thing.)
 
 Now, let's take a look inside this proof!  Since it probably has
 scrolled off the screen, I'll reproduce it.
@@ -189,12 +199,12 @@ Let's see the different states inside your first proof.  Move your
 cursor (by clicking your mouse or using the arrow keys) over any line
 between "Proof." and "Qed.".  Now let's see the state at that point.
 
-In CoqIDE, there are three ways to do it
+In CoqIDE, there are three ways to do it:
   1. From the menu bar, open the "Navigation" menu and select "go to"
   2. In the tool bar, click on the 5th icon (a green arrow pointing at a yellow ball)
   3. Use a keyboard combo.  On my Mac, it's control-option-rightarrow.
 
-In Proof General
+In Proof General:
   Do "C-c C-Enter" (press control-c and then control-Enter)
 
 In a different part of the screen you should see something like:
@@ -257,7 +267,7 @@ which is the same as the name of the variable removed from the
 subgoal.  You should always keep the same name, if possible.
 
 _RULE_: If the subgoal starts with "(forall <name> : <type>, ..."
-     Then use tactic "intros <name>."
+     Then use tactic "intros <name>.".
 
 The state after "intros A." is:
 
@@ -284,7 +294,7 @@ removes that hidden "forall" and moves the unnamed variable of type A
 to the hypothesis named "proof_of_A".
 
 _RULE_: If the subgoal starts with "<type> -> ..."
-     Then use tactic "intros <name>."
+     Then use tactic "intros <name>.".
 
 The state after the second "intros" command, looks like:
 
@@ -313,7 +323,7 @@ IT IS VITALLY IMPORTANT THAT YOU DO NOT THINK OF A Prop AS BEING
 EITHER "TRUE" OR "FALSE".  A Prop either has a proof or it does not
 have a proof.  Godel shattered mathematics by showing that some true
 propositions can never proven.  Tarski went further and showed that
-some propositions cannot even said be to be true or false!!!  Coq deals
+some propositions cannot even be said to be true or false!!!  Coq deals
 with these obstacles in modern mathematics by restricting Prop to
 being either proven or unproven, rather than true or false.
 
@@ -323,13 +333,13 @@ need something of type A" or, because A is a proposition, "we need a
 proof of A".  Now, the previous command moved a proof of A into the
 context and called it "proof_of_A".  So, an hypothesis in our context
 (which are all things we know to exist) has a type that matches our
-subgoal (which is we want to create), so we have an exact match.  The
-tactic "exact proof_of_A" solves the subgoal (and the proof).
+subgoal (which is what we want to create), so we have an exact match.
+The tactic "exact proof_of_A" solves the subgoal (and the proof).
 
-Ta-da!  You're first proof!
+Ta-da!  Your first proof!
 
 _RULE_: If the subgoal matches an hypothesis,
-     Then use tactic "exact <hyp_name>."
+     Then use tactic "exact <hyp_name>.".
 
 
 Okay, let's try something more complicated!
@@ -382,7 +392,8 @@ particular proof of A.
 
 The command "pose" assigns the result of "A_implies_B proof_of_A" to
 the new hypothesis "proof_of_B".  (Note the annoying extra set of
-parentheses around the arguments to the "pose" command.)
+parentheses that are necessary around the arguments to the "pose"
+command.)
 
 _RULE_: If you have an hypothesis
           "<hyp_name>: <type1> -> <type2> -> ... -> <result_type>"
@@ -557,8 +568,8 @@ function that takes two arguments, one of type A and one of type B,
 and returns a value of type C.  The type of the function is "A->B->C"
 and a call to it looks like "A_imp_B_imp_C something_of_type_A
 something_of_type_B".  Notice that there are no parentheses needed -
-you just put the arguments next to the name of the function.
-E.g. "function arg1 arg2" This is a style common in functional
+you just put the arguments next to the name of the function.  For
+example, "function arg1 arg2". This is a style common in functional
 programming languages.  For those familiar with imperative languages,
 like C, C++, and Java, it will feel odd not to have parentheses and
 commas to denote the arguments.
@@ -629,7 +640,24 @@ code for the proof.  It looks like this:
 I formatted this version so that the correspondence to the proof is
 clearer.  The "intros" commands declare the parameters for the
 function.  "pose" declares constant values in the function.  Lastly,
-the "exact" command is used to return the result of the function.
+the "exact" command is used to return the result of the function.  As
+we go, you'll see the tight relationship in Coq between proofs and
+code.
+
+
+At this point, I want to emphasize that Coq proofs are not normally
+this tedious or verbose.  The proofs I've shown and the proofs I will
+show are demonstrating the mechanics of how Coq works.  I'm using
+simple familiar types to make the mechanics' operations clear to you.
+Coq's tactic language contains commands for automatic theorem proving
+and for defining macros.  Almost all the proofs in this tutorial are
+simple enough to dispatch with a single Coq tactic.  But when you
+prove more complicated statements, you'll need all the commands I'm
+teaching in this tutorial.
+
+This helps explain why most Coq proofs are backwards.  Once a
+goal has been transformed into simple enough subgoals, those
+subgoals can each be proved by automation.
 
 
 So far, we've only worked with proofs, propositions, and Prop.  Let's
@@ -670,10 +698,9 @@ have been named "Provable" and "Unprovable" (or "AlwaysProvable"
 and "NeverProvable").  The lower-case ones act like what you're
 accustomed to.
 
-Since we've been playing with Props, let's do some proofs with (the badly
-named) "True" and "False" and we'll come back to the lower-case "true"
-and "false" later.
-*)
+Since we've been playing with Props, let's do some proofs with (the
+imperfectly named) "True" and "False" and we'll come back to the
+lower-case "true" and "false" later.  *)
 
 (** ** Capital-T True and Capital-F False *)
 (** *** True is provable *)
@@ -697,7 +724,7 @@ a proof of True.  By its definition, True has a single proof called
 "I".  So, "exact I." solves this proof.
 
 _RULE_: If your subgoal is "True",
-     Then use tactic "exact I".
+     Then use tactic "exact I.".
 
 Now, we turn to False.
 *)
@@ -765,7 +792,7 @@ familiar with using the tactic "intros" to remove "->" at the front of
 the subgoal.  The command "intros proof_of_False" does just that.
 
 
-After that, it's goes as usual.  "intros"s at the start and "exact" at
+After that, it goes as usual.  "intros"s at the start and "exact" at
 the end.  It feels weird to have an hypothesis labeled
 "proof_of_False" doesn't it?  It's weird because we know False has no
 proofs, so that hypothesis can never exist.  Wouldn't it be better if
@@ -796,7 +823,7 @@ argument.  Since there is no way to construct a False, "case"
 creates no subgoals!  Without a subgoal, we're done!
 
 _RULE_: If any hypothesis is "<name> : False",
-     Then use tactic "case <name>."
+     Then use tactic "case <name>.".
 *)
 
 (** *** -> Examples *)
@@ -833,7 +860,7 @@ Proof.
 Qed.
 
 (**
-All of the above proofs should be obvious by now.
+All of the above proofs should be obvious to you by now.
 *)
 
 
@@ -961,7 +988,7 @@ single proof named "I".
 
 
 _RULE_: If the current subgoal contains a function call with all its arguments,
-     Then use the tactic "simpl".
+     Then use the tactic "simpl.".
 
 
 I promised that you would see "Is_true" with a more complex argument.
@@ -1030,7 +1057,7 @@ where "a" is "false" will become the current subgoal.
 
 _RULE_: If there is a hypothesis "<name>" of a created type
      AND that hypothesis is used in the subgoal,
-     Then you can try the tactic "case <name>"
+     Then you can try the tactic "case <name>.".
 
 
 Let's do one more example.
@@ -1176,7 +1203,7 @@ But if you don't know all the constructor's arguments, using "refine"
 is a fine approach.
 
 _RULE_: If the subgoal's top-most term is a created type,
-     Then use "refine (<name_of_constructor> _ _ ...)".
+     Then use "refine (<name_of_constructor> _ _ ...).".
 
 Let's prove something a little more complicated...
 *)
@@ -1328,7 +1355,7 @@ Qed.
 
 (**
 _RULE_: If a hypothesis "<name>" is a created type with only one constructor,
-      Then use "destruct <name> as [ <arg1> <arg2> ... ]" to extract its arguments
+      Then use "destruct <name> as [ <arg1> <arg2> ... ]" to extract its arguments.
 *)
 
 (** *** functions and inductive types *)
@@ -1459,7 +1486,7 @@ That was a real proof.  Welcome to the big leagues.
 
 
 _RULE_ If a hypothesis "<name>" contain a function call with all its arguments,
-      Then use the tactic "simpl in <name>"
+      Then use the tactic "simpl in <name>.".
 
 
 Let's try it with "andb" and "/\".
@@ -1519,15 +1546,20 @@ It should be easy for you to proof that "not" and "notb" are
 equivalent.  Below is a statement of the theorem; fill it in
 if you think you can.
 
+I did not include a proof, so where you would normally see a proof,
+you'll see the tactic "admit" and the vernacular command "Admitted".
 The tactic "admit" is a cheat.  It ends a subgoal without solving it.
-I use it below to let Coq's parser bypass this unproven theorem.
+A proof containing an "admit" is not a real proof, so Coq forces you
+to end it with "Admitted" instead of "Qed".  I use these commands
+below so that Coq's parser won't get hung up because I didn't include
+a proof of the theorem.
 
-The "admit" tactic has its uses, though.  When there are multiple
-subgoals and you want to skip over the easy ones to work on the hard
-one first, the "admit" tactic can be used to get the easy subgoals out
-of the way.  Or, if you are only part way done a proof but you want
-send someone a Coq file that parses, "admit" can be used to fill in
-your blanks.
+The "admit" tactic has real uses.  When there are multiple subgoals
+and you want to skip over the easy ones to work on the hard one first,
+the "admit" tactic can be used to get the easy subgoals out of the
+way.  Or, if you are only part way done a proof but you want send
+someone a Coq file that parses, "admit" can be used to fill in your
+blanks.
 
 
 So, take a swing at proving this theorem.
@@ -1539,11 +1571,11 @@ So, take a swing at proving this theorem.
 Theorem negb_is_not : (forall a, Is_true (negb a) <-> (~(Is_true a))).
 Proof.
   admit.  (** delete "admit" and put your proof here. *)
-Qed.
+Admitted. (** when done, replace "Admitted." with "Qed." *)
 
 (**
 _RULE_: If you have a subgoal that you want to ignore for a while,
-      Then use the tactic "admit"
+      Then use the tactic "admit.".
 *)
 
 (** * Existence and Equality *)
@@ -1561,7 +1593,7 @@ In Coq, you cannot just declare that something exists.  You must prove
 it.
 
 For example, we might want to prove that "there exists a bool 'a' such
-that (Is_true (andb a true))".  We could not just state that the
+that (Is_true (andb a true))".  We cannot just state that the
 "bool" exists.  You need to produce a value for "a" - called the
 witness - and then prove that the statement holds for the witness.
 
@@ -1813,7 +1845,7 @@ call, we get "eq nat (plus 1 1) 2", that is, "1 + 1 = 2"!
 The concept of substituting a function call with its result or
 substituting the result with the function call is called
 "convertibility".  One tactic we've seen, "simpl", replaces
-convertibile values.  We'll see more tactics in the future.
+convertible values.  We'll see more tactics in the future.
 
 
 Now that we have a concept of what "=" means in Coq, let's use it!
@@ -1898,11 +1930,11 @@ That is much cleaner.
 
 _RULE_: If you have a hypothesis "<name> : <a> = <b>"
      AND "<a>" in your current subgoal
-     Then use the tactic "rewrite <name>"
+     Then use the tactic "rewrite <name>.".
 
 _RULE_: If you have a hypothesis "<name> : <a> = <b>"
      AND "<b>" in your current subgoal
-     Then use the tactic "rewrite <- <name>"
+     Then use the tactic "rewrite <- <name>.".
 
 Let's try something that explicitly relies on convertibility.  Recall,
 "andb" is and for "bools" and that it is represented by the operator
@@ -1983,7 +2015,7 @@ eliminate a lot of cases that can never happen.
 _RULE_: If you have a hypothesis
           "<name> : (<constructor1> ...) = (<constructor2> ...)
      OR "<name> : <constant1> = <constant2>
-     Then use the tactic "discriminate <name>"
+     Then use the tactic "discriminate <name>.".
 
 *)
 
@@ -2180,14 +2212,88 @@ you should use the "case" tactic instead of "elim".
 
 _RULE_: If there is a hypothesis "<name>" of a created type
      AND that hypothesis is used in the subgoal,
-     AND the type has a recursive definition
-     Then you can try the tactic "elim <name>"
-
-
-Now that we know how to use induction, let's do a difficult proof.
-Let's prove that "n + m = m + n".
+     AND the type has a recursive definition,
+     Then you can try the tactic "elim <name>.".
 *)
 
+*)
+(** *** Induction tactic *)
+(**
+Just as the "case" tactic has a similar "destruct" tactic, the "elim"
+tactic has a similar "induction" tactic.  Let's look at the previous
+proof, but using this new tactic.
+*)
+Theorem plus_n_O__again : (forall n, n + O = n).
+Proof.
+  intros n.
+  induction n as [|n' inductive_hypothesis].
+    (** base case *)
+    simpl.
+    exact (eq_refl O).
+
+    (** inductive case *)
+    simpl.
+    rewrite inductive_hypothesis.
+    exact (eq_refl (S n')).
+Qed.
+(**
+So, the "induction" tactic does the same thing as "elim.", except the
+names of the created variables are listed in the tactic, rather than
+being assigned later using "intros" in the inductive case of the proof.
+
+The "induction" command creates 2 subgoals, one for the base case and
+another for the inductive case, and after the "as" keyword, there are
+2 lists of variable names, one for the base case and one for the
+inductive case.  Those lists are separated by verical bars ('|')
+inside the square brackets.  The base case doesn't create any
+variables, so its list is empty.  The inductive case creates two
+variables, and they are named "n'" and "inductive_hypothesis".
+
+I said the "induction" command was similar to "destruct" and, if the
+type "destruct"ed has more than one constructor, the "destruct"
+command will create a subgoals for each constructor and the command
+needs a list of variable names for each constructor.  For example, the
+type "or" has two constructors.  Recall that something of type "or A
+B" can be created by "or_introl proof_of_A" or "or_intror proof_of_B".
+If I "destruct" an "or A B", it will create two subgoals and the
+"destruct" needs to have a list of variables for each.  To
+demonstrate this, I'll redo the proof that or commutes.
+
+*)
+
+Theorem or_commutes__again : (forall A B, A \/ B -> B \/ A).
+Proof.
+  intros A B.
+  intros A_or_B.
+  destruct A_or_B as [proof_of_A | proof_of_B].
+    (** suppose A_or_B is (or_introl proof_of_A) *)
+    refine (or_intror _).
+      exact proof_of_A.
+
+    (** suppose A_or_B is (or_intror proof_of_B) *)
+    refine (or_introl _).
+      exact proof_of_B.
+Qed.
+
+(**
+In my proofs, I like to use "case" and "elim" and only use "destruct"
+for types with a single constructor.  However, some people prefer to
+use "destruct" and "induction" for every proof.  The writers of Coq
+are talking about removing this duplication and may remove "case" and
+"elim" in the future.
+
+If you want to use "destruct" and "induction", it is helpful to use
+the Vernacular command "Print", which prints out a definition and
+shows you how many constructors there are and which variables you need
+to name for each one.
+*)
+Print or.
+Print nat_ind.
+(**
+
+Now we return to proofs on induction using "nat".  And let's do a
+difficult proof.  Let's prove that "n + m = m + n".
+*)
 (** *** Addition is Symmetric *)
 Theorem plus_sym: (forall n m, n + m = m + n).
 Proof.
@@ -2371,7 +2477,7 @@ what should we return if the list is empty?
 
 In some programming languages, you might throw an exception - either
 explicitly or through a memory violation.  In others, you might assume
-the program crashs.  But if you to prove a program correct, these
+the program crashes.  But if you to prove a program correct, these
 aren't choices you can make.  The program needs to be predictable.
 
 There are choices you can make:
@@ -2520,7 +2626,7 @@ it.  It took me 30 minutes to write it, mostly by copying from code
 printed using "Show Proof." from the complicated proofs above.
 
 But I do expect you to understand that it _can_ be written in Coq.
-And, I expect you to be able to read a prove that the function does
+And, I expect you to be able to read a proof that the function does
 what I said it does.
 *)
 Theorem correctness_of_hd_never_fail :
@@ -2617,24 +2723,29 @@ proved with induction using the "elim" tactic.
 *)
 
 Theorem app_nil_l : (forall A:Type, (forall l:list A, nil ++ l = l)).
-  admit.  (** delete "admit" and put your proof here. *)
 Proof.
+  admit.  (** delete "admit" and put your proof here. *)
+Admitted. (** when done, replace "Admitted." with "Qed." *)
 
 Theorem app_nil_r : (forall A:Type, (forall l:list A, forall l:list A, l ++ nil = l)).
-  admit.  (** delete "admit" and put your proof here. *)
 Proof.
+  admit.  (** delete "admit" and put your proof here. *)
+Admitted. (** when done, replace "Admitted." with "Qed." *)
 
 Theorem app_comm_cons : forall A (x y:list A) (a:A), a :: (x ++ y) = (a :: x) ++ y.
-  admit.  (** delete "admit" and put your proof here. *)
 Proof.
+  admit.  (** delete "admit" and put your proof here. *)
+Admitted. (** when done, replace "Admitted." with "Qed." *)
 
 Theorem app_assoc : forall A (l m n:list A), l ++ m ++ n = (l ++ m) ++ n.
-  admit.  (** delete "admit" and put your proof here. *)
 Proof.
+  admit.  (** delete "admit" and put your proof here. *)
+Admitted. (** when done, replace "Admitted." with "Qed." *)
 
 Theorem app_cons_not_nil : forall A (x y:list A) (a:A), nil <> x ++ a :: y.
-  admit.  (** delete "admit" and put your proof here. *)
 Proof.
+  admit.  (** delete "admit" and put your proof here. *)
+Admitted. (** when done, replace "Admitted." with "Qed." *)
 
 
 (** * Conclusion *)
@@ -2657,10 +2768,65 @@ expert provers consider Coq proofs a puzzle and I wish you luck in
 solving your puzzles!
 *)
 
-(** * Vernacular commands *)
+
+(** * Postscripts *)
+
+(** ** Contact *)
+(**
+A Coq version of the tutorial ships with Coq.  It is available in their git repo on Github: https://github.com/coq/coq
+
+HTML and Coq versions of the tutorial are hosted on the author's professional website.
+
+https://mdnahas.github.io/doc/nahas_tutorial.html
+https://mdnahas.github.io/doc/nahas_tutorial.v
+
+The author, Michael Nahas, can be reached at michael@nahas.com
+*)
+
+(** ** Further Reading *)
+(**
+Coq uses a lot of concepts that I didn't explain.  Below are some good
+sources on those topic.
+
+For learning about proofs, I recommend the Pulitzer Prize winning book
+"Godel, Escher, Bach", Chapters 7 and 8.  (Pages 181 to 230 in my
+copy.)
+
+For learning about some of the ideas used in formal proofs, you can
+read about Intuitionistic logic, the Curry-Howard correspondence, and
+the BHK-Interpretation.
+
+http://en.wikipedia.org/wiki/Intuitionistic_logic
+
+http://en.wikipedia.org/wiki/Curry-Howard_correspondence
+
+http://en.wikipedia.org/wiki/BHK_interpretation
+
+If you have a deep interest in logic, I highly recommend Gentzen's
+"Investigations into Logical Deductions".  It's not necessary at all,
+but it is a beautiful paper.
+
+If you need to learn a programming language, OCaml is the one that
+would help you with Coq the most.  Coq is written in OCaml and it
+borrows a lot of OCaml's syntax and style.
+
+https://ocaml.org
+
+To learn more about Coq, I found the textbook "Software Foundations"
+readable.  It focuses on proving programs correct.  You can also look
+at Coq's documentation webpage.
+
+https://softwarefoundations.cis.upenn.edu/
+
+https://coq.inria.fr/documentation
+*)
+
+
+(** ** Vernacular commands *)
 (**
   - "Theorem" starts a proof.
   - "Qed" ends a proof.
+  - "Admitted" ends an incomplete proof.
   - "Definition" declares a function.
   - "Fixpoint" declares a recursive function.
   - "Inductive" declares data types.
@@ -2672,17 +2838,17 @@ solving your puzzles!
   - "Compute" prints out the result of a function call.
 *)
 
-(** * The tactic guide *)
+(** ** The tactic guide *)
 
 (**
 _RULE_: If the subgoal starts with "(forall <name> : <type>, ..."
-      Then use tactic "intros <name>."
+      Then use tactic "intros <name>.".
 
 _RULE_: If the subgoal starts with "<type> -> ..."
-      Then use tactic "intros <name>."
+      Then use tactic "intros <name>.".
 
 _RULE_: If the subgoal matches an hypothesis,
-      Then use tactic "exact <hyp_name>."
+      Then use tactic "exact <hyp_name>.".
 
 _RULE_: If you have an hypothesis
           "<hyp_name>: <type1> -> <type2> -> ... -> <result_type>"
@@ -2698,52 +2864,52 @@ _RULE_: If you have subgoal "<goal_type>"
      Then use tactic "refine (<hyp_name> _ _ ...)." with N underscores.
 
 _RULE_: If your subgoal is "True",
-     Then use tactic "exact I".
+     Then use tactic "exact I.".
 
 _RULE_: If your subgoal is "~<type>" or "~(<term>)" or "(not <term>)",
      Then use tactic "intros".
 
 _RULE_: If any hypothesis is "<name> : False",
-     Then use tactic "case <name>."
+     Then use tactic "case <name>.".
 
 _RULE_: If the current subgoal contains a function call with all its arguments,
-     Then use the tactic "simpl".
+     Then use the tactic "simpl.".
 
 _RULE_: If there is a hypothesis "<name>" of a created type
      AND that hypothesis is used in the subgoal,
-     Then you can try the tactic "case <name>"
+     Then you can try the tactic "case <name>.".
 
 _RULE_: If the subgoal's top-most term is a created type,
-      Then use "refine (<name_of_constructor> _ _ ...)".
+      Then use "refine (<name_of_constructor> _ _ ...).".
 
 _RULE_: If a hypothesis "<name>" is a created type with only one
 constructor,
-     Then use "destruct <name> as [ <arg1> <arg2> ... ]" to extract its arguments
+     Then use "destruct <name> as [ <arg1> <arg2> ... ]." to extract its arguments.
 
 _RULE_: If a hypothesis "<name>" contain a function call with all its arguments,
-     Then use the tactic "simpl in <name>"
+     Then use the tactic "simpl in <name>.".
 
 _RULE_: If you have a subgoal that you want to ignore for a while,
-     Then use the tactic "admit"
+     Then use the tactic "admit.".
 
 _RULE_: If the current subgoal starts "exists <name>, ..."
-     Then create a witness and use "refine (ex_intro _ witness _)"
+     Then create a witness and use "refine (ex_intro _ witness _).".
 
 _RULE_: If you have a hypothesis "<name> : <a> = <b>"
      AND "<a>" in your current subgoal
-     Then use the tactic "rewrite <name>"
+     Then use the tactic "rewrite <name>.".
 
 _RULE_: If you have a hypothesis "<name> : <a> = <b>"
      AND "<b>" in your current subgoal
-     Then use the tactic "rewrite <- <name>"
+     Then use the tactic "rewrite <- <name>.".
 
 _RULE_: If you have a hypothesis
           "<name> : (<constructor1> ...) = (<constructor2> ...)
      OR "<name> : <constant1> = <constant2>
-     Then use the tactic "discriminate <name>"
+     Then use the tactic "discriminate <name>.".
 
 _RULE_: If there is a hypothesis "<name>" of a created type
      AND that hypothesis is used in the subgoal,
      AND the type has a recursive definition
-     Then you can try the tactic "elim <name>"
+     Then you can try the tactic "elim <name>.".
 *)
