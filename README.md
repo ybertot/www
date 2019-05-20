@@ -55,7 +55,7 @@ file `yamlpp.mll` to customize the pre-processing, you will also need
    You can for instance copy `news/template` and adapt it, or any existing
    news files. See `news/template` for details about the expected syntax.
 
-* In the file NEWS, add your news title (filename) at the top
+* In the file `NEWSINDEX`, add your news title (filename) at the top
    (this list is sorted in chronological order, most recent first).
 
 * make, verify, commit, push as usual
