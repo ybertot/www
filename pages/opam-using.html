@@ -1,66 +1,86 @@
-<#def TITLE>Installing Coq via OPAM</#def>
+<#def TITLE>Install Coq with opam</#def>
 <#def OCAMLV>4.02.3</#def>
 <#include "incl/macros.html">
 <#include "incl/header.html">
-<h2>What is OPAM</h2>
+<h2>What is opam?</h2>
 
-<p>OPAM is the package manager for the OCaml programming language, the language
+<p>Opam is the package manager for the OCaml programming language, the language
 in which Coq is implemented.
+Opam 2 is the recommended version, and is assumed below.
 Instructions on
-<a href="http://opam.ocaml.org/doc/Install.html">how to install OPAM</a>
-itself are available on the OPAM website.</p>
+<a href="https://opam.ocaml.org/doc/Install.html">how to install opam</a>
+itself are available on the opam website.
+The following command displays the version of opam you have installed:</p>
 
-<p>By following the instructions on this web page one installs the last stable
-version of Coq and all additional packages in the directory <code>~/opam-coq.<#CURRENTVERSION></code>.
-Instructions target an OPAM newcomer.</p>
-
-<h2>Using OPAM to install Coq</h2>
-
-<p>Once the <code>opam</code> command is available, i.e. OPAM is installed, one can
-proceed as follows (using opam 2):</p>
-
-<pre><code>export OPAMROOT=~/opam-coq.<#CURRENTVERSION> # installation directory
-opam init -n --comp=ocaml-base-compiler.<#OCAMLV> -j 2 # 2 is the number of CPU cores
-opam repo add coq-released http://coq.inria.fr/opam/released
-opam install coq.<#CURRENTVERSION> &amp;&amp; opam pin add coq <#CURRENTVERSION>
+<pre><code>opam --version
 </code></pre>
 
-<p>If using <code>opam 1.2</code>, the <code>init</code> command should be:</p>
+<p>Follow the instructions below to install the last stable version of Coq and
+additional packages. Instructions target an opam newcomer.</p>
 
-<pre><code>opam init -n --comp <#OCAMLV>
+<h2>Initialize opam</h2>
+
+<p>Once opam is installed, it must be initialized before its first usage:</p>
+
+<pre><code>opam init
+eval $(opam env)
 </code></pre>
+
+<p><code>opam init</code> will prompt you to allow opam to set up
+initialization scripts, which is generally fine to accept. Otherwise, every
+time a new shell is opened you have to type in the
+<code>eval $(opam env)</code> command above to update environment variables.</p>
+
+<p>By default, opam will use the global installation of OCaml. You can initialize
+opam with an explicit compiler version, for example <#OCAMLV>, with the option
+<code>--compiler=ocaml-base-compiler.<#OCAMLV></code>.
+See also the section "Managing different versions of OCaml and Coq" below,
+about switches and roots.
+</p>
+
+<h2>Install Coq</h2>
+
+<pre><code># Pin the coq package to version <#CURRENTVERSION> and install it.
+opam pin add coq <#CURRENTVERSION>
+</code></pre>
+
+<p>Pinning prevents opam from upgrading Coq automatically, as it may cause
+inadvertent breakage in your Coq projects. You can choose to upgrade Coq
+explicitly to <code>$NEW_VERSION</code> with essentially the same command:</p>
+
+<pre><code>opam pin add coq $NEW_VERSION
+</code></pre>
+
+<p>To check that the installation was successful, <code>coqc -v</code> should
+print the version of Coq.</p>
+
+<h3>Install CoqIDE</h3>
 
 <p>One may also want to install CoqIDE. Note that this requires GTK+ development
-files (gtksourceview2) to be available on the system.</p>
+files (<code>gtksourceview2</code>) to be available on the system.</p>
 
 <pre><code>opam install coqide
 </code></pre>
 
 <p>For alternative user interfaces / editors, see instructions on their own
 homepage, e.g. <a href="https://proofgeneral.github.io/#quick-installation-instructions">https://proofgeneral.github.io/#quick-installation-instructions</a>
-for Proof-General.</p>
+for Proof General.</p>
 
-<h2>Running Coq</h2>
+<h2>Using opam to install Coq packages</h2>
 
-<p>Every time a new shell is opened one has to type in the following lines
-in order to use Coq</p>
+<p>Coq packages live in a repository separate from the standard OCaml
+repository. The following command adds that repository to opam:</p>
 
-<pre><code>export OPAMROOT=~/opam-coq.<#CURRENTVERSION>
-eval `opam config env`
+<pre><code>opam repo add coq-released https://coq.inria.fr/opam/released
 </code></pre>
 
-<p>After that <code>coqc -v</code> shall run and print the version of Coq.</p>
-
-<h2>Using OPAM to install Coq packages</h2>
-
-<p>If Coq has been installed as described above, the list of available Coq
-packages can be accessed as follows</p>
+<p>The next command lists all the Coq package names followed by a short
+description:</p>
 
 <pre><code>opam search coq
 </code></pre>
 
-<p>The command lists the Coq package names followed by a short description.
-One can access a more detailed description of a package, say <code>coq-sudoku</code>,
+<p>One can access a more detailed description of a package, say <code>coq-sudoku</code>,
 by typing</p>
 
 <pre><code>opam show coq-sudoku
@@ -70,4 +90,61 @@ by typing</p>
 
 <pre><code>opam install coq-sudoku
 </code></pre>
+
+<h2>Managing different versions of OCaml and Coq</h2>
+
+<p>By default, opam will use the global OCaml installation. Opam can handle
+different versions of OCaml and other packages (including Coq) via
+<em>switches</em> or <em>roots</em>.</p>
+
+<h3>Switches</h3>
+
+<p>Switches provide separate environments, with their own versions of OCaml and
+installed packages.</p>
+
+<p>The following command creates a switch named <code>with-coq</code> with OCaml
+<#OCAMLV>:</p>
+
+<pre><code># Run one of the following depending on your version of opam
+opam switch create with-coq <#OCAMLV>
+</code></pre>
+
+<p>Change to an existing switch named <code>other-switch</code> with this command:</p>
+
+<pre><code>opam switch other-switch
+eval $(opam env)
+</code></pre>
+
+<h3>Roots</h3>
+
+<p>Opam stores all its configuration (including switches) in a directory called
+<em>root</em> (by default, <code>~/.opam</code>). The path to the root can be
+set using the <code>$OPAMROOT</code> environment variable, providing an
+alternative way of creating fresh opam environments.
+</p>
+
+<p>The main benefit of roots is that they can be used simultaneously, but they
+require some external bookkeeping. In comparison. switches are entirely managed
+by opam, and they can share the global configuration of a single root.
+</p>
+
+<pre><code># Set a new root location
+export OPAMROOT=~/.opam-coq.<#CURRENTVERSION>
+
+# Initialize the root with an explicit OCaml version.
+
+opam init -n --compiler=ocaml-base-compiler.<#OCAMLV>
+
+# Install Coq in this new root (same commands as above)
+opam pin add coq <#CURRENTVERSION>
+</code></pre>
+
+<p>Every time a new shell is opened, or you want to use a different root, type
+in the following lines:
+</p>
+
+<pre><code>export OPAMROOT=~/.opam-coq.<#CURRENTVERSION>
+eval $(opam env)
+</code></pre>
+
 <#include "incl/footer.html">
