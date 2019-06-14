@@ -21,11 +21,8 @@ clean:
 $(PP).ml: $(PP).mll
 	ocamllex $<
 
-## If ocamlopt is there, we use it to compile yamlpp, otherwise we use
-## the yamlpp.ml as an ocaml script...
-
 $(PP): $(PP).ml
-	ocamlopt -o $@ $< || printf 'ocaml %s "$$@"' $< > $@
+	ocamlopt -o $@ $<
 	chmod +x $@
 
 .PHONY: all pages news conf pagesaliases newsaliases clean
