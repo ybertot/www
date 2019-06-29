@@ -400,6 +400,15 @@ div.error, tr.error {
   padding: 8px;
 }
 
+/* Red links in red "error" boxes are hard to see */
+.error a {
+  text-decoration: underline;
+}
+
+.error p {
+  text-indent:0em;
+}
+
 /*-----forms-----*/
 .form-text,
 .form-textarea,
