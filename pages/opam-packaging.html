@@ -1,83 +1,153 @@
 <#def TITLE>Creating and Submitting a Package</#def>
 <#include "incl/header.html">
-<p>This page contains instructions covering the case of a simple Coq package
+<p>This page contains instructions to submit a simple example Coq package
 called <code>foo</code> with version <code>1.0.0</code>.
-The full documentation on OPAM packages can be found on the <a href="http://opam.ocaml.org/">OPAM web site</a>.</p>
+The full documentation on Opam packages can be found on the
+<a href="http://opam.ocaml.org/doc/Packaging.html">Opam web site</a>.</p>
 
-<h2>Creating a package</h2>
+<h2>Package layout</h2>
 
-<p>First, go to the github page of <a href="https://github.com/coq/opam-coq-archive">opam-coq-archive</a> and <a href="https://help.github.com/articles/fork-a-repo/">make a fork</a>.</p>
+<p>For simplicity, we will assume that the Coq project you want to package
+contains a <code>Makefile</code> providing the following commands:
+</p>
 
-<p>The repository is now available in your personal github space.
-Clone it locally by typing the following, where <code>user</code> is your github user name.</p>
+<pre><code>make          # Build the package
+make install  # Install the package
+</code></pre>
 
-<pre><code>git clone git@github.com:user/opam-coq-archive.git
+<details>
+  <summary>Click here to see a minimal example <code>Makefile</code>.
+  </summary>
+<pre><code>build: Makefile.coq
+	$(MAKE) -f Makefile.coq
+
+install: Makefile.coq
+	$(MAKE) -f Makefile.coq install
+
+Makefile.coq: _CoqProject
+	coq_makefile _CoqProject -o $@
+</code></pre>
+<p>
+See also the Reference Manual on
+<a href="/distrib/refman/practical-tools/utilities.html#building-a-coq-project-with-coq-makefile">building a Coq project with <code>coq_makefile</code></a>.
+</p>
+</details>
+
+The project must be available to download as an archive. For example,
+if your repository is hosted on GitHub, tag the commit corresponding to the
+<code>1.0.0</code> version of your project:
+
+<pre><code>git tag 1.0.0
+git push origin 1.0.0
+</code></pre>
+
+If your repository is on GitHub at <code>$YOU/foo</code> (where <code>$YOU</code> is
+your GitHub user name), the archive corresponding to the tag <code>1.0.0</code>
+can be downloaded from this URL:
+<code>https://github.com/$YOU/foo/archive/1.0.0.tar.gz</code>, using
+<code>curl -L</code> or your browser for example.
+
+<h2>Creating a package definition file</h2>
+
+<p>First, go to the GitHub page of <a href="https://github.com/coq/opam-coq-archive">opam-coq-archive</a> and <a href="https://help.github.com/articles/fork-a-repo/">make a fork</a>.</p>
+
+<p>The repository is now available in your personal GitHub space.
+Clone it locally by typing the following, where <code>$YOU</code> is your GitHub user name.
+The correct URL can also be found by clicking on the <em>clone or download</em> button
+on the GitHub page of your fork.
+</p>
+
+<pre><code>git clone https://github.com/$YOU/opam-coq-archive.git
 cd opam-coq-archive
 </code></pre>
 
-<p>Note that the correct URL can also be found by clicking on the <em>clone</em> <em>or</em>
-<em>download</em> button. Then create a directory named as follows</p>
+<p>Then create a directory named as follows</p>
 
 <pre><code>mkdir -p released/packages/coq-foo/coq-foo.1.0.0
 </code></pre>
 
-<p>Remark that the package for <code>foo</code> is named <code>coq-foo</code> and that the directory
-name is the package name followed by a dot followed by the version of the
-package. Such directory has to contain at least 3 files</p>
+<p>The Opam package is thus named <code>coq-foo</code> and the directory name
+is the package name followed by a dot followed by the version of the
+package.</p>
 
-<p>First, a text file called <code>url</code> pointing to the sources archive.
-In our case <code>released/packages/coq-foo/coq-foo.1.0.0/url</code> contains:</p>
+<p>In that directory, create a text file called <code>opam</code>,
+which will contain the package's metadata (build instructions, dependencies, etc.).
+Here is a template for <code>released/packages/coq-foo/coq-foo.1.0.0/opam</code>:</p>
 
-<pre><code>http: &quot;https://github.com/user/foo/archive/1.0.0.tar.gz&quot;
-checksum: &quot;d41d8cd98f00b204e9800998ecf8427e&quot;
-</code></pre>
+<pre><code>opam-version: &quot;2.0&quot;
+synopsis: "A Coq library doing wonders" # One-line description
+description: """
+  Foo does bar with baz.
+""" # Longer description
 
-<p>The MD5 checksum is mandatory, and can be obtained with:</p>
-
-<pre><code>curl -L https://github.com/user/foo/archive/1.0.0.tar.gz | md5sum
-</code></pre>
-
-<p>Second, a text file called <code>descr</code> containing a short
-description of the package. In our case the contents of
-<code>released/packages/coq-foo/coq-foo.1.0.0/descr</code> are:</p>
-
-<pre><code>Foo is a Coq library doing wonders
-</code></pre>
-
-<p>Third, a text file called <code>opam</code> containing some metadata like build
-instructions and dependencies. In our case
-<code>released/packages/coq-foo/coq-foo.1.0.0/opam</code> contains:</p>
-
-<pre><code>opam-version: &quot;1.2&quot;
+homepage: &quot;https://github.com/$YOU/foo&quot;
+dev-repo: &quot;git+https://github.com/$YOU/foo.git&quot;
+bug-reports: &quot;https://github.com/$YOU/foo/issues&quot;
 maintainer: &quot;your@email.address&quot;
-homepage: &quot;https://github.com/you/foo&quot;
-dev-repo: &quot;https://github.com/you/foo.git&quot;
-bug-reports: &quot;https://github.com/you/foo/issues&quot;
-authors: [&quot;Your Name&quot;]
+authors: [
+  &quot;You&quot;
+]
 license: &quot;MIT&quot;
+
+depends: [
+  &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.10~&quot;}
+]
+
 build: [
-  [&quot;coq_makefile -R . Foo -o Makefile *.v&quot;]
   [make &quot;-j%{jobs}%&quot;]
 ]
 install: [
   [make &quot;install&quot;]
 ]
-remove: [&quot;rm&quot; &quot;-R&quot; &quot;%{lib}%/coq/user-contrib/Foo&quot;]
-depends: [
-  &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.6~&quot;}
-]
+
+url {
+  src: "https://github.com/$YOU/foo/archive/1.0.0.tar.gz"
+  checksum: "sha256=133f2c6de1b9b35c0b26ab3e21fa86a351fffb415d20cae714b015f95fbc3725"
+}
+
 tags: [
   &quot;keyword:fooish&quot;
   &quot;category:Miscellaneous/Coq Extensions&quot;
-  &quot;date:2016-09-01&quot;
+  &quot;date:2019-07-01&quot;
   &quot;logpath:Foo&quot;
 ]
 </code></pre>
 
-<p>One can now git commit the new package</p>
+<p>
+The last two fields are of particular interest:
+</p>
+
+<ul>
+  <li>
+    The <code>url</code> section describes where to find your package.
+    It must have at least the following fields:
+    the <code>src</code> field with the URL of the package archive,
+    and the <code>checksum</code> field with the checksum of that archive
+    prefixed by <code>sha256=</code>.
+  </li>
+
+  <li>
+    The <code>tags</code> field contains Coq-specific metadata.
+    See also the <a href="https://github.com/coq/ceps/blob/master/text/003-opam-metadata.md">CEP on Opam metadata</a>.
+  </li>
+</ul>
+
+<p>For a description of the other fields, see the <a href="https://opam.ocaml.org/doc/Manual.html#Package-definitions">relevant section of the Opam Manual</a>.
+
+<p>The checksum can be obtained with:</p>
+
+<pre><code>curl -L https://github.com/$YOU/foo/archive/1.0.0.tar.gz | sha256sum
+</code></pre>
+
+<p>In the <code>opam</code> file, the checksum must be prefixed with the
+hashing algorithm, here <code>sha256=</code>. (<code>sha512=</code>, and
+<code>md5=</code> are also supported.)
+</p>
+
+<p>Commit the new package:</p>
 
 <pre><code>git add released/packages/coq-foo/coq-foo.1.0.0
-git commit -m 'Packaging foo version 1.0.0'
+git commit -m 'Package coq-foo.1.0.0'
 </code></pre>
 
 <h2>Testing your new package</h2>
@@ -103,13 +173,13 @@ to install the package you shall run <code>opam update</code>.</p>
 <p>Submission happens by <a href="https://help.github.com/articles/creating-a-pull-request/">creating a pull request</a>
  on the <a href="https://github.com/coq/opam-coq-archive">opam-coq-archive repository</a>.</p>
 
-<p>First push your changes to you personal fork</p>
+<p>First push your changes to you personal fork:</p>
 
 <pre><code>git push origin master
 </code></pre>
 
-<p>Then visit the github page of your personal fork and click on the
-<em>new</em> <em>pull</em> <em>request</em> button.</p>
+<p>Then visit the GitHub page of your personal fork and click on the
+<em>new pull request</em> button.</p>
 
 <h2>Making good packages</h2>
 
@@ -141,9 +211,9 @@ met:</p>
 
 <ol>
 <li><em>Maintained</em> by the Coq team or by an external author (contact email
-address in the <code>author:</code> field in OPAM metadata)</li>
+address in the <code>author:</code> field in Opam metadata)</li>
 <li><em>Released</em> with a version number and a tar ball (that is mirrored on the Coq
-OPAM archive website)</li>
+Opam archive website)</li>
 <li>Includes a <em>Changelog</em> that lists the main changes between any
 two versions part of this archive</li>
 <li>The <em>License</em> must allow free redistribution (even if it is not a free
@@ -152,7 +222,7 @@ software license)</li>
 <li>All <em>Axioms</em> used are documented</li>
 <li>ML code is <em>reviewed</em> by a Coq developer</li>
 <li><em>Documentation</em> should be available (see the <code>doc:</code> field in the
-OPAM metadata)</li>
+Opam metadata)</li>
 </ol>
 
 <p>In any case the Coq development team keeps the right to refuse the integration
