@@ -1,7 +1,7 @@
 <#def TITLE>Creating and Submitting a Package</#def>
 <#include "incl/header.html">
 <p>This page contains instructions to submit a simple example Coq package
-called <code>foo</code> with version <code>1.0.0</code>.
+called <code>foo</code> at version <code>1.0.0</code>.
 The full documentation on Opam packages can be found on the
 <a href="http://opam.ocaml.org/doc/Packaging.html">Opam web site</a>.</p>
 
@@ -29,7 +29,7 @@ Makefile.coq: _CoqProject
 </code></pre>
 <p>
 See also the Reference Manual on
-<a href="/distrib/refman/practical-tools/utilities.html#building-a-coq-project-with-coq-makefile">building a Coq project with <code>coq_makefile</code></a>.
+<a href="/refman/practical-tools/utilities.html#building-a-coq-project-with-coq-makefile">building a Coq project with <code>coq_makefile</code></a>.
 </p>
 </details>
 
@@ -47,26 +47,53 @@ can be downloaded from this URL:
 <code>https://github.com/$YOU/foo/archive/1.0.0.tar.gz</code>, using
 <code>curl -L</code> or your browser for example.
 
-<h2>Creating a package definition file</h2>
+<h2>The Opam archive for Coq</h2>
+
+<p>Opam packages live in this repository:
+<a href="https://github.com/coq/opam-coq-archive">opam-coq-archive</a>.
+New packages are submitted through GitHub.
+</p>
+
+<h3>Clone the repository</h3>
+
+<p>Follow this section if this is your first submission to
+the Opam archive to Coq.</p>
 
 <p>First, go to the GitHub page of <a href="https://github.com/coq/opam-coq-archive">opam-coq-archive</a> and <a href="https://help.github.com/articles/fork-a-repo/">make a fork</a>.</p>
 
 <p>The repository is now available in your personal GitHub space.
 Clone it locally by typing the following, where <code>$YOU</code> is your GitHub user name.
-The correct URL can also be found by clicking on the <em>clone or download</em> button
-on the GitHub page of your fork.
+The correct URL in the third line can also be found by clicking on the
+<em>clone or download</em> button on the GitHub page of your fork.
 </p>
 
-<pre><code>git clone https://github.com/$YOU/opam-coq-archive.git
+<p>This creates a clone with two remotes, one for the official archive,
+called <code>upstream</code>, and one for your fork, called <code>origin</code>.
+</p>
+
+<pre><code>git clone https://github.com/coq/opam-coq-archive.git -o upstream
 cd opam-coq-archive
+git add origin https://github.com/$YOU/opam-coq-archive
 </code></pre>
 
-<p>Then create a directory named as follows</p>
+<h3 id="fetch-upstream">Update the repository</h3>
+
+<p>If you already have a clone of <code>opam-coq-archive</code>, for example
+because this is not your first submission, the following command updates
+the <code>upstream</code> remote with all changes since your last update
+or initial clone.</p>
+
+<pre><code>git fetch upstream
+</code></pre>
+
+<h3>Create a package definition file</h3>
+
+<p>In the <code>opam-coq-archive</code> directory, create a sub-directory named as follows</p>
 
 <pre><code>mkdir -p released/packages/coq-foo/coq-foo.1.0.0
 </code></pre>
 
-<p>The Opam package is thus named <code>coq-foo</code> and the directory name
+<p>The Opam package is thus named <code>coq-foo</code> and the sub-directory name
 is the package name followed by a dot followed by the version of the
 package.</p>
 
@@ -78,7 +105,7 @@ Here is a template for <code>released/packages/coq-foo/coq-foo.1.0.0/opam</code>
 synopsis: "A Coq library doing wonders" # One-line description
 description: """
   Foo does bar with baz.
-""" # Longer description
+""" # Longer description, can span several lines
 
 homepage: &quot;https://github.com/$YOU/foo&quot;
 dev-repo: &quot;git+https://github.com/$YOU/foo.git&quot;
@@ -87,10 +114,10 @@ maintainer: &quot;your@email.address&quot;
 authors: [
   &quot;You&quot;
 ]
-license: &quot;MIT&quot;
+license: &quot;MIT&quot; # Make sure this is reflected by a LICENSE file in your sources
 
 depends: [
-  &quot;coq&quot; {&gt;= &quot;8.5&quot; &amp; &lt; &quot;8.10~&quot;}
+  &quot;coq&quot; {&gt;= &quot;8.7&quot; &amp; &lt; &quot;8.10~&quot;}
 ]
 
 build: [
@@ -144,13 +171,17 @@ hashing algorithm, here <code>sha256=</code>. (<code>sha512=</code>, and
 <code>md5=</code> are also supported.)
 </p>
 
-<p>Commit the new package:</p>
+<p>Create a new branch named <code>coq-foo.1.0.0</code>,
+and commit the new <code>opam</code> file:
+</p>
 
-<pre><code>git add released/packages/coq-foo/coq-foo.1.0.0
+<pre><code># Create the branch coq-foo.1.0.0 based on <code>upstream/master</code>
+git checkout -b coq-foo.1.0.0 upstream/master
+git add released/packages/coq-foo/coq-foo.1.0.0/opam
 git commit -m 'Package coq-foo.1.0.0'
 </code></pre>
 
-<h2>Testing your new package</h2>
+<h3>Test your new package</h3>
 
 <p>The preliminary step is to lint your <code>opam</code> file as follows</p>
 
@@ -166,16 +197,16 @@ opam install -v coq-foo
 </code></pre>
 
 <p>If things go wrong, after having fixed the problem and before trying again
-to install the package you shall run <code>opam update</code>.</p>
+to install the package, run <code>opam update</code>.</p>
 
-<h2>Submitting your new package</h2>
+<h3>Submit your new package</h3>
 
 <p>Submission happens by <a href="https://help.github.com/articles/creating-a-pull-request/">creating a pull request</a>
  on the <a href="https://github.com/coq/opam-coq-archive">opam-coq-archive repository</a>.</p>
 
-<p>First push your changes to you personal fork:</p>
+<p>First push your changes to your personal fork:</p>
 
-<pre><code>git push origin master
+<pre><code>git push origin coq-foo.1.0.0
 </code></pre>
 
 <p>Then visit the GitHub page of your personal fork and click on the
@@ -210,10 +241,6 @@ lower and upper bounds to version numbers. This way all installable packages
 met:</p>
 
 <ol>
-<li><em>Maintained</em> by the Coq team or by an external author (contact email
-address in the <code>author:</code> field in Opam metadata)</li>
-<li><em>Released</em> with a version number and a tar ball (that is mirrored on the Coq
-Opam archive website)</li>
 <li>Includes a <em>Changelog</em> that lists the main changes between any
 two versions part of this archive</li>
 <li>The <em>License</em> must allow free redistribution (even if it is not a free
