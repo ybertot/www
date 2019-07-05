@@ -88,7 +88,14 @@ or initial clone.</p>
 
 <h3>Create a package definition file</h3>
 
-<p>In the <code>opam-coq-archive</code> directory, create a sub-directory named as follows</p>
+<p>Create a new branch named <code>coq-foo.1.0.0</code> based on
+<code>upstream/master</code>:
+</p>
+
+<pre><code>git checkout -b coq-foo.1.0.0 upstream/master
+</code></pre>
+
+<p>In the <code>opam-coq-archive</code> directory, create a sub-directory named as follows:</p>
 
 <pre><code>mkdir -p released/packages/coq-foo/coq-foo.1.0.0
 </code></pre>
@@ -171,13 +178,10 @@ hashing algorithm, here <code>sha256=</code>. (<code>sha512=</code>, and
 <code>md5=</code> are also supported.)
 </p>
 
-<p>Create a new branch named <code>coq-foo.1.0.0</code>,
-and commit the new <code>opam</code> file:
+<p>Commit the new <code>opam</code> file:
 </p>
 
-<pre><code># Create the branch coq-foo.1.0.0 based on <code>upstream/master</code>
-git checkout -b coq-foo.1.0.0 upstream/master
-git add released/packages/coq-foo/coq-foo.1.0.0/opam
+<pre><code>git add released/packages/coq-foo/coq-foo.1.0.0/opam
 git commit -m 'Package coq-foo.1.0.0'
 </code></pre>
 
