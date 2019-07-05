@@ -25,7 +25,7 @@ install: Makefile.coq
 	$(MAKE) -f Makefile.coq install
 
 Makefile.coq: _CoqProject
-	coq_makefile _CoqProject -o $@
+	coq_makefile -f _CoqProject -o $@
 </code></pre>
 <p>
 See also the Reference Manual on
@@ -71,7 +71,7 @@ The correct URL in the third line can also be found by clicking on the
 called <code>upstream</code>, and one for your fork, called <code>origin</code>.
 </p>
 
-<pre><code>git clone https://github.com/coq/opam-coq-archive.git -o upstream
+<pre><code>git clone https://github.com/coq/opam-coq-archive -o upstream
 cd opam-coq-archive
 git add origin https://github.com/$YOU/opam-coq-archive
 </code></pre>
