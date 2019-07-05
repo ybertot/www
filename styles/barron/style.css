@@ -301,7 +301,7 @@ h2.page-title {
 	text-decoration:none;
 }
 
-.content p {
+.content p, .content details {
 	margin: 10px 0;
 }
 
