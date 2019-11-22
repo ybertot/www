@@ -1606,7 +1606,7 @@ constructor for "ex P" takes the predicate "P" , the witness (called
 "ex P".
 
 "exists ..., ..." is an operator to provide a friendly notation.  For
-"and" and "or", we did the same with "/\" and "/\".  For existence,
+"and" and "or", we did the same with "/\" and "\/".  For existence,
 the usually operator is a capital E written backwards, but that's
 difficult to type, so Coq uses the word "exists".
 
