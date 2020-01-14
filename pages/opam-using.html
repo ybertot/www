@@ -12,7 +12,8 @@ Instructions on
 itself are available on the opam website.
 The following command displays the version of opam you have installed:</p>
 
-<pre><code>opam --version
+<pre><code># Make sure opam version is 2.0 or above.
+opam --version
 </code></pre>
 
 <p>Follow the instructions below to install the last stable version of Coq and
@@ -40,6 +41,16 @@ about switches and roots.
 
 <h2>Install Coq</h2>
 
+<p>Note that installing Coq using opam will build it from sources,
+which will take several minutes to complete. Note also that Coq
+depends on ocamlfind, which depends on m4. If m4 is not already
+present on your system, you should install it with your system package
+manager. For instance, on Debian / Ubuntu:</p>
+
+<pre><code># If m4 is not already present, install it with your system package manager.
+sudo apt install m4
+</code></pre>
+
 <pre><code># Pin the coq package to version <#CURRENTVERSION> and install it.
 opam pin add coq <#CURRENTVERSION>
 </code></pre>
@@ -56,8 +67,11 @@ print the version of Coq.</p>
 
 <h3>Install CoqIDE</h3>
 
-<p>One may also want to install CoqIDE. Note that this requires GTK+ development
-files (<code>gtksourceview2</code>) to be available on the system.</p>
+<p>One may also want to install CoqIDE. Note that this requires GTK+
+development files (<code>gtksourceview3</code>) to be available on the
+system. For instance, on Debian / Ubuntu:</p>
+
+<pre><code>sudo apt install libgtksourceview-3.0-dev</code></pre>
 
 <pre><code>opam install coqide
 </code></pre>
