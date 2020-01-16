@@ -12,16 +12,16 @@ Instructions on
 itself are available on the opam website.
 The following command displays the version of opam you have installed:</p>
 
-<pre><code># Make sure opam version is 2.0 or above.
+<pre><code># Make sure opam version is 2.0.0 or above.
 opam --version
 </code></pre>
 
 <p>Follow the instructions below to install the last stable version of Coq and
-additional packages. Instructions target an opam newcomer.</p>
+additional packages. The instructions target an opam newcomer.</p>
 
-<h2>Initialize opam</h2>
+<h2>Initializing opam</h2>
 
-<p>Once opam is installed, it must be initialized before its first usage:</p>
+<p>Once opam is installed, it must be initialized before first usage:</p>
 
 <pre><code>opam init
 eval $(opam env)
@@ -39,68 +39,80 @@ See also the section "Managing different versions of OCaml and Coq" below,
 about switches and roots.
 </p>
 
-<h2>Install Coq</h2>
+<h2>Installing Coq</h2>
+
+<p>Depending on your operating system, installing Coq using opam
+may require you to first install some system packages. The recommended way to determine
+the names of required system packages is via the <code>opam-depext</code> tool:</p>
+
+<pre><code>opam install opam-depext
+opam-depext coq
+</code></pre>
+
+<p>For example, on Debian / Ubuntu, this command may list the <code>m4</code> system
+package, which can then be installed as follows:</p>
+
+<pre><code>sudo apt-get install m4
+</code></pre>
 
 <p>Note that installing Coq using opam will build it from sources,
-which will take several minutes to complete. Note also that Coq
-depends on ocamlfind, which depends on m4. If m4 is not already
-present on your system, you should install it with your system package
-manager. For instance, on Debian / Ubuntu:</p>
-
-<pre><code># If m4 is not already present, install it with your system package manager.
-sudo apt install m4
-</code></pre>
+which will take several minutes to complete:</p>
 
 <pre><code># Pin the coq package to version <#CURRENTVERSION> and install it.
 opam pin add coq <#CURRENTVERSION>
 </code></pre>
 
-<p>Pinning prevents opam from upgrading Coq automatically, as it may cause
-inadvertent breakage in your Coq projects. You can choose to upgrade Coq
-explicitly to <code>$NEW_VERSION</code> with essentially the same command:</p>
+<p>Pinning prevents opam from upgrading Coq automatically, which may cause
+inadvertent breakage in your Coq projects. You can upgrade Coq explicitly to
+<code>$NEW_VERSION</code> with essentially the same command:</p>
 
 <pre><code>opam pin add coq $NEW_VERSION
 </code></pre>
 
-<p>To check that the installation was successful, <code>coqc -v</code> should
-print the version of Coq.</p>
+<p>To ensure that installation was successful, check that <code>coqc -v</code>
+prints the expected version of Coq.</p>
 
-<h3>Install CoqIDE</h3>
+<h3>Installing CoqIDE</h3>
 
-<p>One may also want to install CoqIDE. Note that this requires GTK+
+<p>You may also want to install CoqIDE. Note that this requires GTK+
 development files (<code>gtksourceview3</code>) to be available on the
-system. For instance, on Debian / Ubuntu:</p>
+system. As for Coq, names of system packages to install can be
+determined using <code>opam-depext</code>:</p>
 
-<pre><code>sudo apt install libgtksourceview-3.0-dev</code></pre>
+<pre><code>opam-depext coqide</code></pre>
+
+<p>After the listed system packages have been installed, CoqIDE can be
+built and installed with the following command:</p>
 
 <pre><code>opam install coqide
 </code></pre>
 
-<p>For alternative user interfaces / editors, see instructions on their own
-homepage, e.g. <a href="https://proofgeneral.github.io/#quick-installation-instructions">https://proofgeneral.github.io/#quick-installation-instructions</a>
+<p>For alternative user interfaces / editors, see instructions on their respective
+websites, e.g., <a href="https://proofgeneral.github.io/#quick-installation-instructions">https://proofgeneral.github.io/#quick-installation-instructions</a>
 for Proof General.</p>
 
 <h2>Using opam to install Coq packages</h2>
 
-<p>Coq packages live in a repository separate from the standard OCaml
-repository. The following command adds that repository to opam:</p>
+<p>Coq packages live in a repository separate from the standard OCaml opam
+repository. The following command adds that repository to the current
+opam switch (more on switches below):</p>
 
 <pre><code>opam repo add coq-released https://coq.inria.fr/opam/released
 </code></pre>
 
-<p>The next command lists all the Coq package names followed by a short
-description:</p>
+<p>The following command lists the names of all Coq packages along with short
+descriptions:</p>
 
 <pre><code>opam search coq
 </code></pre>
 
-<p>One can access a more detailed description of a package, say <code>coq-sudoku</code>,
-by typing</p>
+<p>You can access a more detailed description of a package, say <code>coq-sudoku</code>,
+using the command:</p>
 
 <pre><code>opam show coq-sudoku
 </code></pre>
 
-<p>One can install the package by typing</p>
+<p>You can then install the package using the command:</p>
 
 <pre><code>opam install coq-sudoku
 </code></pre>
