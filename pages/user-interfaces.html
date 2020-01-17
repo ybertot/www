@@ -1,0 +1,163 @@
+<#def TITLE>User interfaces</#def>
+<#include "incl/header.html">
+
+<div class="framework">
+<div class="frameworklabel">Editor-support packages</div>
+<div class="frameworkcontent">
+
+<p>
+Coq projects can be developed with a variety of editors thanks to
+great support provided through user-contributed extensions.  Here we
+list such support extensions that are actively used and maintained:
+
+<ul>
+
+<li>
+<strong>VsCode</strong> users can use
+the <a href="https://github.com/coq-community/vscoq">VsCoq
+extension</a> that is actively maintained by Maxime Dénès as part
+of <a href="https://github.com/coq-community/manifesto">coq-community</a>.
+VsCoq was initially authored by C.J. Bell, but was left unmaintained
+for several years before being forked in coq-community.
+</li>
+
+<li>
+<strong>Emacs</strong> users can use the major Coq
+mode <a href="https://proofgeneral.github.io/">Proof General</a>, that
+can be extended by the minor Coq
+mode <a href="https://github.com/cpitclaudel/company-coq">Company-Coq</a>.
+Proof General was one of the first user interface for proof
+assistants, and is one of the most used user interface for Coq today.
+Proof General and Company-Coq give access to many productivity
+shortcuts, including auto-completion and documentation.  On the other
+hand, async proof processing is not supported.
+</li>
+
+<li>
+<strong>Vim</strong> users can use the actively
+maintained <a href="https://github.com/whonore/Coqtail">Coqtail</a>
+extension.  This extension is partly based upon a previous, and now
+unmaintained, Vim extension
+called <a href="https://github.com/the-lambda-church/coquille">Coquille</a>.
+</li>
+
+<li>
+<strong>NeoVim</strong> users can use Julien
+Lepiller's <a href="https://framagit.org/tyreunom/coquille">Coquille
+fork.</a>
+</li>
+
+</ul>
+
+</p>
+
+<p>
+An experimental alternative to the editors mentioned above is the
+computational notebook interface provided by Jupyter.
+A <a href="https://github.com/EugeneLoy/coq_jupyter/">Jupyter kernel
+for Coq</a> is available if you want to try this interface, for
+instance for pedagogical or readability purposes.  One of the
+advantages of using a Jupyter notebook is that you can save and
+display a selection of intermediate proof steps, which your reader
+will see without the need to reexecute the document.
+</p>
+
+</div>
+
+<div class="frameworklinks">
+<ul>
+<li><a class="extlink" href="https://github.com/coq-community/vscoq">VsCoq (VsCode)</a></li>
+<li><a class="extlink" href="https://proofgeneral.github.io/">Proof General (Emacs)</a></li>
+<li><a class="extlink" href="https://github.com/whonore/Coqtail">Coqtail (Vim)</a></li>
+<li><a class="extlink" href="https://github.com/EugeneLoy/coq_jupyter">Jupyter kernel</a></li>
+</ul>
+</div>
+</div>
+
+<div class="framework">
+<div class="frameworklabel">Standalone interfaces</div>
+<div class="frameworkcontent">
+
+<p>
+If you don't want to use any of the previously mentioned editors, you
+can
+use <a href="https://coq.inria.fr/refman/practical-tools/coqide.html">CoqIDE</a>,
+which is developed and distributed alongside Coq.  Like most of the
+more modern editor extensions, CoqIDE relies
+on <a href="https://github.com/coq/coq/blob/master/dev/doc/xml-protocol.md">Coq's
+XML protocol for IDEs</a>, and implements all of the features provided
+by this protocol.  On the other hand, it does not support automatic
+indentation contrarily to most editor extensions.
+</p>
+
+<p>
+As a way to try Coq without installing anything, you can
+use <a href="https://jscoq.github.io/">JsCoq</a>.  JsCoq loads Coq
+entirely in your browser.  However, it is too limited to conduct
+actual projects: it lacks access to the VM and native computing
+machineries of Coq, and may hit out-of-memory and stack-overflow
+failures quicker than native versions of Coq.
+</p>
+
+</div>
+
+<div class="frameworklinks">
+<ul>
+<li><a href="refman/practical-tools/coqide.html">CoqIDE</a></li>
+<li><a class="extlink" href="https://jscoq.github.io/">JsCoq</a></li>
+</ul>
+</div>
+</div>
+
+<div class="framework">
+<div class="frameworklabel">Experimental / discontinued interfaces</div>
+<div class="frameworkcontent">
+
+<p>
+There have been many experiments over the years.  Here are some
+additional user interfaces that have stayed at the experimental level
+or whose maintenance has been discontinued and or is currently
+uncertain:
+<ul>
+<li>
+Proof General also has an
+experimental <a href="https://github.com/ProofGeneral/PG/tree/async">async
+branch</a> that relies
+on <a href="https://github.com/coq/coq/blob/master/dev/doc/xml-protocol.md">Coq's
+XML protocol for IDEs</a>, and supports new features such as
+asynchronous proof processing.  Unfortunately, this branch is mostly
+unmaintained and quite unstable.
+</li>
+<li>
+The <a href="http://coqoon.github.io/">Coqoon</a> Eclipse plugin was
+initially based upon
+the <a href="https://bitbucket.org/coqpide/pidetop/src/PIDEtop/">PIDEtop
+Coq plugin</a> (following Wenzel's asynchronous PIDE framework).
+Support for more recent version of Coq (8.7 and 8.8) relies
+on <a href="https://github.com/coq/coq/blob/master/dev/doc/xml-protocol.md">Coq's
+XML protocol for IDEs</a>.
+</li>
+<li>
+The <a href="https://github.com/Ptival/PeaCoq">PeaCoq</a> online web
+interface for Coq was focused on teaching (actively developed from
+2014 to 2016).
+</li>
+<li>
+The <a href="http://prover.cs.ru.nl">ProofWeb</a> online web interface
+for Coq (and other proof assistants) was also focused on teaching (in
+2006-2007).
+</li>
+<li>
+<a href="http://provereditor.gforge.inria.fr">ProverEditor</a> was an
+experimental Eclipse plugin with support for Coq (in 2005-2006).
+</li>
+<li>
+<a href="https://www-sop.inria.fr/lemme/pcoq/">Pcoq</a> (discontinued
+in 2003) was a first experiment at proof-by-pointing.
+</ul>
+</p>
+
+</div>
+</div>
+
+<#include "incl/footer.html">
