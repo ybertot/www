@@ -46,8 +46,8 @@ conf: $(DST)/aliases.conf
 # triggered, another pass of rewriting will be performed on the new URL
 # unless we specify E=END.
 
-$(DST)/aliases.conf: NEWSINDEX
-	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\2$$ /news/\1.html [E=END:1,L]|p" NEWSINDEX >> $@
+$(DST)/aliases.conf: NEWSINDEX aliases.footer.conf
+	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\2$$ /news/\1.html [E=END:1,L]|p" NEWSINDEX > $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^news/\1$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
 	sed -n -e "s|\(..*\):\(.*\)|RewriteRule ^\2$$ /news/\2 [L,R=301]|p" NEWSINDEX >> $@
 	cat aliases.footer.conf >> $@
