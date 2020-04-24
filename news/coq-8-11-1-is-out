@@ -1,0 +1,11 @@
+<#def ID>coq-8-11-1-is-out</#def>
+<#def TITLE>Coq 8.11.1 is out</#def>
+<#def AUTHOR>Pierre-Marie Pédrot</#def>
+<#def DATE>April 24th, 2020</#def>
+<#def DESCR>
+<p>The <a href="https://github.com/coq/coq/releases/tag/V8.11.1">8.11.1 release of Coq</a> is available.</p>
+
+<p>The most salient change in the 8.11.1 release is support for OCaml 4.10.0. See the <a href="https://coq.github.io/doc/V8.11.1/refman/changes.html#changes-in-8-11-1">changelog</a> for more details.</p>
+
+</#def>
+
