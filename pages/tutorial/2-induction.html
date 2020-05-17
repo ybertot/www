@@ -18,7 +18,7 @@ mathematical constructions.</p>
 <h3 id="sec23" class="subsection">2.1.1  Booleans</h3><!--SEC END --><p>Let us start with the collection of booleans, as they are specified
 in the <span style="font-variant:small-caps">Coq</span>’s <code>Prelude</code> module: 
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Inductive bool :  Set := true | false.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">bool is defined</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">bool</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">rect is defined</span></span></span><span style="font-size:small"><br>
@@ -36,7 +36,7 @@ a proof combinator corresponding to reasoning by cases,
 and <code>bool_rect</code>, a similar combinator at the level of types.
 Indeed:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Check bool</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">ind.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">bool</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">ind</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">     : forall P : bool -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> Prop,</span></span></span><span style="font-size:small"><br>
@@ -53,7 +53,7 @@ Indeed:
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">       P true -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> P false -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> forall b : bool, P b</span></span></span><span style="font-size:small"><br>
 </span></div><p>Let us for instance prove that every Boolean is true or false.
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma duality : forall b:bool, b = true </span></span><span style="font-size:small"><span style="font-family:monospace">\</span></span><span style="font-size:small"><span style="font-family:monospace">/ b = false.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -70,7 +70,7 @@ Indeed:
 <code>elim</code>, which is this case will appeal to combinator <code>bool_ind</code>
 in order to split the proof according to the two cases:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> elim b.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">2 subgoals</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -81,7 +81,7 @@ in order to split the proof according to the two cases:
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> false = true </span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">\</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">/ false = false</span></span></span><span style="font-size:small"><br>
 </span></div><p>It is easy to conclude in each case:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> left; trivial.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -95,7 +95,7 @@ in order to split the proof according to the two cases:
 <code>destruct</code>, which combines <code>intro</code> and <code>elim</code>,
 with good old <code>auto</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma duality : forall b:bool, b = true </span></span><span style="font-size:small"><span style="font-family:monospace">\</span></span><span style="font-size:small"><span style="font-family:monospace">/ b = false.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -112,7 +112,7 @@ with good old <code>auto</code>:
 <h3 id="sec24" class="subsection">2.1.2  Natural numbers</h3><!--SEC END --><p>Similarly to Booleans, natural numbers are defined in the <code>Prelude</code>
 module with constructors <code>S</code> and <code>O</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Inductive nat : Set :=</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">        | O : nat</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">        | S : nat -</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> nat.</span></span><span style="font-size:small"><br>
@@ -123,7 +123,7 @@ module with constructors <code>S</code> and <code>O</code>:
 </span></div><p>The elimination principles which are automatically generated are Peano’s
 induction principle, and a recursion operator:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Check nat</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">ind.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">nat</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">ind</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">     : forall P : nat -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> Prop,</span></span></span><span style="font-size:small"><br>
@@ -140,14 +140,14 @@ induction principle, and a recursion operator:
 </span></div><p>Let us start by showing how to program the standard primitive recursion
 operator <code>prim_rec</code> from the more general <code>nat_rec</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Definition prim</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">rec := nat</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">rec (fun i : nat =</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> nat).</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">prim</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">rec is defined</span></span></span><span style="font-size:small"><br>
 </span></div><p>That is, instead of computing for natural <code>i</code> an element of the indexed
 <code>Set</code> <code>(P i)</code>, <code>prim_rec</code> computes uniformly an element of 
 <code>nat</code>. Let us check the type of <code>prim_rec</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> About prim</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">rec.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">prim</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">rec :</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">(fun </span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> : nat =</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> nat) O -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><br>
@@ -161,7 +161,7 @@ operator <code>prim_rec</code> from the more general <code>nat_rec</code>:
 get an apparently more complicated expression.
 In fact, the two types are convertible and one way of having the proper
 type would be to do some computation before actually defining <code>prim_rec</code>
-as such:</p><div class="flushleft"><span style="font-size:small">
+as such:</p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Definition prim</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">rec :=</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">          Eval compute in nat</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">rec (fun i : nat =</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> nat).</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">prim</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">rec is defined</span></span></span><span style="font-size:small"><br>
@@ -173,7 +173,7 @@ as such:</p><div class="flushleft"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">Expands to: Constant Top.prim</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">rec</span></span></span><span style="font-size:small"><br>
 </span></div><p>Let us now show how to program addition with primitive recursion:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Definition addition (n m:nat) :=</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">          prim</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">rec m (fun p rec : nat =</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> S rec) n.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">addition is defined</span></span></span><span style="font-size:small"><br>
@@ -183,13 +183,13 @@ when <code>n = S p</code>, we get <code>(S rec)</code>, where <code>rec</code> i
 of the recursive computation <code>(addition p m)</code>. Let us verify it by
 asking <span style="font-variant:small-caps">Coq</span> to compute for us say 2+3:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Eval compute in (addition (S (S O)) (S (S (S O)))).</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">     = 5</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">     : nat</span></span></span><span style="font-size:small"><br>
 </span></div><p>Actually, we do not have to do all explicitly. <span style="font-variant:small-caps">Coq</span> provides a
 special syntax <span style="font-family:monospace">Fixpoint/match</span> for generic primitive recursion,
-and we could thus have defined directly addition as:</p><div class="flushleft"><span style="font-size:small">
+and we could thus have defined directly addition as:</p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Fixpoint plus (n m:nat) {struct n} : nat :=</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">        match n with</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">        | O =</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> m</span></span><span style="font-size:small"><br>
@@ -203,7 +203,7 @@ and we could thus have defined directly addition as:</p><div class="flushleft"><
 properties of the <code>plus</code> function we just defined. Let us first
 show that <span style="font-style:italic">n</span>=<span style="font-style:italic">n</span>+0.
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma plus</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">n</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">O : forall n : nat, n = n + 0.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -231,7 +231,7 @@ argument starts with a constructor, and is thus amenable to simplification
 by primitive recursion. The <span style="font-variant:small-caps">Coq</span> tactic <span style="font-family:monospace">simpl</span> can be used for
 this purpose:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> simpl.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">2 subgoals</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -249,7 +249,7 @@ this purpose:
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  forall n0 : nat, n0 = n0 + 0 -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> S n0 = S n0 + 0</span></span></span><span style="font-size:small"><br>
 </span></div><p>We proceed in the same way for the base step:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> simpl; auto.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">No more subgoals.</span></span></span><span style="font-size:small"><br>
 <br>
@@ -258,19 +258,19 @@ this purpose:
 </span></div><p>Here <code>auto</code> succeeded, because it used as a hint lemma <code>eq_S</code>,
 which say that successor preserves equality:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Check eq</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">eq</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">S</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">     : forall x y : nat, x = y -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> S x = S y</span></span></span><span style="font-size:small"><br>
 </span></div><p>Actually, let us see how to declare our lemma <code>plus_n_O</code> as a hint
 to be used by <code>auto</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Hint Resolve plus</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">n</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">O .</span></span><span style="font-size:small"><br>
 </span></div><p>We now proceed to the similar property concerning the other constructor
 <code>S</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma plus</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">n</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S : forall n m:nat, S (n + m) = n + S m.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -281,7 +281,7 @@ necessary <code>intros</code> before applying <code>elim</code>. Factoring simpl
 and automation in both cases thanks to tactic composition, we prove this
 lemma in one line:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> induction n; simpl; auto.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">No more subgoals.</span></span></span><span style="font-size:small"><br>
 <br>
@@ -289,7 +289,7 @@ lemma in one line:
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">plus</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">n</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">_</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">S is defined</span></span></span><span style="font-size:small"><br>
 <br>
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Hint Resolve plus</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">n</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S .</span></span><span style="font-size:small"><br>
-</span></div><p>Let us end this exercise with the commutativity of <code>plus</code>:</p><div class="flushleft"><span style="font-size:small">
+</span></div><p>Let us end this exercise with the commutativity of <code>plus</code>:</p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma plus</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">com : forall n m:nat, n + m = m + n.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -298,7 +298,7 @@ lemma in one line:
 </span></div><p>Here we have a choice on doing an induction on <code>n</code> or on <code>m</code>, the
 situation being symmetric. For instance:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> induction m as [ | m IHm ]; simpl; auto.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -308,7 +308,7 @@ situation being symmetric. For instance:
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  n + S m = S (m + n)</span></span></span><span style="font-size:small"><br>
 </span></div><p>Here <code>auto</code> succeeded on the base case, thanks to our hint
 <code>plus_n_O</code>, but the induction step requires rewriting, which
-<code>auto</code> does not handle:</p><div class="flushleft"><span style="font-size:small">
+<code>auto</code> does not handle:</p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> rewrite </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace">- IHm; auto.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">No more subgoals.</span></span></span><span style="font-size:small"><br>
 <br>
@@ -322,7 +322,7 @@ the constructors <code>O</code> and <code>S</code>: it computes to <code>False</
 when its argument is <code>O</code>, and to <code>True</code> when its argument is 
 of the form <code>(S n)</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Definition Is</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S (n : nat) := match n with</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">                                   | O =</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> False</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">                                   | S p =</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> True</span></span><span style="font-size:small"><br>
@@ -331,7 +331,7 @@ of the form <code>(S n)</code>:
 </span></div><p>Now we may use the computational power of <code>Is_S</code> to prove
 trivially that <code>(Is_S (S n))</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma S</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">Is</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S : forall n:nat, Is</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S (S n).</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -348,7 +348,7 @@ trivially that <code>(Is_S (S n))</code>:
 we want to prove that <code>O</code> and <code>S</code> construct different values, one
 of Peano’s axioms:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma no</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">confusion : forall n:nat, 0 </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> S n.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -358,7 +358,7 @@ of Peano’s axioms:
 goal with tactic <code>red</code>; then we get contradiction by successive
 <code>intros</code>:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> red; intros n H.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -368,7 +368,7 @@ goal with tactic <code>red</code>; then we get contradiction by successive
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  False</span></span></span><span style="font-size:small"><br>
 </span></div><p>Now we use our trick:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> change (Is</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S 0).</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -379,7 +379,7 @@ goal with tactic <code>red</code>; then we get contradiction by successive
 </span></div><p>Now we use equality in order to get a subgoal which computes out to 
 <code>True</code>, which finishes the proof:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> rewrite H; trivial.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -392,7 +392,7 @@ goal with tactic <code>red</code>; then we get contradiction by successive
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">No more subgoals.</span></span></span><span style="font-size:small"><br>
 </span></div><p>Actually, a specific tactic <code>discriminate</code> is provided
 to produce mechanically such proofs, without the need for the user to define
-explicitly the relevant discrimination predicates:</p><div class="flushleft"><span style="font-size:small">
+explicitly the relevant discrimination predicates:</p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma no</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">confusion : forall n:nat, 0 </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> S n.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -411,7 +411,7 @@ may define inductive families, and for instance inductive predicates.
 Here is the definition of predicate ≤ over type <code>nat</code>, as
 given in <span style="font-variant:small-caps">Coq</span>’s <code>Prelude</code> module:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Inductive le (n : nat) : nat -</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Prop :=</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">        | le</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">n : le n n</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace">        | le</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S : forall m : nat, le n m -</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> le n (S m).</span></span><span style="font-size:small"><br>
@@ -427,7 +427,7 @@ insured, as in the case of inductive data types, by an elimination principle,
 which here amounts to an induction principle <code>le_ind</code>, stating this 
 minimality property:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Check le.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">le</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">     : nat -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> nat -</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">&gt;</span></span></span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic"> Prop</span></span></span><span style="font-size:small"><br>
@@ -441,7 +441,7 @@ minimality property:
 </span></div><p>Let us show how proofs may be conducted with this principle.
 First we show that <span style="font-style:italic">n</span>≤ <span style="font-style:italic">m</span> ⇒ <span style="font-style:italic">n</span>+1≤ <span style="font-style:italic">m</span>+1:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma le</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">n</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S : forall n m : nat, le n m -</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> le (S n) (S m).</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -471,7 +471,7 @@ numbers: it appeals to the relevant induction principle, here <code>le_ind</code
 which generates the two subgoals, which may then be solved easily
 with the help of the defining clauses of <code>le</code>.
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> apply le</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">n; trivial.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -488,7 +488,7 @@ so that the proof may proceed with a simple combination of
 <code>induction</code> and <code>auto</code>. <code>Hint Constructors le</code>
 is just an abbreviation for <code>Hint Resolve le_n le_S</code>.
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Hint Constructors le.</span></span><span style="font-size:small"><br>
 <br>
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma le</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">n</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">S : forall n m : nat, le n m -</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> le (S n) (S m).</span></span><span style="font-size:small"><br>
@@ -501,7 +501,7 @@ hypothesis <code>(le n m)</code>”, but we have no explicit name for it. What w
 do in this case is to say “Do an induction on the first unnamed hypothesis”,
 as follows.
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> induction 1; auto.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">No more subgoals.</span></span></span><span style="font-size:small"><br>
 <br>
@@ -511,7 +511,7 @@ as follows.
 <span style="font-style:italic">n</span>≤ 0 ⇒ <span style="font-style:italic">n</span>=0. This reasoning ought to follow simply from the
 fact that only the first defining clause of <code>le</code> applies.
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> Lemma tricky : forall n:nat, le n 0 -</span></span><span style="font-size:small"><span style="font-family:monospace">&gt;</span></span><span style="font-size:small"><span style="font-family:monospace"> n = 0.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
@@ -526,7 +526,7 @@ that only <code>le_n</code> applies, whence the result.
 This analysis may be performed by the “inversion” tactic
 <code>inversion_clear</code> as follows:
 <span style="font-size:small">
-</span></p><div class="flushleft"><span style="font-size:small">
+</span></p><div class="flushleft notranslate"><span style="font-size:small">
 </span><span style="font-size:small"><span style="font-family:monospace">Coq </span></span><span style="font-size:small"><span style="font-family:monospace">&lt;</span></span><span style="font-size:small"><span style="font-family:monospace"> intros n H; inversion</span></span><span style="font-size:small"><span style="font-family:monospace">_</span></span><span style="font-size:small"><span style="font-family:monospace">clear H.</span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">1 subgoal</span></span></span><span style="font-size:small"><br>
 </span><span style="font-size:small"><span style="font-family:monospace"><span style="font-style:italic">  </span></span></span><span style="font-size:small"><br>
