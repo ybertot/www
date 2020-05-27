@@ -190,7 +190,7 @@ git commit -m 'Package coq-foo.1.0.0'
 
 <p>The preliminary step is to lint your <code>opam</code> file as follows</p>
 
-<pre><code>opam lint released/packages/coq-foo/coq-foo.1.0.0/opam
+<pre><code>opam lint --check-upstream released/packages/coq-foo/coq-foo.1.0.0/opam
 </code></pre>
 
 <p>Once no more errors are given, the best way to test your package is to add your
