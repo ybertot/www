@@ -57,8 +57,7 @@ $(DST)/aliases.conf: NEWSINDEX aliases.footer.conf
 pagesaliases: $(DST)/styles \
 	$(DST)/files \
 	$(DST)/scripts \
-	$(DST)/coq-workshop/files \
-	$(DST)/coq-workshop/2009/cfp/index.html
+	$(DST)/coq-workshop/files
 
 ## Special aliases
 
@@ -73,9 +72,6 @@ $(DST)/scripts:
 
 $(DST)/coq-workshop/files: 
 	mkdir -p $(dir $@) && ln -snf ../files $@
-
-$(DST)/coq-workshop/2009/cfp/index.html:
-	mkdir -p $(dir $@) && ln -snf $$PWD/$(DST)/news/69.html $@
 
 ## News, listed in the NEWSINDEX file
 
