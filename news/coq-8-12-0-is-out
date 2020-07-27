@@ -1,0 +1,21 @@
+<#def ID>coq-8-12-0-is-out</#def>
+<#def TITLE>Coq 8.12.0 is out</#def>
+<#def AUTHOR>Emilio Gallego Arias and Théo Zimmermann</#def>
+<#def DATE>July 27th, 2020</#def>
+<#def DESCR>
+
+<p>We are happy to announce the <a
+href="https://github.com/coq/coq/releases/tag/V8.12.0">release of Coq
+8.12.0</a>.
+
+<p>Some highlights from this release are:</p>
+<ul>
+<li>a new binder notation for non-maximal implicit arguments;</li>
+<li>an improved <code>Search</code> command which accepts more complex queries;</li>
+<li>many additions to the standard library;</li>
+<li>a restructured reference manual;</li>
+<li>the deprecation of the <code>omega</code> tactic in favor the <code>lia</code> tactic.</li>
+</ul>
+<p>Please see <a href="https://coq.github.io/doc/v8.12/refman/changes.html#version-8-12" rel="nofollow">the changelog</a> to learn more about this release.</p>
+
+</#def>
