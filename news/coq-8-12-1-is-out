@@ -1,0 +1,21 @@
+<#def ID>coq-8-12-1-is-out</#def>
+<#def TITLE>Coq 8.12.1 is out</#def>
+<#def AUTHOR>Emilio Gallego Arias and Théo Zimmermann</#def>
+<#def DATE>November 16th, 2020</#def>
+<#def DESCR>
+
+<p>We are happy to announce the <a
+href="https://github.com/coq/coq/releases/tag/V8.12.1">release of Coq
+8.12.1</a>.
+
+<p>This release contains numerous bug fixes and documentation improvements. Some bug fix highlights:</p>
+<ul>
+<li>Polymorphic side-effects inside monomorphic definitions were incorrectly handled as not inlined. This allowed deriving an inconsistency.
+<li>Regression in error reporting after SSReflect's <code>case</code> tactic. A generic error message "Could not fill dependent hole in apply" was reported for any error following <code>case</code> or <code>elim</code>.
+<li>Several bugs with <code>Search</code>.
+<li>The <code>details</code> environment introduced in coqdoc in Coq 8.12 can now be used as advertised in the reference manual.
+<li>View menu "Display parentheses" introduced in CoqIDE in Coq 8.12 now works correctly.
+</ul>
+<p>See the <a href="https://coq.inria.fr/refman/changes.html#changes-in-8-12-1">changelog</a> for details and a more complete list.</p>
+
+</#def>
