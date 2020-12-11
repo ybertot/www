@@ -1,0 +1,16 @@
+<#def ID>coq-8-12-2-is-out</#def>
+<#def TITLE>Coq 8.12.2 is out</#def>
+<#def AUTHOR>Emilio Gallego Arias and Théo Zimmermann</#def>
+<#def DATE>December 11th, 2020</#def>
+<#def DESCR>
+
+<p>We are happy to announce the <a
+href="https://github.com/coq/coq/releases/tag/V8.12.2">release of Coq
+8.12.2</a>.
+
+<p>This release fixes two impacting 8.12 regressions (in notations and
+the implicit argument inference of the exists tactic).  See the <a
+href="https://coq.inria.fr/distrib/V8.12.2/refman/changes.html#changes-in-8-12-2">changelog</a>
+for details.</p>
+
+</#def>
