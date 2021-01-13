@@ -1,54 +1,68 @@
 <#include "incl/macros.html">
-<#def TITLE>Coq <#CURRENTVERSION></#def>
+<#def TITLE>Install Coq</#def>
 <#include "incl/header.html">
 
 <div class="framework">
-<div class="frameworklabel">The current version: Coq <#CURRENTVERSION>
+<div class="frameworklabel">The Coq platform
 </div>
 <div class="frameworkcontent">
 
-<p>For downloads (in particular to get installers for Windows and Mac OS, the PDF
-  manual, or a tarball of the sources), please go to
-  <a href="<#CURRENTVERSIONURL>">the release page on GitHub</a>.</p>
+<p>Coq has a rich ecosystem of external packages (libraries and
+plugins) that extend it and make it more powerful.
+The <a href="https://github.com/coq/platform">Coq platform</a>
+provides an easy way to install Coq and a consistent set of packages
+on Windows, macOS and many Linux distributions.</p>
+
+<p>Beginners are encouraged to use one of the binary installers: we
+provide <a href="https://github.com/coq/coq/releases/latest">binary
+installers</a> for Windows and
+a <a href="https://snapcraft.io/coq-prover">Snap package</a>
+compatible with many Linux distributions. A macOS installer for the
+platform is in the works. In the meantime, a macOS installer for just
+Coq + CoqIDE is provided.</p>
+
+<p>Experienced users are advised to run the scripts provided by
+the <a href="https://github.com/coq/platform">Coq platform</a> to
+install from sources as this will allow them to add additional
+packages by <a href="/opam-using.html">using opam</a>.</p>
 
 </div>
 <div class="frameworklinks">
 <ul>
-<li><a href="<#CURRENTVERSIONURL>">Stable release (<#CURRENTVERSION>)</a></li>
-<#ifdef UPCOMINGVERSION>
-<li><a href="<#UPCOMINGVERSIONURL>">Testing release (<#UPCOMINGVERSION>)</a></li>
-</#ifdef>
+<li><a href="https://github.com/coq/coq/releases/latest">Binary installers (Windows and macOS)</a></li>
+<li><a href="https://snapcraft.io/coq-prover">Snap package</a></li>
+<li><a href="https://github.com/coq/platform">Platform scripts</a>
 </ul>
 </div>
 </div>
+
 
 <div class="framework">
-<div class="frameworklabel">How to install Coq on various systems</div>
+<div class="frameworklabel">Other installation methods
+</div>
 <div class="frameworkcontent">
 
-<p>
-The Coq wiki contains three helpful pages detailing various ways of
-installing Coq for the three most standard operating systems:
-</p>
+<p>Coq is available
+through <a href="https://repology.org/metapackage/coq/versions">many
+package managers</a>, including most Linux distribution package
+managers.  However, in many cases, the available version is not
+the latest version.  More importantly, these distributions might
+provide only a fraction of all the external packages available for
+Coq, thus requiring some manual compilation and installation to add
+additional packages.</p>
 
-<ul>
-<li><a href="https://github.com/coq/coq/wiki/Installation%20of%20Coq%20on%20Linux">Linux</a>
-<li><a href="https://github.com/coq/coq/wiki/Installation%20of%20Coq%20on%20Windows">Windows</a>
-<li><a href="https://github.com/coq/coq/wiki/Installation%20of%20Coq%20on%20Mac">MacOS</a>
-</ul>
+<p>Advanced users who want to install Coq and extend it with external
+packages can rely on <a href="/opam-using.html">opam</a>
+or <a href="https://nixos.org/manual/nixpkgs/unstable/#sec-language-coq">Nix</a>.</p>
 
-<p>
-The Coq website also contains a page with instructions on
-<a href="/opam-using.html">how to install Coq and related packages via opam</a>.
-</p>
+<p>Coq is also available as a <a href="https://hub.docker.com/r/coqorg/coq/">Docker image</a>.</p>
 
 </div>
 <div class="frameworklinks">
 <ul>
-<li><a class="extlink" href="https://github.com/coq/coq/wiki/Installation%20of%20Coq%20on%20Linux">Linux</a></li>
-<li><a class="extlink" href="https://github.com/coq/coq/wiki/Installation%20of%20Coq%20on%20Windows">Windows</a></li>
-<li><a class="extlink" href="https://github.com/coq/coq/wiki/Installation%20of%20Coq%20on%20Mac">MacOS</a></li>
-<li><a href="/opam-using.html">opam</a></li>
+<li><a href="/opam-using.html">Using opam</a></li>
+<li><a href="https://nixos.org/manual/nixpkgs/unstable/#sec-language-coq">Nixpkgs manual section on Coq</a></li>
+<li><a href="https://hub.docker.com/r/coqorg/coq/">Docker images</a></li>
 </ul>
 </div>
 </div>
@@ -57,20 +71,24 @@ The Coq website also contains a page with instructions on
 <div class="frameworklabel">Previous and development versions of Coq </div>
 <div class="frameworkcontent">
 
-<p>The development version of Coq is <a href="https://github.com/coq/coq">browsable</a>
-and downloadable from our Git repository using command:
-<tt>git clone https://github.com/coq/coq.git</tt>.
+<p>The development version of Coq and its development history can be
+browsed in its <a href="https://github.com/coq/coq">GitHub
+repository</a>.
 </p>
 
-<p>Most of the previous versions of Coq are available <a href="<#RELEASES>">on
-GitHub</a> or <a href="/distrib/">here</a>.</p>
+<p>When you upgrade your version of Coq, be sure to read
+the <a href="/distrib/current/refman/changes.html">changelog</a>.
+
+<p>Most previous versions of Coq are
+available <a href="https://github.com/coq/coq/releases">on GitHub</a>
+or <a href="/distrib/">here</a>.</p>
 
 </div>
 <div class="frameworklinks">
 <ul>
 <li><a class="extlink" href="https://github.com/coq/coq">GitHub repository</a></li>
-<li><a class="extlink" href="<#RELEASES>">All GitHub releases</a></li>
-<li><a href="/distrib/">Old releases</a></li>
+<li><a class="extlink" href="https://github.com/coq/coq/releases">All GitHub releases</a></li>
+<li><a href="/distrib/">Very old releases</a></li>
 </ul>
 </div>
 </div>

@@ -19,6 +19,23 @@ opam --version
 <p>Follow the instructions below to install the last stable version of Coq and
 additional packages. The instructions target an opam newcomer.</p>
 
+<h2 id="platform">The Coq platform scripts</h2>
+
+<p>The <a href="https://github.com/coq/platform">Coq platform</a>
+provides interactive scripts that allow installing Coq and a standard
+set of packages through opam without having to learn anything about
+opam.  We recommend that you use
+these <a href="https://github.com/coq/platform">scripts</a>.  If you
+do, you can skip directly to <a href="#coq-packages">Using opam to
+install Coq packages</a> to learn how to add additional packages to
+the initial package set provided by the platform.</p>
+
+<p>Note that the platform scripts are compatible with existing opam
+installations. They will create a fresh <a href="#switch">switch.</a></p>
+
+<p>If you prefer to do a fully manual installation, you can proceed to
+the next section.</p>
+
 <h2>Initializing opam</h2>
 
 <p>Once opam is installed, it must be initialized before first usage:</p>
@@ -91,11 +108,12 @@ built and installed with the following command:</p>
 interfaces / editor extensions</a> for Coq.  See their respective
 websites for instructions on how to install them.</p>
 
-<h2>Using opam to install Coq packages</h2>
+<h2 id="coq-packages">Using opam to install Coq packages</h2>
 
-<p>Coq packages live in a repository separate from the standard OCaml opam
-repository. The following command adds that repository to the current
-opam switch (more on switches below):</p>
+<p>Coq packages live in a repository separate from the standard OCaml
+opam repository. The following command adds that repository to the
+current opam <a href="#switch">switch</a> (you can skip this step if
+you used the <a href="#platform">platform scripts</a>):</p>
 
 <pre><code>opam repo add coq-released https://coq.inria.fr/opam/released
 </code></pre>
@@ -123,7 +141,7 @@ using the command:</p>
 different versions of OCaml and other packages (including Coq) via
 <em>switches</em> or <em>roots</em>.</p>
 
-<h3>Switches</h3>
+<h3 id="switch">Switches</h3>
 
 <p>Switches provide separate environments, with their own versions of OCaml and
 installed packages.</p>
