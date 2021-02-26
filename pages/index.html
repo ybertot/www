@@ -4,7 +4,7 @@
 <#include "incl/header.html">
 
 <div class="framework">
-<div class="frameworklabel"><a style="color:black;font-weight:bold" href="/about-coq">What is Coq?</a></div>
+<div class="frameworklabel"><a  style="color:black;font-weight:bold" href="/documentation">Learning about Coq</a></div>
 <div class="frameworkcontent">
   <p>Coq is a formal proof management system.
   It provides a formal language to write mathematical definitions, executable algorithms and theorems together with an environment for semi-interactive development of machine-checked proofs.
@@ -17,100 +17,56 @@
   or <a href="http://homotopytypetheory.org/coq/">homotopy type theory</a>),
   and <a href="/cocorico/CoqInTheClassroom">teaching</a>.
   </p>
+
+  <p>The <a
+  href="/distrib/current/refman/">Reference Manual</a> and the
+  <a href="/distrib/current/stdlib/">Standard Library
+  documentation</a> are the primary documentation for Coq.  However,
+  to learn about Coq, we recommend starting with a tutorial or book,
+  such as those listed on the <a href="/documentation">documentation
+  page</a>.
+  </p>
+
 </div>
 
 <div class="frameworklinks">
 <ul>
-<li><a href="/about-coq"> More about Coq </a></li>
+<li><a href="/documentation">Tutorials and books</a></li>
+<li><a href="/distrib/current/refman/"> Reference Manual </a></li>
+<li><a href="/distrib/current/stdlib/"> Standard Library </a></li>
 </ul>
 </div>
 </div>
 
-
 <div class="framework">
-<div class="frameworklabel"><a style="color:black;font-weight:bold" href="/download">How to get it?</a></div>
+<div class="frameworklabel"><a style="color:black;font-weight:bold" href="/download">Running Coq</a></div>
 <div class="frameworkcontent">
-  <p>You can download <a href="<#CURRENTVERSIONURL>">the current stable version,
-      Coq <#CURRENTVERSION></a>, released in <#CURRENTVERSIONDATE>.</p>
-<#ifdef UPCOMINGVERSION>
-  <p><a href="<#UPCOMINGVERSIONURL>">The upcoming version, Coq <#UPCOMINGVERSION></a>
-    is also available for testing.</p>
-</#ifdef>
-<p>
-To use Coq, you will need a user interface.  Many editor support
-extensions are available (for Emacs, Vim, VSCode, etc.), as well as
-CoqIDE, a standalone IDE for Coq.
-The <a href="user-interfaces.html">User interfaces</a> page provides a
-full list, with more details.  If you are only looking for a quick way
-to try Coq without installing anything, we recommend you
-use <a href="https://jscoq.github.io">jsCoq</a>.
+<p>You don't need to install Coq to get started: you can run Coq in your browser using
+<a href="https://jscoq.github.io">jsCoq</a>!</p>
+
+<p>Eventually you'll probably want to <a href="/download">install the Coq platform</a>
+on your system with a <a href="user-interfaces.html">user interface</a> of your choice.
 </p>
 </div>
 <div class="frameworklinks">
 <ul>
-<li><a href="<#CURRENTVERSIONURL>">Get Coq <#CURRENTVERSION></a></li>
-<#ifdef UPCOMINGVERSION>
-<li><a href="<#UPCOMINGVERSIONURL>">Get Coq <#UPCOMINGVERSION> (testing)</a></li>
-</#ifdef>
-<li><a href="https://jscoq.github.io">Try jsCoq</a></li>
+<li><a href="https://jscoq.github.io">Try Coq in your browser</a></li>
+<li><a href="/download">Install the Coq platform</a></li>
 <li><a href="user-interfaces.html">User interfaces</a></li>
 </ul>
 </div>
 </div>
 
 <div class="framework">
-<div class="frameworklabel"><a  style="color:black;font-weight:bold" href="https://github.com/coq/coq/blob/master/CONTRIBUTING.md">How to contribute?</a></div>
-<div class="frameworkcontent">
-    <p>You can contribute to the development of Coq by reporting bugs,
-    submitting pull requests, improving the documentation, and in many other
-    ways. We are also looking for sponsors who want to contribute financially
-    through the <a href="/consortium">Coq Consortium</a>. If you are interested,
-    please get in touch!</p>
-</div>
-
-<div class="frameworklinks">
-<ul>
-<li><a href="/bugs/">Bug tracker</a></li>
-<li><a href="https://github.com/coq/coq/blob/master/CONTRIBUTING.md">Contributing guide</a></li>
-<li><a href="/consortium">Coq Consortium</a></li>
-</ul>
-</div>
-</div>
-
-<div class="framework">
-<div class="frameworklabel"><a  style="color:black;font-weight:bold" href="/documentation">Documentation</a></div>
-<div class="frameworkcontent">
-  <p>The reference documentation for Coq are the <a
-  href="/distrib/current/refman/"> Reference Manual </a> and the
-  documentation of the <a href="/distrib/current/stdlib/">
-  Standard Library</a>. Other useful documents
-  (tutorials, faq, ...) are available from the <a
-  href="/documentation">documentation</a>
-  page.</p>
-</div>
-
-<div class="frameworklinks">
-<ul>
-<li><a href="/distrib/current/refman/"> Reference Manual </a></li>
-<li><a href="/distrib/current/stdlib/"> Standard Library </a></li>
-<li><a href="/documentation">All Documents</a></li>
-</ul>
-</div>
-</div>
-
-
-<div class="framework">
-<div class="frameworklabel"><a style="color:black;font-weight:bold" href="/community.html">The Coq Community</a></div>
+<div class="frameworklabel"><a style="color:black;font-weight:bold" href="/community.html">User Community</a></div>
 <div class="frameworkcontent">
 
-<p>There is a strong and active community of users working with
-Coq. They are contributing formal developments,
-extensions of Coq
-(see <a href="/packages.html">Coq Package Index</a>),
-and tools based on Coq
-(see <a href="/related-tools.html">Related Tools</a>).
-We have a (multi-lingual) <a href="https://coq.discourse.group">Discourse forum</a>
-and a <a href="https://coq.zulipchat.com">Zulip chat</a>.
+<p>Coq has a large and active user community. They contribute
+formal developments, Coq extensions
+(see <a href="/packages.html">Coq Package Index</a>) and tools based
+on Coq (see <a href="/related-tools.html">Related Tools</a>).  We have
+a multi-lingual <a href="https://coq.discourse.group">Discourse
+forum</a> and a <a href="https://coq.zulipchat.com">Zulip chat</a>.
 </p>
 
 </div>
@@ -124,5 +80,26 @@ and a <a href="https://coq.zulipchat.com">Zulip chat</a>.
 </ul>
 </div>
 </div><!-- /framework -->
+
+<div class="framework">
+<div class="frameworklabel"><a style="color:black;font-weight:bold" href="https://github.com/coq/coq/blob/master/CONTRIBUTING.md">Contributing to Coq</a></div>
+<div class="frameworkcontent">
+    <p>You can contribute to the development of Coq by reporting bugs,
+    suggesting enhancements,
+    submitting pull requests, improving the documentation and in many other
+    ways. We are also looking for sponsors who want to support the development
+    of Coq financially
+    through the <a href="/consortium">Coq Consortium</a>. If you are interested,
+    please get in touch!</p>
+</div>
+
+<div class="frameworklinks">
+<ul>
+<li><a href="/bugs/">Bug tracker</a></li>
+<li><a href="https://github.com/coq/coq/blob/master/CONTRIBUTING.md">Contributing guide</a></li>
+<li><a href="/consortium">Coq Consortium</a></li>
+</ul>
+</div>
+</div>
 
 <#include "incl/footer.html">
